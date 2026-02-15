@@ -1,13 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
+import { useEffect, useMemo, useState } from 'react';
 import { Car, ChevronDown } from 'lucide-react';
 import { itinerary } from '../../data/itinerary.generated';
 import { segments, type SegmentId } from '../../data/segments';
 import type { TripDay } from '../../data/types';
-
-// Set your Mapbox access token here
-mapboxgl.accessToken =
-  'pk.eyJ1IjoiZXhhbXBsZXVzZXIiLCJhIjoiY2wxMjM0NTY3ODkwMWFiYzEyMyJ9.example';
+import JourneyMap from '../components/JourneyMap';
 
 /** Group flat TripDay[] into contiguous segment runs. */
 function groupBySegment(days: TripDay[]) {
@@ -40,15 +36,8 @@ function sectionDateRange(days: TripDay[]): string {
 }
 
 export default function ItineraryPage() {
-  const mapContainer = useRef<HTMLDivElement>(null);
   const sections = useMemo(() => groupBySegment(itinerary), []);
   const [activeSection, setActiveSection] = useState(sections[0]?.segmentId ?? 'napa');
-
-  useEffect(() => {
-    if (!mapContainer.current) return;
-    // Placeholder for map initialization
-    console.log('Map would initialize here with Mapbox GL');
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -108,22 +97,7 @@ export default function ItineraryPage() {
 
       {/* Fixed Map */}
       <div className="fixed top-32 right-0 w-1/2 h-screen hidden lg:block">
-        <div ref={mapContainer} className="w-full h-full" />
-        <div
-          className="absolute inset-0 transition-colors duration-1000"
-          style={{ backgroundColor: '#e5e0d8' }}
-        >
-          <div className="flex items-center justify-center h-full">
-            <div className="text-center p-8">
-              <p className="text-sm text-[#8b7d6b] mb-2">
-                Interactive Map Placeholder
-              </p>
-              <p className="text-xs text-[#b8a588]">
-                Add your Mapbox token to enable the interactive map
-              </p>
-            </div>
-          </div>
-        </div>
+        <JourneyMap activeSegment={activeSection} />
       </div>
 
       {/* Scrollable Content */}
