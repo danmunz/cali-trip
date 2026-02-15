@@ -126,6 +126,17 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  /**
+  * Font families: sans-serif for structural / navigational elements,
+  * serif (Crimson Pro) as the default body font.
+  */
+
+  h1, h2, h3, h4,
+  nav, button, label, th {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   /**
