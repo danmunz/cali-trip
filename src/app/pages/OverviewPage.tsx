@@ -1,6 +1,8 @@
 import { Calendar, Plane, Cloud, CloudRain, Sun } from 'lucide-react';
 import mapImage from '../../assets/1becf1fb274bdda2aefe747340a99d4afe32758c.png';
-import { weatherData, dailySchedule, regionPhotos } from '../../data/overview';
+import { weatherData } from '../../data/overview';
+import { tripMeta } from '../../data/trip-meta.generated';
+import { segments } from '../../data/segments';
 
 function WeatherIcon({ condition }: { condition: string }) {
   switch (condition) {
@@ -17,7 +19,22 @@ function WeatherIcon({ condition }: { condition: string }) {
   }
 }
 
+function FlightLeg({ value }: { value: string }) {
+  const [airport, ...rest] = value.split(' ');
+  return (
+    <>
+      <span className="font-bold">{airport}</span> {rest.join(' ')}
+    </>
+  );
+}
+
+function scheduleColor(segmentId: string): string {
+  return (segments as Record<string, { color: string }>)[segmentId]?.color ?? '#64748b';
+}
+
 export default function OverviewPage() {
+  const subtitle = tripMeta.subtitle.replace(' | ', ' \u2022 ');
+
   return (
     <div className="pt-16">
       {/* Hero Map - Full Width */}
@@ -31,10 +48,10 @@ export default function OverviewPage() {
         <div className="absolute bottom-0 left-0 right-0 pb-12 px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-6xl sm:text-7xl lg:text-8xl mb-4 text-gray-900 tracking-tight drop-shadow-lg font-medium">
-              Susan's 70th Birthday
+              {tripMeta.title}
             </h1>
             <p className="text-xl text-gray-700 font-medium">
-              California, USA • April 3-11, 2026
+              {subtitle}
             </p>
           </div>
         </div>
@@ -51,7 +68,7 @@ export default function OverviewPage() {
                 Daily Itinerary
               </h2>
             </div>
-            <p className="text-gray-600 mb-6">9 days / 8 nights</p>
+            <p className="text-gray-600 mb-6">{tripMeta.duration}</p>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
@@ -68,7 +85,7 @@ export default function OverviewPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {dailySchedule.map((row, idx) => (
+                  {tripMeta.dailySchedule.map((row, idx) => (
                     <tr
                       key={idx}
                       className="border-b border-gray-200 hover:bg-gray-50 transition-colors"
@@ -77,7 +94,7 @@ export default function OverviewPage() {
                         <div className="flex items-center gap-2">
                           <div
                             className="w-2.5 h-2.5 rounded-full"
-                            style={{ backgroundColor: row.color }}
+                            style={{ backgroundColor: scheduleColor(row.segmentId) }}
                           ></div>
                           <span className="font-medium">{row.date}</span>
                         </div>
@@ -96,28 +113,6 @@ export default function OverviewPage() {
           </div>
         </section>
 
-        {/* Photo accent strip */}
-        <section className="mb-16">
-          <div className="grid grid-cols-3 gap-4">
-            {regionPhotos.map((photo) => (
-              <div
-                key={photo.label}
-                className="relative h-48 rounded-lg overflow-hidden group"
-              >
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-3 left-3">
-                  <p className="text-white text-sm font-medium">{photo.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <div className="grid md:grid-cols-2 gap-8">
           {/* Flights */}
           <section>
@@ -129,12 +124,12 @@ export default function OverviewPage() {
               <div className="space-y-6">
                 <div className="flex items-start gap-4 text-sm">
                   <div className="text-gray-600 w-24 font-medium">Airline</div>
-                  <div className="text-gray-900">United Airlines</div>
+                  <div className="text-gray-900">{tripMeta.flights.airline}</div>
                 </div>
                 <div className="flex items-start gap-4 text-sm">
                   <div className="text-gray-600 w-24 font-medium">Confirmation</div>
                   <div className="text-gray-900 font-mono text-xs font-bold">
-                    #CST454
+                    {tripMeta.flights.confirmation}
                   </div>
                 </div>
 
@@ -148,13 +143,13 @@ export default function OverviewPage() {
                     </div>
                     <div className="pl-4 space-y-2 text-sm text-gray-800">
                       <div>
-                        <span className="font-semibold">UA 369</span>
+                        <span className="font-semibold">{tripMeta.flights.outbound.number}</span>
                         <span className="text-gray-500 mx-2">•</span>
-                        <span>Fri, Apr 3, 2026</span>
+                        <span>{tripMeta.flights.outbound.date}</span>
                       </div>
                       <div className="text-xs">
-                        <span className="font-bold">DCA</span> 7:30am EDT →{' '}
-                        <span className="font-bold">SFO</span> 10:42am PDT
+                        <FlightLeg value={tripMeta.flights.outbound.departure} /> →{' '}
+                        <FlightLeg value={tripMeta.flights.outbound.arrival} />
                       </div>
                     </div>
                   </div>
@@ -168,13 +163,13 @@ export default function OverviewPage() {
                     </div>
                     <div className="pl-4 space-y-2 text-sm text-gray-800">
                       <div>
-                        <span className="font-semibold">UA 2386</span>
+                        <span className="font-semibold">{tripMeta.flights.return.number}</span>
                         <span className="text-gray-500 mx-2">•</span>
-                        <span>Sat, Apr 11, 2026</span>
+                        <span>{tripMeta.flights.return.date}</span>
                       </div>
                       <div className="text-xs">
-                        <span className="font-bold">SFO</span> 2:00pm PDT →{' '}
-                        <span className="font-bold">DCA</span> 10:28pm EDT
+                        <FlightLeg value={tripMeta.flights.return.departure} /> →{' '}
+                        <FlightLeg value={tripMeta.flights.return.arrival} />
                       </div>
                     </div>
                   </div>

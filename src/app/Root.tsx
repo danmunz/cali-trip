@@ -1,4 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router';
+import { tripMeta } from '../data/trip-meta.generated';
 
 export default function Root() {
   const location = useLocation();
@@ -18,7 +19,7 @@ export default function Root() {
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center gap-2">
               <span className="text-base tracking-tight text-gray-900 font-semibold">
-                Susan's 70th
+                {tripMeta.title}
               </span>
             </Link>
             <div className="flex items-center gap-8">
@@ -49,8 +50,8 @@ export default function Root() {
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-100 py-16 px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <p className="text-lg mb-2 font-medium">Susan's 70th Birthday Celebration</p>
-          <p className="text-sm text-gray-400">California, USA • April 3-11, 2026</p>
+          <p className="text-lg mb-2 font-medium">{tripMeta.title}</p>
+          <p className="text-sm text-gray-400">{tripMeta.subtitle.replace(' | ', ' \u2022 ')}</p>
         </div>
       </footer>
     </div>
