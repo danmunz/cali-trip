@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Car, ChevronDown } from 'lucide-react';
 import { itinerary } from '../../data/itinerary.generated';
 import { segments, type SegmentId } from '../../data/segments';
@@ -37,30 +37,58 @@ function sectionDateRange(days: TripDay[]): string {
 
 export default function ItineraryPage() {
   const sections = useMemo(() => groupBySegment(itinerary), []);
-  const [activeSection, setActiveSection] = useState(sections[0]?.segmentId ?? 'napa');
+  const [activeSection, setActiveSection] = useState<SegmentId>(
+    sections[0]?.segmentId ?? 'napa',
+  );
+  /** Location IDs for the activity currently in the viewport center. */
+  const [focusedLocationIds, setFocusedLocationIds] = useState<string[]>([]);
+  /** Location IDs for the activity the user is hovering over in text. */
+  const [hoveredLocationIds, setHoveredLocationIds] = useState<string[]>([]);
+  /** Location ID of the pin the user is hovering on the map. */
+  const [mapHoveredId, setMapHoveredId] = useState<string | null>(null);
+
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // ── IntersectionObserver for section + activity tracking ──
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('[data-section]');
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-      sections.forEach((section) => {
-        const sectionTop = (section as HTMLElement).offsetTop;
-        const sectionBottom =
-          sectionTop + (section as HTMLElement).offsetHeight;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          const sectionId = section.getAttribute('data-section') || '';
-          if (sectionId !== activeSection) {
-            setActiveSection(sectionId as SegmentId);
+    // Section-level observer: determines activeSection for map segment
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('data-section');
+            if (id) setActiveSection(id as SegmentId);
           }
         }
-      });
-    };
+      },
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0 },
+    );
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
+    // Activity-level observer: determines focusedLocationIds
+    const activityObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const ids = entry.target.getAttribute('data-location-ids');
+            setFocusedLocationIds(ids ? ids.split(',') : []);
+          }
+        }
+      },
+      { rootMargin: '-35% 0px -35% 0px', threshold: 0 },
+    );
+
+    const sections = document.querySelectorAll('[data-section]');
+    sections.forEach((el) => sectionObserver.observe(el));
+
+    const activities = document.querySelectorAll('[data-location-ids]');
+    activities.forEach((el) => activityObserver.observe(el));
+
+    return () => {
+      sectionObserver.disconnect();
+      activityObserver.disconnect();
+    };
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.querySelector(`[data-section="${sectionId}"]`);
@@ -97,11 +125,16 @@ export default function ItineraryPage() {
 
       {/* Fixed Map */}
       <div className="fixed top-32 right-0 w-1/2 bottom-0 hidden lg:block">
-        <JourneyMap activeSegment={activeSection} />
+        <JourneyMap
+          activeSegment={activeSection}
+          focusedLocationIds={focusedLocationIds}
+          hoveredLocationIds={hoveredLocationIds}
+          onMarkerHover={setMapHoveredId}
+        />
       </div>
 
       {/* Scrollable Content */}
-      <div className="lg:w-1/2 min-h-screen">
+      <div ref={contentRef} className="lg:w-1/2 min-h-screen">
         {sections.map((s, sIdx) => {
           const seg = segments[s.segmentId];
           return (
@@ -160,42 +193,69 @@ export default function ItineraryPage() {
                       </div>
 
                       <div className="pl-6 border-l-2 border-white/30 space-y-8">
-                        {day.activities.map((activity, actIdx) => (
-                          <div key={actIdx}>
-                            <div className="relative">
-                              <div
-                                className="absolute -left-[29px] w-4 h-4 rounded-full border-2 border-white"
-                                style={{
-                                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                                }}
-                              ></div>
-                              <div className="text-xs text-white/70 uppercase tracking-wider mb-2 font-medium">
-                                {activity.time}
-                              </div>
-                              <h4 className="text-xl text-white mb-3 font-medium">
-                                {activity.name}
-                              </h4>
-                              <p className="text-base text-white/85 leading-relaxed">
-                                {activity.description}
-                              </p>
-                              {activity.subgroup && (
-                                <p className="mt-2 text-xs text-white/50 italic">
-                                  {activity.subgroup} only
+                        {day.activities.map((activity, actIdx) => {
+                          const locIds = activity.locationIds ?? [];
+                          const hasLocations = locIds.length > 0;
+                          // Reverse highlight: a map pin hover matches this card
+                          const isMapHighlighted =
+                            mapHoveredId !== null &&
+                            locIds.includes(mapHoveredId);
+
+                          return (
+                            <div
+                              key={actIdx}
+                              data-location-ids={
+                                hasLocations ? locIds.join(',') : undefined
+                              }
+                              onMouseEnter={() => {
+                                if (hasLocations)
+                                  setHoveredLocationIds(locIds);
+                              }}
+                              onMouseLeave={() => setHoveredLocationIds([])}
+                              className={`transition-all duration-300 rounded-lg -mx-3 px-3 py-1 ${
+                                isMapHighlighted
+                                  ? 'bg-white/10 ring-1 ring-white/20'
+                                  : ''
+                              }`}
+                            >
+                              <div className="relative">
+                                <div
+                                  className="absolute -left-[29px] w-4 h-4 rounded-full border-2 border-white"
+                                  style={{
+                                    backgroundColor: isMapHighlighted
+                                      ? seg.color
+                                      : 'rgba(255, 255, 255, 0.9)',
+                                    transition: 'background-color 0.3s ease',
+                                  }}
+                                ></div>
+                                <div className="text-xs text-white/70 uppercase tracking-wider mb-2 font-medium">
+                                  {activity.time}
+                                </div>
+                                <h4 className="text-xl text-white mb-3 font-medium">
+                                  {activity.name}
+                                </h4>
+                                <p className="text-base text-white/85 leading-relaxed">
+                                  {activity.description}
                                 </p>
+                                {activity.subgroup && (
+                                  <p className="mt-2 text-xs text-white/50 italic">
+                                    {activity.subgroup} only
+                                  </p>
+                                )}
+                              </div>
+                              {activity.travelAfter && (
+                                <div className="flex items-center gap-2 mt-4 py-2 text-xs text-white/50">
+                                  <Car className="w-3.5 h-3.5 shrink-0" />
+                                  <span>{activity.travelAfter.duration}</span>
+                                  <span className="text-white/30">—</span>
+                                  <span>
+                                    {activity.travelAfter.from} → {activity.travelAfter.to}
+                                  </span>
+                                </div>
                               )}
                             </div>
-                            {activity.travelAfter && (
-                              <div className="flex items-center gap-2 mt-4 py-2 text-xs text-white/50">
-                                <Car className="w-3.5 h-3.5 shrink-0" />
-                                <span>{activity.travelAfter.duration}</span>
-                                <span className="text-white/30">—</span>
-                                <span>
-                                  {activity.travelAfter.from} → {activity.travelAfter.to}
-                                </span>
-                              </div>
-                            )}
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
                   ))}

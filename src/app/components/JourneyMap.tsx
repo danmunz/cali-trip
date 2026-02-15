@@ -49,12 +49,21 @@ function calculateBounds(locations: Location[]): LngLatBounds | null {
 
 interface JourneyMapProps {
   activeSegment: SegmentId;
+  /** Location IDs highlighted by scroll position (activity in viewport). */
+  focusedLocationIds?: string[];
+  /** Location IDs highlighted by text hover. */
+  hoveredLocationIds?: string[];
   onLocationSelect?: (location: Location | null) => void;
+  /** Called when user hovers/unhovers a map pin. */
+  onMarkerHover?: (locationId: string | null) => void;
 }
 
 export default function JourneyMap({
   activeSegment,
+  focusedLocationIds = [],
+  hoveredLocationIds = [],
   onLocationSelect,
+  onMarkerHover,
 }: JourneyMapProps) {
   const mapRef = useRef<MapRef>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
@@ -63,6 +72,15 @@ export default function JourneyMap({
 
   const zoneLocations = getLocationsForSegment(activeSegment);
   const seg = segments[activeSegment];
+
+  // Union of all "highlighted" location IDs (scroll focus + hover + selected)
+  const highlightedIds = new Set([
+    ...focusedLocationIds,
+    ...hoveredLocationIds,
+    ...(selectedId ? [selectedId] : []),
+  ]);
+  // Whether *any* pin is currently highlighted — used to dim the rest
+  const anyHighlighted = highlightedIds.size > 0;
 
   // ── Fit map to all locations in a segment ────────────────
 
@@ -155,11 +173,20 @@ export default function JourneyMap({
             location={location}
             color={seg.color}
             isSelected={selectedId === location.id}
+            isFocused={
+              !selectedId &&
+              (focusedLocationIds.includes(location.id) ||
+                hoveredLocationIds.includes(location.id))
+            }
+            isDimmed={anyHighlighted && !highlightedIds.has(location.id)}
             onClick={() => {
               setSelectedId(location.id);
               flyToLocation(location);
               onLocationSelect?.(location);
             }}
+            onHover={(hovering) =>
+              onMarkerHover?.(hovering ? location.id : null)
+            }
           />
         ))}
       </Map>
