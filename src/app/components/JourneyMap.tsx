@@ -1,5 +1,7 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
 import Map, { type MapRef } from 'react-map-gl/mapbox';
+import { LngLatBounds } from 'mapbox-gl';
+import { ZoomOut } from 'lucide-react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import LocationMarker from './LocationMarker';
@@ -19,6 +21,9 @@ const MAPBOX_STYLE = 'mapbox://styles/danmunz/cmkuhcg15003m01pa76iy0g4v';
  */
 const GEO_RADIUS_DEG = 1.5;
 
+/** Padding (px) inside the map viewport so pins aren't flush to the edge. */
+const BOUNDS_PADDING = { top: 60, bottom: 60, left: 40, right: 40 };
+
 /** Filter locations for a segment, enforcing geographic proximity. */
 function getLocationsForSegment(segmentId: SegmentId): Location[] {
   const [cLng, cLat] = segments[segmentId].center;
@@ -32,6 +37,16 @@ function getLocationsForSegment(segmentId: SegmentId): Location[] {
   });
 }
 
+/** Compute a LngLatBounds that encompasses every location in the list. */
+function calculateBounds(locations: Location[]): LngLatBounds | null {
+  if (locations.length === 0) return null;
+  const bounds = new LngLatBounds();
+  for (const loc of locations) {
+    bounds.extend([loc.geo.lng, loc.geo.lat]);
+  }
+  return bounds;
+}
+
 interface JourneyMapProps {
   activeSegment: SegmentId;
   onLocationSelect?: (location: Location | null) => void;
@@ -43,24 +58,30 @@ export default function JourneyMap({
 }: JourneyMapProps) {
   const mapRef = useRef<MapRef>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const prevSegmentRef = useRef<SegmentId>(activeSegment);
 
   const zoneLocations = getLocationsForSegment(activeSegment);
   const seg = segments[activeSegment];
 
-  // ── Fly to segment center ────────────────────────────────
+  // ── Fit map to all locations in a segment ────────────────
 
-  const flyToSegment = useCallback((segmentId: SegmentId) => {
-    const map = mapRef.current;
-    if (!map) return;
-    const s = segments[segmentId];
-    map.flyTo({
-      center: s.center,
-      zoom: s.zoom,
-      duration: 2500,
-      essential: true,
-    });
-  }, []);
+  const fitToSegment = useCallback(
+    (segmentId: SegmentId, animate = true) => {
+      const map = mapRef.current;
+      if (!map) return;
+      const locs = getLocationsForSegment(segmentId);
+      const bounds = calculateBounds(locs);
+      if (!bounds) return;
+      setSelectedId(null);
+      map.fitBounds(bounds, {
+        padding: BOUNDS_PADDING,
+        maxZoom: 13,
+        duration: animate ? 2500 : 0,
+      });
+    },
+    [],
+  );
 
   // ── Fly to a single location ─────────────────────────────
 
@@ -75,11 +96,14 @@ export default function JourneyMap({
     });
   }, []);
 
-  // ── Handle map load ──────────────────────────────────────
+  // ── Handle map load — jump to initial segment ────────────
 
   const handleMapLoad = useCallback(() => {
     setIsMapLoaded(true);
-  }, []);
+    // Immediately fit to the active segment (no animation on first load)
+    setTimeout(() => fitToSegment(activeSegment, false), 50);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fitToSegment]);
 
   // ── React to segment changes ─────────────────────────────
 
@@ -87,9 +111,9 @@ export default function JourneyMap({
     if (!isMapLoaded) return;
     if (activeSegment !== prevSegmentRef.current) {
       prevSegmentRef.current = activeSegment;
-      flyToSegment(activeSegment);
+      fitToSegment(activeSegment);
     }
-  }, [activeSegment, isMapLoaded, flyToSegment]);
+  }, [activeSegment, isMapLoaded, fitToSegment]);
 
   // ── Render ───────────────────────────────────────────────
 
@@ -103,39 +127,55 @@ export default function JourneyMap({
   }
 
   return (
-    <Map
-      ref={mapRef}
-      mapboxAccessToken={token}
-      initialViewState={{
-        longitude: seg.center[0],
-        latitude: seg.center[1],
-        zoom: seg.zoom,
-      }}
-      style={{ width: '100%', height: '100%' }}
-      mapStyle={MAPBOX_STYLE}
-      onLoad={handleMapLoad}
-      interactive={false}
-      scrollZoom={false}
-      boxZoom={false}
-      dragRotate={false}
-      dragPan={false}
-      keyboard={false}
-      doubleClickZoom={false}
-      touchZoomRotate={false}
-      touchPitch={false}
-      attributionControl={false}
-    >
-      {zoneLocations.map((location) => (
-        <LocationMarker
-          key={location.id}
-          location={location}
-          color={seg.color}
-          onClick={() => {
-            flyToLocation(location);
-            onLocationSelect?.(location);
-          }}
-        />
-      ))}
-    </Map>
+    <div className="relative w-full h-full">
+      <Map
+        ref={mapRef}
+        mapboxAccessToken={token}
+        initialViewState={{
+          longitude: seg.center[0],
+          latitude: seg.center[1],
+          zoom: seg.zoom,
+        }}
+        style={{ width: '100%', height: '100%' }}
+        mapStyle={MAPBOX_STYLE}
+        onLoad={handleMapLoad}
+        scrollZoom={false}
+        boxZoom={false}
+        dragRotate={false}
+        dragPan={false}
+        keyboard={false}
+        doubleClickZoom={false}
+        touchZoomRotate={false}
+        touchPitch={false}
+        attributionControl={false}
+      >
+        {zoneLocations.map((location) => (
+          <LocationMarker
+            key={location.id}
+            location={location}
+            color={seg.color}
+            isSelected={selectedId === location.id}
+            onClick={() => {
+              setSelectedId(location.id);
+              flyToLocation(location);
+              onLocationSelect?.(location);
+            }}
+          />
+        ))}
+      </Map>
+
+      {/* Zoom-out button — visible when focused on a single location */}
+      {selectedId && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+          <button
+            onClick={() => fitToSegment(activeSegment)}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/90 backdrop-blur-sm shadow-lg text-sm font-medium text-gray-700 hover:bg-white transition-colors cursor-pointer"
+          >
+            <ZoomOut className="w-4 h-4" />
+            Show all {seg.navLabel}
+          </button>
+        </div>
+      )}
+    </div>
   );
 }

@@ -96,7 +96,7 @@ export default function ItineraryPage() {
       </div>
 
       {/* Fixed Map */}
-      <div className="fixed top-32 right-0 w-1/2 h-screen hidden lg:block">
+      <div className="fixed top-32 right-0 w-1/2 bottom-0 hidden lg:block">
         <JourneyMap activeSegment={activeSection} />
       </div>
 

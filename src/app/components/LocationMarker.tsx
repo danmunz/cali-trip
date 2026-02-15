@@ -14,16 +14,19 @@ const TYPE_LABELS: Record<string, string> = {
 interface LocationMarkerProps {
   location: Location;
   color: string;
+  isSelected?: boolean;
   onClick: () => void;
 }
 
 export default function LocationMarker({
   location,
   color,
+  isSelected = false,
   onClick,
 }: LocationMarkerProps) {
   const [isHovered, setIsHovered] = useState(false);
   const typeLabel = TYPE_LABELS[location.type] || location.type;
+  const showLabel = isSelected || isHovered;
 
   return (
     <Marker
@@ -44,13 +47,15 @@ export default function LocationMarker({
         {/* Pin SVG */}
         <svg
           className={`relative z-10 transition-transform duration-300 ${
-            isHovered ? 'scale-110' : 'scale-100'
+            isSelected ? 'scale-125' : isHovered ? 'scale-110' : 'scale-100'
           }`}
           width="32"
           height="44"
           viewBox="0 0 32 44"
           style={{
-            filter: `drop-shadow(0 2px 6px rgba(0,0,0,0.35))`,
+            filter: isSelected
+              ? `drop-shadow(0 0 12px ${color})`
+              : `drop-shadow(0 2px 6px rgba(0,0,0,0.35))`,
           }}
         >
           <path
@@ -60,10 +65,10 @@ export default function LocationMarker({
           <circle cx="16" cy="12" r="5" fill="white" fillOpacity="0.9" />
         </svg>
 
-        {/* Tooltip on hover */}
+        {/* Tooltip on hover / selected */}
         <div
           className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 transition-opacity duration-200 pointer-events-none ${
-            isHovered ? 'opacity-100' : 'opacity-0'
+            showLabel ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <div className="bg-black/85 backdrop-blur-sm px-3 py-1.5 rounded-md shadow-lg whitespace-nowrap">
