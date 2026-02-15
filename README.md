@@ -1,241 +1,169 @@
-# README
+# Susan's 70th Birthday Trip — California
 
-## Susan's 70th Birthday Trip to California
-
-A sophisticated, editorial-style single-page travel itinerary website celebrating a milestone birthday journey through California's most iconic destinations.
-
-![Project Status](https://img.shields.io/badge/status-production%20ready-brightgreen)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+A markdown-driven travel itinerary site. Edit one file (`full-trip.md`), run the generator, and the entire site updates — titles, flights, daily schedule, day-by-day activities, and location data.
 
 ---
 
-## 🎯 Project Overview
-
-This is a fully responsive web application that transforms a markdown-based vacation itinerary into a beautiful, browseable experience. The site features:
-
-- **Three main sections:** Overview, Lodging, and Itinerary
-- **Editorial design aesthetic:** Travel magazine-inspired layout with dramatic full-bleed photography
-- **Sophisticated typography:** Helvetica Neue (sans-serif) + Crimson Pro (serif)
-- **Interactive navigation:** Smooth scrolling, sticky navigation, active section highlighting
-- **Responsive design:** Optimized for desktop, tablet, and mobile
-- **Map integration ready:** Placeholder for Mapbox GL interactive maps
-
-### Design Highlights
-
-✨ **Dramatic full-bleed photography** with dark overlays  
-✨ **Split-screen layout** (content left, map right on desktop)  
-✨ **Timeline-style itinerary** with activity dots and vertical lines  
-✨ **Glass-morphism navigation** pills with smooth transitions  
-✨ **Organic California aesthetic** - natural tones, coastal blues, forest greens
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js 18+ 
-- pnpm (recommended) or npm
-
-### Installation
+## Quick Start
 
 ```bash
-# Install dependencies
 pnpm install
-
-# Start development server
-pnpm dev
-
-# Build for production
-pnpm build
-
-# Preview production build
-pnpm preview
+pnpm dev          # http://localhost:5173
 ```
 
-The site will be available at `http://localhost:5173`
+To regenerate site data after editing the itinerary:
+
+```bash
+pnpm generate     # parses full-trip.md → TypeScript data files + locations.json sync
+```
+
+`pnpm build` runs the generator automatically via `prebuild`.
 
 ---
 
-## 📁 Project Structure
+## Content Pipeline
+
+The single source of truth is **`src/data/full-trip.md`** — a structured markdown file with headings, time blocks, travel lines, and tables. A build-time script parses it into typed data that the React app imports directly.
+
+```
+full-trip.md
+    │
+    ▼  pnpm generate (scripts/generate-data.ts)
+    │
+    ├─► itinerary.generated.ts   9 days, 53 activities, travel segments, subgroups
+    ├─► trip-meta.generated.ts   title, flights, daily schedule, lodging confirmations
+    └─► locations.json           trip_parts synced from itinerary references
+```
+
+### What's generated vs. hand-maintained
+
+| File | Source | Notes |
+|------|--------|-------|
+| `itinerary.generated.ts` | Generated | Ordered `TripDay[]` with activities, `travelAfter`, `subgroup` |
+| `trip-meta.generated.ts` | Generated | Title, subtitle, flights, daily schedule table, lodging confirmations |
+| `locations.json` | Synced | `trip_parts` regenerated; geo/URLs/reviews hand-maintained |
+| `segments.ts` | Hand-maintained | Display config — colors, background images, prose per segment |
+| `lodging.ts` | Hand-maintained | Hotel details — amenities, images, descriptions |
+| `overview.ts` | Hand-maintained | Weather forecast data |
+| `types.ts` | Hand-maintained | Shared TypeScript interfaces for all data files |
+
+### How the generator works
+
+1. Parses `full-trip.md` with **unified + remark-parse + remark-gfm** into an MDAST
+2. Splits by H1/H2 headings to extract sections (Overview, Trip Itinerary, Day-by-day)
+3. Detects `**time — name**` patterns as activity blocks; `*Travel (drive): ~duration — from → to*` as travel lines
+4. Infers segment assignment (napa/yosemite/carmel) from the Trip Itinerary table's Base column
+5. Fuzzy-matches location mentions (bold names, links) against `locations.json` using an alias system with normalization (curly quotes, parenthetical abbreviations, suffix stripping, tail-word matching)
+6. Writes typed `.ts` files and syncs `locations.json` `trip_parts`
+
+---
+
+## Project Structure
 
 ```
 /
+├── scripts/
+│   └── generate-data.ts             # Codegen: full-trip.md → typed data files
 ├── src/
 │   ├── app/
-│   │   ├── App.tsx                  # Main app component
-│   │   ├── Root.tsx                 # Root layout with navigation
-│   │   ├── routes.ts                # React Router configuration
-│   │   ├── pages/
-│   │   │   ├── OverviewPage.tsx     # Trip overview & flights
-│   │   │   ├── LodgingPage.tsx      # Accommodation details
-│   │   │   └── ItineraryPage.tsx    # Day-by-day itinerary ⭐
-│   │   └── components/
-│   │       ├── LocationDetails.tsx
-│   │       └── ui/                  # Pre-built UI components
+│   │   ├── App.tsx                   # App root
+│   │   ├── Root.tsx                  # Layout — nav + footer (reads tripMeta)
+│   │   ├── routes.ts                 # React Router configuration
+│   │   └── pages/
+│   │       ├── OverviewPage.tsx      # Hero, schedule, flights, weather
+│   │       ├── LodgingPage.tsx       # Hotel detail cards
+│   │       └── ItineraryPage.tsx     # Day-by-day timeline with travel chips
+│   ├── data/
+│   │   ├── full-trip.md              # ✏️ Canonical content — edit this
+│   │   ├── itinerary.generated.ts    # 🔄 Auto-generated
+│   │   ├── trip-meta.generated.ts    # 🔄 Auto-generated
+│   │   ├── locations.json            # 🔄 trip_parts synced; geo/URLs by hand
+│   │   ├── types.ts                  # Shared interfaces
+│   │   ├── segments.ts               # Display config (colors, images, prose)
+│   │   ├── lodging.ts                # Hotel enrichment data
+│   │   └── overview.ts               # Weather data
 │   └── styles/
-│       ├── index.css                # Main CSS entry
-│       ├── fonts.css                # Font imports
-│       ├── theme.css                # Design tokens
-│       └── tailwind.css             # Tailwind directives
-├── HANDOFF.md                       # Detailed developer documentation
-├── STYLEGUIDE.md                    # Complete design system
-├── package.json
-└── vite.config.ts
+│       ├── index.css
+│       ├── fonts.css
+│       ├── theme.css
+│       └── tailwind.css
+├── HANDOFF.md
+├── STYLEGUIDE.md
+└── package.json
 ```
 
 ---
 
-## 📖 Documentation
+## Pages
 
-### For Developers
-👉 **[HANDOFF.md](./HANDOFF.md)** - Complete technical documentation, setup instructions, and implementation notes
+### Overview (`/`)
+Hero with trip title and subtitle (from `tripMeta`), daily schedule table with segment-colored dots, flight details, and weather forecast.
 
-### For Designers
-👉 **[STYLEGUIDE.md](./STYLEGUIDE.md)** - Full design system including typography, colors, spacing, components, and patterns
+### Lodging (`/lodging`)
+Detailed accommodation cards — The Estate Yountville, Rush Creek Lodge, Hyatt Carmel Highlands — with images, amenities, and booking details.
 
----
-
-## 🎨 Design System at a Glance
-
-### Typography
-- **Helvetica Neue** - Modern sans-serif for structure (navigation, titles, labels)
-- **Crimson Pro** - Classic serif for narrative content (body text, descriptions)
-
-### Color Palette
-- **Backgrounds:** White (#ffffff), Near-black (oklch 0.145)
-- **Natural Accents:** Wood/Brass (#b8956d), Forest Green (#5a8a6f), Coastal Blue (#4a7c8e)
-- **Grays:** Full scale from 100-900 for UI elements
-
-### Key Features
-- Tailwind CSS v4 utility-first styling
-- Responsive breakpoints (sm, md, lg, xl, 2xl)
-- CSS variables for design tokens
-- Radix UI component library included
+### Itinerary (`/itinerary`)
+Full-screen sections grouped by segment (Napa & Sonoma → Yosemite → Carmel + Big Sur), each with:
+- Background photography and segment description from `segments.ts`
+- Days with formatted dates, titles, and summary paragraphs
+- Timeline-style activity nodes with descriptions
+- Travel chips (`🚗 ~1 hr — SFO → Muir Woods`) between activities
+- Subgroup annotations (`Susan + Ted only`) where applicable
+- Sticky sub-navigation with smooth scroll
 
 ---
 
-## 🗺️ Pages
+## Design System
 
-### 1. Overview (`/`)
-Trip summary, key highlights, and flight information with hero section and topographic background.
+| Element | Value |
+|---------|-------|
+| **Sans-serif** | Helvetica Neue — navigation, titles, labels |
+| **Serif** | Crimson Pro — body text, descriptions |
+| **Napa** | `#b8956d` |
+| **Yosemite** | `#5a8a6f` |
+| **Carmel** | `#4a7c8e` |
 
-### 2. Lodging (`/lodging`)
-Detailed accommodation cards for each location (Yountville, Rush Creek Lodge, Hyatt Carmel Highlands).
-
-### 3. Itinerary (`/itinerary`) ⭐ **Star Feature**
-- **Four sections:** Arrival/Muir Woods, Napa Valley, Yosemite, Monterey/Carmel
-- **Sticky sub-navigation** with smooth scroll
-- **Full-bleed photography** for each section (redwoods, vineyards, granite cliffs, Pacific coast)
-- **Timeline layout** for daily activities
-- **Split-screen** on desktop (content left, map placeholder right)
+See [STYLEGUIDE.md](./STYLEGUIDE.md) for the full design system.
 
 ---
 
-## 🛠️ Tech Stack Details
+## Tech Stack
 
 | Category | Technology |
 |----------|-----------|
 | **Framework** | React 18.3.1 |
-| **Routing** | React Router 7 (Data mode) |
+| **Routing** | React Router 7 |
 | **Styling** | Tailwind CSS v4 |
 | **Build** | Vite 6 |
-| **UI Components** | Radix UI, Material-UI (limited) |
+| **Codegen** | unified + remark-parse + remark-gfm + mdast-util-to-string |
+| **Script runner** | tsx |
 | **Icons** | Lucide React |
-| **Maps** | Mapbox GL JS (optional) |
-| **Animation** | Motion (installed, ready to use) |
+| **Maps** | Mapbox GL JS (placeholder) |
 
 ---
 
-## 📦 Key Dependencies
+## Deployment
 
-```json
-{
-  "react": "18.3.1",
-  "react-router": "7.13.0",
-  "tailwindcss": "4.1.12",
-  "lucide-react": "0.487.0",
-  "mapbox-gl": "3.18.1",
-  "motion": "12.23.24",
-  "@mui/material": "7.3.5"
-}
-```
-
----
-
-## 🚢 Deployment
-
-### Build Command
 ```bash
-pnpm build
+pnpm build   # runs generate automatically, outputs to /dist
 ```
 
-Output directory: `/dist`
-
-### Recommended Platforms
-- **Vercel** - Zero configuration
-- **Netlify** - Simple git integration
-- **Cloudflare Pages** - Fast global CDN
-- **AWS S3 + CloudFront** - Custom infrastructure
-
-⚠️ **Important:** Configure your hosting to serve `index.html` for all routes (required for client-side routing).
+Deploy `/dist` to any static host. Configure all routes to serve `index.html` (SPA routing).
 
 ---
 
-## 🎯 Roadmap & Enhancement Ideas
+## Roadmap
 
-### Quick Wins
 - [ ] Add Mapbox access token for interactive maps
-- [ ] Optimize images with WebP/AVIF format
-- [ ] Add scroll-triggered animations
-- [ ] Create print stylesheet
-
-### Medium Complexity
-- [ ] Photo gallery/lightbox for locations
-- [ ] Weather forecast integration
-- [ ] "Add to Calendar" functionality
-- [ ] Mobile bottom navigation
-
-### Advanced
-- [ ] CMS integration (Sanity, Contentful)
-- [ ] Collaborative notes/comments
-- [ ] PDF export/generation
-- [ ] Booking API integration
+- [ ] Render markdown descriptions (currently plain text)
+- [ ] Generate lodging check-in/check-out dates from `tripMeta`
+- [ ] Photo gallery per location
+- [ ] "Add to Calendar" export
+- [ ] Print stylesheet
+- [ ] PDF export
 
 ---
 
-## 🤝 Contributing
+**Built for Susan's 70th Birthday Adventure**
 
-This is a personal project, but feel free to fork and adapt for your own travel itineraries!
-
----
-
-## 📝 License
-
-Private project. All rights reserved.
-
----
-
-## 🙏 Credits
-
-**Design & Development:** Figma Make  
-**Photos:** Unsplash  
-**Icons:** Lucide  
-**UI Components:** Radix UI  
-**Fonts:** Google Fonts (Crimson Pro), System fonts (Helvetica Neue)
-
----
-
-## 📞 Support
-
-For questions or issues:
-1. Check `HANDOFF.md` for technical details
-2. Check `STYLEGUIDE.md` for design guidance
-3. Review inline code comments
-4. Check browser console for errors
-
----
-
-**Built with ❤️ for Susan's 70th Birthday Adventure**
-
-*California Dreaming • April 3-11, 2026* 🌲🍇🏔️🌊
+*California • April 3–11, 2026* 🌲🍇🏔️🌊

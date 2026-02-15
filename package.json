@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "generate": "tsx scripts/generate-data.ts",
     "dev": "vite",
+    "prebuild": "pnpm generate",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -21,8 +23,13 @@
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "4.7.0",
+    "mdast-util-to-string": "^4.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
     "tailwindcss": "4.1.12",
+    "tsx": "^4.19.0",
     "typescript": "^5.8.3",
+    "unified": "^11.0.0",
     "vite": "6.3.5"
   }
 }

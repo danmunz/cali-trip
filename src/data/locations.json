@@ -1,0 +1,1418 @@
+{
+  "locations": [
+    {
+      "id": "san-francisco-international-airport-sfo",
+      "name": "San Francisco International Airport (SFO)",
+      "address": "780 S Airport Blvd, San Francisco, CA 94128",
+      "geo": {
+        "lat": 37.622452,
+        "lng": -122.383989
+      },
+      "type": "airport",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.flysfo.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.622452,-122.3839894"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 1,
+          "date": "2026-04-03",
+          "segment_id": "napa"
+        },
+        {
+          "day": 9,
+          "date": "2026-04-11",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "the-estate-yountville",
+      "name": "The Estate Yountville",
+      "address": "6481 Washington St, Yountville, CA 94599",
+      "geo": {
+        "lat": 38.399828,
+        "lng": -122.360126
+      },
+      "type": "lodging",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.theestateyountville.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=38.3998275,-122.3601258"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Hotel_Review-g33300-d125028-Reviews-The_Estate_Yountville-Yountville_Napa_Valley_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 1,
+          "date": "2026-04-03",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "rush-creek-lodge-and-spa-at-yosemite",
+      "name": "Rush Creek Lodge & Spa at Yosemite",
+      "address": "34001 CA-120, Groveland, CA 95321",
+      "geo": {
+        "lat": 37.812447,
+        "lng": -119.880978
+      },
+      "type": "lodging",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.rushcreeklodge.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.8124471,-119.8809784"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Hotel_Review-g32460-d8547692-Reviews-Rush_Creek_Lodge_At_Yosemite-Groveland_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 4,
+          "date": "2026-04-06",
+          "segment_id": "yosemite"
+        },
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        },
+        {
+          "day": 6,
+          "date": "2026-04-08",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "hyatt-carmel-highlands",
+      "name": "Hyatt Carmel Highlands",
+      "address": "120 Highlands Dr, Carmel Highlands, CA 93923",
+      "geo": {
+        "lat": 36.501859,
+        "lng": -121.9376
+      },
+      "type": "lodging",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://highlandsinn.hyatt.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5018591,-121.9375999"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Hotel_Review-g32172-d32696831-Reviews-Hyatt_Carmel_Highlands-Carmel_Monterey_County_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 6,
+          "date": "2026-04-08",
+          "segment_id": "carmel"
+        },
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "bottega-napa-valley",
+      "name": "Bottega Napa Valley",
+      "address": "6525 Washington St, Yountville, CA 94599",
+      "geo": {
+        "lat": 38.402406,
+        "lng": -122.362172
+      },
+      "type": "restaurant",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.estateyountville.com/dine/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=38.4024055,-122.3621721"
+      ],
+      "review_url": [
+        "https://www.yelp.com/biz/bottega-yountville-2"
+      ],
+      "trip_parts": [
+        {
+          "day": 1,
+          "date": "2026-04-03",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "farmstead-at-long-meadow-ranch",
+      "name": "Farmstead at Long Meadow Ranch",
+      "address": "738 Main St, St. Helena, CA 94574",
+      "geo": {
+        "lat": 38.501021,
+        "lng": -122.462739
+      },
+      "type": "restaurant",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.longmeadowranch.com/eat-drink/restaurant/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=38.5010211,-122.4627392"
+      ],
+      "review_url": [
+        "https://www.yelp.com/biz/farmstead-at-long-meadow-ranch-saint-helena-2"
+      ],
+      "trip_parts": [
+        {
+          "day": 2,
+          "date": "2026-04-04",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "the-restaurant-at-rush-creek",
+      "name": "The Restaurant at Rush Creek",
+      "address": "34001 CA-120, Groveland, CA 95321",
+      "geo": {
+        "lat": 37.812702,
+        "lng": -119.881758
+      },
+      "type": "restaurant",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.rushcreeklodge.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.8127021,-119.881758"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 4,
+          "date": "2026-04-06",
+          "segment_id": "yosemite"
+        },
+        {
+          "day": 6,
+          "date": "2026-04-08",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "the-mountain-room",
+      "name": "The Mountain Room",
+      "address": "9006 Yosemite Lodge Dr, Yosemite Valley, CA 95389",
+      "geo": {
+        "lat": 37.743257,
+        "lng": -119.598416
+      },
+      "type": "restaurant",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.travelyosemite.com/dining/yosemite-valley-lodge"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.7432572,-119.5984165"
+      ],
+      "review_url": [
+        "https://www.yelp.com/biz/mountain-room-lounge-yosemite-national-park-2"
+      ],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "il-tegamino",
+      "name": "Il Tegamino",
+      "address": "Junipero Ave between 5th & 6th, Carmel-by-the-Sea, CA 93921",
+      "geo": {
+        "lat": 36.5565,
+        "lng": -121.9237
+      },
+      "type": "restaurant",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://iltegaminocarmel.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5565,-121.9237"
+      ],
+      "review_url": [
+        "https://www.yelp.com/biz/il-tegamino-carmel-by-the-sea"
+      ],
+      "trip_parts": [
+        {
+          "day": 6,
+          "date": "2026-04-08",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "the-sur-house",
+      "name": "The Sur House",
+      "address": "48123 CA-1, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.230858,
+        "lng": -121.762805
+      },
+      "type": "restaurant",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.ventanabigsur.com/dining/the-sur-house"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.2308585,-121.762805"
+      ],
+      "review_url": [
+        "https://www.yelp.com/biz/the-sur-house-big-sur"
+      ],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "pacifics-edge",
+      "name": "Pacific's Edge",
+      "address": "120 Highlands Dr, Carmel Highlands, CA 93923",
+      "geo": {
+        "lat": 36.501859,
+        "lng": -121.9376
+      },
+      "type": "restaurant",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://highlandsinn.hyatt.com/en/hotel/dining/PacificsEdge.html"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5018591,-121.9375999"
+      ],
+      "review_url": [
+        "https://www.yelp.com/biz/pacifics-edge-carmel-by-the-sea"
+      ],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "mission-ranch",
+      "name": "Mission Ranch",
+      "address": "26270 Dolores St, Carmel-By-The-Sea, CA 93923",
+      "geo": {
+        "lat": 36.542336,
+        "lng": -121.923012
+      },
+      "type": "restaurant",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.missionranchcarmel.com/restaurant.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5423363,-121.9230116"
+      ],
+      "review_url": [
+        "https://www.yelp.com/biz/mission-ranch-carmel"
+      ],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "muir-woods-national-monument",
+      "name": "Muir Woods National Monument",
+      "address": "1 Muir Woods Rd, Mill Valley, CA 94941",
+      "geo": {
+        "lat": 37.896391,
+        "lng": -122.580218
+      },
+      "type": "park",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/muwo/index.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.8963907,-122.5802183"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g60909-d124638-Reviews-Muir_Woods_National_Monument-Mill_Valley_Marin_County_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 1,
+          "date": "2026-04-03",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "andrew-molera-state-park",
+      "name": "Andrew Molera State Park",
+      "address": "45500 CA-1, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.279646,
+        "lng": -121.830951
+      },
+      "type": "park",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.parks.ca.gov/?page_id=582"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.2796459,-121.8309512"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g240329-d116838-Reviews-Andrew_Molera_State_Park-Big_Sur_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        },
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "pfeiffer-big-sur-state-park",
+      "name": "Pfeiffer Big Sur State Park",
+      "address": "47231 CA-1, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.253305,
+        "lng": -121.783295
+      },
+      "type": "park",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.parks.ca.gov/?page_id=570"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.2533054,-121.7832953"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g240329-d116839-Reviews-Pfeiffer_Big_Sur_State_Park-Big_Sur_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        },
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "point-lobos-state-reserve",
+      "name": "Point Lobos State Reserve",
+      "address": "62 CA-1, Carmel-By-The-Sea, CA 93923",
+      "geo": {
+        "lat": 36.514732,
+        "lng": -121.942788
+      },
+      "type": "park",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.parks.ca.gov/?page_id=571"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5147324,-121.9427876"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g32172-d102545-Reviews-Point_Lobos-Carmel_Monterey_County_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "napa-farmers-market",
+      "name": "Napa Farmers Market",
+      "address": "1100 West St, Napa, CA 94559",
+      "geo": {
+        "lat": 38.300196,
+        "lng": -122.284673
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://napafarmersmarket.org/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=38.3001963,-122.2846729"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g32766-d156861-Reviews-Napa_Farmers_Market-Napa_Napa_Valley_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 2,
+          "date": "2026-04-04",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "round-pond-estate",
+      "name": "Round Pond Estate",
+      "address": "875 Rutherford Rd, Rutherford, CA 94573",
+      "geo": {
+        "lat": 38.461206,
+        "lng": -122.41861
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.roundpond.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=38.4612059,-122.4186102"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g32997-d650283-Reviews-Round_Pond_Estate-Rutherford_Napa_Valley_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 2,
+          "date": "2026-04-04",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "sterling-vineyards",
+      "name": "Sterling Vineyards",
+      "address": "1111 Dunaweal Ln, Calistoga, CA 94515",
+      "geo": {
+        "lat": 38.572403,
+        "lng": -122.554143
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.sterlingvineyards.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=38.5724029,-122.5541432"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g32143-d144104-Reviews-Sterling_Vineyards-Calistoga_Napa_Valley_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 2,
+          "date": "2026-04-04",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "oxbow-public-market",
+      "name": "Oxbow Public Market",
+      "address": "610 1st St, Napa, CA 94559",
+      "geo": {
+        "lat": 38.30174,
+        "lng": -122.28175
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://oxbowpublicmarket.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=38.3017402,-122.28175"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g32766-d968203-Reviews-Oxbow_Public_Market-Napa_Napa_Valley_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 3,
+          "date": "2026-04-05",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "schramsberg-vineyards",
+      "name": "Schramsberg Vineyards",
+      "address": "1400 Schramsberg Rd, Calistoga, CA 94515",
+      "geo": {
+        "lat": 38.55024,
+        "lng": -122.537998
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.schramsberg.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=38.55024,-122.5379983"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g32143-d208722-Reviews-Schramsberg_Vineyards-Calistoga_Napa_Valley_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 3,
+          "date": "2026-04-05",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "v-sattui-winery",
+      "name": "V. Sattui Winery",
+      "address": "1111 White Ln, St. Helena, CA 94574",
+      "geo": {
+        "lat": 38.488943,
+        "lng": -122.448564
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.vsattui.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=38.4889435,-122.4485642"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g33000-d116687-Reviews-V_Sattui_Winery-St_Helena_Napa_Valley_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 3,
+          "date": "2026-04-05",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "yosemite-valley",
+      "name": "Yosemite Valley",
+      "address": "Yosemite Valley, CA 95389",
+      "geo": {
+        "lat": 37.732724,
+        "lng": -119.605704
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/yose/index.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.7327236,-119.6057042"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g61000-d489919-Reviews-Yosemite_Valley-Yosemite_National_Park_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "tunnel-view",
+      "name": "Tunnel View",
+      "address": "Wawona Rd, Yosemite Valley, CA 95389",
+      "geo": {
+        "lat": 37.715573,
+        "lng": -119.676892
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/yose/index.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.715573,-119.6768925"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g61000-d593212-Reviews-Tunnel_View-Yosemite_National_Park_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "yosemite-village",
+      "name": "Yosemite Village",
+      "address": "Yosemite Village, CA 95389",
+      "geo": {
+        "lat": 37.748181,
+        "lng": -119.586887
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/yose/index.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.7481814,-119.5868869"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g61000-d531831-Reviews-Yosemite_Village-Yosemite_National_Park_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "yosemite-valley-floor-tour",
+      "name": "Yosemite Valley Floor Tour",
+      "address": "9006 Yosemite Lodge Dr, Yosemite Valley, CA 95389",
+      "geo": {
+        "lat": 37.743257,
+        "lng": -119.598416
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.travelyosemite.com/things-to-do/guided-bus-tours"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.7432572,-119.5984165"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g61000-d2312295-Reviews-Yosemite_Valley_Floor_Tour-Yosemite_National_Park_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "sentinel-bridge",
+      "name": "Sentinel Bridge",
+      "address": "Sentinel Dr, Yosemite Valley, CA 95389",
+      "geo": {
+        "lat": 37.743429,
+        "lng": -119.589671
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/yose/index.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.7434289,-119.5896709"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g61000-d14519187-Reviews-Sentinel_bridge-Yosemite_National_Park_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "merced-river",
+      "name": "Merced River",
+      "address": "Yosemite Valley, CA 95389",
+      "geo": {
+        "lat": 37.744117,
+        "lng": -119.569762
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/yose/index.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.7441166,-119.5697616"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g61000-d14396662-Reviews-Merced_River-Yosemite_National_Park_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        },
+        {
+          "day": 6,
+          "date": "2026-04-08",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "highway-1-big-sur-coast",
+      "name": "Highway 1 (Big Sur Coast)",
+      "address": "CA-1, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.143704,
+        "lng": -121.564593
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://roads.dot.ca.gov/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.1437044,-121.564593"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g28926-d147161-Reviews-Pacific_Coast_Highway-California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "rocky-creek-bridge",
+      "name": "Rocky Creek Bridge",
+      "address": "CA-1, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.379911,
+        "lng": -121.902087
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://dot.ca.gov/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.3799108,-121.9020871"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g240329-d8286795-Reviews-Rocky_Creek_Bridge-Big_Sur_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "garrapata-bluff-trail",
+      "name": "Garrapata Bluff Trail",
+      "address": "Garrapata State Park, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.473592,
+        "lng": -121.905593
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.parks.ca.gov/?page_id=579"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.4735918,-121.9055933"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "ventana-big-sur",
+      "name": "Ventana Big Sur",
+      "address": "48123 CA-1, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.230858,
+        "lng": -121.762805
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.ventanabigsur.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.2308585,-121.762805"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Hotel_Review-g240329-d143905-Reviews-or30-Alila_Ventana_Big_Sur-Big_Sur_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "bixby-creek-bridge",
+      "name": "Bixby Creek Bridge",
+      "address": "CA-1, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.371586,
+        "lng": -121.901932
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://dot.ca.gov/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.3715858,-121.901932"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g240329-d116836-Reviews-or10-Bixby_Bridge-Big_Sur_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "carmel-by-the-sea",
+      "name": "Carmel-by-the-Sea",
+      "address": "Carmel-by-the-Sea, CA 93921",
+      "geo": {
+        "lat": 36.555266,
+        "lng": -121.923278
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://ci.carmel.ca.us/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5552656,-121.923278"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Tourism-g32172-Carmel_Monterey_County_California-Vacations.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "pebble-beach",
+      "name": "Pebble Beach",
+      "address": "Pebble Beach, CA 93953",
+      "geo": {
+        "lat": 36.567241,
+        "lng": -121.944213
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.pebblebeach.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5672414,-121.9442134"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Tourism-g32867-Pebble_Beach_Monterey_County_California-Vacations.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "17-mile-drive",
+      "name": "17-Mile Drive",
+      "address": "17-Mile Drive, Pebble Beach, CA 93953",
+      "geo": {
+        "lat": 36.570283,
+        "lng": -121.9405
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.pebblebeach.com/17-mile-drive/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5702834,-121.9405002"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g32737-d146192-Reviews-17_Mile_Drive-Monterey_Monterey_County_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "lone-cypress",
+      "name": "Lone Cypress",
+      "address": "17-Mile Drive, Pebble Beach, CA 93953",
+      "geo": {
+        "lat": 36.568747,
+        "lng": -121.96521
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.pebblebeach.com/17-mile-drive/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5687466,-121.9652095"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g32867-d10751478-Reviews-Lone_Cypress-Pebble_Beach_Monterey_County_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "spanish-bay",
+      "name": "Spanish Bay",
+      "address": "2700 17-Mile Dr, Pebble Beach, CA 93953",
+      "geo": {
+        "lat": 36.61127,
+        "lng": -121.942116
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.pebblebeach.com/golf/the-links-at-spanish-bay/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.6112702,-121.9421159"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Hotel_Review-g32867-d79246-Reviews-The_Inn_at_Spanish_Bay-Pebble_Beach_Monterey_County_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "muir-woods-main-trail",
+      "name": "Muir Woods Main Trail",
+      "address": "1 Muir Woods Rd, Mill Valley, CA 94941",
+      "geo": {
+        "lat": 37.896391,
+        "lng": -122.580218
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/goga/planyourvisit/muir-woods-main-trail.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.8963907,-122.5802183"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 1,
+          "date": "2026-04-03",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "rush-creek-nature-trail",
+      "name": "Rush Creek Nature Trail",
+      "address": "34001 CA-120, Groveland, CA 95321",
+      "geo": {
+        "lat": 37.812447,
+        "lng": -119.880978
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.rushcreeklodge.com/explore/activities/nature-trails/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.8124471,-119.8809784"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 4,
+          "date": "2026-04-06",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "rush-creek-vista-trail",
+      "name": "Rush Creek Vista Trail",
+      "address": "34001 CA-120, Groveland, CA 95321",
+      "geo": {
+        "lat": 37.812447,
+        "lng": -119.880978
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.rushcreeklodge.com/explore/activities/nature-trails/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.8124471,-119.8809784"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 4,
+          "date": "2026-04-06",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "bridalveil-fall-trail",
+      "name": "Bridalveil Fall Trail",
+      "address": "Yosemite Valley, CA 95389",
+      "geo": {
+        "lat": 37.71673,
+        "lng": -119.65094
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/yose/index.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.71673,-119.65094"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "lower-yosemite-falls-loop",
+      "name": "Lower Yosemite Falls Loop",
+      "address": "Yosemite Valley, CA 95389",
+      "geo": {
+        "lat": 37.751444,
+        "lng": -119.597141
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/yose/index.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.7514442,-119.5971408"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g61000-d12361670-Reviews-Lower_Yosemite_Fall_Trail-Yosemite_National_Park_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "cook-s-meadow-loop",
+      "name": "Cook's Meadow Loop",
+      "address": "Yosemite Valley, CA 95389",
+      "geo": {
+        "lat": 37.745037,
+        "lng": -119.590577
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/yose/index.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.7450368,-119.5905767"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g61000-d10489711-Reviews-Cooks_Meadow_Loop-Yosemite_National_Park_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        }
+      ]
+    },
+    {
+      "id": "andrew-molera-bluff-trail",
+      "name": "Andrew Molera Bluff Trail",
+      "address": "45500 CA-1, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.279646,
+        "lng": -121.830951
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.parks.ca.gov/?page_id=582"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.2796459,-121.8309512"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "pfeiffer-big-sur-redwood-river-walk",
+      "name": "Pfeiffer Big Sur Redwood River Walk",
+      "address": "47231 CA-1, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.253305,
+        "lng": -121.783295
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.parks.ca.gov/?page_id=570"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.2533054,-121.7832953"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "south-shore-trail-point-lobos",
+      "name": "South Shore Trail (Point Lobos)",
+      "address": "62 CA-1, Carmel-By-The-Sea, CA 93923",
+      "geo": {
+        "lat": 36.513672,
+        "lng": -121.945841
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.parks.ca.gov/?page_id=571"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5136724,-121.9458413"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "sand-hill-trail-point-lobos",
+      "name": "Sand Hill Trail (Point Lobos)",
+      "address": "62 CA-1, Carmel-By-The-Sea, CA 93923",
+      "geo": {
+        "lat": 36.517512,
+        "lng": -121.95127
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.parks.ca.gov/?page_id=571"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.517512,-121.9512704"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "sea-lion-point-point-lobos",
+      "name": "Sea Lion Point (Point Lobos)",
+      "address": "62 CA-1, Carmel-By-The-Sea, CA 93923",
+      "geo": {
+        "lat": 36.518,
+        "lng": -121.952005
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.parks.ca.gov/?page_id=571"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5180004,-121.9520055"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "cypress-grove-trail-point-lobos",
+      "name": "Cypress Grove Trail (Point Lobos)",
+      "address": "62 CA-1, Carmel-By-The-Sea, CA 93923",
+      "geo": {
+        "lat": 36.521435,
+        "lng": -121.9531
+      },
+      "type": "trailhead",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.parks.ca.gov/?page_id=571"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=36.5214352,-121.9530996"
+      ],
+      "review_url": [],
+      "trip_parts": [
+        {
+          "day": 8,
+          "date": "2026-04-10",
+          "segment_id": "carmel"
+        }
+      ]
+    }
+  ]
+}
