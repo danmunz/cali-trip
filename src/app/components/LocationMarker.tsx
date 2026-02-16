@@ -11,6 +11,18 @@ const TYPE_LABELS: Record<string, string> = {
   trailhead: 'Trail',
 };
 
+/** Muted, editorial palette — low saturation, cohesive value range. */
+const TYPE_COLORS: Record<string, string> = {
+  airport: '#7c8794',   // cool steel
+  lodging: '#957f6e',   // warm sandstone
+  restaurant: '#a8806e', // dusty copper
+  park: '#6d8e7b',      // sage
+  attraction: '#8e7f9a', // dusty lavender
+  trailhead: '#728f80', // eucalyptus
+};
+
+const DEFAULT_PIN_COLOR = '#7c8490';
+
 interface LocationMarkerProps {
   location: Location;
   color: string;
@@ -25,7 +37,7 @@ interface LocationMarkerProps {
 
 export default function LocationMarker({
   location,
-  color,
+  color: _segmentColor,
   isSelected = false,
   isFocused = false,
   isDimmed = false,
@@ -34,32 +46,33 @@ export default function LocationMarker({
 }: LocationMarkerProps) {
   const [isHovered, setIsHovered] = useState(false);
   const typeLabel = TYPE_LABELS[location.type] || location.type;
+  const pinColor = TYPE_COLORS[location.type] ?? DEFAULT_PIN_COLOR;
 
   const highlighted = isSelected || isFocused || isHovered;
-  const showLabel = highlighted;
+  // Only show tooltip text on direct hover or selection, not passive scroll focus
+  const showLabel = isSelected || isHovered;
 
-  // Scale: selected > focused/hovered > normal
-  const scale = isSelected
-    ? 'scale-125'
-    : highlighted
-      ? 'scale-110'
-      : 'scale-100';
+  // ── Visual tiers ─────────────────────────────────────────
 
-  // Shadow: selected gets strong glow, focused gets soft glow, default is drop shadow
+  // Scale jumps: selected bounces up big, hover/focus lifts noticeably
+  const scale = isSelected ? 1.5 : highlighted ? 1.3 : 1;
+
+  // Shadow intensity ramps with engagement
   const filter = isSelected
-    ? `drop-shadow(0 0 12px ${color})`
-    : isFocused
-      ? `drop-shadow(0 0 8px ${color})`
-      : `drop-shadow(0 2px 6px rgba(0,0,0,0.35))`;
+    ? `drop-shadow(0 0 16px ${pinColor}) drop-shadow(0 0 6px ${pinColor})`
+    : highlighted
+      ? `drop-shadow(0 0 10px ${pinColor})`
+      : `drop-shadow(0 1px 3px rgba(0,0,0,0.35))`;
 
   // Opacity: dimmed pins recede
-  const opacity = isDimmed ? 0.4 : 1;
+  const opacity = isDimmed ? 0.35 : 1;
 
   return (
     <Marker
       longitude={location.geo.lng}
       latitude={location.geo.lat}
-      anchor="bottom"
+      anchor="center"
+      style={{ zIndex: highlighted ? 10 : 1 }}
       onClick={(e) => {
         e.originalEvent.stopPropagation();
         onClick();
@@ -78,30 +91,46 @@ export default function LocationMarker({
         aria-label={`${location.name} – ${typeLabel}`}
         style={{ opacity, transition: 'opacity 0.3s ease' }}
       >
-        {/* Pin SVG */}
-        <svg
-          className={`relative z-10 transition-all duration-300 ${scale}`}
-          width="32"
-          height="44"
-          viewBox="0 0 32 44"
-          style={{ filter }}
-        >
-          <path
-            d="M16 0C9.373 0 4 5.373 4 12c0 9 12 30 12 30s12-21 12-30C28 5.373 22.627 0 16 0z"
-            fill={color}
+        {/* Pulse ring behind dot when selected */}
+        {isSelected && (
+          <span
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full animate-ping"
+            style={{ backgroundColor: pinColor, opacity: 0.25 }}
           />
-          <circle cx="16" cy="12" r="5" fill="white" fillOpacity="0.9" />
+        )}
+
+        {/* Clean circle dot — modern and minimal */}
+        <svg
+          className="relative z-10"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          style={{
+            filter,
+            transform: `scale(${scale})`,
+            transformOrigin: 'center center',
+            transition: 'transform 0.3s cubic-bezier(.34,1.56,.64,1), filter 0.3s ease',
+          }}
+        >
+          <circle cx="12" cy="12" r="10" fill={pinColor} stroke="white" strokeWidth="2" />
         </svg>
 
         {/* Tooltip on hover / focused / selected */}
         <div
-          className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 transition-opacity duration-200 pointer-events-none ${
-            showLabel ? 'opacity-100' : 'opacity-0'
-          }`}
+          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none"
+          style={{
+            opacity: showLabel ? 1 : 0,
+            transform: showLabel ? 'translateY(0)' : 'translateY(4px)',
+            transition: 'opacity 0.2s ease, transform 0.2s ease',
+          }}
         >
-          <div className="bg-black/85 backdrop-blur-sm px-3 py-1.5 rounded-md shadow-lg whitespace-nowrap">
-            <p className="text-white text-xs font-semibold">{location.name}</p>
-            <p className="text-white/60 text-[10px] capitalize">{typeLabel}</p>
+          <div className="bg-black/90 backdrop-blur-sm px-3.5 py-2 rounded-lg shadow-xl whitespace-nowrap">
+            <p className="text-white text-[13px] font-semibold leading-tight">
+              {location.name}
+            </p>
+            <p className="text-white/55 text-[10px] capitalize mt-0.5">
+              {typeLabel}
+            </p>
           </div>
         </div>
       </button>

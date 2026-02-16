@@ -3,12 +3,12 @@
 
 const bgImages = {
   arrival:
-    'https://images.unsplash.com/photo-1587582534064-eb80e0ffdaa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080',
-  napa: 'https://images.unsplash.com/photo-1701623785014-181cda1bcc37?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYXBhJTIwdmFsbGV5JTIwdmluZXlhcmQlMjByb3dzJTIwc3Vuc2V0JTIwYWVyaWFsfGVufDF8fHx8MTc3MTE2MjAyMnww&ixlib=rb-4.1.0&q=80&w=1080',
+    'https://images.unsplash.com/photo-1587582534064-eb80e0ffdaa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=2160',
+  napa: 'https://images.unsplash.com/photo-1656873592841-8ae63d15be24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=2160',
   yosemite:
-    'https://images.unsplash.com/photo-1571047772429-47fafc26d064?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3NlbWl0ZSUyMGhhbGYlMjBkb21lJTIwdmFsbGV5JTIwZ3Jhbml0ZXxlbnwxfHx8fDE3NzExNjIwMjJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    'https://images.unsplash.com/photo-1472396961693-142e6e269027?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=2160',
   carmel:
-    'https://images.unsplash.com/photo-1747334142570-f2af433f40a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaWclMjBzdXIlMjBoaWdod2F5JTIwMSUyMGNvYXN0YWwlMjBjbGlmZnMlMjBwYWNpZmljfGVufDF8fHx8MTc3MTE2MjAyM3ww&ixlib=rb-4.1.0&q=80&w=1080',
+    'https://images.unsplash.com/photo-1577940801188-e4f895fe2c72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=2160',
 };
 
 export const segments = {
@@ -24,8 +24,8 @@ export const segments = {
     zoom: 10,
   },
   napa: {
-    navLabel: 'Napa & Sonoma',
-    title: 'Napa & Sonoma',
+    navLabel: 'Napa + Sonoma',
+    title: 'Napa + Sonoma',
     subtitle: "California's Food & Wine Bounty",
     color: '#b8956d',
     bgImage: bgImages.napa,

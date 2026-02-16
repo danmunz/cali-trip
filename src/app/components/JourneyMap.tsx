@@ -22,7 +22,10 @@ const MAPBOX_STYLE = 'mapbox://styles/danmunz/cmkuhcg15003m01pa76iy0g4v';
 const GEO_RADIUS_DEG = 1.5;
 
 /** Padding (px) inside the map viewport so pins aren't flush to the edge. */
-const BOUNDS_PADDING = { top: 60, bottom: 60, left: 40, right: 40 };
+const BOUNDS_PADDING = { top: 140, bottom: 60, left: 40, right: 40 };
+
+const MAP_PITCH = 40;
+const MAP_BEARING = 0;
 
 /**
  * Pin a location to a specific segment map, overriding its trip_parts.
@@ -74,6 +77,8 @@ interface JourneyMapProps {
   onLocationSelect?: (location: Location | null) => void;
   /** Called when user hovers/unhovers a map pin. */
   onMarkerHover?: (locationId: string | null) => void;
+  /** Called when user clicks a map pin — used to scroll itinerary text. */
+  onPinClick?: (locationId: string) => void;
 }
 
 export default function JourneyMap({
@@ -82,6 +87,7 @@ export default function JourneyMap({
   hoveredLocationIds = [],
   onLocationSelect,
   onMarkerHover,
+  onPinClick,
 }: JourneyMapProps) {
   const mapRef = useRef<MapRef>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
@@ -113,6 +119,8 @@ export default function JourneyMap({
       map.fitBounds(bounds, {
         padding: BOUNDS_PADDING,
         maxZoom: 13,
+        pitch: MAP_PITCH,
+        bearing: MAP_BEARING,
         duration: animate ? 2500 : 0,
       });
     },
@@ -127,6 +135,8 @@ export default function JourneyMap({
     map.flyTo({
       center: [loc.geo.lng, loc.geo.lat],
       zoom: 14,
+      pitch: MAP_PITCH,
+      bearing: MAP_BEARING,
       duration: 1500,
       essential: true,
     });
@@ -171,10 +181,19 @@ export default function JourneyMap({
           longitude: seg.center[0],
           latitude: seg.center[1],
           zoom: seg.zoom,
+          pitch: MAP_PITCH,
+          bearing: MAP_BEARING,
         }}
         style={{ width: '100%', height: '100%' }}
         mapStyle={MAPBOX_STYLE}
         onLoad={handleMapLoad}
+        onClick={(e) => {
+          // Zoom out when clicking the map background (not a marker pin)
+          const target = e.originalEvent.target as HTMLElement;
+          if (!target.closest('.mapboxgl-marker') && selectedId) {
+            fitToSegment(activeSegment);
+          }
+        }}
         scrollZoom={false}
         boxZoom={false}
         dragRotate={false}
@@ -201,6 +220,7 @@ export default function JourneyMap({
               setSelectedId(location.id);
               flyToLocation(location);
               onLocationSelect?.(location);
+              onPinClick?.(location.id);
             }}
             onHover={(hovering) =>
               onMarkerHover?.(hovering ? location.id : null)
