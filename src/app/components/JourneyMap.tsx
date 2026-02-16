@@ -24,12 +24,30 @@ const GEO_RADIUS_DEG = 1.5;
 /** Padding (px) inside the map viewport so pins aren't flush to the edge. */
 const BOUNDS_PADDING = { top: 60, bottom: 60, left: 40, right: 40 };
 
+/**
+ * Pin a location to a specific segment map, overriding its trip_parts.
+ * Useful when a day straddles two geographic regions (e.g. Day 1 starts
+ * at SFO/Muir Woods but ends with dinner in Napa).
+ */
+const MAP_SEGMENT_OVERRIDES: Record<string, SegmentId> = {
+  // Day 1 dinner + lodging are geographically in Napa, not SF/Marin
+  'the-estate-yountville': 'napa',
+  'bottega-napa-valley': 'napa',
+  // SFO only needs a pin on the arrival map, not the departure-day map
+  'san-francisco-international-airport-sfo': 'arrival',
+};
+
 /** Filter locations for a segment, enforcing geographic proximity. */
 function getLocationsForSegment(segmentId: SegmentId): Location[] {
   const [cLng, cLat] = segments[segmentId].center;
   return allLocations.filter((loc) => {
-    if (!loc.trip_parts.some((tp) => tp.segment_id === segmentId)) return false;
     if (loc.geo.lat === 0 && loc.geo.lng === 0) return false;
+
+    // If overridden, show this location only on the designated segment
+    const override = MAP_SEGMENT_OVERRIDES[loc.id];
+    if (override) return override === segmentId;
+
+    if (!loc.trip_parts.some((tp) => tp.segment_id === segmentId)) return false;
     return (
       Math.abs(loc.geo.lat - cLat) <= GEO_RADIUS_DEG &&
       Math.abs(loc.geo.lng - cLng) <= GEO_RADIUS_DEG
