@@ -22,7 +22,7 @@
         {
           "day": 1,
           "date": "2026-04-03",
-          "segment_id": "napa"
+          "segment_id": "arrival"
         },
         {
           "day": 9,
@@ -55,7 +55,7 @@
         {
           "day": 1,
           "date": "2026-04-03",
-          "segment_id": "napa"
+          "segment_id": "arrival"
         }
       ]
     },
@@ -154,7 +154,7 @@
         {
           "day": 1,
           "date": "2026-04-03",
-          "segment_id": "napa"
+          "segment_id": "arrival"
         }
       ]
     },
@@ -381,7 +381,7 @@
         {
           "day": 1,
           "date": "2026-04-03",
-          "segment_id": "napa"
+          "segment_id": "arrival"
         }
       ]
     },
@@ -1120,7 +1120,7 @@
         {
           "day": 1,
           "date": "2026-04-03",
-          "segment_id": "napa"
+          "segment_id": "arrival"
         }
       ]
     },
