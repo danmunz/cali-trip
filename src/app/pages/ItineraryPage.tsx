@@ -165,18 +165,24 @@ export default function ItineraryPage() {
   return (
     <div className="fixed top-16 left-0 right-0 bottom-0 flex flex-col">
       {/* Sub-Navigation */}
-      <div className="z-40 bg-gray-200/95 backdrop-blur-sm border-b border-gray-300 shadow-sm shrink-0">
+      <div className="z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm shrink-0">
         <div className="max-w-6xl mx-auto px-6 lg:px-12 py-2">
-          <div className="flex items-center justify-center gap-2 flex-wrap">
+          <div className="flex items-center justify-center gap-2 overflow-x-auto">
             {sections.map((s) => (
               <button
                 key={s.segmentId}
                 onClick={() => goToSegment(s.segmentId)}
-                className={`px-5 py-2 rounded-full text-sm transition-all font-medium flex flex-col items-center gap-0.5 ${
+                className={`flex-shrink-0 px-6 py-2 rounded-full text-sm transition-all font-bold flex flex-col items-center gap-0.5 ${
                   activeSection === s.segmentId
-                    ? 'bg-gray-700 text-white shadow-lg'
-                    : 'bg-transparent text-gray-900 hover:bg-gray-300'
+                    ? 'text-white shadow-lg'
+                    : 'bg-transparent text-gray-700 hover:bg-gray-100'
                 }`}
+                style={{
+                  backgroundColor:
+                    activeSection === s.segmentId
+                      ? segments[s.segmentId].color
+                      : 'transparent',
+                }}
               >
                 <span>{segments[s.segmentId].navLabel}</span>
                 <span className={`text-[10px] tracking-wide ${
@@ -222,7 +228,7 @@ export default function ItineraryPage() {
                 <div className="px-6 lg:px-12 pb-20 bg-gradient-to-b from-black/40 via-black/80 via-[25%] to-black">
                   {/* Section Header */}
                   <div className="mb-12">
-                    <h2 className="text-6xl sm:text-7xl lg:text-8xl text-white mb-4 tracking-tight font-light drop-shadow-lg">
+                    <h2 className="text-5xl sm:text-6xl lg:text-7xl text-white mb-4 tracking-tight font-medium drop-shadow-lg">
                       {seg.title}
                     </h2>
                     <p className="text-2xl text-white/90 mb-6 italic drop-shadow-md">
@@ -238,7 +244,7 @@ export default function ItineraryPage() {
                       </p>
                     </div>
 
-                    <p className="text-2xl text-white/95 leading-relaxed mb-8 max-w-2xl">
+                    <p className="text-xl text-white/95 leading-relaxed mb-8 max-w-2xl">
                       {seg.description}
                     </p>
                   </div>
