@@ -10,7 +10,7 @@ export const itinerary: TripDay[] = [
     "dayOfWeek": "Friday",
     "title": "Arrival + Redwoods + Yountville",
     "summary": "Arrive in Northern California and ease into the trip with a redwood walk at Muir Woods, then settle into Yountville for the first taste of Napa's culinary heart. It's a gentle start that balances travel with a classic landscape and a relaxed evening to recharge.",
-    "segmentId": "napa",
+    "segmentId": "arrival",
     "activities": [
       {
         "time": "10:45am–12:15pm",

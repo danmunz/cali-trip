@@ -2,6 +2,8 @@
 // These are design choices (colors, images, prose) — not generated from the markdown.
 
 const bgImages = {
+  arrival:
+    'https://images.unsplash.com/photo-1587582534064-eb80e0ffdaa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080',
   napa: 'https://images.unsplash.com/photo-1701623785014-181cda1bcc37?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYXBhJTIwdmFsbGV5JTIwdmluZXlhcmQlMjByb3dzJTIwc3Vuc2V0JTIwYWVyaWFsfGVufDF8fHx8MTc3MTE2MjAyMnww&ixlib=rb-4.1.0&q=80&w=1080',
   yosemite:
     'https://images.unsplash.com/photo-1571047772429-47fafc26d064?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3NlbWl0ZSUyMGhhbGYlMjBkb21lJTIwdmFsbGV5JTIwZ3Jhbml0ZXxlbnwxfHx8fDE3NzExNjIwMjJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
@@ -10,10 +12,21 @@ const bgImages = {
 };
 
 export const segments = {
+  arrival: {
+    navLabel: 'Arrival + Muir Woods',
+    title: 'Arrival + Muir Woods',
+    subtitle: 'SFO & Coastal Redwoods',
+    color: '#8b6e5a',
+    bgImage: bgImages.arrival,
+    description:
+      'Touch down in Northern California and drive straight into the ancient redwoods of Muir Woods—one of the last old-growth coastal groves on earth. A gentle first afternoon under the canopy before settling into wine country.',
+    center: [-122.48, 37.76] as [number, number],
+    zoom: 10,
+  },
   napa: {
     navLabel: 'Napa & Sonoma',
     title: 'Napa & Sonoma',
-    subtitle: 'Wine Country & Redwoods',
+    subtitle: "California's Food & Wine Bounty",
     color: '#b8956d',
     bgImage: bgImages.napa,
     description:
