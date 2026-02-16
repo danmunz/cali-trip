@@ -1,22 +1,31 @@
 import { useState } from 'react';
-import { MapPin, ExternalLink, Star, Globe, Phone, Mail } from 'lucide-react';
+import { MapPin, ExternalLink, Star, Globe, Phone, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
 import { lodgingData, type LodgingKey } from '../../data/lodging';
 
 export default function LodgingPage() {
   const [activeLodging, setActiveLodging] = useState<LodgingKey>('yountville');
+  const [carouselIdx, setCarouselIdx] = useState(0);
   const lodge = lodgingData[activeLodging];
+
+  const switchLodging = (key: LodgingKey) => {
+    setActiveLodging(key);
+    setCarouselIdx(0);
+  };
+
+  const images = lodge.roomImages;
+  const totalImages = images.length;
 
   return (
     <div className="pt-16 min-h-screen">
-      {/* Sub-Navigation */}
+      {/* Sub-Navigation — mirrors itinerary style with dates */}
       <div className="border-b border-gray-200 bg-white/95 backdrop-blur-sm sticky top-16 z-40 shadow-sm">
-        <div className="max-w-6xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-2 overflow-x-auto py-4">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12 py-2">
+          <div className="flex items-center justify-center gap-2 overflow-x-auto">
             {Object.entries(lodgingData).map(([key, data]) => (
               <button
                 key={key}
-                onClick={() => setActiveLodging(key as LodgingKey)}
-                className={`flex-shrink-0 px-6 py-3 rounded-full text-sm font-bold transition-all ${
+                onClick={() => switchLodging(key as LodgingKey)}
+                className={`flex-shrink-0 px-6 py-2 rounded-full text-sm font-bold transition-all flex flex-col items-center gap-0.5 ${
                   activeLodging === key
                     ? 'text-white shadow-lg'
                     : 'text-gray-700 hover:bg-gray-100'
@@ -26,7 +35,14 @@ export default function LodgingPage() {
                     activeLodging === key ? data.color : 'transparent',
                 }}
               >
-                {data.name}
+                <span>{data.name}</span>
+                <span
+                  className={`text-[10px] tracking-wide ${
+                    activeLodging === key ? 'text-white/60' : 'text-gray-500'
+                  }`}
+                >
+                  {data.dates} · {data.nights}
+                </span>
               </button>
             ))}
           </div>
@@ -67,23 +83,85 @@ export default function LodgingPage() {
           <div className="lg:col-span-2 space-y-10">
             {/* Description */}
             <section>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-xl leading-relaxed text-gray-700">
                 {lodge.description}
               </p>
             </section>
 
-            {/* Room Image */}
+            {/* Room Image Carousel */}
             <section>
               <h2 className="text-3xl text-gray-900 mb-4 font-medium">
                 Your Room
               </h2>
-              <div className="rounded-xl overflow-hidden shadow-2xl">
-                <img
-                  src={lodge.roomImage}
-                  alt="Room interior"
-                  className="w-full h-auto"
-                />
+
+              {/* Carousel container */}
+              <div className="relative rounded-xl overflow-hidden shadow-2xl group">
+                {/* Current image */}
+                <div className="relative aspect-[16/10] bg-gray-100">
+                  <img
+                    key={`${activeLodging}-${carouselIdx}`}
+                    src={images[carouselIdx]}
+                    alt={`Room photo ${carouselIdx + 1}`}
+                    className="w-full h-full object-cover animate-[fadeIn_0.3s_ease-in-out]"
+                  />
+
+                  {/* Prev / Next buttons — only show when more than 1 image */}
+                  {totalImages > 1 && (
+                    <>
+                      <button
+                        onClick={() =>
+                          setCarouselIdx(
+                            (carouselIdx - 1 + totalImages) % totalImages,
+                          )
+                        }
+                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={() =>
+                          setCarouselIdx((carouselIdx + 1) % totalImages)
+                        }
+                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"
+                        aria-label="Next image"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </>
+                  )}
+
+                  {/* Counter badge */}
+                  {totalImages > 1 && (
+                    <div className="absolute top-3 right-3 bg-black/50 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+                      {carouselIdx + 1} / {totalImages}
+                    </div>
+                  )}
+                </div>
+
+                {/* Dot indicators */}
+                {totalImages > 1 && (
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                    {images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCarouselIdx(idx)}
+                        className={`rounded-full transition-all ${
+                          idx === carouselIdx
+                            ? 'w-2.5 h-2.5 bg-white shadow-md'
+                            : 'w-2 h-2 bg-white/50 hover:bg-white/75'
+                        }`}
+                        aria-label={`Go to image ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
+
+              {/* Room description text */}
+              <p className="mt-5 text-xl leading-relaxed text-gray-600 italic">
+                {lodge.roomDescription}
+              </p>
             </section>
 
             {/* Amenities */}

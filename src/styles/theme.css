@@ -207,3 +207,9 @@
 @utility animate-dot-pulse {
   animation: dot-pulse 2s ease-in-out infinite;
 }
+
+/* Carousel image crossfade */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

@@ -77,7 +77,7 @@ export default function LocationMarker({
   // ── Visual tiers ─────────────────────────────────────────
 
   // Scale jumps: selected bounces up big, hover/focus lifts noticeably
-  const scale = isSelected ? 1.5 : highlighted ? 1.3 : 1;
+  const scale = isSelected ? 2.0 : highlighted ? 1.5 : 1;
 
   // Shadow intensity ramps with engagement
   const filter = isSelected
