@@ -24,7 +24,7 @@ const GEO_RADIUS_DEG = 1.5;
 /** Padding (px) inside the map viewport so pins aren't flush to the edge. */
 const BOUNDS_PADDING = { top: 140, bottom: 60, left: 40, right: 40 };
 
-const MAP_PITCH = 40;
+const MAP_PITCH = 50;
 const MAP_BEARING = 0;
 
 /**
@@ -74,6 +74,8 @@ interface JourneyMapProps {
   focusedLocationIds?: string[];
   /** Location IDs highlighted by text hover. */
   hoveredLocationIds?: string[];
+  /** Single location ID the user has scrolled to (debounced). */
+  scrollFocusedLocationId?: string | null;
   onLocationSelect?: (location: Location | null) => void;
   /** Called when user hovers/unhovers a map pin. */
   onMarkerHover?: (locationId: string | null) => void;
@@ -85,6 +87,7 @@ export default function JourneyMap({
   activeSegment,
   focusedLocationIds = [],
   hoveredLocationIds = [],
+  scrollFocusedLocationId,
   onLocationSelect,
   onMarkerHover,
   onPinClick,
@@ -160,6 +163,24 @@ export default function JourneyMap({
       fitToSegment(activeSegment);
     }
   }, [activeSegment, isMapLoaded, fitToSegment]);
+
+  // ── Fly to scroll-focused location ───────────────────────
+
+  useEffect(() => {
+    if (!isMapLoaded || !scrollFocusedLocationId || selectedId) return;
+    const loc = zoneLocations.find((l) => l.id === scrollFocusedLocationId);
+    if (!loc) return;
+    const map = mapRef.current;
+    if (!map) return;
+    // Gentler zoom than a pin click — stay at segment-level zoom
+    map.flyTo({
+      center: [loc.geo.lng, loc.geo.lat],
+      pitch: MAP_PITCH,
+      bearing: MAP_BEARING,
+      duration: 1200,
+      essential: true,
+    });
+  }, [scrollFocusedLocationId, isMapLoaded, selectedId, zoneLocations]);
 
   // ── Render ───────────────────────────────────────────────
 

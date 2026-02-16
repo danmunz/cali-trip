@@ -4,7 +4,7 @@
 const bgImages = {
   arrival:
     'https://images.unsplash.com/photo-1587582534064-eb80e0ffdaa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=2160',
-  napa: 'https://images.unsplash.com/photo-1656873592841-8ae63d15be24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=2160',
+  napa: 'https://images.unsplash.com/photo-1656873593110-58a8b76823b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=2160',
   yosemite:
     'https://images.unsplash.com/photo-1472396961693-142e6e269027?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=2160',
   carmel:

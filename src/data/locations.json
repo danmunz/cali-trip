@@ -10,7 +10,10 @@
       },
       "type": "airport",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/300/200",
+        "https://placecats.com/310/200"
+      ],
       "official_url": [
         "https://www.flysfo.com/"
       ],
@@ -41,7 +44,10 @@
       },
       "type": "lodging",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/301/200",
+        "https://placecats.com/311/200"
+      ],
       "official_url": [
         "https://www.theestateyountville.com/"
       ],
@@ -69,7 +75,10 @@
       },
       "type": "lodging",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/302/200",
+        "https://placecats.com/312/200"
+      ],
       "official_url": [
         "https://www.rushcreeklodge.com/"
       ],
@@ -107,7 +116,10 @@
       },
       "type": "lodging",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/303/200",
+        "https://placecats.com/313/200"
+      ],
       "official_url": [
         "https://highlandsinn.hyatt.com/"
       ],
@@ -140,7 +152,10 @@
       },
       "type": "restaurant",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/304/200",
+        "https://placecats.com/314/200"
+      ],
       "official_url": [
         "https://www.estateyountville.com/dine/"
       ],
@@ -168,7 +183,10 @@
       },
       "type": "restaurant",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/305/200",
+        "https://placecats.com/315/200"
+      ],
       "official_url": [
         "https://www.longmeadowranch.com/eat-drink/restaurant/"
       ],
@@ -196,7 +214,10 @@
       },
       "type": "restaurant",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/306/200",
+        "https://placecats.com/316/200"
+      ],
       "official_url": [
         "https://www.rushcreeklodge.com/"
       ],
@@ -227,7 +248,10 @@
       },
       "type": "restaurant",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/307/200",
+        "https://placecats.com/317/200"
+      ],
       "official_url": [
         "https://www.travelyosemite.com/dining/yosemite-valley-lodge"
       ],
@@ -255,7 +279,10 @@
       },
       "type": "restaurant",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/308/200",
+        "https://placecats.com/318/200"
+      ],
       "official_url": [
         "https://iltegaminocarmel.com/"
       ],
@@ -283,7 +310,10 @@
       },
       "type": "restaurant",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/309/200",
+        "https://placecats.com/319/200"
+      ],
       "official_url": [
         "https://www.ventanabigsur.com/dining/the-sur-house"
       ],
@@ -311,7 +341,10 @@
       },
       "type": "restaurant",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/300/200",
+        "https://placecats.com/310/200"
+      ],
       "official_url": [
         "https://highlandsinn.hyatt.com/en/hotel/dining/PacificsEdge.html"
       ],
@@ -339,7 +372,10 @@
       },
       "type": "restaurant",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/301/200",
+        "https://placecats.com/311/200"
+      ],
       "official_url": [
         "https://www.missionranchcarmel.com/restaurant.htm"
       ],
@@ -367,7 +403,10 @@
       },
       "type": "park",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/302/200",
+        "https://placecats.com/312/200"
+      ],
       "official_url": [
         "https://www.nps.gov/muwo/index.htm"
       ],
@@ -395,7 +434,10 @@
       },
       "type": "park",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/303/200",
+        "https://placecats.com/313/200"
+      ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=582"
       ],
@@ -428,7 +470,10 @@
       },
       "type": "park",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/304/200",
+        "https://placecats.com/314/200"
+      ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=570"
       ],
@@ -461,7 +506,10 @@
       },
       "type": "park",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/305/200",
+        "https://placecats.com/315/200"
+      ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"
       ],
@@ -489,7 +537,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/306/200",
+        "https://placecats.com/316/200"
+      ],
       "official_url": [
         "https://napafarmersmarket.org/"
       ],
@@ -517,7 +568,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/307/200",
+        "https://placecats.com/317/200"
+      ],
       "official_url": [
         "https://www.roundpond.com/"
       ],
@@ -545,7 +599,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/308/200",
+        "https://placecats.com/318/200"
+      ],
       "official_url": [
         "https://www.sterlingvineyards.com/"
       ],
@@ -573,7 +630,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/309/200",
+        "https://placecats.com/319/200"
+      ],
       "official_url": [
         "https://oxbowpublicmarket.com/"
       ],
@@ -601,7 +661,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/300/200",
+        "https://placecats.com/310/200"
+      ],
       "official_url": [
         "https://www.schramsberg.com/"
       ],
@@ -629,7 +692,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/301/200",
+        "https://placecats.com/311/200"
+      ],
       "official_url": [
         "https://www.vsattui.com/"
       ],
@@ -657,7 +723,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/302/200",
+        "https://placecats.com/312/200"
+      ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
       ],
@@ -685,7 +754,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/303/200",
+        "https://placecats.com/313/200"
+      ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
       ],
@@ -713,7 +785,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/304/200",
+        "https://placecats.com/314/200"
+      ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
       ],
@@ -741,7 +816,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/305/200",
+        "https://placecats.com/315/200"
+      ],
       "official_url": [
         "https://www.travelyosemite.com/things-to-do/guided-bus-tours"
       ],
@@ -769,7 +847,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/306/200",
+        "https://placecats.com/316/200"
+      ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
       ],
@@ -797,7 +878,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/307/200",
+        "https://placecats.com/317/200"
+      ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
       ],
@@ -830,7 +914,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/308/200",
+        "https://placecats.com/318/200"
+      ],
       "official_url": [
         "https://roads.dot.ca.gov/"
       ],
@@ -858,7 +945,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/309/200",
+        "https://placecats.com/319/200"
+      ],
       "official_url": [
         "https://dot.ca.gov/"
       ],
@@ -886,7 +976,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/300/200",
+        "https://placecats.com/310/200"
+      ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=579"
       ],
@@ -912,7 +1005,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/301/200",
+        "https://placecats.com/311/200"
+      ],
       "official_url": [
         "https://www.ventanabigsur.com/"
       ],
@@ -940,7 +1036,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/302/200",
+        "https://placecats.com/312/200"
+      ],
       "official_url": [
         "https://dot.ca.gov/"
       ],
@@ -968,7 +1067,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/303/200",
+        "https://placecats.com/313/200"
+      ],
       "official_url": [
         "https://ci.carmel.ca.us/"
       ],
@@ -996,7 +1098,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/304/200",
+        "https://placecats.com/314/200"
+      ],
       "official_url": [
         "https://www.pebblebeach.com/"
       ],
@@ -1024,7 +1129,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/305/200",
+        "https://placecats.com/315/200"
+      ],
       "official_url": [
         "https://www.pebblebeach.com/17-mile-drive/"
       ],
@@ -1052,7 +1160,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/306/200",
+        "https://placecats.com/316/200"
+      ],
       "official_url": [
         "https://www.pebblebeach.com/17-mile-drive/"
       ],
@@ -1080,7 +1191,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/307/200",
+        "https://placecats.com/317/200"
+      ],
       "official_url": [
         "https://www.pebblebeach.com/golf/the-links-at-spanish-bay/"
       ],
@@ -1108,7 +1222,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/308/200",
+        "https://placecats.com/318/200"
+      ],
       "official_url": [
         "https://www.nps.gov/goga/planyourvisit/muir-woods-main-trail.htm"
       ],
@@ -1134,7 +1251,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/309/200",
+        "https://placecats.com/319/200"
+      ],
       "official_url": [
         "https://www.rushcreeklodge.com/explore/activities/nature-trails/"
       ],
@@ -1160,7 +1280,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/300/200",
+        "https://placecats.com/310/200"
+      ],
       "official_url": [
         "https://www.rushcreeklodge.com/explore/activities/nature-trails/"
       ],
@@ -1186,7 +1309,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/301/200",
+        "https://placecats.com/311/200"
+      ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
       ],
@@ -1212,7 +1338,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/302/200",
+        "https://placecats.com/312/200"
+      ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
       ],
@@ -1240,7 +1369,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/303/200",
+        "https://placecats.com/313/200"
+      ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
       ],
@@ -1268,7 +1400,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/304/200",
+        "https://placecats.com/314/200"
+      ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=582"
       ],
@@ -1294,7 +1429,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/305/200",
+        "https://placecats.com/315/200"
+      ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=570"
       ],
@@ -1320,7 +1458,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/306/200",
+        "https://placecats.com/316/200"
+      ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"
       ],
@@ -1346,7 +1487,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/307/200",
+        "https://placecats.com/317/200"
+      ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"
       ],
@@ -1372,7 +1516,10 @@
       },
       "type": "attraction",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/308/200",
+        "https://placecats.com/318/200"
+      ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"
       ],
@@ -1398,7 +1545,10 @@
       },
       "type": "trailhead",
       "notes": "",
-      "images": [],
+      "images": [
+        "https://placecats.com/309/200",
+        "https://placecats.com/319/200"
+      ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"
       ],
