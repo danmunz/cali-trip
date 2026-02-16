@@ -30,7 +30,7 @@ export const tripMeta: TripMeta = {
       "date": "Fri Apr 3",
       "base": "SFO + Muir Woods",
       "logistics": "Fly DCA → SFO → Drive SFO → Muir Woods → Napa/Sonoma",
-      "segmentId": "napa"
+      "segmentId": "arrival"
     },
     {
       "date": "Sat Apr 4",

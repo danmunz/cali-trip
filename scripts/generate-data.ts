@@ -281,7 +281,7 @@ function parseDayHeading(
 // ── Segment inference from table ────────────────────────────
 
 const BASE_TO_SEGMENT: Record<string, string> = {
-  'sfo + muir woods': 'napa',
+  'sfo + muir woods': 'arrival',
   'napa / sonoma': 'napa',
   napa: 'napa',
   yosemite: 'yosemite',
