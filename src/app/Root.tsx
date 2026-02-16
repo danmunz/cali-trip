@@ -26,7 +26,8 @@ export default function Root() {
               {[
                 { path: '/', label: 'Overview' },
                 { path: '/lodging', label: 'Lodging' },
-                { path: '/itinerary', label: 'Itinerary' },
+                { path: '/itinerary', label: 'Experience' },
+                { path: '/full-itinerary', label: 'Full Itinerary' },
               ].map(({ path, label }) => (
                 <Link
                   key={path}

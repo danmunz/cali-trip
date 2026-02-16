@@ -213,3 +213,139 @@
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
+/* ── Print styles ─────────────────────────────────────── */
+@media print {
+  /* Hide chrome: nav, footer, TOC sidebar */
+  nav.fixed,
+  footer,
+  [data-toc-sidebar] {
+    display: none !important;
+  }
+
+  /* Remove fixed-nav offset */
+  body,
+  .pt-16 {
+    padding-top: 0 !important;
+  }
+
+  /* White background, black text */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 9pt;
+    line-height: 1.35;
+  }
+
+  /* Remove background tints */
+  .bg-\[\#faf8f5\],
+  .bg-white\/95,
+  .bg-white\/60 {
+    background: white !important;
+  }
+
+  /* Widen the content area for print */
+  .max-w-3xl {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Shrink headings */
+  h1 { font-size: 18pt !important; }
+  h2 { font-size: 14pt !important; }
+  h3 { font-size: 11pt !important; }
+
+  /* Compact the header */
+  .py-20 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  /* Shrink section spacing */
+  .mb-16 { margin-bottom: 1.5rem !important; }
+  .mb-12 { margin-bottom: 1rem !important; }
+  .py-16 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+
+  /* Tighter overview text */
+  .text-2xl { font-size: 10pt !important; }
+  .text-xl { font-size: 9.5pt !important; }
+  .text-lg { font-size: 9pt !important; }
+  .text-base { font-size: 8.5pt !important; }
+
+  /* Compact pills */
+  .tracking-widest { letter-spacing: 0.05em !important; }
+  .px-4.py-1\.5 { padding: 2px 8px !important; font-size: 7pt !important; }
+  .px-5.py-2 { padding: 2px 10px !important; font-size: 7pt !important; }
+
+  /* Compact activity cards */
+  .py-6 { padding-top: 0.35rem !important; padding-bottom: 0.35rem !important; }
+  .space-y-2 > * + * { margin-top: 0.15rem !important; }
+  .mb-10 { margin-bottom: 0.5rem !important; }
+  .mb-3 { margin-bottom: 0.25rem !important; }
+
+  /* Compact the day summary text */
+  .leading-relaxed { line-height: 1.3 !important; }
+
+  /* Compact location links */
+  .mt-4 { margin-top: 0.25rem !important; }
+  .space-y-2\.5 > * + * { margin-top: 0.1rem !important; }
+
+  /* Compact drive interludes */
+  .py-4 { padding-top: 0.2rem !important; padding-bottom: 0.2rem !important; }
+
+  /* Keep day headers with their content */
+  section[id^="day-"] {
+    break-inside: avoid;
+  }
+
+  section[id^="day-"] > div:first-child {
+    break-after: avoid;
+  }
+
+  /* Don't break inside activity cards */
+  [id*="-stop-"] {
+    break-inside: avoid;
+  }
+
+  /* Ensure colored pills print with their background */
+  .rounded-full[style*="backgroundColor"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Segment color borders should print */
+  .border-l-4[style*="borderLeftColor"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Schedule table dots */
+  .rounded-full[style*="background-color"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Links: URLs handled inline by LocationLinks component */
+
+  /* Tame shadows and hovers */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Reasonable page margins */
+  @page {
+    margin: 0.5in;
+  }
+
+  /* Page break before the day-by-day section */
+  .space-y-20 {
+    break-before: page;
+  }
+
+  /* Reduce spacing between days for print */
+  .space-y-20 > * + * {
+    margin-top: 1rem;
+  }
+}
