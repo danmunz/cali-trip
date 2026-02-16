@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Marker } from 'react-map-gl/mapbox';
-import { ExternalLink, MapPin, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, MapPin, Star } from 'lucide-react';
 import type { Location } from '../../data/types';
 
 const TYPE_LABELS: Record<string, string> = {
@@ -50,8 +50,14 @@ interface LocationMarkerProps {
   isFocused?: boolean;
   /** True when another pin is focused and this one should recede. */
   isDimmed?: boolean;
+  /** ID of the previous location in itinerary order (undefined = at boundary). */
+  prevLocationId?: string;
+  /** ID of the next location in itinerary order (undefined = at boundary). */
+  nextLocationId?: string;
   onClick: () => void;
   onHover?: (hovering: boolean) => void;
+  /** Navigate to an adjacent pin (prev/next) while in Pin Focus mode. */
+  onNavigate?: (locationId: string) => void;
 }
 
 export default function LocationMarker({
@@ -60,15 +66,22 @@ export default function LocationMarker({
   isSelected = false,
   isFocused = false,
   isDimmed = false,
+  prevLocationId,
+  nextLocationId,
   onClick,
   onHover,
+  onNavigate,
 }: LocationMarkerProps) {
   const [isHovered, setIsHovered] = useState(false);
   const typeLabel = TYPE_LABELS[location.type] || location.type;
   const pinColor = TYPE_COLORS[location.type] ?? DEFAULT_PIN_COLOR;
 
   const highlighted = isSelected || isFocused || isHovered;
-  const showTooltip = isSelected || isHovered;
+
+  // Name-only tooltip: hover or scroll-focus, but NOT when selected (full tooltip shows instead)
+  const showNameTooltip = !isSelected && (isHovered || isFocused);
+  // Full rich tooltip: only when selected (pin click)
+  const showFullTooltip = isSelected;
 
   // ── Visual tiers ─────────────────────────────────────────
 
@@ -96,7 +109,7 @@ export default function LocationMarker({
       longitude={location.geo.lng}
       latitude={location.geo.lat}
       anchor="center"
-      style={{ zIndex: highlighted ? 10 : 1 }}
+      style={{ zIndex: isSelected ? 20 : highlighted ? 10 : 1 }}
       onClick={(e) => {
         e.originalEvent.stopPropagation();
         onClick();
@@ -140,21 +153,37 @@ export default function LocationMarker({
           <circle cx="12" cy="12" r="10" fill={pinColor} stroke="white" strokeWidth="2" />
         </svg>
 
-        {/* Rich tooltip */}
+        {/* ── Name-only tooltip (Region Overview mode) ──────── */}
         <div
-          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none"
           style={{
-            opacity: showTooltip ? 1 : 0,
-            transform: showTooltip ? 'translateY(0)' : 'translateY(6px)',
+            opacity: showNameTooltip ? 1 : 0,
+            transform: showNameTooltip ? 'translateY(0)' : 'translateY(4px)',
             transition: 'opacity 0.2s ease, transform 0.2s ease',
-            pointerEvents: showTooltip ? 'auto' : 'none',
-            width: 260,
+          }}
+        >
+          <div className="bg-black/90 backdrop-blur-sm px-3.5 py-2 rounded-lg shadow-xl whitespace-nowrap">
+            <p className="text-white text-[13px] font-semibold leading-tight">
+              {location.name}
+            </p>
+          </div>
+        </div>
+
+        {/* ── Full rich tooltip (Pin Focus mode) ────────────── */}
+        <div
+          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4"
+          style={{
+            opacity: showFullTooltip ? 1 : 0,
+            transform: showFullTooltip ? 'translateY(0)' : 'translateY(6px)',
+            transition: 'opacity 0.2s ease, transform 0.2s ease',
+            pointerEvents: showFullTooltip ? 'auto' : 'none',
+            width: 390,
           }}
         >
           <div className="bg-black/95 backdrop-blur-md rounded-xl shadow-2xl overflow-hidden border border-white/10">
             {/* Photo strip */}
             {location.images.length > 0 && (
-              <div className="flex h-[100px] overflow-hidden">
+              <div className="flex h-[150px] overflow-hidden">
                 {location.images.slice(0, 3).map((src, i) => (
                   <img
                     key={i}
@@ -168,14 +197,14 @@ export default function LocationMarker({
             )}
 
             {/* Body */}
-            <div className="px-3.5 py-3">
+            <div className="px-5 py-4">
               {/* Name + type badge */}
-              <div className="flex items-start justify-between gap-2 mb-1.5">
-                <p className="text-white text-[13px] font-semibold leading-snug">
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <p className="text-white text-lg font-semibold leading-snug">
                   {location.name}
                 </p>
                 <span
-                  className="shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full"
+                  className="shrink-0 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full"
                   style={{
                     backgroundColor: pinColor + '25',
                     color: pinColor,
@@ -186,29 +215,29 @@ export default function LocationMarker({
               </div>
 
               {/* Address */}
-              <p className="text-white/50 text-[11px] leading-tight mb-1.5">
+              <p className="text-white/50 text-sm leading-tight mb-2">
                 {shortAddress(location.address)}
               </p>
 
               {/* Visit days */}
               {location.trip_parts.length > 0 && (
-                <p className="text-white/40 text-[10px] mb-2">
+                <p className="text-white/40 text-[13px] mb-3">
                   {formatDays(location.trip_parts)}
                 </p>
               )}
 
               {/* Links row */}
               {(websiteUrl || mapsUrl || reviewUrl) && (
-                <div className="flex items-center gap-3 pt-2 border-t border-white/10">
+                <div className="flex items-center gap-4 pt-3 border-t border-white/10">
                   {websiteUrl && (
                     <a
                       href={websiteUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-[10px] text-white/50 hover:text-white transition-colors"
+                      className="flex items-center gap-1.5 text-[13px] text-white/50 hover:text-white transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <ExternalLink className="w-3 h-3" />
+                      <ExternalLink className="w-4 h-4" />
                       Website
                     </a>
                   )}
@@ -217,10 +246,10 @@ export default function LocationMarker({
                       href={mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-[10px] text-white/50 hover:text-white transition-colors"
+                      className="flex items-center gap-1.5 text-[13px] text-white/50 hover:text-white transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <MapPin className="w-3 h-3" />
+                      <MapPin className="w-4 h-4" />
                       Directions
                     </a>
                   )}
@@ -229,13 +258,49 @@ export default function LocationMarker({
                       href={reviewUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-[10px] text-white/50 hover:text-white transition-colors"
+                      className="flex items-center gap-1.5 text-[13px] text-white/50 hover:text-white transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <Star className="w-3 h-3" />
+                      <Star className="w-4 h-4" />
                       Reviews
                     </a>
                   )}
+                </div>
+              )}
+
+              {/* Prev / Next navigation */}
+              {(prevLocationId || nextLocationId) && (
+                <div className="flex items-center justify-between pt-3 mt-3 border-t border-white/10">
+                  <button
+                    disabled={!prevLocationId}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (prevLocationId) onNavigate?.(prevLocationId);
+                    }}
+                    className={`flex items-center gap-1 text-[13px] transition-colors ${
+                      prevLocationId
+                        ? 'text-white/60 hover:text-white cursor-pointer'
+                        : 'text-white/20 cursor-default'
+                    }`}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    Prev
+                  </button>
+                  <button
+                    disabled={!nextLocationId}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (nextLocationId) onNavigate?.(nextLocationId);
+                    }}
+                    className={`flex items-center gap-1 text-[13px] transition-colors ${
+                      nextLocationId
+                        ? 'text-white/60 hover:text-white cursor-pointer'
+                        : 'text-white/20 cursor-default'
+                    }`}
+                  >
+                    Next
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
                 </div>
               )}
             </div>

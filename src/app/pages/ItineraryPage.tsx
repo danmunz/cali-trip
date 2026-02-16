@@ -70,6 +70,25 @@ export default function ItineraryPage() {
   const nextSection =
     activeSectionIdx < sections.length - 1 ? sections[activeSectionIdx + 1] : null;
 
+  // Chronologically ordered, deduplicated location IDs for the active segment.
+  // Derived from the itinerary activity order — preserves the natural trip sequence.
+  const orderedLocationIds = useMemo(() => {
+    if (!activeData) return [];
+    const seen = new Set<string>();
+    const ordered: string[] = [];
+    for (const day of activeData.days) {
+      for (const activity of day.activities) {
+        for (const id of activity.locationIds) {
+          if (!seen.has(id)) {
+            seen.add(id);
+            ordered.push(id);
+          }
+        }
+      }
+    }
+    return ordered;
+  }, [activeData]);
+
   // ── Navigate between segments with crossfade ─────────────
 
   const goToSegment = useCallback((segmentId: SegmentId) => {
@@ -386,6 +405,7 @@ export default function ItineraryPage() {
         <div className="w-1/2 hidden lg:block">
           <JourneyMap
             activeSegment={activeSection}
+            orderedLocationIds={orderedLocationIds}
             hoveredLocationIds={hoveredLocationIds}
             scrollFocusedLocationId={scrollFocusedLocationId}
             onMarkerHover={setMapHoveredId}

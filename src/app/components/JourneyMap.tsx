@@ -1,7 +1,7 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
 import Map, { type MapRef } from 'react-map-gl/mapbox';
 import { LngLatBounds } from 'mapbox-gl';
-import { ZoomOut } from 'lucide-react';
+import { MapIcon } from 'lucide-react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import LocationMarker from './LocationMarker';
@@ -70,13 +70,12 @@ function calculateBounds(locations: Location[]): LngLatBounds | null {
 
 interface JourneyMapProps {
   activeSegment: SegmentId;
-  /** Location IDs highlighted by scroll position (activity in viewport). */
-  focusedLocationIds?: string[];
+  /** Chronologically ordered, deduplicated location IDs for this segment. */
+  orderedLocationIds: string[];
   /** Location IDs highlighted by text hover. */
   hoveredLocationIds?: string[];
-  /** Single location ID the user has scrolled to (debounced). */
+  /** Single location ID the user has scrolled to (debounced) — drives pin emphasis in overview. */
   scrollFocusedLocationId?: string | null;
-  onLocationSelect?: (location: Location | null) => void;
   /** Called when user hovers/unhovers a map pin. */
   onMarkerHover?: (locationId: string | null) => void;
   /** Called when user clicks a map pin — used to scroll itinerary text. */
@@ -85,10 +84,9 @@ interface JourneyMapProps {
 
 export default function JourneyMap({
   activeSegment,
-  focusedLocationIds = [],
+  orderedLocationIds,
   hoveredLocationIds = [],
   scrollFocusedLocationId,
-  onLocationSelect,
   onMarkerHover,
   onPinClick,
 }: JourneyMapProps) {
@@ -100,10 +98,14 @@ export default function JourneyMap({
   const zoneLocations = getLocationsForSegment(activeSegment);
   const seg = segments[activeSegment];
 
+  // Filter orderedLocationIds to only locations that have a pin on this segment map
+  const zoneIds = new Set(zoneLocations.map((l) => l.id));
+  const filteredOrderedIds = orderedLocationIds.filter((id) => zoneIds.has(id));
+
   // Union of all "highlighted" location IDs (scroll focus + hover + selected)
   const highlightedIds = new Set([
-    ...focusedLocationIds,
     ...hoveredLocationIds,
+    ...(scrollFocusedLocationId ? [scrollFocusedLocationId] : []),
     ...(selectedId ? [selectedId] : []),
   ]);
   // Whether *any* pin is currently highlighted — used to dim the rest
@@ -164,23 +166,18 @@ export default function JourneyMap({
     }
   }, [activeSegment, isMapLoaded, fitToSegment]);
 
-  // ── Fly to scroll-focused location ───────────────────────
+  // ── Navigate between pins (prev/next in tooltip) ─────────
 
-  useEffect(() => {
-    if (!isMapLoaded || !scrollFocusedLocationId || selectedId) return;
-    const loc = zoneLocations.find((l) => l.id === scrollFocusedLocationId);
-    if (!loc) return;
-    const map = mapRef.current;
-    if (!map) return;
-    // Gentler zoom than a pin click — stay at segment-level zoom
-    map.flyTo({
-      center: [loc.geo.lng, loc.geo.lat],
-      pitch: MAP_PITCH,
-      bearing: MAP_BEARING,
-      duration: 1200,
-      essential: true,
-    });
-  }, [scrollFocusedLocationId, isMapLoaded, selectedId, zoneLocations]);
+  const navigateToPin = useCallback(
+    (locationId: string) => {
+      const loc = zoneLocations.find((l) => l.id === locationId);
+      if (!loc) return;
+      setSelectedId(locationId);
+      flyToLocation(loc);
+      onPinClick?.(locationId);
+    },
+    [zoneLocations, flyToLocation, onPinClick],
+  );
 
   // ── Render ───────────────────────────────────────────────
 
@@ -225,40 +222,48 @@ export default function JourneyMap({
         touchPitch={false}
         attributionControl={false}
       >
-        {zoneLocations.map((location) => (
-          <LocationMarker
-            key={location.id}
-            location={location}
-            color={seg.color}
-            isSelected={selectedId === location.id}
-            isFocused={
-              !selectedId &&
-              (focusedLocationIds.includes(location.id) ||
-                hoveredLocationIds.includes(location.id))
-            }
-            isDimmed={anyHighlighted && !highlightedIds.has(location.id)}
-            onClick={() => {
-              setSelectedId(location.id);
-              flyToLocation(location);
-              onLocationSelect?.(location);
-              onPinClick?.(location.id);
-            }}
-            onHover={(hovering) =>
-              onMarkerHover?.(hovering ? location.id : null)
-            }
-          />
-        ))}
+        {zoneLocations.map((location) => {
+          const idx = filteredOrderedIds.indexOf(location.id);
+          const prevId = idx > 0 ? filteredOrderedIds[idx - 1] : undefined;
+          const nextId = idx >= 0 && idx < filteredOrderedIds.length - 1 ? filteredOrderedIds[idx + 1] : undefined;
+
+          return (
+            <LocationMarker
+              key={location.id}
+              location={location}
+              color={seg.color}
+              isSelected={selectedId === location.id}
+              isFocused={
+                !selectedId &&
+                (scrollFocusedLocationId === location.id ||
+                  hoveredLocationIds.includes(location.id))
+              }
+              isDimmed={anyHighlighted && !highlightedIds.has(location.id)}
+              prevLocationId={prevId}
+              nextLocationId={nextId}
+              onClick={() => {
+                setSelectedId(location.id);
+                flyToLocation(location);
+                onPinClick?.(location.id);
+              }}
+              onHover={(hovering) =>
+                onMarkerHover?.(hovering ? location.id : null)
+              }
+              onNavigate={navigateToPin}
+            />
+          );
+        })}
       </Map>
 
-      {/* Zoom-out button — visible when focused on a single location */}
+      {/* Return to region — visible when focused on a single location */}
       {selectedId && (
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
           <button
             onClick={() => fitToSegment(activeSegment)}
             className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/90 backdrop-blur-sm shadow-lg text-sm font-medium text-gray-700 hover:bg-white transition-colors cursor-pointer"
           >
-            <ZoomOut className="w-4 h-4" />
-            Show all {seg.navLabel}
+            <MapIcon className="w-4 h-4" />
+            Return to {seg.navLabel}
           </button>
         </div>
       )}
