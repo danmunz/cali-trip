@@ -190,3 +190,20 @@
     line-height: 1.5;
   }
 }
+
+/* Scroll-active timeline dot pulse */
+@keyframes dot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.8;
+  }
+}
+
+@utility animate-dot-pulse {
+  animation: dot-pulse 2s ease-in-out infinite;
+}
