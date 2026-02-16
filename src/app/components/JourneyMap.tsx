@@ -1,7 +1,7 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
 import Map, { type MapRef } from 'react-map-gl/mapbox';
 import { LngLatBounds } from 'mapbox-gl';
-import { MapIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapIcon } from 'lucide-react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import LocationMarker from './LocationMarker';
@@ -222,51 +222,71 @@ export default function JourneyMap({
         touchPitch={false}
         attributionControl={false}
       >
-        {zoneLocations.map((location) => {
-          const idx = filteredOrderedIds.indexOf(location.id);
-          const prevId = idx > 0 ? filteredOrderedIds[idx - 1] : undefined;
-          const nextId = idx >= 0 && idx < filteredOrderedIds.length - 1 ? filteredOrderedIds[idx + 1] : undefined;
-
-          return (
-            <LocationMarker
-              key={location.id}
-              location={location}
-              color={seg.color}
-              isSelected={selectedId === location.id}
-              isFocused={
-                !selectedId &&
-                (scrollFocusedLocationId === location.id ||
-                  hoveredLocationIds.includes(location.id))
-              }
-              isDimmed={anyHighlighted && !highlightedIds.has(location.id)}
-              prevLocationId={prevId}
-              nextLocationId={nextId}
-              onClick={() => {
-                setSelectedId(location.id);
-                flyToLocation(location);
-                onPinClick?.(location.id);
-              }}
-              onHover={(hovering) =>
-                onMarkerHover?.(hovering ? location.id : null)
-              }
-              onNavigate={navigateToPin}
-            />
-          );
-        })}
+        {zoneLocations.map((location) => (
+          <LocationMarker
+            key={location.id}
+            location={location}
+            color={seg.color}
+            isSelected={selectedId === location.id}
+            isFocused={
+              !selectedId &&
+              (scrollFocusedLocationId === location.id ||
+                hoveredLocationIds.includes(location.id))
+            }
+            isDimmed={anyHighlighted && !highlightedIds.has(location.id)}
+            onClick={() => {
+              setSelectedId(location.id);
+              flyToLocation(location);
+              onPinClick?.(location.id);
+            }}
+            onHover={(hovering) =>
+              onMarkerHover?.(hovering ? location.id : null)
+            }
+          />
+        ))}
       </Map>
 
-      {/* Return to region — visible when focused on a single location */}
-      {selectedId && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
-          <button
-            onClick={() => fitToSegment(activeSegment)}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/90 backdrop-blur-sm shadow-lg text-sm font-medium text-gray-700 hover:bg-white transition-colors cursor-pointer"
-          >
-            <MapIcon className="w-4 h-4" />
-            Return to {seg.navLabel}
-          </button>
-        </div>
-      )}
+      {/* Map overlay controls — visible when focused on a single pin */}
+      {selectedId && (() => {
+        const idx = filteredOrderedIds.indexOf(selectedId);
+        const prevId = idx > 0 ? filteredOrderedIds[idx - 1] : undefined;
+        const nextId = idx >= 0 && idx < filteredOrderedIds.length - 1 ? filteredOrderedIds[idx + 1] : undefined;
+        return (
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
+            <button
+              disabled={!prevId}
+              onClick={() => prevId && navigateToPin(prevId)}
+              className={`flex items-center gap-1 px-3 py-2.5 rounded-full shadow-lg text-sm font-medium backdrop-blur-sm transition-colors ${
+                prevId
+                  ? 'bg-white/90 text-gray-700 hover:bg-white cursor-pointer'
+                  : 'bg-white/40 text-gray-400 cursor-default'
+              }`}
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Prev
+            </button>
+            <button
+              onClick={() => fitToSegment(activeSegment)}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/90 backdrop-blur-sm shadow-lg text-sm font-medium text-gray-700 hover:bg-white transition-colors cursor-pointer"
+            >
+              <MapIcon className="w-4 h-4" />
+              Return to {seg.navLabel}
+            </button>
+            <button
+              disabled={!nextId}
+              onClick={() => nextId && navigateToPin(nextId)}
+              className={`flex items-center gap-1 px-3 py-2.5 rounded-full shadow-lg text-sm font-medium backdrop-blur-sm transition-colors ${
+                nextId
+                  ? 'bg-white/90 text-gray-700 hover:bg-white cursor-pointer'
+                  : 'bg-white/40 text-gray-400 cursor-default'
+              }`}
+            >
+              Next
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        );
+      })()}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Marker } from 'react-map-gl/mapbox';
-import { ChevronLeft, ChevronRight, ExternalLink, MapPin, Star } from 'lucide-react';
+import { ExternalLink, MapPin, Star } from 'lucide-react';
 import type { Location } from '../../data/types';
 
 const TYPE_LABELS: Record<string, string> = {
@@ -50,14 +50,8 @@ interface LocationMarkerProps {
   isFocused?: boolean;
   /** True when another pin is focused and this one should recede. */
   isDimmed?: boolean;
-  /** ID of the previous location in itinerary order (undefined = at boundary). */
-  prevLocationId?: string;
-  /** ID of the next location in itinerary order (undefined = at boundary). */
-  nextLocationId?: string;
   onClick: () => void;
   onHover?: (hovering: boolean) => void;
-  /** Navigate to an adjacent pin (prev/next) while in Pin Focus mode. */
-  onNavigate?: (locationId: string) => void;
 }
 
 export default function LocationMarker({
@@ -66,11 +60,8 @@ export default function LocationMarker({
   isSelected = false,
   isFocused = false,
   isDimmed = false,
-  prevLocationId,
-  nextLocationId,
   onClick,
   onHover,
-  onNavigate,
 }: LocationMarkerProps) {
   const [isHovered, setIsHovered] = useState(false);
   const typeLabel = TYPE_LABELS[location.type] || location.type;
@@ -268,41 +259,6 @@ export default function LocationMarker({
                 </div>
               )}
 
-              {/* Prev / Next navigation */}
-              {(prevLocationId || nextLocationId) && (
-                <div className="flex items-center justify-between pt-3 mt-3 border-t border-white/10">
-                  <button
-                    disabled={!prevLocationId}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (prevLocationId) onNavigate?.(prevLocationId);
-                    }}
-                    className={`flex items-center gap-1 text-[13px] transition-colors ${
-                      prevLocationId
-                        ? 'text-white/60 hover:text-white cursor-pointer'
-                        : 'text-white/20 cursor-default'
-                    }`}
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                    Prev
-                  </button>
-                  <button
-                    disabled={!nextLocationId}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (nextLocationId) onNavigate?.(nextLocationId);
-                    }}
-                    className={`flex items-center gap-1 text-[13px] transition-colors ${
-                      nextLocationId
-                        ? 'text-white/60 hover:text-white cursor-pointer'
-                        : 'text-white/20 cursor-default'
-                    }`}
-                  >
-                    Next
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-              )}
             </div>
           </div>
         </div>
