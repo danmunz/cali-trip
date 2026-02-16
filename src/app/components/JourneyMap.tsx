@@ -26,6 +26,8 @@ const BOUNDS_PADDING = { top: 140, bottom: 60, left: 40, right: 40 };
 
 const MAP_PITCH = 50;
 const MAP_BEARING = 0;
+/** Lower pitch when zoomed to a single pin — avoids terrain occluding valley-floor markers. */
+const PIN_FOCUS_PITCH = 30;
 
 /**
  * Pin a location to a specific segment map, overriding its trip_parts.
@@ -139,8 +141,8 @@ export default function JourneyMap({
     if (!map) return;
     map.flyTo({
       center: [loc.geo.lng, loc.geo.lat],
-      zoom: 14,
-      pitch: MAP_PITCH,
+      zoom: 15,
+      pitch: PIN_FOCUS_PITCH,
       bearing: MAP_BEARING,
       duration: 1500,
       essential: true,
