@@ -33,8 +33,6 @@ function scheduleColor(segmentId: string): string {
 }
 
 export default function OverviewPage() {
-  const subtitle = tripMeta.subtitle.replace(' | ', ' \u2022 ');
-
   return (
     <div className="pt-16">
       {/* Hero Map - Full Width */}
@@ -45,13 +43,17 @@ export default function OverviewPage() {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#faf8f5]"></div>
-        <div className="absolute bottom-0 left-0 right-0 pb-12 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl mb-4 text-gray-900 tracking-tight drop-shadow-lg font-medium">
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
+          <div className="text-center">
+            <p className="text-xs uppercase tracking-[0.35em] text-white/60 mb-5 font-medium drop-shadow">
+              April 2026 · California
+            </p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl mb-5 text-white tracking-tight drop-shadow-xl font-light">
               {tripMeta.title}
             </h1>
-            <p className="text-xl text-gray-700 font-medium">
-              {subtitle}
+            <div className="w-16 h-px bg-white/40 mx-auto mb-5" />
+            <p className="text-lg text-white/80 italic drop-shadow font-light">
+              Nine days through California's landscapes &amp; vineyards
             </p>
           </div>
         </div>
@@ -59,6 +61,40 @@ export default function OverviewPage() {
 
       {/* Content */}
       <main className="max-w-5xl mx-auto px-6 lg:px-12 pb-24 -mt-8">
+        {/* Segment Preview Images */}
+        <section className="mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {(Object.entries(segments) as [string, typeof segments[keyof typeof segments]][]).map(
+              ([id, seg]) => (
+                <div
+                  key={id}
+                  className="relative aspect-square rounded-lg overflow-hidden group"
+                >
+                  <img
+                    src={seg.bgImage}
+                    alt={seg.navLabel}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-white text-sm font-bold uppercase tracking-wider drop-shadow">
+                      {seg.navLabel}
+                    </p>
+                    <p className="text-white/70 text-xs mt-0.5">{seg.subtitle}</p>
+                  </div>
+                </div>
+              ),
+            )}
+          </div>
+        </section>
+
+        {/* Overview */}
+        <section className="mb-16">
+          <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 max-w-3xl mx-auto text-center">
+            {tripMeta.overview}
+          </p>
+        </section>
+
         {/* Trip Itinerary Table */}
         <section className="mb-16">
           <div className="bg-white rounded-xl shadow-2xl p-8 sm:p-10 border border-gray-200">
