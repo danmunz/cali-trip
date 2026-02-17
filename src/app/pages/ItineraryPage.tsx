@@ -201,7 +201,8 @@ export default function ItineraryPage() {
         {/* Scrollable Content — only the active segment */}
         <div
           ref={scrollContainerRef}
-          className="lg:w-1/2 w-full overflow-y-auto bg-black"
+          className="lg:w-1/2 w-full overflow-y-auto transition-colors duration-700 ease-in-out"
+          style={{ backgroundColor: `color-mix(in oklab, ${seg.color} 35%, #000)` }}
         >
           <div
             className="transition-opacity duration-200"
@@ -216,8 +217,13 @@ export default function ItineraryPage() {
                 className="sticky top-0 h-[70vh] -mb-[70vh] z-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${seg.bgImage})` }}
               >
-                {/* Light overlay at top, fading to solid black at bottom */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black" />
+                {/* Light overlay at top, fading to segment-tinted dark at bottom */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5) 50%, color-mix(in oklab, ${seg.color} 35%, #000))`,
+                  }}
+                />
               </div>
 
               {/* Content — scrolls over the hero */}
@@ -225,7 +231,12 @@ export default function ItineraryPage() {
                 {/* Spacer so the hero is visible before content begins */}
                 <div className="h-[40vh]" />
 
-                <div className="px-6 lg:px-12 pb-20 bg-gradient-to-b from-black/40 via-black/80 via-[25%] to-black">
+                <div
+                  className="px-6 lg:px-12 pb-20"
+                  style={{
+                    background: `linear-gradient(to bottom, transparent, color-mix(in oklab, ${seg.color} 35%, #000) 25%)`,
+                  }}
+                >
                   {/* Section Header */}
                   <div className="mb-12">
                     <h2 className="text-5xl sm:text-6xl lg:text-7xl text-white mb-4 tracking-tight font-medium drop-shadow-lg">
@@ -254,7 +265,10 @@ export default function ItineraryPage() {
                   {activeData.days.map((day) => (
                     <div key={day.day} className="relative">
                       {/* Sticky date header */}
-                      <div className="sticky top-0 z-20 -mx-6 lg:-mx-12 px-6 lg:px-12 py-2 bg-black/60 backdrop-blur-md border-b border-white/10">
+                      <div
+                        className="sticky top-0 z-20 -mx-6 lg:-mx-12 px-6 lg:px-12 py-2 backdrop-blur-md border-b border-white/10"
+                        style={{ backgroundColor: `color-mix(in oklab, ${seg.color} 40%, rgba(0,0,0,0.7))` }}
+                      >
                         <p className="text-sm text-white/80 uppercase tracking-widest font-medium">
                           {formatDayDate(day.date, day.dayOfWeek)}
                           <span className="text-white/50 mx-2">·</span>
@@ -408,15 +422,22 @@ export default function ItineraryPage() {
         </div>
 
         {/* Map */}
-        <div className="w-1/2 hidden lg:block">
-          <JourneyMap
-            activeSegment={activeSection}
-            orderedLocationIds={orderedLocationIds}
-            hoveredLocationIds={hoveredLocationIds}
-            scrollFocusedLocationId={scrollFocusedLocationId}
-            onMarkerHover={setMapHoveredId}
-            onPinClick={scrollToLocation}
-          />
+        <div
+          className="w-1/2 hidden lg:block p-3 transition-colors duration-700 ease-in-out"
+          style={{ backgroundColor: segments[activeSection].color }}
+        >
+          <div className="relative h-full rounded-2xl overflow-hidden ring-2 ring-white/20 shadow-2xl">
+            {/* Inset vignette for depth */}
+            <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_24px_rgba(0,0,0,0.35)] pointer-events-none z-10" />
+            <JourneyMap
+              activeSegment={activeSection}
+              orderedLocationIds={orderedLocationIds}
+              hoveredLocationIds={hoveredLocationIds}
+              scrollFocusedLocationId={scrollFocusedLocationId}
+              onMarkerHover={setMapHoveredId}
+              onPinClick={scrollToLocation}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -24,8 +24,8 @@ const GEO_RADIUS_DEG = 1.5;
 /** Padding (px) inside the map viewport so pins aren't flush to the edge. */
 const BOUNDS_PADDING = { top: 140, bottom: 60, left: 40, right: 40 };
 
-const MAP_PITCH = 50;
-const MAP_BEARING = 0;
+const MAP_PITCH = 45;
+const MAP_BEARING = -10;
 /** Lower pitch when zoomed to a single pin — avoids terrain occluding valley-floor markers. */
 const PIN_FOCUS_PITCH = 30;
 
@@ -141,7 +141,7 @@ export default function JourneyMap({
     if (!map) return;
     map.flyTo({
       center: [loc.geo.lng, loc.geo.lat],
-      zoom: 15,
+      zoom: 12,
       pitch: PIN_FOCUS_PITCH,
       bearing: MAP_BEARING,
       duration: 1500,

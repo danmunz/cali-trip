@@ -56,7 +56,7 @@ interface LocationMarkerProps {
 
 export default function LocationMarker({
   location,
-  color: _segmentColor,
+  color: segmentColor,
   isSelected = false,
   isFocused = false,
   isDimmed = false,
@@ -153,7 +153,10 @@ export default function LocationMarker({
             transition: 'opacity 0.2s ease, transform 0.2s ease',
           }}
         >
-          <div className="bg-black/90 backdrop-blur-sm px-3.5 py-2 rounded-lg shadow-xl whitespace-nowrap">
+          <div
+            className="backdrop-blur-sm px-3.5 py-2 rounded-lg shadow-xl whitespace-nowrap"
+            style={{ backgroundColor: `color-mix(in oklab, ${segmentColor} 40%, rgba(0,0,0,0.92))` }}
+          >
             <p className="text-white text-[13px] font-semibold leading-tight">
               {location.name}
             </p>
@@ -171,7 +174,10 @@ export default function LocationMarker({
             width: 390,
           }}
         >
-          <div className="bg-black/95 backdrop-blur-md rounded-xl shadow-2xl overflow-hidden border border-white/10">
+          <div
+            className="backdrop-blur-md rounded-xl shadow-2xl overflow-hidden border border-white/10"
+            style={{ backgroundColor: `color-mix(in oklab, ${segmentColor} 35%, rgba(0,0,0,0.95))` }}
+          >
             {/* Photo strip */}
             {location.images.length > 0 && (
               <div className="flex h-[150px] overflow-hidden">
