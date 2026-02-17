@@ -49,6 +49,9 @@ jobs:
           ls -la src/data/*.generated.ts
           echo "✓ Generated files verified"
 
+      - name: Validate generated data
+        run: pnpm validate
+
       - name: Run TypeScript type check
         run: npx tsc --noEmit
 

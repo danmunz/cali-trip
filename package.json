@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "generate": "tsx scripts/generate-data.ts",
+    "validate": "tsx scripts/validate-data.ts",
     "dev": "vite",
     "prebuild": "pnpm generate",
     "build": "vite build",

@@ -163,12 +163,15 @@ The CI workflow:
 
 ### Setup
 
-See **[docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)** for:
-- Initial GitHub Pages configuration
-- Setting up Mapbox token as a secret
+**First time?** See **[docs/SETUP.md](./docs/SETUP.md)** for:
+- Quick 3-step setup (enable Pages, add Mapbox token, deploy)
+- Troubleshooting common issues
+
+**Detailed docs:** See **[docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)** for:
+- Complete GitHub Pages configuration guide
 - Local development with environment variables
-- Troubleshooting deployment issues
-- Manual deployment options
+- Workflow customization options
+- Manual deployment methods
 
 ---
 
