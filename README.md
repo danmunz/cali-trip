@@ -144,17 +144,38 @@ See [STYLEGUIDE.md](./STYLEGUIDE.md) for the full design system.
 
 ## Deployment
 
+The site is automatically deployed to **GitHub Pages** via GitHub Actions on every push to `main`.
+
+**Live site:** https://danmunz.github.io/cali-trip/
+
+### Quick Deploy
+
 ```bash
-pnpm build   # runs generate automatically, outputs to /dist
+git push origin main  # Triggers automatic deployment
 ```
 
-Deploy `/dist` to any static host. Configure all routes to serve `index.html` (SPA routing).
+The CI workflow:
+1. Installs dependencies
+2. Generates data from `full-trip.md`
+3. Runs TypeScript type checks
+4. Builds the site
+5. Deploys to GitHub Pages
+
+### Setup
+
+See **[docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)** for:
+- Initial GitHub Pages configuration
+- Setting up Mapbox token as a secret
+- Local development with environment variables
+- Troubleshooting deployment issues
+- Manual deployment options
 
 ---
 
 ## Roadmap
 
-- [ ] Add Mapbox access token for interactive maps
+- [x] ~~Add Mapbox access token for interactive maps~~ (via GitHub Actions secrets)
+- [x] ~~Deploy to GitHub Pages with automated CI/CD~~
 - [ ] Render markdown descriptions (currently plain text)
 - [ ] Generate lodging check-in/check-out dates from `tripMeta`
 - [ ] Photo gallery per location
