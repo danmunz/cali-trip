@@ -3,3 +3,6 @@ dist
 .DS_Store
 .env.local
 .venv
+
+# Generated data files (build artifacts)
+src/data/*.generated.ts

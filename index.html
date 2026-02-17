@@ -1,10 +1,21 @@
-
   <!DOCTYPE html>
   <html lang="en">
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Stylized Vacation Itinerary Site</title>
+      <title>Susan's 70th Birthday Trip — California</title>
+      
+      <!-- GitHub Pages SPA routing support -->
+      <script>
+        // Handle redirected path from 404.html for GitHub Pages
+        (function() {
+          const redirect = sessionStorage.redirect;
+          delete sessionStorage.redirect;
+          if (redirect && redirect !== location.href) {
+            history.replaceState(null, null, redirect);
+          }
+        })();
+      </script>
     </head>
 
     <body>
