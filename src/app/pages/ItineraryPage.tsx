@@ -165,33 +165,42 @@ export default function ItineraryPage() {
   return (
     <div className="fixed top-16 left-0 right-0 bottom-0 flex flex-col">
       {/* Sub-Navigation */}
-      <div className="z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm shrink-0">
+      <div className="z-40 bg-white/80 backdrop-blur-md border-b border-gray-200/60 shadow-sm shrink-0">
         <div className="max-w-6xl mx-auto px-6 lg:px-12 py-2">
           <div className="flex items-center justify-center gap-2 overflow-x-auto">
-            {sections.map((s) => (
+            {sections.map((s) => {
+              const isActive = activeSection === s.segmentId;
+              const color = segments[s.segmentId].color;
+              return (
               <button
                 key={s.segmentId}
                 onClick={() => goToSegment(s.segmentId)}
-                className={`flex-shrink-0 px-6 py-2 rounded-full text-sm transition-all font-bold flex flex-col items-center gap-0.5 ${
-                  activeSection === s.segmentId
-                    ? 'text-white shadow-lg'
-                    : 'bg-transparent text-gray-700 hover:bg-gray-100'
+                className={`group flex-shrink-0 px-6 py-2 rounded-full text-sm transition-all duration-200 font-bold flex flex-col items-center gap-0.5 ${
+                  isActive
+                    ? 'text-white shadow-lg shadow-black/15'
+                    : 'text-gray-700'
                 }`}
                 style={{
-                  backgroundColor:
-                    activeSection === s.segmentId
-                      ? segments[s.segmentId].color
-                      : 'transparent',
+                  backgroundColor: isActive ? color : undefined,
+                  ['--seg-color' as string]: color,
                 }}
               >
                 <span>{segments[s.segmentId].navLabel}</span>
                 <span className={`text-[10px] tracking-wide ${
-                  activeSection === s.segmentId ? 'text-white/60' : 'text-gray-500'
+                  isActive ? 'text-white/60' : 'text-gray-500'
                 }`}>
                   {sectionDateRange(s.days)}
                 </span>
+                {/* Hover underline accent */}
+                {!isActive && (
+                  <span
+                    className="block h-[2px] w-0 group-hover:w-3/4 rounded-full transition-all duration-200 mt-0.5"
+                    style={{ backgroundColor: color, opacity: 0.4 }}
+                  />
+                )}
               </button>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -424,7 +433,9 @@ export default function ItineraryPage() {
         {/* Map */}
         <div
           className="w-1/2 hidden lg:block p-3 transition-colors duration-700 ease-in-out"
-          style={{ backgroundColor: segments[activeSection].color }}
+          style={{
+            background: `linear-gradient(to right, color-mix(in oklab, ${segments[activeSection].color} 80%, #000) 0%, ${segments[activeSection].color} 40%)`,
+          }}
         >
           <div className="relative h-full rounded-2xl overflow-hidden ring-2 ring-white/20 shadow-2xl">
             {/* Inset vignette for depth */}

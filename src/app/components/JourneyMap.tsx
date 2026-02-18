@@ -125,7 +125,7 @@ export default function JourneyMap({
       setSelectedId(null);
       map.fitBounds(bounds, {
         padding: BOUNDS_PADDING,
-        maxZoom: 13,
+        maxZoom: 10,
         pitch: MAP_PITCH,
         bearing: MAP_BEARING,
         duration: animate ? 2500 : 0,
@@ -141,9 +141,10 @@ export default function JourneyMap({
     if (!map) return;
     map.flyTo({
       center: [loc.geo.lng, loc.geo.lat],
-      zoom: 12,
+      zoom: 11,
       pitch: PIN_FOCUS_PITCH,
       bearing: MAP_BEARING,
+      offset: [0, 120],   // push pin below center so tooltip has room above
       duration: 1500,
       essential: true,
     });
@@ -272,7 +273,7 @@ export default function JourneyMap({
               className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/90 backdrop-blur-sm shadow-lg text-sm font-medium text-gray-700 hover:bg-white transition-colors cursor-pointer"
             >
               <MapIcon className="w-4 h-4" />
-              Return to {seg.navLabel}
+              Zoom out
             </button>
             <button
               disabled={!nextId}

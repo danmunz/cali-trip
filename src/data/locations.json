@@ -1505,7 +1505,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "/cali-trip/images/south-shore-trail-point-lobos/01.jpg"
+        "/cali-trip/images/south-shore-trail-point-lobos/01.jpg",
+        "/cali-trip/images/south-shore-trail-point-lobos/02.jpg",
+        "/cali-trip/images/south-shore-trail-point-lobos/03.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"
@@ -1533,9 +1535,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placekitten.com/307/200",
-        "https://placekitten.com/317/200",
-        "https://placekitten.com/367/200"
+        "/cali-trip/images/sand-hill-trail-point-lobos/01.jpg",
+        "/cali-trip/images/sand-hill-trail-point-lobos/02.jpg",
+        "/cali-trip/images/sand-hill-trail-point-lobos/03.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"

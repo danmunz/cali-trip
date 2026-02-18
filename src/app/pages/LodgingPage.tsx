@@ -90,9 +90,7 @@ export default function LodgingPage() {
 
             {/* Room Image Carousel */}
             <section>
-              <h2 className="text-3xl text-gray-900 mb-4 font-medium">
-                Your Room
-              </h2>
+            
 
               {/* Carousel container */}
               <div className="relative rounded-xl overflow-hidden shadow-2xl group">
@@ -159,7 +157,7 @@ export default function LodgingPage() {
               </div>
 
               {/* Room description text */}
-              <p className="mt-5 text-xl leading-relaxed text-gray-600 italic">
+              <p className="mt-5 text-xl leading-relaxed text-gray-600">
                 {lodge.roomDescription}
               </p>
             </section>
