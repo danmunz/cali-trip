@@ -11,8 +11,9 @@
       "type": "airport",
       "notes": "",
       "images": [
-        "https://placecats.com/300/200",
-        "https://placecats.com/310/200"
+        "/cali-trip/images/san-francisco-international-airport-sfo/01.jpg",
+        "/cali-trip/images/san-francisco-international-airport-sfo/02.jpg",
+        "/cali-trip/images/san-francisco-international-airport-sfo/03.jpg"
       ],
       "official_url": [
         "https://www.flysfo.com/"
@@ -45,8 +46,9 @@
       "type": "lodging",
       "notes": "",
       "images": [
-        "https://placecats.com/301/200",
-        "https://placecats.com/311/200"
+        "/cali-trip/images/the-estate-yountville/01.jpg",
+        "/cali-trip/images/the-estate-yountville/02.jpg",
+        "/cali-trip/images/the-estate-yountville/03.jpg"
       ],
       "official_url": [
         "https://www.theestateyountville.com/"
@@ -76,8 +78,9 @@
       "type": "lodging",
       "notes": "",
       "images": [
-        "https://placecats.com/302/200",
-        "https://placecats.com/312/200"
+        "/cali-trip/images/rush-creek-lodge-and-spa-at-yosemite/01.jpg",
+        "/cali-trip/images/rush-creek-lodge-and-spa-at-yosemite/02.jpg",
+        "/cali-trip/images/rush-creek-lodge-and-spa-at-yosemite/03.jpg"
       ],
       "official_url": [
         "https://www.rushcreeklodge.com/"
@@ -117,8 +120,9 @@
       "type": "lodging",
       "notes": "",
       "images": [
-        "https://placecats.com/303/200",
-        "https://placecats.com/313/200"
+        "/cali-trip/images/hyatt-carmel-highlands/01.jpg",
+        "/cali-trip/images/hyatt-carmel-highlands/02.jpg",
+        "/cali-trip/images/hyatt-carmel-highlands/03.jpg"
       ],
       "official_url": [
         "https://highlandsinn.hyatt.com/"
@@ -153,8 +157,9 @@
       "type": "restaurant",
       "notes": "",
       "images": [
-        "https://placecats.com/304/200",
-        "https://placecats.com/314/200"
+        "/cali-trip/images/bottega-napa-valley/01.jpg",
+        "/cali-trip/images/bottega-napa-valley/02.jpg",
+        "/cali-trip/images/bottega-napa-valley/03.jpg"
       ],
       "official_url": [
         "https://www.estateyountville.com/dine/"
@@ -184,8 +189,9 @@
       "type": "restaurant",
       "notes": "",
       "images": [
-        "https://placecats.com/305/200",
-        "https://placecats.com/315/200"
+        "/cali-trip/images/farmstead-at-long-meadow-ranch/01.jpg",
+        "/cali-trip/images/farmstead-at-long-meadow-ranch/02.jpg",
+        "/cali-trip/images/farmstead-at-long-meadow-ranch/03.jpg"
       ],
       "official_url": [
         "https://www.longmeadowranch.com/eat-drink/restaurant/"
@@ -215,8 +221,9 @@
       "type": "restaurant",
       "notes": "",
       "images": [
-        "https://placecats.com/306/200",
-        "https://placecats.com/316/200"
+        "/cali-trip/images/the-restaurant-at-rush-creek/01.jpg",
+        "/cali-trip/images/the-restaurant-at-rush-creek/02.jpg",
+        "/cali-trip/images/the-restaurant-at-rush-creek/03.jpg"
       ],
       "official_url": [
         "https://www.rushcreeklodge.com/"
@@ -249,8 +256,9 @@
       "type": "restaurant",
       "notes": "",
       "images": [
-        "https://placecats.com/307/200",
-        "https://placecats.com/317/200"
+        "/cali-trip/images/the-mountain-room/01.jpg",
+        "/cali-trip/images/the-mountain-room/02.jpg",
+        "/cali-trip/images/the-mountain-room/03.jpg"
       ],
       "official_url": [
         "https://www.travelyosemite.com/dining/yosemite-valley-lodge"
@@ -280,8 +288,9 @@
       "type": "restaurant",
       "notes": "",
       "images": [
-        "https://placecats.com/308/200",
-        "https://placecats.com/318/200"
+        "/cali-trip/images/il-tegamino/01.jpg",
+        "/cali-trip/images/il-tegamino/02.jpg",
+        "/cali-trip/images/il-tegamino/03.jpg"
       ],
       "official_url": [
         "https://iltegaminocarmel.com/"
@@ -311,8 +320,9 @@
       "type": "restaurant",
       "notes": "",
       "images": [
-        "https://placecats.com/309/200",
-        "https://placecats.com/319/200"
+        "/cali-trip/images/the-sur-house/01.jpg",
+        "/cali-trip/images/the-sur-house/02.jpg",
+        "/cali-trip/images/the-sur-house/03.jpg"
       ],
       "official_url": [
         "https://www.ventanabigsur.com/dining/the-sur-house"
@@ -342,8 +352,9 @@
       "type": "restaurant",
       "notes": "",
       "images": [
-        "https://placecats.com/300/200",
-        "https://placecats.com/310/200"
+        "/cali-trip/images/pacifics-edge/01.jpg",
+        "/cali-trip/images/pacifics-edge/02.jpg",
+        "/cali-trip/images/pacifics-edge/03.jpg"
       ],
       "official_url": [
         "https://highlandsinn.hyatt.com/en/hotel/dining/PacificsEdge.html"
@@ -373,8 +384,9 @@
       "type": "restaurant",
       "notes": "",
       "images": [
-        "https://placecats.com/301/200",
-        "https://placecats.com/311/200"
+        "/cali-trip/images/mission-ranch/01.jpg",
+        "/cali-trip/images/mission-ranch/02.jpg",
+        "/cali-trip/images/mission-ranch/03.jpg"
       ],
       "official_url": [
         "https://www.missionranchcarmel.com/restaurant.htm"
@@ -404,8 +416,9 @@
       "type": "park",
       "notes": "",
       "images": [
-        "https://placecats.com/302/200",
-        "https://placecats.com/312/200"
+        "/cali-trip/images/muir-woods-national-monument/01.jpg",
+        "/cali-trip/images/muir-woods-national-monument/02.jpg",
+        "/cali-trip/images/muir-woods-national-monument/03.jpg"
       ],
       "official_url": [
         "https://www.nps.gov/muwo/index.htm"
@@ -435,8 +448,9 @@
       "type": "park",
       "notes": "",
       "images": [
-        "https://placecats.com/303/200",
-        "https://placecats.com/313/200"
+        "/cali-trip/images/andrew-molera-state-park/01.jpg",
+        "/cali-trip/images/andrew-molera-state-park/02.jpg",
+        "/cali-trip/images/andrew-molera-state-park/03.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=582"
@@ -471,8 +485,9 @@
       "type": "park",
       "notes": "",
       "images": [
-        "https://placecats.com/304/200",
-        "https://placecats.com/314/200"
+        "/cali-trip/images/pfeiffer-big-sur-state-park/01.jpg",
+        "/cali-trip/images/pfeiffer-big-sur-state-park/02.jpg",
+        "/cali-trip/images/pfeiffer-big-sur-state-park/03.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=570"
@@ -507,8 +522,9 @@
       "type": "park",
       "notes": "",
       "images": [
-        "https://placecats.com/305/200",
-        "https://placecats.com/315/200"
+        "/cali-trip/images/point-lobos-state-reserve/01.jpg",
+        "/cali-trip/images/point-lobos-state-reserve/02.jpg",
+        "/cali-trip/images/point-lobos-state-reserve/03.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"
@@ -538,8 +554,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/306/200",
-        "https://placecats.com/316/200"
+        "/cali-trip/images/napa-farmers-market/01.jpg",
+        "/cali-trip/images/napa-farmers-market/02.jpg",
+        "/cali-trip/images/napa-farmers-market/03.jpg"
       ],
       "official_url": [
         "https://napafarmersmarket.org/"
@@ -569,8 +586,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/307/200",
-        "https://placecats.com/317/200"
+        "/cali-trip/images/round-pond-estate/01.jpg",
+        "/cali-trip/images/round-pond-estate/02.jpg",
+        "/cali-trip/images/round-pond-estate/03.jpg"
       ],
       "official_url": [
         "https://www.roundpond.com/"
@@ -600,8 +618,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/308/200",
-        "https://placecats.com/318/200"
+        "/cali-trip/images/sterling-vineyards/01.jpg",
+        "/cali-trip/images/sterling-vineyards/02.jpg",
+        "/cali-trip/images/sterling-vineyards/03.jpg"
       ],
       "official_url": [
         "https://www.sterlingvineyards.com/"
@@ -631,8 +650,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/309/200",
-        "https://placecats.com/319/200"
+        "/cali-trip/images/oxbow-public-market/01.jpg",
+        "/cali-trip/images/oxbow-public-market/02.jpg",
+        "/cali-trip/images/oxbow-public-market/03.jpg"
       ],
       "official_url": [
         "https://oxbowpublicmarket.com/"
@@ -662,8 +682,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/300/200",
-        "https://placecats.com/310/200"
+        "/cali-trip/images/schramsberg-vineyards/01.jpg",
+        "/cali-trip/images/schramsberg-vineyards/02.jpg",
+        "/cali-trip/images/schramsberg-vineyards/03.jpg"
       ],
       "official_url": [
         "https://www.schramsberg.com/"
@@ -693,8 +714,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/301/200",
-        "https://placecats.com/311/200"
+        "/cali-trip/images/v-sattui-winery/01.jpg",
+        "/cali-trip/images/v-sattui-winery/02.jpg",
+        "/cali-trip/images/v-sattui-winery/03.jpg"
       ],
       "official_url": [
         "https://www.vsattui.com/"
@@ -724,8 +746,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/302/200",
-        "https://placecats.com/312/200"
+        "/cali-trip/images/yosemite-valley/01.jpg",
+        "/cali-trip/images/yosemite-valley/02.jpg",
+        "/cali-trip/images/yosemite-valley/03.jpg"
       ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
@@ -755,8 +778,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/303/200",
-        "https://placecats.com/313/200"
+        "/cali-trip/images/tunnel-view/01.jpg",
+        "/cali-trip/images/tunnel-view/02.jpg",
+        "/cali-trip/images/tunnel-view/03.jpg"
       ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
@@ -786,8 +810,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/304/200",
-        "https://placecats.com/314/200"
+        "/cali-trip/images/yosemite-village/01.jpg",
+        "/cali-trip/images/yosemite-village/02.jpg",
+        "/cali-trip/images/yosemite-village/03.jpg"
       ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
@@ -817,8 +842,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/305/200",
-        "https://placecats.com/315/200"
+        "/cali-trip/images/yosemite-valley-floor-tour/01.jpg",
+        "/cali-trip/images/yosemite-valley-floor-tour/02.jpg",
+        "/cali-trip/images/yosemite-valley-floor-tour/03.jpg"
       ],
       "official_url": [
         "https://www.travelyosemite.com/things-to-do/guided-bus-tours"
@@ -848,8 +874,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/306/200",
-        "https://placecats.com/316/200"
+        "/cali-trip/images/sentinel-bridge/01.jpg",
+        "/cali-trip/images/sentinel-bridge/02.jpg",
+        "/cali-trip/images/sentinel-bridge/03.jpg"
       ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
@@ -879,8 +906,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/307/200",
-        "https://placecats.com/317/200"
+        "/cali-trip/images/merced-river/01.jpg",
+        "/cali-trip/images/merced-river/02.jpg",
+        "/cali-trip/images/merced-river/03.jpg"
       ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
@@ -915,8 +943,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/308/200",
-        "https://placecats.com/318/200"
+        "/cali-trip/images/highway-1-big-sur-coast/01.jpg",
+        "/cali-trip/images/highway-1-big-sur-coast/02.jpg",
+        "/cali-trip/images/highway-1-big-sur-coast/03.jpg"
       ],
       "official_url": [
         "https://roads.dot.ca.gov/"
@@ -946,8 +975,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/309/200",
-        "https://placecats.com/319/200"
+        "/cali-trip/images/rocky-creek-bridge/01.jpg",
+        "/cali-trip/images/rocky-creek-bridge/02.jpg",
+        "/cali-trip/images/rocky-creek-bridge/03.jpg"
       ],
       "official_url": [
         "https://dot.ca.gov/"
@@ -977,8 +1007,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/300/200",
-        "https://placecats.com/310/200"
+        "/cali-trip/images/garrapata-bluff-trail/01.jpg",
+        "/cali-trip/images/garrapata-bluff-trail/02.jpg",
+        "/cali-trip/images/garrapata-bluff-trail/03.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=579"
@@ -1006,8 +1037,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/301/200",
-        "https://placecats.com/311/200"
+        "/cali-trip/images/ventana-big-sur/01.jpg",
+        "/cali-trip/images/ventana-big-sur/02.jpg",
+        "/cali-trip/images/ventana-big-sur/03.jpg"
       ],
       "official_url": [
         "https://www.ventanabigsur.com/"
@@ -1037,8 +1069,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/302/200",
-        "https://placecats.com/312/200"
+        "/cali-trip/images/bixby-creek-bridge/01.jpg",
+        "/cali-trip/images/bixby-creek-bridge/02.jpg",
+        "/cali-trip/images/bixby-creek-bridge/03.jpg"
       ],
       "official_url": [
         "https://dot.ca.gov/"
@@ -1068,8 +1101,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/303/200",
-        "https://placecats.com/313/200"
+        "/cali-trip/images/carmel-by-the-sea/01.jpg",
+        "/cali-trip/images/carmel-by-the-sea/02.jpg",
+        "/cali-trip/images/carmel-by-the-sea/03.jpg"
       ],
       "official_url": [
         "https://ci.carmel.ca.us/"
@@ -1099,8 +1133,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/304/200",
-        "https://placecats.com/314/200"
+        "/cali-trip/images/pebble-beach/01.jpg",
+        "/cali-trip/images/pebble-beach/02.jpg",
+        "/cali-trip/images/pebble-beach/03.jpg"
       ],
       "official_url": [
         "https://www.pebblebeach.com/"
@@ -1130,8 +1165,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/305/200",
-        "https://placecats.com/315/200"
+        "/cali-trip/images/17-mile-drive/01.jpg",
+        "/cali-trip/images/17-mile-drive/02.jpg",
+        "/cali-trip/images/17-mile-drive/03.jpg"
       ],
       "official_url": [
         "https://www.pebblebeach.com/17-mile-drive/"
@@ -1161,8 +1197,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/306/200",
-        "https://placecats.com/316/200"
+        "/cali-trip/images/lone-cypress/01.jpg",
+        "/cali-trip/images/lone-cypress/02.jpg",
+        "/cali-trip/images/lone-cypress/03.jpg"
       ],
       "official_url": [
         "https://www.pebblebeach.com/17-mile-drive/"
@@ -1192,8 +1229,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/307/200",
-        "https://placecats.com/317/200"
+        "/cali-trip/images/spanish-bay/01.jpg",
+        "/cali-trip/images/spanish-bay/02.jpg",
+        "/cali-trip/images/spanish-bay/03.jpg"
       ],
       "official_url": [
         "https://www.pebblebeach.com/golf/the-links-at-spanish-bay/"
@@ -1223,8 +1261,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/308/200",
-        "https://placecats.com/318/200"
+        "/cali-trip/images/muir-woods-main-trail/01.jpg",
+        "/cali-trip/images/muir-woods-main-trail/02.jpg",
+        "/cali-trip/images/muir-woods-main-trail/03.jpg"
       ],
       "official_url": [
         "https://www.nps.gov/goga/planyourvisit/muir-woods-main-trail.htm"
@@ -1252,8 +1291,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/309/200",
-        "https://placecats.com/319/200"
+        "/cali-trip/images/rush-creek-nature-trail/01.jpg",
+        "/cali-trip/images/rush-creek-nature-trail/02.jpg",
+        "/cali-trip/images/rush-creek-nature-trail/03.jpg"
       ],
       "official_url": [
         "https://www.rushcreeklodge.com/explore/activities/nature-trails/"
@@ -1281,8 +1321,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/300/200",
-        "https://placecats.com/310/200"
+        "/cali-trip/images/rush-creek-vista-trail/01.jpg",
+        "/cali-trip/images/rush-creek-vista-trail/02.jpg",
+        "/cali-trip/images/rush-creek-vista-trail/03.jpg"
       ],
       "official_url": [
         "https://www.rushcreeklodge.com/explore/activities/nature-trails/"
@@ -1310,8 +1351,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/301/200",
-        "https://placecats.com/311/200"
+        "/cali-trip/images/bridalveil-fall-trail/01.jpg",
+        "/cali-trip/images/bridalveil-fall-trail/02.jpg",
+        "/cali-trip/images/bridalveil-fall-trail/03.jpg"
       ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
@@ -1339,8 +1381,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/302/200",
-        "https://placecats.com/312/200"
+        "/cali-trip/images/lower-yosemite-falls-loop/01.jpg",
+        "/cali-trip/images/lower-yosemite-falls-loop/02.jpg",
+        "/cali-trip/images/lower-yosemite-falls-loop/03.jpg"
       ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
@@ -1370,8 +1413,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/303/200",
-        "https://placecats.com/313/200"
+        "/cali-trip/images/cook-s-meadow-loop/01.jpg",
+        "/cali-trip/images/cook-s-meadow-loop/02.jpg",
+        "/cali-trip/images/cook-s-meadow-loop/03.jpg"
       ],
       "official_url": [
         "https://www.nps.gov/yose/index.htm"
@@ -1401,8 +1445,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/304/200",
-        "https://placecats.com/314/200"
+        "/cali-trip/images/andrew-molera-bluff-trail/01.jpg",
+        "/cali-trip/images/andrew-molera-bluff-trail/02.jpg",
+        "/cali-trip/images/andrew-molera-bluff-trail/03.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=582"
@@ -1430,8 +1475,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/305/200",
-        "https://placecats.com/315/200"
+        "/cali-trip/images/pfeiffer-big-sur-redwood-river-walk/01.jpg",
+        "/cali-trip/images/pfeiffer-big-sur-redwood-river-walk/02.jpg",
+        "/cali-trip/images/pfeiffer-big-sur-redwood-river-walk/03.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=570"
@@ -1459,8 +1505,7 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/306/200",
-        "https://placecats.com/316/200"
+        "/cali-trip/images/south-shore-trail-point-lobos/01.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"
@@ -1488,8 +1533,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/307/200",
-        "https://placecats.com/317/200"
+        "https://placekitten.com/307/200",
+        "https://placekitten.com/317/200",
+        "https://placekitten.com/367/200"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"
@@ -1517,8 +1563,9 @@
       "type": "attraction",
       "notes": "",
       "images": [
-        "https://placecats.com/308/200",
-        "https://placecats.com/318/200"
+        "/cali-trip/images/sea-lion-point-point-lobos/01.jpg",
+        "/cali-trip/images/sea-lion-point-point-lobos/02.jpg",
+        "/cali-trip/images/sea-lion-point-point-lobos/03.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"
@@ -1546,8 +1593,9 @@
       "type": "trailhead",
       "notes": "",
       "images": [
-        "https://placecats.com/309/200",
-        "https://placecats.com/319/200"
+        "/cali-trip/images/cypress-grove-trail-point-lobos/01.jpg",
+        "/cali-trip/images/cypress-grove-trail-point-lobos/02.jpg",
+        "/cali-trip/images/cypress-grove-trail-point-lobos/03.jpg"
       ],
       "official_url": [
         "https://www.parks.ca.gov/?page_id=571"

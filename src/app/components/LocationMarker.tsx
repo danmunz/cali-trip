@@ -155,7 +155,7 @@ export default function LocationMarker({
         >
           <div
             className="backdrop-blur-sm px-3.5 py-2 rounded-lg shadow-xl whitespace-nowrap"
-            style={{ backgroundColor: `color-mix(in oklab, ${segmentColor} 40%, rgba(0,0,0,0.92))` }}
+            style={{ backgroundColor: `color-mix(in oklab, ${segmentColor} 65%, rgba(0,0,0,0.85))` }}
           >
             <p className="text-white text-[13px] font-semibold leading-tight">
               {location.name}
@@ -165,31 +165,48 @@ export default function LocationMarker({
 
         {/* ── Full rich tooltip (Pin Focus mode) ────────────── */}
         <div
-          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-8"
           style={{
             opacity: showFullTooltip ? 1 : 0,
             transform: showFullTooltip ? 'translateY(0)' : 'translateY(6px)',
             transition: 'opacity 0.2s ease, transform 0.2s ease',
             pointerEvents: showFullTooltip ? 'auto' : 'none',
-            width: 390,
+            width: 480,
           }}
         >
           <div
-            className="backdrop-blur-md rounded-xl shadow-2xl overflow-hidden border border-white/10"
-            style={{ backgroundColor: `color-mix(in oklab, ${segmentColor} 35%, rgba(0,0,0,0.95))` }}
+            className="backdrop-blur-md rounded-xl shadow-2xl overflow-hidden border border-white/5"
+            style={{ backgroundColor: `color-mix(in oklab, ${segmentColor} 60%, rgba(0,0,0,0.88))` }}
           >
-            {/* Photo strip */}
+            {/* Photo grid */}
             {location.images.length > 0 && (
-              <div className="flex h-[150px] overflow-hidden">
-                {location.images.slice(0, 3).map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt=""
-                    className="object-cover flex-1 min-w-0"
-                    loading="lazy"
-                  />
-                ))}
+              <div className="flex gap-0.5 p-0.5 pb-0 h-[200px]">
+                {/* Left: tall photo */}
+                <img
+                  src={location.images[0]}
+                  alt=""
+                  className="object-cover w-1/2 h-full rounded-l-md border border-white/20"
+                  loading="lazy"
+                />
+                {/* Right: two stacked photos */}
+                <div className="flex flex-col gap-0.5 w-1/2">
+                  {location.images[1] && (
+                    <img
+                      src={location.images[1]}
+                      alt=""
+                      className="object-cover w-full flex-1 min-h-0 rounded-tr-md border border-white/20"
+                      loading="lazy"
+                    />
+                  )}
+                  {location.images[2] && (
+                    <img
+                      src={location.images[2]}
+                      alt=""
+                      className="object-cover w-full flex-1 min-h-0 rounded-br-md border border-white/20"
+                      loading="lazy"
+                    />
+                  )}
+                </div>
               </div>
             )}
 
