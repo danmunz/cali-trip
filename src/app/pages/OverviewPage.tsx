@@ -45,14 +45,14 @@ export default function OverviewPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#faf8f5]"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
           <div className="text-center">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/60 mb-5 font-medium drop-shadow">
+            <p className="text-m uppercase tracking-[0.35em] text-white/60 mb-5 font-medium drop-shadow">
               April 2026 · California
             </p>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl mb-5 text-white tracking-tight drop-shadow-xl font-light">
+            <h1 className="text-5xl sm:text-6xl lg:text-8xl mb-5 text-white tracking-tight drop-shadow-xl">
               {tripMeta.title}
             </h1>
             <div className="w-16 h-px bg-white/40 mx-auto mb-5" />
-            <p className="text-lg text-white/80 italic drop-shadow font-light">
+            <p className="text-3xl text-white/80 italic drop-shadow font-light">
               Nine days through California's landscapes &amp; vineyards
             </p>
           </div>
@@ -104,7 +104,7 @@ export default function OverviewPage() {
                 Daily Itinerary
               </h2>
             </div>
-            <p className="text-gray-600 mb-6">{tripMeta.duration}</p>
+            <p className="text-gray-600 mb-6 text-lg">{tripMeta.duration}</p>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
@@ -126,7 +126,7 @@ export default function OverviewPage() {
                       key={idx}
                       className="border-b border-gray-200 hover:bg-gray-50 transition-colors"
                     >
-                      <td className="py-4 px-3 text-sm text-gray-900">
+                      <td className="py-4 px-3 text-base text-gray-900">
                         <div className="flex items-center gap-2">
                           <div
                             className="w-2.5 h-2.5 rounded-full"
@@ -135,10 +135,10 @@ export default function OverviewPage() {
                           <span className="font-medium">{row.date}</span>
                         </div>
                       </td>
-                      <td className="py-4 px-3 text-sm text-gray-800 font-medium">
+                      <td className="py-4 px-3 text-base text-gray-800 font-medium">
                         {row.base}
                       </td>
-                      <td className="py-4 px-3 text-sm text-gray-700">
+                      <td className="py-4 px-3 text-base text-gray-700">
                         {row.logistics}
                       </td>
                     </tr>
@@ -158,13 +158,13 @@ export default function OverviewPage() {
                 <h2 className="text-4xl text-gray-900 font-medium">Flights</h2>
               </div>
               <div className="space-y-6">
-                <div className="flex items-start gap-4 text-sm">
+                <div className="flex items-start gap-4 text-base">
                   <div className="text-gray-600 w-24 font-medium">Airline</div>
                   <div className="text-gray-900">{tripMeta.flights.airline}</div>
                 </div>
-                <div className="flex items-start gap-4 text-sm">
+                <div className="flex items-start gap-4 text-base">
                   <div className="text-gray-600 w-24 font-medium">Confirmation</div>
-                  <div className="text-gray-900 font-mono text-xs font-bold">
+                  <div className="text-gray-900 font-mono text-sm font-bold">
                     {tripMeta.flights.confirmation}
                   </div>
                 </div>
@@ -177,13 +177,13 @@ export default function OverviewPage() {
                         Outbound
                       </h3>
                     </div>
-                    <div className="pl-4 space-y-2 text-sm text-gray-800">
+                    <div className="pl-4 space-y-2 text-base text-gray-800">
                       <div>
                         <span className="font-semibold">{tripMeta.flights.outbound.number}</span>
                         <span className="text-gray-500 mx-2">•</span>
                         <span>{tripMeta.flights.outbound.date}</span>
                       </div>
-                      <div className="text-xs">
+                      <div className="text-sm">
                         <FlightLeg value={tripMeta.flights.outbound.departure} /> →{' '}
                         <FlightLeg value={tripMeta.flights.outbound.arrival} />
                       </div>
@@ -197,13 +197,13 @@ export default function OverviewPage() {
                         Return
                       </h3>
                     </div>
-                    <div className="pl-4 space-y-2 text-sm text-gray-800">
+                    <div className="pl-4 space-y-2 text-base text-gray-800">
                       <div>
                         <span className="font-semibold">{tripMeta.flights.return.number}</span>
                         <span className="text-gray-500 mx-2">•</span>
                         <span>{tripMeta.flights.return.date}</span>
                       </div>
-                      <div className="text-xs">
+                      <div className="text-sm">
                         <FlightLeg value={tripMeta.flights.return.departure} /> →{' '}
                         <FlightLeg value={tripMeta.flights.return.arrival} />
                       </div>
@@ -229,16 +229,16 @@ export default function OverviewPage() {
                   >
                     <div className="flex items-center gap-3 flex-1">
                       <WeatherIcon condition={day.condition} />
-                      <div className="text-sm">
+                      <div className="text-base">
                         <div className="text-gray-900 font-semibold">
                           {day.date}
                         </div>
-                        <div className="text-xs text-gray-600">
+                        <div className="text-sm text-gray-600">
                           {day.location}
                         </div>
                       </div>
                     </div>
-                    <div className="text-sm text-gray-800">
+                    <div className="text-base text-gray-800">
                       <span className="font-bold">{day.high}°</span>
                       <span className="text-gray-500 mx-1">/</span>
                       <span className="text-gray-600">{day.low}°</span>

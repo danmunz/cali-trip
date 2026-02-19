@@ -24,10 +24,10 @@ const GEO_RADIUS_DEG = 1.5;
 /** Padding (px) inside the map viewport so pins aren't flush to the edge. */
 const BOUNDS_PADDING = { top: 140, bottom: 60, left: 40, right: 40 };
 
-const MAP_PITCH = 45;
+const MAP_PITCH = 60;
 const MAP_BEARING = -10;
 /** Lower pitch when zoomed to a single pin — avoids terrain occluding valley-floor markers. */
-const PIN_FOCUS_PITCH = 30;
+const PIN_FOCUS_PITCH = 45;
 
 /**
  * Pin a location to a specific segment map, overriding its trip_parts.
@@ -125,7 +125,7 @@ export default function JourneyMap({
       setSelectedId(null);
       map.fitBounds(bounds, {
         padding: BOUNDS_PADDING,
-        maxZoom: 10,
+        maxZoom: 11,
         pitch: MAP_PITCH,
         bearing: MAP_BEARING,
         duration: animate ? 2500 : 0,

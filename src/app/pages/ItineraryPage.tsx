@@ -165,7 +165,7 @@ export default function ItineraryPage() {
   return (
     <div className="fixed top-16 left-0 right-0 bottom-0 flex flex-col">
       {/* Sub-Navigation */}
-      <div className="z-40 bg-white/80 backdrop-blur-md border-b border-gray-200/60 shadow-sm shrink-0">
+      <div className="z-40 bg-stone-50/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm shrink-0">
         <div className="max-w-6xl mx-auto px-6 lg:px-12 py-2">
           <div className="flex items-center justify-center gap-2 overflow-x-auto">
             {sections.map((s) => {
@@ -175,27 +175,26 @@ export default function ItineraryPage() {
               <button
                 key={s.segmentId}
                 onClick={() => goToSegment(s.segmentId)}
-                className={`group flex-shrink-0 px-6 py-2 rounded-full text-sm transition-all duration-200 font-bold flex flex-col items-center gap-0.5 ${
+                className={`cursor-pointer relative group flex-shrink-0 px-6 py-2 rounded-full text-sm transition-all duration-200 font-bold flex flex-col items-center gap-0.5 ${
                   isActive
-                    ? 'text-white shadow-lg shadow-black/15'
-                    : 'text-gray-700'
+                    ? 'text-white shadow-md shadow-black/20'
+                    : 'text-gray-700 hover:shadow-sm'
                 }`}
                 style={{
                   backgroundColor: isActive ? color : undefined,
-                  ['--seg-color' as string]: color,
                 }}
               >
-                <span>{segments[s.segmentId].navLabel}</span>
-                <span className={`text-[10px] tracking-wide ${
+                <span className="relative z-10">{segments[s.segmentId].navLabel}</span>
+                <span className={`relative z-10 text-[10px] tracking-wide ${
                   isActive ? 'text-white/60' : 'text-gray-500'
                 }`}>
                   {sectionDateRange(s.days)}
                 </span>
-                {/* Hover underline accent */}
+                {/* Hover pill tint */}
                 {!isActive && (
                   <span
-                    className="block h-[2px] w-0 group-hover:w-3/4 rounded-full transition-all duration-200 mt-0.5"
-                    style={{ backgroundColor: color, opacity: 0.4 }}
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-[0.12] transition-opacity duration-200 pointer-events-none"
+                    style={{ backgroundColor: color }}
                   />
                 )}
               </button>
@@ -434,7 +433,7 @@ export default function ItineraryPage() {
         <div
           className="w-1/2 hidden lg:block p-3 transition-colors duration-700 ease-in-out"
           style={{
-            background: `linear-gradient(to right, color-mix(in oklab, ${segments[activeSection].color} 80%, #000) 0%, ${segments[activeSection].color} 40%)`,
+            backgroundColor: `color-mix(in oklab, ${segments[activeSection].color} 40%, #1a1a1a)`,
           }}
         >
           <div className="relative h-full rounded-2xl overflow-hidden ring-2 ring-white/20 shadow-2xl">

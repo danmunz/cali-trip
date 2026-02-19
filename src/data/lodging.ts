@@ -37,7 +37,7 @@ export const lodgingData = {
   },
   yosemite: {
     id: 'rush-creek-lodge',
-    name: 'Rush Creek Lodge & Spa at Yosemite',
+    name: 'Rush Creek Lodge',
     dates: 'April 6–8, 2026',
     nights: '2 nights',
     address: '34001 CA-120, Groveland, CA 95321',

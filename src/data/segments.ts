@@ -47,8 +47,8 @@ export const segments = {
   },
   carmel: {
     navLabel: 'Carmel + Big Sur',
-    title: 'Monterey & Carmel',
-    subtitle: 'Big Sur Coast',
+    title: 'Carmel + Big Sur',
+    subtitle: 'Coastal Cliffs & Pacific Views',
     color: '#4a7c8e',
     bgImage: bgImages.carmel,
     description:

@@ -18,33 +18,42 @@ export default function LodgingPage() {
   return (
     <div className="pt-16 min-h-screen">
       {/* Sub-Navigation — mirrors itinerary style with dates */}
-      <div className="border-b border-gray-200 bg-white/95 backdrop-blur-sm sticky top-16 z-40 shadow-sm">
+      <div className="border-b border-stone-200/50 bg-stone-50/90 backdrop-blur-md sticky top-16 z-40 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 lg:px-12 py-2">
           <div className="flex items-center justify-center gap-2 overflow-x-auto">
-            {Object.entries(lodgingData).map(([key, data]) => (
+            {Object.entries(lodgingData).map(([key, data]) => {
+              const isActive = activeLodging === key;
+              return (
               <button
                 key={key}
                 onClick={() => switchLodging(key as LodgingKey)}
-                className={`flex-shrink-0 px-6 py-2 rounded-full text-sm font-bold transition-all flex flex-col items-center gap-0.5 ${
-                  activeLodging === key
-                    ? 'text-white shadow-lg'
-                    : 'text-gray-700 hover:bg-gray-100'
+                className={`cursor-pointer relative flex-shrink-0 px-6 py-2 rounded-full text-sm font-bold transition-all duration-200 flex flex-col items-center gap-0.5 group ${
+                  isActive
+                    ? 'text-white shadow-md shadow-black/20'
+                    : 'text-gray-700 hover:shadow-sm'
                 }`}
                 style={{
-                  backgroundColor:
-                    activeLodging === key ? data.color : 'transparent',
+                  backgroundColor: isActive ? data.color : undefined,
                 }}
               >
-                <span>{data.name}</span>
+                <span className="relative z-10">{data.name}</span>
                 <span
-                  className={`text-[10px] tracking-wide ${
-                    activeLodging === key ? 'text-white/60' : 'text-gray-500'
+                  className={`relative z-10 text-[10px] tracking-wide ${
+                    isActive ? 'text-white/60' : 'text-gray-500'
                   }`}
                 >
                   {data.dates} · {data.nights}
                 </span>
+                {/* Hover pill tint */}
+                {!isActive && (
+                  <span
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-[0.12] transition-opacity duration-200 pointer-events-none"
+                    style={{ backgroundColor: data.color }}
+                  />
+                )}
               </button>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
