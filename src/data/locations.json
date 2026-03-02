@@ -1613,6 +1613,66 @@
           "segment_id": "carmel"
         }
       ]
+    },
+    {
+      "id": "ad-hoc",
+      "name": "Ad Hoc",
+      "address": "6476 Washington St, Yountville, CA 94599",
+      "geo": {
+        "lat": 38.40168,
+        "lng": -122.36121
+      },
+      "type": "restaurant",
+      "notes": "",
+      "images": [
+        "/cali-trip/images/ad-hoc/01.jpg",
+        "/cali-trip/images/ad-hoc/02.jpg",
+        "/cali-trip/images/ad-hoc/03.jpg"
+      ],
+      "official_url": [
+        "https://www.thomaskeller.com/adhoc"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=38.40168,-122.36121"
+      ],
+      "review_url": [
+        "https://www.yelp.com/biz/ad-hoc-yountville"
+      ],
+      "trip_parts": [
+        {
+          "day": 3,
+          "date": "2026-04-05",
+          "segment_id": "napa"
+        }
+      ]
+    },
+    {
+      "id": "half-dome",
+      "name": "Half Dome",
+      "address": "Yosemite National Park, CA 95389",
+      "geo": {
+        "lat": 37.7459,
+        "lng": -119.5332
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [],
+      "official_url": [
+        "https://www.nps.gov/yose/planyourvisit/halfdome.htm"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=37.7459,-119.5332"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g61000-d146682-Reviews-Half_Dome-Yosemite_National_Park_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        }
+      ]
     }
   ]
 }

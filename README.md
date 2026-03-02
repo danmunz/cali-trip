@@ -54,7 +54,8 @@ full-trip.md
 3. Detects `**time — name**` patterns as activity blocks; `*Travel (drive): ~duration — from → to*` as travel lines
 4. Infers segment assignment (napa/yosemite/carmel) from the Trip Itinerary table's Base column
 5. Fuzzy-matches location mentions (bold names, links) against `locations.json` using an alias system with normalization (curly quotes, parenthetical abbreviations, suffix stripping, tail-word matching)
-6. Writes typed `.ts` files and syncs `locations.json` `trip_parts`
+6. Creates stub entries in `locations.json` for any **bold** name that doesn't match an existing location (warns via `⚠  Stub created`; enrich geo/URLs/images by hand)
+7. Writes typed `.ts` files and syncs `locations.json` `trip_parts`
 
 ---
 

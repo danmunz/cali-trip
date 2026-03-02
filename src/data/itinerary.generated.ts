@@ -199,13 +199,21 @@ export const itinerary: TripDay[] = [
         "description": "Head to V. Sattui for a seated tasting for you and Ted—five Premier and Estate wines, with an option to add the single-vineyard Cabernet flight—while Dan, Jen, and Ava spread out on the open lawns. The winery sells exclusively through its own tasting room (no retail distribution), and is known for a deli and cheese counter that's made picnicking on the property something of an institution here.",
         "locationIds": [
           "v-sattui-winery"
-        ]
+        ],
+        "travelAfter": {
+          "mode": "drive",
+          "duration": "~25 min",
+          "from": "V. Sattui (St. Helena)",
+          "to": "Ad Hoc"
+        }
       },
       {
-        "time": "Evening",
-        "name": "Dinner TBD",
-        "description": "Enjoy Yountville's fine-dining scene.",
-        "locationIds": []
+        "time": "5:45pm",
+        "name": "Dinner at Ad Hoc",
+        "description": "Dinner at Ad Hoc, Thomas Keller's family-style restaurant on Washington Street in Yountville—a deliberately casual counterpart to The French Laundry, serving a single four-course prix fixe menu that changes nightly. The format is communal and generous: big platters of seasonal, comfort-driven cooking served family-style to the table. It's a quintessential Yountville experience and a great celebratory dinner for the whole group before packing up for Yosemite.",
+        "locationIds": [
+          "ad-hoc"
+        ]
       },
       {
         "time": "After dinner",
@@ -306,6 +314,7 @@ export const itinerary: TripDay[] = [
         "name": "Tunnel View",
         "description": "Stop at Tunnel View for Yosemite’s most famous overlook—El Capitan, Bridalveil Fall, and Half Dome all in one sweep. The viewpoint became iconic after the Wawona Tunnel opened in the 1930s, and it’s still the classic “first big reveal” spot in the Valley.",
         "locationIds": [
+          "half-dome",
           "bridalveil-fall-trail",
           "tunnel-view"
         ]
@@ -349,7 +358,8 @@ export const itinerary: TripDay[] = [
         "description": "Stop at Sentinel Bridge for a classic Half Dome viewpoint with the Merced River often adding reflections. It’s a longtime photographer favorite, especially later in the day when the light starts to soften.",
         "locationIds": [
           "sentinel-bridge",
-          "merced-river"
+          "merced-river",
+          "half-dome"
         ]
       },
       {

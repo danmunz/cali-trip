@@ -136,6 +136,18 @@ function collectAfterH1(
 
 // ── Location matching ───────────────────────────────────────
 
+/** Generate a URL-friendly slug from a name. */
+function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[\u2018\u2019\u2032']/g, '')   // remove apostrophes
+    .replace(/[^a-z0-9]+/g, '-')              // non-alphanum → dash
+    .replace(/^-|-$/g, '');                    // trim leading/trailing
+}
+
+/** Track bold names that didn't match any existing location, for stub naming. */
+const unmatchedBoldNames = new Map<string, string>(); // slug → original bold text
+
 /** Normalize curly quotes and dashes for comparison. */
 function normalize(s: string): string {
   return s
@@ -226,7 +238,25 @@ function extractLocationIdsFromNodes(nodes: RootContent[]): string[] {
     if (node.type !== 'paragraph') continue;
     for (const child of (node as Paragraph).children) {
       if (child.type === 'strong') {
-        for (const id of matchLocationsByText(nodeText(child))) ids.add(id);
+        const boldText = nodeText(child);
+        const matched = matchLocationsByText(boldText);
+        if (matched.length > 0) {
+          for (const id of matched) ids.add(id);
+        } else if (boldText.length >= 3) {
+          // Check if this bold text is a shortened form of an existing location
+          const boldLower = normalize(boldText);
+          const isPartialMatch = locations.some((loc) =>
+            normalize(loc.name).includes(boldLower),
+          );
+          if (!isPartialMatch) {
+            // Unmatched bold name — generate a slug ID for stub creation
+            const slug = slugify(boldText);
+            if (slug.length >= 2) {
+              ids.add(slug);
+              unmatchedBoldNames.set(slug, boldText);
+            }
+          }
+        }
       }
       if (child.type === 'link') {
         const byUrl = matchLocationByUrl(child.url);
@@ -652,7 +682,7 @@ for (const [locId, refs] of locationRefs) {
     // Stub: new location mentioned in markdown but not in locations.json
     const stub: Location = {
       id: locId,
-      name: locId.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+      name: unmatchedBoldNames.get(locId) ?? locId.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
       address: '',
       geo: { lat: 0, lng: 0 },
       type: 'attraction',

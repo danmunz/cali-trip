@@ -137,9 +137,11 @@ Return to The Estate for a true downtime block—massage (if scheduled), pool ti
 
 Head to V. Sattui for a seated tasting for you and Ted—five Premier and Estate wines, with an option to add the single-vineyard Cabernet flight—while Dan, Jen, and Ava spread out on the open lawns. The winery sells exclusively through its own tasting room (no retail distribution), and is known for a deli and cheese counter that's made picnicking on the property something of an institution here.
 
-**Evening — Dinner TBD**  
+*Travel (drive): ~25 min — V. Sattui (St. Helena) → Ad Hoc*
 
-Enjoy Yountville's fine-dining scene.
+**5:45pm — Dinner at Ad Hoc**  
+
+Dinner at **Ad Hoc**, Thomas Keller's family-style restaurant on Washington Street in Yountville—a deliberately casual counterpart to The French Laundry, serving a single four-course prix fixe menu that changes nightly. The format is communal and generous: big platters of seasonal, comfort-driven cooking served family-style to the table. It's a quintessential Yountville experience and a great celebratory dinner for the whole group before packing up for Yosemite.
 
 **After dinner — Return to the hotel + pack for Yosemite**  
 
