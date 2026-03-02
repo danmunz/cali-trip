@@ -24,6 +24,75 @@ function formatDate(iso: string, dayOfWeek: string): string {
   return `${dayOfWeek}, ${d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}`;
 }
 
+// ── Segment background images (ordered, unique) ─────────────
+
+const segmentBgImages: { segmentId: string; url: string }[] = [];
+{
+  const seen = new Set<string>();
+  for (const day of itinerary) {
+    if (!seen.has(day.segmentId)) {
+      seen.add(day.segmentId);
+      const seg = (segments as Record<string, { bgImage?: string }>)[day.segmentId];
+      if (seg?.bgImage) segmentBgImages.push({ segmentId: day.segmentId, url: seg.bgImage });
+    }
+  }
+}
+
+// ── Crossfading segment background ──────────────────────────
+
+function SegmentBackground() {
+  const [activeSegment, setActiveSegment] = useState<string>(segmentBgImages[0]?.segmentId ?? '');
+
+  useEffect(() => {
+    const sections = document.querySelectorAll<HTMLElement>('[data-segment]');
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the topmost visible section
+        let best: { id: string; top: number } | null = null;
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const seg = entry.target.getAttribute('data-segment')!;
+          const top = entry.boundingClientRect.top;
+          if (!best || top < best.top) best = { id: seg, top };
+        }
+        // Fallback: scan all sections if none from this batch
+        if (!best) {
+          for (const section of sections) {
+            const rect = section.getBoundingClientRect();
+            if (rect.bottom > 100) {
+              best = { id: section.getAttribute('data-segment')!, top: rect.top };
+              break;
+            }
+          }
+        }
+        if (best) setActiveSegment(best.id);
+      },
+      { rootMargin: '-10% 0px -60% 0px', threshold: 0 },
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-[1] pointer-events-none print:hidden" aria-hidden="true">
+      {/* Segment images */}
+      {segmentBgImages.map(({ segmentId, url }) => (
+        <div
+          key={segmentId}
+          className="absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out"
+          style={{
+            backgroundImage: `url(${url})`,
+            opacity: activeSegment === segmentId ? 0.10 : 0,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 // ── Location link pills ──────────────────────────────────────
 
 function LocationLinks({ locationIds }: { locationIds: string[] }) {
@@ -291,11 +360,12 @@ function TocSidebar() {
 
 export default function FullItineraryPage() {
   return (
-    <div className="pt-16 min-h-screen">
+    <div className="pt-16 min-h-screen bg-transparent">
+      <SegmentBackground />
       <TocSidebar />
 
       {/* Header */}
-      <div className="border-b border-gray-200 py-20 px-6 text-center">
+      <div className="relative z-[2] border-b border-gray-200 py-20 px-6 text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-6 font-bold">
           Full Itinerary
         </p>
@@ -307,7 +377,7 @@ export default function FullItineraryPage() {
         </p>
       </div>
 
-      <main className="max-w-3xl mx-auto px-6 lg:px-12 py-16">
+      <main className="relative z-10 max-w-3xl mx-auto px-6 lg:px-12 py-16">
         {/* Overview */}
         <section className="mb-16">
           <p className="text-2xl leading-relaxed text-gray-700">
@@ -443,7 +513,7 @@ export default function FullItineraryPage() {
             const color = segmentColor(day.segmentId);
 
             return (
-              <section key={day.day} id={`day-${day.day}`} className="scroll-mt-20">
+              <section key={day.day} id={`day-${day.day}`} data-segment={day.segmentId} className="scroll-mt-20">
                 {/* Day Header */}
                 <div
                   className="border-l-4 pl-6 mb-10"
@@ -458,7 +528,7 @@ export default function FullItineraryPage() {
                   <h2 className="text-3xl sm:text-4xl text-gray-900 font-medium mb-3">
                     {day.title}
                   </h2>
-                  <p className="text-xl text-gray-600 leading-relaxed">
+                  <p className="text-[28px] text-gray-600 leading-[1.6]">
                     {day.summary}
                   </p>
                 </div>
@@ -485,7 +555,7 @@ export default function FullItineraryPage() {
                             </span>
                           )}
                         </div>
-                        <p className="text-gray-700 leading-relaxed text-xl">
+                        <p className="text-gray-700 leading-[1.6] text-[24px]">
                           {activity.description}
                         </p>
                         <LocationLinks locationIds={activity.locationIds} />
