@@ -160,7 +160,7 @@ function LocationLinks({ locationIds }: { locationIds: string[] }) {
             <div className="hidden print:block text-gray-600" style={{ fontSize: '8pt' }}>
               <span className="font-semibold">{loc.name}</span>
               {printUrl && (
-                <span className="text-gray-400 ml-1">\u2014 {printUrl}</span>
+                <span className="text-gray-400 ml-1">— {printUrl}</span>
               )}
             </div>
           </div>
@@ -314,7 +314,7 @@ function TocSidebar() {
                       <span className="block truncate">{day.title}</span>
                     </button>
 
-                    {/* Nested stops \u2014 active day only */}
+                    {/* Nested stops — active day only */}
                     {isActive && (
                       <div className="ml-3 border-l border-gray-200 pl-3 py-1 space-y-0.5 animate-[fadeIn_200ms_ease-out]">
                         {day.activities.map((act, i) => (
@@ -338,7 +338,7 @@ function TocSidebar() {
         </div>
       </div>
 
-      {/* Peek tab \u2014 always visible edge with colored dots */}
+      {/* Peek tab — always visible edge with colored dots */}
       <div className="absolute right-0 top-0 bottom-0 w-3 flex flex-col items-center pt-8 gap-3">
         {tocGroups.map((group) =>
           group.days.map((day) => (
@@ -475,7 +475,7 @@ export default function FullItineraryPage() {
           {tripMeta.title}
         </h1>
         <p className="text-base sm:text-lg text-gray-500 font-medium">
-          {tripMeta.subtitle.replace(' | ', ' \u00b7 ')}
+          {tripMeta.subtitle.replace(' | ', ' · ')}
         </p>
       </div>
 
@@ -547,11 +547,11 @@ export default function FullItineraryPage() {
                   Outbound
                 </div>
                 <div className="text-gray-900 font-medium">
-                  {tripMeta.flights.outbound.number} \u00b7{' '}
+                  {tripMeta.flights.outbound.number} ·{' '}
                   {tripMeta.flights.outbound.date}
                 </div>
                 <div className="text-gray-600">
-                  {tripMeta.flights.outbound.departure} \u2192{' '}
+                  {tripMeta.flights.outbound.departure} →{' '}
                   {tripMeta.flights.outbound.arrival}
                 </div>
               </div>
@@ -560,16 +560,16 @@ export default function FullItineraryPage() {
                   Return
                 </div>
                 <div className="text-gray-900 font-medium">
-                  {tripMeta.flights.return.number} \u00b7{' '}
+                  {tripMeta.flights.return.number} ·{' '}
                   {tripMeta.flights.return.date}
                 </div>
                 <div className="text-gray-600">
-                  {tripMeta.flights.return.departure} \u2192{' '}
+                  {tripMeta.flights.return.departure} →{' '}
                   {tripMeta.flights.return.arrival}
                 </div>
               </div>
               <div className="text-xs text-gray-400 pt-1">
-                {tripMeta.flights.airline} \u00b7 Confirmation:{' '}
+                {tripMeta.flights.airline} · Confirmation:{' '}
                 <span className="font-mono">
                   {tripMeta.flights.confirmation}
                 </span>
@@ -625,7 +625,7 @@ export default function FullItineraryPage() {
                     className="inline-block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs tracking-widest uppercase mb-3 sm:mb-4 font-bold shadow-sm text-white"
                     style={{ backgroundColor: color }}
                   >
-                    Day {day.day} \u00b7 {formatDate(day.date, day.dayOfWeek)}
+                    Day {day.day} · {formatDate(day.date, day.dayOfWeek)}
                   </div>
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 font-medium mb-3">
                     {day.title}
@@ -669,8 +669,8 @@ export default function FullItineraryPage() {
                           <div className="flex-1 border-t border-dashed border-gray-300" />
                           <Car className="w-4 sm:w-5 h-4 sm:h-5 flex-shrink-0" />
                           <span className="font-medium whitespace-nowrap text-xs sm:text-base">
-                            {activity.travelAfter.duration} \u2014{' '}
-                            {activity.travelAfter.from} \u2192{' '}
+                            {activity.travelAfter.duration} —{' '}
+                            {activity.travelAfter.from} →{' '}
                             {activity.travelAfter.to}
                           </span>
                           <div className="flex-1 border-t border-dashed border-gray-300" />

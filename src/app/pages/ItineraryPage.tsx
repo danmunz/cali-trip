@@ -32,10 +32,10 @@ function sectionDateRange(days: TripDay[]): string {
     return `${fMonth} ${first.getDate()}`;
   }
   if (first.getMonth() === last.getMonth()) {
-    return `${fMonth} ${first.getDate()}\u2013${last.getDate()}`;
+    return `${fMonth} ${first.getDate()}–${last.getDate()}`;
   }
   const lMonth = last.toLocaleDateString('en-US', { month: 'long' });
-  return `${fMonth} ${first.getDate()} \u2013 ${lMonth} ${last.getDate()}`;
+  return `${fMonth} ${first.getDate()} – ${lMonth} ${last.getDate()}`;
 }
 
 /** Parse the URL hash and return it if it's a known segment ID, else undefined. */
@@ -53,7 +53,7 @@ export default function ItineraryPage() {
   const [hoveredLocationIds, setHoveredLocationIds] = useState<string[]>([]);
   /** Location ID of the pin the user is hovering on the map. */
   const [mapHoveredId, setMapHoveredId] = useState<string | null>(null);
-  /** Location the user has scrolled to (debounced) \u2014 drives map fly-to. */
+  /** Location the user has scrolled to (debounced) — drives map fly-to. */
   const [scrollFocusedLocationId, setScrollFocusedLocationId] = useState<string | null>(null);
   /** True during the brief crossfade between segments. */
   const [isFading, setIsFading] = useState(false);
@@ -215,7 +215,7 @@ export default function ItineraryPage() {
 
       {/* Content + Map */}
       <div className="flex-1 flex min-h-0">
-        {/* Scrollable Content \u2014 only the active segment */}
+        {/* Scrollable Content — only the active segment */}
         <div
           ref={scrollContainerRef}
           className="lg:w-1/2 w-full overflow-y-auto transition-colors duration-700 ease-in-out"
@@ -229,7 +229,7 @@ export default function ItineraryPage() {
               data-section={activeData.segmentId}
               className="relative"
             >
-              {/* Hero image \u2014 fixed to the scroll container, vivid at top */}
+              {/* Hero image — fixed to the scroll container, vivid at top */}
               <div
                 className="sticky top-0 h-[60vh] sm:h-[70vh] -mb-[60vh] sm:-mb-[70vh] z-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${seg.bgImage})` }}
@@ -243,7 +243,7 @@ export default function ItineraryPage() {
                 />
               </div>
 
-              {/* Content \u2014 scrolls over the hero */}
+              {/* Content — scrolls over the hero */}
               <div className="relative z-10">
                 {/* Spacer so the hero is visible before content begins */}
                 <div className="h-[30vh] sm:h-[40vh]" />
@@ -288,7 +288,7 @@ export default function ItineraryPage() {
                       >
                         <p className="text-xs sm:text-sm text-white/80 uppercase tracking-widest font-medium">
                           {formatDayDate(day.date, day.dayOfWeek)}
-                          <span className="text-white/50 mx-2">\u00b7</span>
+                          <span className="text-white/50 mx-2">·</span>
                           <span className="normal-case tracking-normal text-white/70">{day.title}</span>
                         </p>
                       </div>
@@ -334,7 +334,7 @@ export default function ItineraryPage() {
                               }`}
                             >
                               <div className="relative">
-                                {/* Timeline dot \u2014 pulses when active */}
+                                {/* Timeline dot — pulses when active */}
                                 <div
                                   className={`absolute -left-[26px] sm:-left-[29px] w-3.5 sm:w-4 h-3.5 sm:h-4 rounded-full border-2 border-white ${
                                     isActive
@@ -379,9 +379,9 @@ export default function ItineraryPage() {
                                 <div className="flex items-center gap-2 mt-3 sm:mt-4 py-2 px-3 text-xs text-white/70 bg-white/5 rounded-md backdrop-blur-sm" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.6)' }}>
                                   <Car className="w-3.5 h-3.5 shrink-0" />
                                   <span>{activity.travelAfter.duration}</span>
-                                  <span className="text-white/40">\u2014</span>
+                                  <span className="text-white/40">—</span>
                                   <span>
-                                    {activity.travelAfter.from} \u2192 {activity.travelAfter.to}
+                                    {activity.travelAfter.from} → {activity.travelAfter.to}
                                   </span>
                                 </div>
                               )}

@@ -17,7 +17,7 @@ export default function LodgingPage() {
 
   return (
     <div className="pt-16 min-h-screen">
-      {/* Sub-Navigation \u2014 mirrors itinerary style with dates */}
+      {/* Sub-Navigation — mirrors itinerary style with dates */}
       <div className="border-b border-stone-200/50 bg-stone-50/90 backdrop-blur-md sticky top-16 z-40 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-2">
           <div className="flex items-center justify-center gap-1.5 sm:gap-2 overflow-x-auto">
@@ -42,7 +42,7 @@ export default function LodgingPage() {
                     isActive ? 'text-white/60' : 'text-gray-500'
                   }`}
                 >
-                  {data.dates} \u00b7 {data.nights}
+                  {data.dates} · {data.nights}
                 </span>
                 {/* Hover pill tint */}
                 {!isActive && (
@@ -111,7 +111,7 @@ export default function LodgingPage() {
                     className="w-full h-full object-cover animate-[fadeIn_0.3s_ease-in-out]"
                   />
 
-                  {/* Prev / Next buttons \u2014 always visible on mobile, hover on desktop */}
+                  {/* Prev / Next buttons — always visible on mobile, hover on desktop */}
                   {totalImages > 1 && (
                     <>
                       <button

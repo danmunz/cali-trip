@@ -46,7 +46,7 @@ export default function OverviewPage() {
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
           <div className="text-center">
             <p className="text-m uppercase tracking-[0.35em] text-white/60 mb-4 sm:mb-5 font-medium drop-shadow">
-              April 2026 \u00b7 California
+              April 2026 · California
             </p>
             <h1 className="text-4xl sm:text-6xl lg:text-8xl mb-4 sm:mb-5 text-white tracking-tight drop-shadow-xl">
               {tripMeta.title}
@@ -184,7 +184,7 @@ export default function OverviewPage() {
                         <span>{tripMeta.flights.outbound.date}</span>
                       </div>
                       <div className="text-xs sm:text-sm">
-                        <FlightLeg value={tripMeta.flights.outbound.departure} /> \u2192{' '}
+                        <FlightLeg value={tripMeta.flights.outbound.departure} /> →{' '}
                         <FlightLeg value={tripMeta.flights.outbound.arrival} />
                       </div>
                     </div>
@@ -204,7 +204,7 @@ export default function OverviewPage() {
                         <span>{tripMeta.flights.return.date}</span>
                       </div>
                       <div className="text-xs sm:text-sm">
-                        <FlightLeg value={tripMeta.flights.return.departure} /> \u2192{' '}
+                        <FlightLeg value={tripMeta.flights.return.departure} /> →{' '}
                         <FlightLeg value={tripMeta.flights.return.arrival} />
                       </div>
                     </div>
