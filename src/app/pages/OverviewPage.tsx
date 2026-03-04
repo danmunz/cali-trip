@@ -36,7 +36,7 @@ export default function OverviewPage() {
   return (
     <div className="pt-16">
       {/* Hero Map - Full Width */}
-      <div className="w-full h-[70vh] min-h-[500px] max-h-[800px] relative overflow-hidden">
+      <div className="w-full h-[55vh] sm:h-[70vh] min-h-[400px] sm:min-h-[500px] max-h-[800px] relative overflow-hidden">
         <img
           src={mapImage}
           alt="California Trip Map"
@@ -45,14 +45,14 @@ export default function OverviewPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#faf8f5]"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
           <div className="text-center">
-            <p className="text-m uppercase tracking-[0.35em] text-white/60 mb-5 font-medium drop-shadow">
-              April 2026 · California
+            <p className="text-m uppercase tracking-[0.35em] text-white/60 mb-4 sm:mb-5 font-medium drop-shadow">
+              April 2026 \u00b7 California
             </p>
-            <h1 className="text-5xl sm:text-6xl lg:text-8xl mb-5 text-white tracking-tight drop-shadow-xl">
+            <h1 className="text-4xl sm:text-6xl lg:text-8xl mb-4 sm:mb-5 text-white tracking-tight drop-shadow-xl">
               {tripMeta.title}
             </h1>
-            <div className="w-16 h-px bg-white/40 mx-auto mb-5" />
-            <p className="text-3xl text-white/80 italic drop-shadow font-light">
+            <div className="w-16 h-px bg-white/40 mx-auto mb-4 sm:mb-5" />
+            <p className="text-xl sm:text-3xl text-white/80 italic drop-shadow font-light">
               Nine days through California's landscapes &amp; vineyards
             </p>
           </div>
@@ -60,10 +60,10 @@ export default function OverviewPage() {
       </div>
 
       {/* Content */}
-      <main className="max-w-5xl mx-auto px-6 lg:px-12 pb-24 -mt-8">
+      <main className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-12 pb-16 sm:pb-24 -mt-8">
         {/* Segment Preview Images */}
-        <section className="mb-12">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <section className="mb-10 sm:mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
             {(Object.entries(segments) as [string, typeof segments[keyof typeof segments]][]).map(
               ([id, seg]) => (
                 <div
@@ -76,11 +76,11 @@ export default function OverviewPage() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-white text-sm font-bold uppercase tracking-wider drop-shadow">
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                    <p className="text-white text-xs sm:text-sm font-bold uppercase tracking-wider drop-shadow">
                       {seg.navLabel}
                     </p>
-                    <p className="text-white/70 text-xs mt-0.5">{seg.subtitle}</p>
+                    <p className="text-white/70 text-[10px] sm:text-xs mt-0.5">{seg.subtitle}</p>
                   </div>
                 </div>
               ),
@@ -89,33 +89,33 @@ export default function OverviewPage() {
         </section>
 
         {/* Overview */}
-        <section className="mb-16">
-          <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 max-w-3xl mx-auto text-center">
+        <section className="mb-12 sm:mb-16">
+          <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-gray-700 max-w-3xl mx-auto text-center">
             {tripMeta.overview}
           </p>
         </section>
 
         {/* Trip Itinerary Table */}
-        <section className="mb-16">
-          <div className="bg-white rounded-xl shadow-2xl p-8 sm:p-10 border border-gray-200">
-            <div className="flex items-center gap-3 mb-6">
-              <Calendar className="w-7 h-7 text-[#b8956d]" />
-              <h2 className="text-4xl text-gray-900 font-medium">
+        <section className="mb-12 sm:mb-16">
+          <div className="bg-white rounded-xl shadow-2xl p-5 sm:p-8 lg:p-10 border border-gray-200">
+            <div className="flex items-center gap-3 mb-5 sm:mb-6">
+              <Calendar className="w-6 sm:w-7 h-6 sm:h-7 text-[#b8956d]" />
+              <h2 className="text-3xl sm:text-4xl text-gray-900 font-medium">
                 Daily Itinerary
               </h2>
             </div>
-            <p className="text-gray-600 mb-6 text-lg">{tripMeta.duration}</p>
+            <p className="text-gray-600 mb-5 sm:mb-6 text-base sm:text-lg">{tripMeta.duration}</p>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="border-b-2 border-gray-300">
-                    <th className="text-left py-4 px-3 text-xs tracking-widest uppercase text-gray-700 font-bold">
+                    <th className="text-left py-3 sm:py-4 px-2 sm:px-3 text-xs tracking-widest uppercase text-gray-700 font-bold">
                       Date
                     </th>
-                    <th className="text-left py-4 px-3 text-xs tracking-widest uppercase text-gray-700 font-bold">
+                    <th className="text-left py-3 sm:py-4 px-2 sm:px-3 text-xs tracking-widest uppercase text-gray-700 font-bold">
                       Base
                     </th>
-                    <th className="text-left py-4 px-3 text-xs tracking-widest uppercase text-gray-700 font-bold">
+                    <th className="text-left py-3 sm:py-4 px-2 sm:px-3 text-xs tracking-widest uppercase text-gray-700 font-bold hidden sm:table-cell">
                       Logistics
                     </th>
                   </tr>
@@ -126,19 +126,19 @@ export default function OverviewPage() {
                       key={idx}
                       className="border-b border-gray-200 hover:bg-gray-50 transition-colors"
                     >
-                      <td className="py-4 px-3 text-base text-gray-900">
+                      <td className="py-3 sm:py-4 px-2 sm:px-3 text-sm sm:text-base text-gray-900">
                         <div className="flex items-center gap-2">
                           <div
-                            className="w-2.5 h-2.5 rounded-full"
+                            className="w-2.5 h-2.5 rounded-full flex-shrink-0"
                             style={{ backgroundColor: scheduleColor(row.segmentId) }}
                           ></div>
                           <span className="font-medium">{row.date}</span>
                         </div>
                       </td>
-                      <td className="py-4 px-3 text-base text-gray-800 font-medium">
+                      <td className="py-3 sm:py-4 px-2 sm:px-3 text-sm sm:text-base text-gray-800 font-medium">
                         {row.base}
                       </td>
-                      <td className="py-4 px-3 text-base text-gray-700">
+                      <td className="py-3 sm:py-4 px-2 sm:px-3 text-sm sm:text-base text-gray-700 hidden sm:table-cell">
                         {row.logistics}
                       </td>
                     </tr>
@@ -149,27 +149,27 @@ export default function OverviewPage() {
           </div>
         </section>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {/* Flights */}
           <section>
-            <div className="bg-white rounded-xl shadow-2xl p-8 border border-gray-200 h-full">
-              <div className="flex items-center gap-3 mb-6">
-                <Plane className="w-7 h-7 text-[#4a7c8e]" />
-                <h2 className="text-4xl text-gray-900 font-medium">Flights</h2>
+            <div className="bg-white rounded-xl shadow-2xl p-6 sm:p-8 border border-gray-200 h-full">
+              <div className="flex items-center gap-3 mb-5 sm:mb-6">
+                <Plane className="w-6 sm:w-7 h-6 sm:h-7 text-[#4a7c8e]" />
+                <h2 className="text-3xl sm:text-4xl text-gray-900 font-medium">Flights</h2>
               </div>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4 text-base">
+              <div className="space-y-5 sm:space-y-6">
+                <div className="flex items-start gap-4 text-sm sm:text-base">
                   <div className="text-gray-600 w-24 font-medium">Airline</div>
                   <div className="text-gray-900">{tripMeta.flights.airline}</div>
                 </div>
-                <div className="flex items-start gap-4 text-base">
+                <div className="flex items-start gap-4 text-sm sm:text-base">
                   <div className="text-gray-600 w-24 font-medium">Confirmation</div>
-                  <div className="text-gray-900 font-mono text-sm font-bold">
+                  <div className="text-gray-900 font-mono text-xs sm:text-sm font-bold">
                     {tripMeta.flights.confirmation}
                   </div>
                 </div>
 
-                <div className="pt-4 space-y-6">
+                <div className="pt-4 space-y-5 sm:space-y-6">
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#4a7c8e]"></div>
@@ -177,14 +177,14 @@ export default function OverviewPage() {
                         Outbound
                       </h3>
                     </div>
-                    <div className="pl-4 space-y-2 text-base text-gray-800">
+                    <div className="pl-4 space-y-2 text-sm sm:text-base text-gray-800">
                       <div>
                         <span className="font-semibold">{tripMeta.flights.outbound.number}</span>
-                        <span className="text-gray-500 mx-2">•</span>
+                        <span className="text-gray-500 mx-2">\u2022</span>
                         <span>{tripMeta.flights.outbound.date}</span>
                       </div>
-                      <div className="text-sm">
-                        <FlightLeg value={tripMeta.flights.outbound.departure} /> →{' '}
+                      <div className="text-xs sm:text-sm">
+                        <FlightLeg value={tripMeta.flights.outbound.departure} /> \u2192{' '}
                         <FlightLeg value={tripMeta.flights.outbound.arrival} />
                       </div>
                     </div>
@@ -197,14 +197,14 @@ export default function OverviewPage() {
                         Return
                       </h3>
                     </div>
-                    <div className="pl-4 space-y-2 text-base text-gray-800">
+                    <div className="pl-4 space-y-2 text-sm sm:text-base text-gray-800">
                       <div>
                         <span className="font-semibold">{tripMeta.flights.return.number}</span>
-                        <span className="text-gray-500 mx-2">•</span>
+                        <span className="text-gray-500 mx-2">\u2022</span>
                         <span>{tripMeta.flights.return.date}</span>
                       </div>
-                      <div className="text-sm">
-                        <FlightLeg value={tripMeta.flights.return.departure} /> →{' '}
+                      <div className="text-xs sm:text-sm">
+                        <FlightLeg value={tripMeta.flights.return.departure} /> \u2192{' '}
                         <FlightLeg value={tripMeta.flights.return.arrival} />
                       </div>
                     </div>
@@ -216,32 +216,32 @@ export default function OverviewPage() {
 
           {/* Weather */}
           <section>
-            <div className="bg-white rounded-xl shadow-2xl p-8 border border-gray-200 h-full">
-              <div className="flex items-center gap-3 mb-6">
-                <Sun className="w-7 h-7 text-amber-500" />
-                <h2 className="text-4xl text-gray-900 font-medium">Weather</h2>
+            <div className="bg-white rounded-xl shadow-2xl p-6 sm:p-8 border border-gray-200 h-full">
+              <div className="flex items-center gap-3 mb-5 sm:mb-6">
+                <Sun className="w-6 sm:w-7 h-6 sm:h-7 text-amber-500" />
+                <h2 className="text-3xl sm:text-4xl text-gray-900 font-medium">Weather</h2>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {weatherData.map((day, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between py-2 px-3 hover:bg-gray-50 rounded transition-colors"
+                    className="flex items-center justify-between py-2 px-2 sm:px-3 hover:bg-gray-50 rounded transition-colors"
                   >
-                    <div className="flex items-center gap-3 flex-1">
+                    <div className="flex items-center gap-2 sm:gap-3 flex-1">
                       <WeatherIcon condition={day.condition} />
-                      <div className="text-base">
+                      <div className="text-sm sm:text-base">
                         <div className="text-gray-900 font-semibold">
                           {day.date}
                         </div>
-                        <div className="text-sm text-gray-600">
+                        <div className="text-xs sm:text-sm text-gray-600">
                           {day.location}
                         </div>
                       </div>
                     </div>
-                    <div className="text-base text-gray-800">
-                      <span className="font-bold">{day.high}°</span>
+                    <div className="text-sm sm:text-base text-gray-800">
+                      <span className="font-bold">{day.high}\u00b0</span>
                       <span className="text-gray-500 mx-1">/</span>
-                      <span className="text-gray-600">{day.low}°</span>
+                      <span className="text-gray-600">{day.low}\u00b0</span>
                     </div>
                   </div>
                 ))}
