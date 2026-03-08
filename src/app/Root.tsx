@@ -18,6 +18,16 @@ export default function Root() {
     setMenuOpen(false);
   }, [location.pathname]);
 
+  // Close menu when viewport crosses the sm breakpoint (hamburger becomes hidden)
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 640px)');
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) setMenuOpen(false);
+    };
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
   // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
