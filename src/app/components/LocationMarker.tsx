@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Marker } from 'react-map-gl/mapbox';
-import { ExternalLink, MapPin, Star } from 'lucide-react';
 import type { Location } from '../../data/types';
 
 const TYPE_LABELS: Record<string, string> = {
@@ -23,24 +22,6 @@ const TYPE_COLORS: Record<string, string> = {
 };
 
 const DEFAULT_PIN_COLOR = '#7c8490';
-
-/** Turn trip_parts day numbers into a friendly label: "Day 3" or "Days 4–6". */
-function formatDays(tripParts: { day: number }[]): string {
-  const days = [...new Set(tripParts.map((tp) => tp.day))].sort((a, b) => a - b);
-  if (days.length === 0) return '';
-  if (days.length === 1) return `Day ${days[0]}`;
-  return `Days ${days[0]}–${days[days.length - 1]}`;
-}
-
-/** Trim an address to city + state, dropping the street line. */
-function shortAddress(address: string): string {
-  const parts = address.split(',').map((s) => s.trim());
-  if (parts.length >= 3) {
-    const state = parts[parts.length - 1]!.replace(/\d{5}(-\d{4})?/, '').trim();
-    return `${parts[parts.length - 2]}, ${state}`;
-  }
-  return address;
-}
 
 interface LocationMarkerProps {
   location: Location;
@@ -69,10 +50,8 @@ export default function LocationMarker({
 
   const highlighted = isSelected || isFocused || isHovered;
 
-  // Name-only tooltip: hover or scroll-focus, but NOT when selected (full tooltip shows instead)
-  const showNameTooltip = !isSelected && (isHovered || isFocused);
-  // Full rich tooltip: only when selected (pin click)
-  const showFullTooltip = isSelected;
+  // Name-only tooltip: hover, scroll-focus, or selected
+  const showNameTooltip = isHovered || isFocused || isSelected;
 
   // ── Visual tiers ─────────────────────────────────────────
 
@@ -88,12 +67,6 @@ export default function LocationMarker({
 
   // Opacity: dimmed pins recede
   const opacity = isDimmed ? 0.35 : 1;
-
-  // ── Links ────────────────────────────────────────────────
-
-  const websiteUrl = location.official_url?.[0];
-  const mapsUrl = location.google_maps_url?.[0];
-  const reviewUrl = location.review_url?.[0];
 
   return (
     <Marker
@@ -144,7 +117,7 @@ export default function LocationMarker({
           <circle cx="12" cy="12" r="10" fill={pinColor} stroke="white" strokeWidth="2" />
         </svg>
 
-        {/* ── Name-only tooltip (Region Overview mode) ──────── */}
+        {/* ── Name-only tooltip ──────────────────────────── */}
         <div
           className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none"
           style={{
@@ -160,129 +133,6 @@ export default function LocationMarker({
             <p className="text-white text-[13px] font-semibold leading-tight">
               {location.name}
             </p>
-          </div>
-        </div>
-
-        {/* ── Full rich tooltip (Pin Focus mode) ────────────── */}
-        <div
-          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-8"
-          style={{
-            opacity: showFullTooltip ? 1 : 0,
-            transform: showFullTooltip ? 'translateY(0)' : 'translateY(6px)',
-            transition: 'opacity 0.2s ease, transform 0.2s ease',
-            pointerEvents: showFullTooltip ? 'auto' : 'none',
-            width: 480,
-          }}
-        >
-          <div
-            className="backdrop-blur-md rounded-xl shadow-2xl overflow-hidden border border-white/5"
-            style={{ backgroundColor: `color-mix(in oklab, ${segmentColor} 60%, rgba(0,0,0,0.88))` }}
-          >
-            {/* Photo grid */}
-            {location.images.length > 0 && (
-              <div className="flex gap-0.5 p-0.5 pb-0 h-[200px]">
-                {/* Left: tall photo */}
-                <img
-                  src={location.images[0]}
-                  alt=""
-                  className="object-cover w-1/2 h-full rounded-l-md border border-white/20"
-                  loading="lazy"
-                />
-                {/* Right: two stacked photos */}
-                <div className="flex flex-col gap-0.5 w-1/2">
-                  {location.images[1] && (
-                    <img
-                      src={location.images[1]}
-                      alt=""
-                      className="object-cover w-full flex-1 min-h-0 rounded-tr-md border border-white/20"
-                      loading="lazy"
-                    />
-                  )}
-                  {location.images[2] && (
-                    <img
-                      src={location.images[2]}
-                      alt=""
-                      className="object-cover w-full flex-1 min-h-0 rounded-br-md border border-white/20"
-                      loading="lazy"
-                    />
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Body */}
-            <div className="px-5 py-4">
-              {/* Name + type badge */}
-              <div className="flex items-start justify-between gap-2 mb-2">
-                <p className="text-white text-lg font-semibold leading-snug">
-                  {location.name}
-                </p>
-                <span
-                  className="shrink-0 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full"
-                  style={{
-                    backgroundColor: pinColor + '25',
-                    color: pinColor,
-                  }}
-                >
-                  {typeLabel}
-                </span>
-              </div>
-
-              {/* Address */}
-              <p className="text-white/50 text-sm leading-tight mb-2">
-                {shortAddress(location.address)}
-              </p>
-
-              {/* Visit days */}
-              {location.trip_parts.length > 0 && (
-                <p className="text-white/40 text-[13px] mb-3">
-                  {formatDays(location.trip_parts)}
-                </p>
-              )}
-
-              {/* Links row */}
-              {(websiteUrl || mapsUrl || reviewUrl) && (
-                <div className="flex items-center gap-4 pt-3 border-t border-white/10">
-                  {websiteUrl && (
-                    <a
-                      href={websiteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-[13px] text-white/50 hover:text-white transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Website
-                    </a>
-                  )}
-                  {mapsUrl && (
-                    <a
-                      href={mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-[13px] text-white/50 hover:text-white transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <MapPin className="w-4 h-4" />
-                      Directions
-                    </a>
-                  )}
-                  {reviewUrl && (
-                    <a
-                      href={reviewUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-[13px] text-white/50 hover:text-white transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Star className="w-4 h-4" />
-                      Reviews
-                    </a>
-                  )}
-                </div>
-              )}
-
-            </div>
           </div>
         </div>
       </div>
