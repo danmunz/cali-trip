@@ -3,6 +3,7 @@ dist
 .DS_Store
 .env.local
 .venv
+package-lock.json
 
 # Generated data files (build artifacts)
 src/data/*.generated.ts
