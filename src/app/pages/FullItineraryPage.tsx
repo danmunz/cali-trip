@@ -366,6 +366,16 @@ function MobileToc() {
   const [open, setOpen] = useState(false);
   const tocGroups = useTocGroups();
 
+  // Close sheet when viewport crosses the lg breakpoint (sheet becomes hidden)
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) setOpen(false);
+    };
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
   // Prevent body scroll when open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
