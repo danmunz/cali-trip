@@ -27,8 +27,53 @@ const BOUNDS_PADDING = { top: 140, bottom: 60, left: 40, right: 40 };
 
 const MAP_PITCH = 72;
 const MAP_BEARING = -10;
-/** Lower pitch when zoomed to a single pin — avoids terrain occluding valley-floor markers. */
+/** Default pitch when zoomed to a single pin. */
 const PIN_FOCUS_PITCH = 75;
+/** Default zoom when focused on a single pin. */
+const PIN_FOCUS_ZOOM = 15;
+
+/**
+ * Per-location camera overrides. Locations in dramatic terrain benefit
+ * from custom zoom, pitch, or bearing so the 3D view looks good.
+ */
+const CAMERA_OVERRIDES: Record<string, { zoom?: number; pitch?: number; bearing?: number }> = {
+  // Yosemite valley-floor locations — pull back a bit, lower pitch to avoid
+  // terrain walls blocking the view
+  'yosemite-valley':             { zoom: 13, pitch: 55 },
+  'tunnel-view':                 { zoom: 14, pitch: 50, bearing: -30 },
+  'bridalveil-fall-trail':       { zoom: 15, pitch: 60 },
+  'lower-yosemite-falls-loop':   { zoom: 15, pitch: 60 },
+  'cook-s-meadow-loop':          { zoom: 15, pitch: 55 },
+  'sentinel-bridge':             { zoom: 15, pitch: 55 },
+  'merced-river':                { zoom: 14, pitch: 50 },
+  'yosemite-village':            { zoom: 14, pitch: 55 },
+  'yosemite-valley-floor-tour':  { zoom: 13, pitch: 50 },
+  'the-mountain-room':           { zoom: 15, pitch: 55 },
+
+  // Rush Creek / Yosemite gateway — forested hillside
+  'rush-creek-lodge-and-spa-at-yosemite': { zoom: 14, pitch: 60 },
+  'rush-creek-nature-trail':     { zoom: 14, pitch: 60 },
+  'rush-creek-vista-trail':      { zoom: 14, pitch: 60 },
+
+  // Big Sur coast — pull back to show the dramatic coastline
+  'highway-1-big-sur-coast':     { zoom: 12, pitch: 55, bearing: -20 },
+  'bixby-creek-bridge':          { zoom: 14, pitch: 60, bearing: -15 },
+  'rocky-creek-bridge':          { zoom: 14, pitch: 60, bearing: -15 },
+  'andrew-molera-state-park':    { zoom: 13, pitch: 55 },
+  'andrew-molera-bluff-trail':   { zoom: 14, pitch: 55 },
+  'pfeiffer-big-sur-state-park': { zoom: 14, pitch: 55 },
+  'pfeiffer-big-sur-redwood-river-walk': { zoom: 14, pitch: 55 },
+  'ventana-big-sur':             { zoom: 14, pitch: 55 },
+  'the-sur-house':               { zoom: 14, pitch: 55 },
+  'garrapata-bluff-trail':       { zoom: 14, pitch: 55 },
+
+  // Point Lobos — tight coastal area, moderate pull-back
+  'point-lobos-state-reserve':   { zoom: 14, pitch: 55 },
+
+  // Muir Woods — tight valley
+  'muir-woods-national-monument': { zoom: 14, pitch: 55 },
+  'muir-woods-main-trail':       { zoom: 15, pitch: 55 },
+};
 
 /**
  * Pin a location to a specific segment map, overriding its trip_parts.
@@ -99,13 +144,17 @@ export default function JourneyMap({
   const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [isStyleReady, setIsStyleReady] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selectedIdRef = useRef<string | null>(null);
+  const lastFocusRef = useRef<string | null>(null);
   const [isSatellite, setIsSatellite] = useState(true);
   const prevSegmentRef = useRef<SegmentId>(activeSegment);
 
   const zoneLocations = getLocationsForSegment(activeSegment);
   const seg = segments[activeSegment];
 
-  // Compute padded bounds for the segment to constrain panning
+  // Compute padded bounds for the segment to constrain panning.
+  // Applied imperatively (not as a prop) to avoid race conditions
+  // with fitBounds animations that cause _calcMatrices overflow.
   const segmentMaxBounds = useMemo(() => {
     const bounds = calculateBounds(zoneLocations);
     if (!bounds) return undefined;
@@ -113,10 +162,10 @@ export default function JourneyMap({
     const ne = bounds.getNorthEast();
     const lngPad = (ne.lng - sw.lng) * 0.5;
     const latPad = (ne.lat - sw.lat) * 0.5;
-    return [
+    return new LngLatBounds(
       [sw.lng - lngPad, sw.lat - latPad],
       [ne.lng + lngPad, ne.lat + latPad],
-    ] as [[number, number], [number, number]];
+    );
   }, [zoneLocations]);
 
   // Filter orderedLocationIds to only locations that have a pin on this segment map
@@ -132,6 +181,12 @@ export default function JourneyMap({
   // Whether *any* pin is currently highlighted — used to dim the rest
   const anyHighlighted = highlightedIds.size > 0;
 
+  // Keep the ref in sync with state
+  const updateSelectedId = useCallback((id: string | null) => {
+    selectedIdRef.current = id;
+    setSelectedId(id);
+  }, []);
+
   // ── Fit map to all locations in a segment ────────────────
 
   const fitToSegment = useCallback(
@@ -141,7 +196,11 @@ export default function JourneyMap({
       const locs = getLocationsForSegment(segmentId);
       const bounds = calculateBounds(locs);
       if (!bounds) return;
-      setSelectedId(null);
+      updateSelectedId(null);
+      // Remove constraints before fitting so they don't fight the animation
+      const rawMap = map.getMap();
+      rawMap.setMaxBounds(null as unknown as LngLatBounds);
+      rawMap.setMinZoom(0);
       map.fitBounds(bounds, {
         padding: BOUNDS_PADDING,
         maxZoom: 11,
@@ -158,18 +217,16 @@ export default function JourneyMap({
   const flyToLocation = useCallback((loc: Location) => {
     const map = mapRef.current;
     if (!map) return;
-    // On desktop (>=1024px), the left ~38% is covered by the itinerary panel.
-    // Offset the pin so it centers in the *visible* portion of the map.
     const container = map.getContainer();
     const w = container.clientWidth;
     const isDesktop = window.innerWidth >= 1024;
-    // Panel is ~38% (or 1/3 on xl) — shift right by half the panel width
     const panelOffset = isDesktop ? Math.round(w * 0.38 * 0.5) : 0;
+    const cam = CAMERA_OVERRIDES[loc.id];
     map.flyTo({
       center: [loc.geo.lng, loc.geo.lat],
-      zoom: 15,
-      pitch: PIN_FOCUS_PITCH,
-      bearing: MAP_BEARING,
+      zoom: cam?.zoom ?? PIN_FOCUS_ZOOM,
+      pitch: cam?.pitch ?? PIN_FOCUS_PITCH,
+      bearing: cam?.bearing ?? MAP_BEARING,
       offset: [panelOffset, 60],
       duration: 1500,
       essential: true,
@@ -197,61 +254,60 @@ export default function JourneyMap({
     return () => { map.off('style.load', onStyleData); };
   }, [isMapLoaded]);
 
+  // ── Apply pan/zoom constraints after segment animation settles ──
+
+  useEffect(() => {
+    const map = mapRef.current?.getMap();
+    if (!map || !segmentMaxBounds) return;
+    const applyConstraints = () => {
+      map.setMaxBounds(segmentMaxBounds);
+      map.setMinZoom(seg.zoom - 1);
+    };
+    // After initial load or segment change, wait for the fitBounds
+    // animation to finish before re-applying constraints.
+    const timer = setTimeout(applyConstraints, 2600);
+    return () => clearTimeout(timer);
+  }, [activeSegment, isMapLoaded, segmentMaxBounds, seg.zoom]);
+
   // ── React to segment changes ─────────────────────────────
 
   useEffect(() => {
     if (!isMapLoaded) return;
     if (activeSegment !== prevSegmentRef.current) {
       prevSegmentRef.current = activeSegment;
-      setSelectedId(null);
+      updateSelectedId(null);
+      lastFocusRef.current = null;
       fitToSegment(activeSegment);
     }
   }, [activeSegment, isMapLoaded, fitToSegment]);
 
-  // ── Focus Mode: scroll-driven camera tracking ────────────
-  // When a pin is selected (Focus Mode) and the user scrolls to a
-  // different activity, wait for scrolling to settle before flying to
-  // the new location. This prevents overlapping fly-to animations when
-  // the user scrolls quickly through many activities.
-
-  const scrollFlyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // ── Focus Mode: scroll updates selected pin without moving camera ──
+  // When in Focus Mode (selectedId set) and the user scrolls to a
+  // different activity, update the selected pin and detail card but
+  // do NOT fly the camera. Camera only moves on explicit click.
+  // Uses ref to read selectedId without depending on it.
 
   useEffect(() => {
-    // Clean up any pending fly-to when deps change
-    if (scrollFlyTimerRef.current) {
-      clearTimeout(scrollFlyTimerRef.current);
-      scrollFlyTimerRef.current = null;
-    }
-    if (!selectedId || !scrollFocusedLocationId) return;
-    if (scrollFocusedLocationId === selectedId) return;
-    const targetId = scrollFocusedLocationId;
-    scrollFlyTimerRef.current = setTimeout(() => {
-      const loc = zoneLocations.find((l) => l.id === targetId);
-      if (!loc) return;
-      setSelectedId(targetId);
-      flyToLocation(loc);
-      onPinClick?.(targetId);
-    }, 600);
-    return () => {
-      if (scrollFlyTimerRef.current) {
-        clearTimeout(scrollFlyTimerRef.current);
-        scrollFlyTimerRef.current = null;
-      }
-    };
-  }, [scrollFocusedLocationId, selectedId, zoneLocations, flyToLocation, onPinClick]);
+    const current = selectedIdRef.current;
+    if (!current || !scrollFocusedLocationId) return;
+    if (scrollFocusedLocationId === current) return;
+    if (!zoneIds.has(scrollFocusedLocationId)) return;
+    updateSelectedId(scrollFocusedLocationId);
+  }, [scrollFocusedLocationId, zoneIds, updateSelectedId]);
 
   // ── Parent-driven Focus Mode entry ─────────────────────
   // When the parent sets focusLocationId (e.g. activity card click),
   // enter Focus Mode by selecting the pin and flying to it.
+  // Tracks last-consumed value to prevent re-processing.
 
   useEffect(() => {
-    if (!focusLocationId) return;
-    if (focusLocationId === selectedId) return;
+    if (!focusLocationId || focusLocationId === lastFocusRef.current) return;
+    lastFocusRef.current = focusLocationId;
     const loc = zoneLocations.find((l) => l.id === focusLocationId);
     if (!loc) return;
-    setSelectedId(focusLocationId);
+    updateSelectedId(focusLocationId);
     flyToLocation(loc);
-  }, [focusLocationId, selectedId, zoneLocations, flyToLocation]);
+  }, [focusLocationId, zoneLocations, flyToLocation, updateSelectedId]);
 
   // ── Navigate between pins (prev/next in tooltip) ─────────
 
@@ -259,7 +315,7 @@ export default function JourneyMap({
     (locationId: string) => {
       const loc = zoneLocations.find((l) => l.id === locationId);
       if (!loc) return;
-      setSelectedId(locationId);
+      updateSelectedId(locationId);
       flyToLocation(loc);
       onPinClick?.(locationId);
     },
@@ -292,8 +348,6 @@ export default function JourneyMap({
         style={{ width: '100%', height: '100%' }}
         mapStyle={isSatellite ? SATELLITE_STYLE : MAPBOX_STYLE}
         onLoad={handleMapLoad}
-        minZoom={seg.zoom - 1}
-        maxBounds={segmentMaxBounds}
         terrain={{ source: 'mapbox-dem', exaggeration: 1.2 }}
         fadeDuration={0}
         maxTileCacheSize={200}
@@ -364,7 +418,7 @@ export default function JourneyMap({
             }
             isDimmed={anyHighlighted && !highlightedIds.has(location.id)}
             onClick={() => {
-              setSelectedId(location.id);
+              updateSelectedId(location.id);
               flyToLocation(location);
               onPinClick?.(location.id);
             }}
