@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { Car, MapPin, Globe, Star, Plane, Building2 } from 'lucide-react';
+import { Car, MapPin, Globe, Star, Plane, Building2, List, X } from 'lucide-react';
 import { itinerary } from '../../data/itinerary.generated';
 import { tripMeta } from '../../data/trip-meta.generated';
 import { segments } from '../../data/segments';
@@ -170,16 +170,10 @@ function LocationLinks({ locationIds }: { locationIds: string[] }) {
   );
 }
 
-// ── Table of Contents Sidebar ────────────────────────────────
+// ── TOC data (shared between desktop sidebar and mobile sheet) ─
 
-function TocSidebar() {
-  const [visible, setVisible] = useState(false);
-  const [activeId, setActiveId] = useState('');
-  const hoveredRef = useRef(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
-
-  // Group itinerary days by segment
-  const tocGroups = useMemo(() => {
+function useTocGroups() {
+  return useMemo(() => {
     const groups: {
       segmentId: string;
       label: string;
@@ -204,6 +198,16 @@ function TocSidebar() {
     }
     return groups;
   }, []);
+}
+
+// ── Table of Contents Sidebar (desktop) ─────────────────────
+
+function TocSidebar() {
+  const [visible, setVisible] = useState(false);
+  const [activeId, setActiveId] = useState('');
+  const hoveredRef = useRef(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const tocGroups = useTocGroups();
 
   // Scroll: reveal sidebar + track active day section
   useEffect(() => {
@@ -356,6 +360,113 @@ function TocSidebar() {
   );
 }
 
+// ── Mobile TOC Bottom Sheet ─────────────────────────────────
+
+function MobileToc() {
+  const [open, setOpen] = useState(false);
+  const tocGroups = useTocGroups();
+
+  // Close sheet when viewport crosses the lg breakpoint (sheet becomes hidden)
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) setOpen(false);
+    };
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  // Prevent body scroll when open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  const scrollTo = (id: string) => {
+    setOpen(false);
+    // Small delay so the sheet closes before scroll
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
+  return (
+    <>
+      {/* FAB */}
+      <button
+        onClick={() => setOpen(true)}
+        className="lg:hidden fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gray-900 shadow-lg flex items-center justify-center text-white cursor-pointer transition-transform active:scale-95"
+        aria-label="Table of contents"
+      >
+        <List className="w-6 h-6" />
+      </button>
+
+      {/* Overlay + Sheet */}
+      {open && (
+        <div className="lg:hidden fixed inset-0 z-[60]">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"
+            onClick={() => setOpen(false)}
+          />
+          {/* Sheet */}
+          <div className="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-white rounded-t-2xl shadow-2xl overflow-hidden animate-[slideUp_200ms_ease-out]">
+            {/* Handle + Header */}
+            <div className="sticky top-0 bg-white border-b border-gray-100 px-5 pt-3 pb-3">
+              <div className="w-10 h-1 bg-gray-300 rounded-full mx-auto mb-3" />
+              <div className="flex items-center justify-between">
+                <p className="text-xs uppercase tracking-[0.2em] text-gray-400 font-bold">
+                  Contents
+                </p>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 cursor-pointer"
+                  aria-label="Close"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+            {/* TOC items */}
+            <div className="overflow-y-auto overscroll-contain px-5 py-4 max-h-[calc(70vh-60px)]">
+              {tocGroups.map((group) => (
+                <div key={group.segmentId} className="mb-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span
+                      className="w-2 h-2 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: group.color }}
+                    />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">
+                      {group.label}
+                    </span>
+                  </div>
+                  <div className="space-y-0.5">
+                    {group.days.map((day) => (
+                      <button
+                        key={day.day}
+                        onClick={() => scrollTo(`day-${day.day}`)}
+                        className="w-full text-left px-3 py-2.5 text-sm rounded-md text-gray-700 active:bg-gray-100 transition-colors"
+                      >
+                        <span
+                          className="block text-[10px] uppercase tracking-wider font-medium mb-0.5"
+                          style={{ color: group.color }}
+                        >
+                          Day {day.day}
+                        </span>
+                        <span className="block">{day.title}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 // ── Page ─────────────────────────────────────────────────────
 
 export default function FullItineraryPage() {
@@ -363,42 +474,43 @@ export default function FullItineraryPage() {
     <div className="pt-16 min-h-screen bg-transparent">
       <SegmentBackground />
       <TocSidebar />
+      <MobileToc />
 
       {/* Header */}
-      <div className="relative z-[2] border-b border-gray-200 py-20 px-6 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-6 font-bold">
+      <div className="relative z-[2] border-b border-gray-200 py-14 sm:py-20 px-5 sm:px-6 text-center">
+        <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-4 sm:mb-6 font-bold">
           Full Itinerary
         </p>
-        <h1 className="text-5xl sm:text-6xl text-gray-900 mb-3 tracking-tight font-medium">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl text-gray-900 mb-3 tracking-tight font-medium">
           {tripMeta.title}
         </h1>
-        <p className="text-lg text-gray-500 font-medium">
+        <p className="text-base sm:text-lg text-gray-500 font-medium">
           {tripMeta.subtitle.replace(' | ', ' · ')}
         </p>
       </div>
 
-      <main className="relative z-10 max-w-3xl mx-auto px-6 lg:px-12 py-16">
+      <main className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-12 py-10 sm:py-16">
         {/* Overview */}
-        <section className="mb-16">
-          <p className="text-2xl leading-relaxed text-gray-700">
+        <section className="mb-12 sm:mb-16">
+          <p className="text-xl sm:text-2xl leading-relaxed text-gray-700">
             {tripMeta.overview}
           </p>
         </section>
 
         {/* Schedule Table */}
-        <section className="mb-12">
-          <h2 className="text-3xl text-gray-900 mb-6 font-medium">Schedule</h2>
+        <section className="mb-10 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl text-gray-900 mb-5 sm:mb-6 font-medium">Schedule</h2>
           <div className="overflow-x-auto rounded-lg border border-gray-200">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="text-left py-3 px-4 text-xs uppercase tracking-wider text-gray-600 font-bold">
+                  <th className="text-left py-3 px-3 sm:px-4 text-xs uppercase tracking-wider text-gray-600 font-bold">
                     Date
                   </th>
-                  <th className="text-left py-3 px-4 text-xs uppercase tracking-wider text-gray-600 font-bold">
+                  <th className="text-left py-3 px-3 sm:px-4 text-xs uppercase tracking-wider text-gray-600 font-bold">
                     Base
                   </th>
-                  <th className="text-left py-3 px-4 text-xs uppercase tracking-wider text-gray-600 font-bold hidden sm:table-cell">
+                  <th className="text-left py-3 px-3 sm:px-4 text-xs uppercase tracking-wider text-gray-600 font-bold hidden sm:table-cell">
                     Logistics
                   </th>
                 </tr>
@@ -409,7 +521,7 @@ export default function FullItineraryPage() {
                     key={idx}
                     className="border-b border-gray-100 last:border-0"
                   >
-                    <td className="py-3 px-4 font-medium text-gray-900">
+                    <td className="py-3 px-3 sm:px-4 font-medium text-gray-900">
                       <div className="flex items-center gap-2">
                         <span
                           className="w-2 h-2 rounded-full flex-shrink-0"
@@ -420,8 +532,8 @@ export default function FullItineraryPage() {
                         {row.date}
                       </div>
                     </td>
-                    <td className="py-3 px-4 text-gray-800">{row.base}</td>
-                    <td className="py-3 px-4 text-gray-600 hidden sm:table-cell">
+                    <td className="py-3 px-3 sm:px-4 text-gray-800">{row.base}</td>
+                    <td className="py-3 px-3 sm:px-4 text-gray-600 hidden sm:table-cell">
                       {row.logistics}
                     </td>
                   </tr>
@@ -432,9 +544,9 @@ export default function FullItineraryPage() {
         </section>
 
         {/* Flights + Lodging */}
-        <div className="grid sm:grid-cols-2 gap-8 mb-16">
+        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {/* Flights */}
-          <section className="border border-gray-200 rounded-lg p-6">
+          <section className="border border-gray-200 rounded-lg p-5 sm:p-6">
             <div className="flex items-center gap-2 mb-4">
               <Plane className="w-5 h-5 text-gray-400" />
               <h3 className="text-lg text-gray-900 font-medium">Flights</h3>
@@ -476,7 +588,7 @@ export default function FullItineraryPage() {
           </section>
 
           {/* Lodging */}
-          <section className="border border-gray-200 rounded-lg p-6">
+          <section className="border border-gray-200 rounded-lg p-5 sm:p-6">
             <div className="flex items-center gap-2 mb-4">
               <Building2 className="w-5 h-5 text-gray-400" />
               <h3 className="text-lg text-gray-900 font-medium">Lodging</h3>
@@ -499,7 +611,7 @@ export default function FullItineraryPage() {
         </div>
 
         {/* Divider */}
-        <div className="flex items-center gap-4 mb-16">
+        <div className="flex items-center gap-4 mb-12 sm:mb-16">
           <div className="flex-1 border-t border-gray-200" />
           <span className="text-xs uppercase tracking-[0.2em] text-gray-400 font-bold">
             Day-by-Day
@@ -508,7 +620,7 @@ export default function FullItineraryPage() {
         </div>
 
         {/* Day-by-Day Itinerary */}
-        <div className="space-y-20">
+        <div className="space-y-14 sm:space-y-20">
           {itinerary.map((day) => {
             const color = segmentColor(day.segmentId);
 
@@ -516,19 +628,19 @@ export default function FullItineraryPage() {
               <section key={day.day} id={`day-${day.day}`} data-segment={day.segmentId} className="scroll-mt-20">
                 {/* Day Header */}
                 <div
-                  className="border-l-4 pl-6 mb-10"
+                  className="border-l-4 pl-5 sm:pl-6 mb-8 sm:mb-10"
                   style={{ borderLeftColor: color }}
                 >
                   <div
-                    className="inline-block px-5 py-2 rounded-full text-xs tracking-widest uppercase mb-4 font-bold shadow-sm text-white"
+                    className="inline-block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs tracking-widest uppercase mb-3 sm:mb-4 font-bold shadow-sm text-white"
                     style={{ backgroundColor: color }}
                   >
                     Day {day.day} · {formatDate(day.date, day.dayOfWeek)}
                   </div>
-                  <h2 className="text-3xl sm:text-4xl text-gray-900 font-medium mb-3">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 font-medium mb-3">
                     {day.title}
                   </h2>
-                  <p className="text-[28px] text-gray-600 leading-[1.6]">
+                  <p className="text-xl sm:text-[28px] text-gray-600 leading-[1.6]">
                     {day.summary}
                   </p>
                 </div>
@@ -538,15 +650,15 @@ export default function FullItineraryPage() {
                   {day.activities.map((activity, idx) => (
                     <div key={idx} id={`day-${day.day}-stop-${idx}`} className="scroll-mt-20">
                       {/* Activity card */}
-                      <div className="py-6 px-5 rounded-lg hover:bg-white/60 transition-colors">
+                      <div className="py-4 sm:py-6 px-4 sm:px-5 rounded-lg hover:bg-white/60 transition-colors">
                         <span
-                          className="inline-block px-4 py-1.5 rounded-full text-xs tracking-widest uppercase font-bold text-white shadow-lg mb-3"
+                          className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs tracking-widest uppercase font-bold text-white shadow-lg mb-2 sm:mb-3"
                           style={{ backgroundColor: color }}
                         >
                           {activity.time}
                         </span>
                         <div className="flex items-baseline gap-3 mb-2 flex-wrap">
-                          <h3 className="text-xl text-gray-900 font-medium">
+                          <h3 className="text-lg sm:text-xl text-gray-900 font-medium">
                             {activity.name}
                           </h3>
                           {activity.subgroup && (
@@ -555,7 +667,7 @@ export default function FullItineraryPage() {
                             </span>
                           )}
                         </div>
-                        <p className="text-gray-700 leading-[1.6] text-[24px]">
+                        <p className="text-gray-700 leading-[1.6] text-lg sm:text-[24px]">
                           {activity.description}
                         </p>
                         <LocationLinks locationIds={activity.locationIds} />
@@ -563,10 +675,10 @@ export default function FullItineraryPage() {
 
                       {/* Drive interlude */}
                       {activity.travelAfter && (
-                        <div className="flex items-center gap-3 py-4 px-5 text-base text-gray-500">
+                        <div className="flex items-center gap-2 sm:gap-3 py-3 sm:py-4 px-4 sm:px-5 text-sm sm:text-base text-gray-500">
                           <div className="flex-1 border-t border-dashed border-gray-300" />
-                          <Car className="w-5 h-5 flex-shrink-0" />
-                          <span className="font-medium whitespace-nowrap">
+                          <Car className="w-4 sm:w-5 h-4 sm:h-5 flex-shrink-0" />
+                          <span className="font-medium whitespace-nowrap text-xs sm:text-base">
                             {activity.travelAfter.duration} —{' '}
                             {activity.travelAfter.from} →{' '}
                             {activity.travelAfter.to}

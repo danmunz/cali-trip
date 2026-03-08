@@ -19,15 +19,15 @@ export default function LodgingPage() {
     <div className="pt-16 min-h-screen">
       {/* Sub-Navigation — mirrors itinerary style with dates */}
       <div className="border-b border-stone-200/50 bg-stone-50/90 backdrop-blur-md sticky top-16 z-40 shadow-sm">
-        <div className="max-w-6xl mx-auto px-6 lg:px-12 py-2">
-          <div className="flex items-center justify-center gap-2 overflow-x-auto">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-2">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 overflow-x-auto">
             {Object.entries(lodgingData).map(([key, data]) => {
               const isActive = activeLodging === key;
               return (
               <button
                 key={key}
                 onClick={() => switchLodging(key as LodgingKey)}
-                className={`cursor-pointer relative flex-shrink-0 px-6 py-2 rounded-full text-sm font-bold transition-all duration-200 flex flex-col items-center gap-0.5 group ${
+                className={`cursor-pointer relative flex-shrink-0 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex flex-col items-center gap-0.5 group ${
                   isActive
                     ? 'text-white shadow-md shadow-black/20'
                     : 'text-gray-700 hover:shadow-sm'
@@ -38,7 +38,7 @@ export default function LodgingPage() {
               >
                 <span className="relative z-10">{data.name}</span>
                 <span
-                  className={`relative z-10 text-[10px] tracking-wide ${
+                  className={`relative z-10 text-[9px] sm:text-[10px] tracking-wide ${
                     isActive ? 'text-white/60' : 'text-gray-500'
                   }`}
                 >
@@ -59,26 +59,26 @@ export default function LodgingPage() {
       </div>
 
       {/* Property Hero Image */}
-      <div className="w-full h-[60vh] relative overflow-hidden">
+      <div className="w-full h-[45vh] sm:h-[60vh] relative overflow-hidden">
         <img
           src={lodge.propertyImage}
           alt={lodge.name}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 pb-12 px-6 lg:px-12">
+        <div className="absolute bottom-0 left-0 right-0 pb-8 sm:pb-12 px-5 sm:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto">
             <div
-              className="inline-block px-5 py-2 rounded-full text-xs tracking-widest uppercase mb-4 font-bold shadow-lg text-white"
+              className="inline-block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs tracking-widest uppercase mb-3 sm:mb-4 font-bold shadow-lg text-white"
               style={{ backgroundColor: lodge.color }}
             >
-              {lodge.dates} • {lodge.nights}
+              {lodge.dates} \u2022 {lodge.nights}
             </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl text-white mb-4 tracking-tight drop-shadow-lg font-medium">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl text-white mb-3 sm:mb-4 tracking-tight drop-shadow-lg font-medium">
               {lodge.name}
             </h1>
-            <div className="flex items-center gap-2 text-white/95">
-              <MapPin className="w-5 h-5" />
+            <div className="flex items-center gap-2 text-white/95 text-sm sm:text-base">
+              <MapPin className="w-4 sm:w-5 h-4 sm:h-5" />
               <span className="font-medium">{lodge.address}</span>
             </div>
           </div>
@@ -86,20 +86,19 @@ export default function LodgingPage() {
       </div>
 
       {/* Content */}
-      <main className="max-w-5xl mx-auto px-6 lg:px-12 py-16">
-        <div className="grid lg:grid-cols-3 gap-12">
+      <main className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-12 py-10 sm:py-16">
+        <div className="grid lg:grid-cols-3 gap-8 sm:gap-12">
           {/* Left Column - Details */}
-          <div className="lg:col-span-2 space-y-10">
+          <div className="lg:col-span-2 space-y-8 sm:space-y-10">
             {/* Description */}
             <section>
-              <p className="text-xl leading-relaxed text-gray-700">
+              <p className="text-lg sm:text-xl leading-relaxed text-gray-700">
                 {lodge.description}
               </p>
             </section>
 
             {/* Room Image Carousel */}
             <section>
-            
 
               {/* Carousel container */}
               <div className="relative rounded-xl overflow-hidden shadow-2xl group">
@@ -112,7 +111,7 @@ export default function LodgingPage() {
                     className="w-full h-full object-cover animate-[fadeIn_0.3s_ease-in-out]"
                   />
 
-                  {/* Prev / Next buttons — only show when more than 1 image */}
+                  {/* Prev / Next buttons — always visible on mobile, hover on desktop */}
                   {totalImages > 1 && (
                     <>
                       <button
@@ -121,7 +120,7 @@ export default function LodgingPage() {
                             (carouselIdx - 1 + totalImages) % totalImages,
                           )
                         }
-                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"
+                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity backdrop-blur-sm"
                         aria-label="Previous image"
                       >
                         <ChevronLeft className="w-5 h-5" />
@@ -130,7 +129,7 @@ export default function LodgingPage() {
                         onClick={() =>
                           setCarouselIdx((carouselIdx + 1) % totalImages)
                         }
-                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity backdrop-blur-sm"
                         aria-label="Next image"
                       >
                         <ChevronRight className="w-5 h-5" />
@@ -166,27 +165,27 @@ export default function LodgingPage() {
               </div>
 
               {/* Room description text */}
-              <p className="mt-5 text-xl leading-relaxed text-gray-600">
+              <p className="mt-4 sm:mt-5 text-lg sm:text-xl leading-relaxed text-gray-600">
                 {lodge.roomDescription}
               </p>
             </section>
 
             {/* Amenities */}
             <section>
-              <h2 className="text-3xl text-gray-900 mb-5 font-medium">
+              <h2 className="text-2xl sm:text-3xl text-gray-900 mb-4 sm:mb-5 font-medium">
                 Amenities
               </h2>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {lodge.amenities.map((amenity, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-3 px-4 py-3 bg-white rounded-lg border border-gray-200 shadow-sm"
+                    className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 bg-white rounded-lg border border-gray-200 shadow-sm"
                   >
                     <div
-                      className="w-2.5 h-2.5 rounded-full"
+                      className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full flex-shrink-0"
                       style={{ backgroundColor: lodge.color }}
                     ></div>
-                    <span className="text-sm text-gray-800 font-medium">
+                    <span className="text-xs sm:text-sm text-gray-800 font-medium">
                       {amenity}
                     </span>
                   </div>
@@ -197,8 +196,8 @@ export default function LodgingPage() {
 
           {/* Right Column - Contact & Links */}
           <div className="space-y-6">
-            <div className="bg-white rounded-xl shadow-2xl p-6 border border-gray-200 sticky top-32">
-              <h3 className="text-xl text-gray-900 mb-5 font-medium">
+            <div className="bg-white rounded-xl shadow-2xl p-5 sm:p-6 border border-gray-200 lg:sticky lg:top-32">
+              <h3 className="text-lg sm:text-xl text-gray-900 mb-4 sm:mb-5 font-medium">
                 Booking Details
               </h3>
 

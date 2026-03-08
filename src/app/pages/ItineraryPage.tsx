@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Car, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Car, ChevronLeft, ChevronRight, Map, X } from 'lucide-react';
 import { itinerary } from '../../data/itinerary.generated';
 import { segments, type SegmentId } from '../../data/segments';
 import type { TripDay } from '../../data/types';
@@ -57,11 +57,13 @@ export default function ItineraryPage() {
   const [scrollFocusedLocationId, setScrollFocusedLocationId] = useState<string | null>(null);
   /** True during the brief crossfade between segments. */
   const [isFading, setIsFading] = useState(false);
+  /** Mobile map overlay visible */
+  const [mobileMapOpen, setMobileMapOpen] = useState(false);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // ── Derived data ─────────────────────────────────────────
+  // \u2500\u2500 Derived data \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 
   const activeSectionIdx = sections.findIndex((s) => s.segmentId === activeSection);
   const activeData = sections[activeSectionIdx];
@@ -71,7 +73,6 @@ export default function ItineraryPage() {
     activeSectionIdx < sections.length - 1 ? sections[activeSectionIdx + 1] : null;
 
   // Chronologically ordered, deduplicated location IDs for the active segment.
-  // Derived from the itinerary activity order — preserves the natural trip sequence.
   const orderedLocationIds = useMemo(() => {
     if (!activeData) return [];
     const seen = new Set<string>();
@@ -89,7 +90,7 @@ export default function ItineraryPage() {
     return ordered;
   }, [activeData]);
 
-  // ── Navigate between segments with crossfade ─────────────
+  // \u2500\u2500 Navigate between segments with crossfade \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 
   const goToSegment = useCallback((segmentId: SegmentId) => {
     if (segmentId === activeSection) return;
@@ -104,7 +105,7 @@ export default function ItineraryPage() {
     }, 200);
   }, [activeSection]);
 
-  // ── Activity-level observer (rooted in scroll container) ─
+  // \u2500\u2500 Activity-level observer (rooted in scroll container) \u2500
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -136,7 +137,7 @@ export default function ItineraryPage() {
     };
   }, [activeSection]);
 
-  // ── Scroll to a location within the container (map pin click) ─
+  // \u2500\u2500 Scroll to a location within the container (map pin click) \u2500
 
   const scrollToLocation = useCallback(
     (locationId: string) => {
@@ -153,6 +154,8 @@ export default function ItineraryPage() {
           const scrollTarget =
             cardRect.top - containerRect.top + container.scrollTop - offset;
           container.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+          // Close mobile map after selecting a pin
+          setMobileMapOpen(false);
           return;
         }
       }
@@ -160,14 +163,20 @@ export default function ItineraryPage() {
     [activeSection],
   );
 
+  // Prevent body scroll when mobile map is open
+  useEffect(() => {
+    document.body.style.overflow = mobileMapOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileMapOpen]);
+
   if (!activeData || !seg) return null;
 
   return (
     <div className="fixed top-16 left-0 right-0 bottom-0 flex flex-col">
       {/* Sub-Navigation */}
       <div className="z-40 bg-stone-50/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm shrink-0">
-        <div className="max-w-6xl mx-auto px-6 lg:px-12 py-2">
-          <div className="flex items-center justify-center gap-2 overflow-x-auto">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-2">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 overflow-x-auto">
             {sections.map((s) => {
               const isActive = activeSection === s.segmentId;
               const color = segments[s.segmentId].color;
@@ -175,7 +184,7 @@ export default function ItineraryPage() {
               <button
                 key={s.segmentId}
                 onClick={() => goToSegment(s.segmentId)}
-                className={`cursor-pointer relative group flex-shrink-0 px-6 py-2 rounded-full text-sm transition-all duration-200 font-bold flex flex-col items-center gap-0.5 ${
+                className={`cursor-pointer relative group flex-shrink-0 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm transition-all duration-200 font-bold flex flex-col items-center gap-0.5 ${
                   isActive
                     ? 'text-white shadow-md shadow-black/20'
                     : 'text-gray-700 hover:shadow-sm'
@@ -185,7 +194,7 @@ export default function ItineraryPage() {
                 }}
               >
                 <span className="relative z-10">{segments[s.segmentId].navLabel}</span>
-                <span className={`relative z-10 text-[10px] tracking-wide ${
+                <span className={`relative z-10 text-[9px] sm:text-[10px] tracking-wide ${
                   isActive ? 'text-white/60' : 'text-gray-500'
                 }`}>
                   {sectionDateRange(s.days)}
@@ -222,7 +231,7 @@ export default function ItineraryPage() {
             >
               {/* Hero image — fixed to the scroll container, vivid at top */}
               <div
-                className="sticky top-0 h-[70vh] -mb-[70vh] z-0 bg-cover bg-center"
+                className="sticky top-0 h-[60vh] sm:h-[70vh] -mb-[60vh] sm:-mb-[70vh] z-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${seg.bgImage})` }}
               >
                 {/* Light overlay at top, fading to segment-tinted dark at bottom */}
@@ -237,63 +246,63 @@ export default function ItineraryPage() {
               {/* Content — scrolls over the hero */}
               <div className="relative z-10">
                 {/* Spacer so the hero is visible before content begins */}
-                <div className="h-[40vh]" />
+                <div className="h-[30vh] sm:h-[40vh]" />
 
                 <div
-                  className="px-6 lg:px-12 pb-20"
+                  className="px-5 sm:px-6 lg:px-12 pb-16 sm:pb-20"
                   style={{
                     background: `linear-gradient(to bottom, transparent, color-mix(in oklab, ${seg.color} 35%, #000) 25%)`,
                   }}
                 >
                   {/* Section Header */}
-                  <div className="mb-12">
-                    <h2 className="text-5xl sm:text-6xl lg:text-7xl text-white mb-4 tracking-tight font-medium drop-shadow-lg">
+                  <div className="mb-8 sm:mb-12">
+                    <h2 className="text-4xl sm:text-5xl lg:text-7xl text-white mb-3 sm:mb-4 tracking-tight font-medium drop-shadow-lg">
                       {seg.title}
                     </h2>
-                    <p className="text-2xl text-white/90 mb-6 italic drop-shadow-md">
+                    <p className="text-xl sm:text-2xl text-white/90 mb-4 sm:mb-6 italic drop-shadow-md">
                       {seg.subtitle}
                     </p>
 
-                    <div className="mb-8">
+                    <div className="mb-6 sm:mb-8">
                       <p className="text-xs text-white/60 uppercase tracking-widest mb-1 font-medium">
                         When
                       </p>
-                      <p className="text-xl text-white font-medium">
+                      <p className="text-lg sm:text-xl text-white font-medium">
                         {sectionDateRange(activeData.days)}
                       </p>
                     </div>
 
-                    <p className="text-xl text-white/95 leading-relaxed mb-8 max-w-2xl">
+                    <p className="text-lg sm:text-xl text-white/95 leading-relaxed mb-6 sm:mb-8 max-w-2xl">
                       {seg.description}
                     </p>
                   </div>
 
                 {/* Days */}
-                <div className="space-y-16">
+                <div className="space-y-12 sm:space-y-16">
                   {activeData.days.map((day) => (
                     <div key={day.day} className="relative">
                       {/* Sticky date header */}
                       <div
-                        className="sticky top-0 z-20 -mx-6 lg:-mx-12 px-6 lg:px-12 py-2 backdrop-blur-md border-b border-white/10"
+                        className="sticky top-0 z-20 -mx-5 sm:-mx-6 lg:-mx-12 px-5 sm:px-6 lg:px-12 py-2 backdrop-blur-md border-b border-white/10"
                         style={{ backgroundColor: `color-mix(in oklab, ${seg.color} 40%, rgba(0,0,0,0.7))` }}
                       >
-                        <p className="text-sm text-white/80 uppercase tracking-widest font-medium">
+                        <p className="text-xs sm:text-sm text-white/80 uppercase tracking-widest font-medium">
                           {formatDayDate(day.date, day.dayOfWeek)}
                           <span className="text-white/50 mx-2">·</span>
                           <span className="normal-case tracking-normal text-white/70">{day.title}</span>
                         </p>
                       </div>
 
-                      <div className="mb-8 mt-6">
-                        <h3 className="text-4xl sm:text-5xl text-white mb-4 font-medium">
+                      <div className="mb-6 sm:mb-8 mt-5 sm:mt-6">
+                        <h3 className="text-3xl sm:text-4xl lg:text-5xl text-white mb-3 sm:mb-4 font-medium">
                           {day.title}
                         </h3>
-                        <p className="text-xl text-white/90 leading-relaxed">
+                        <p className="text-lg sm:text-xl text-white/90 leading-relaxed">
                           {day.summary}
                         </p>
                       </div>
 
-                      <div className="pl-6 border-l-2 border-white/30 space-y-8">
+                      <div className="pl-5 sm:pl-6 border-l-2 border-white/30 space-y-6 sm:space-y-8">
                         {day.activities.map((activity, actIdx) => {
                           const locIds = activity.locationIds ?? [];
                           const hasLocations = locIds.length > 0;
@@ -327,7 +336,7 @@ export default function ItineraryPage() {
                               <div className="relative">
                                 {/* Timeline dot — pulses when active */}
                                 <div
-                                  className={`absolute -left-[29px] w-4 h-4 rounded-full border-2 border-white ${
+                                  className={`absolute -left-[26px] sm:-left-[29px] w-3.5 sm:w-4 h-3.5 sm:h-4 rounded-full border-2 border-white ${
                                     isActive
                                       ? 'animate-dot-pulse'
                                       : ''
@@ -343,11 +352,11 @@ export default function ItineraryPage() {
                                       'background-color 0.4s ease, box-shadow 0.4s ease',
                                   }}
                                 ></div>
-                                <div className="text-sm text-white/70 uppercase tracking-wider mb-2 font-medium" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
+                                <div className="text-xs sm:text-sm text-white/70 uppercase tracking-wider mb-2 font-medium" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
                                   {activity.time}
                                 </div>
                                 <h4
-                                  className="text-2xl text-white mb-3 font-medium"
+                                  className="text-xl sm:text-2xl text-white mb-2 sm:mb-3 font-medium"
                                   style={{
                                     textShadow: isActive
                                       ? `0 0 12px ${seg.color}90, 0 0 4px ${seg.color}60`
@@ -357,7 +366,7 @@ export default function ItineraryPage() {
                                 >
                                   {activity.name}
                                 </h4>
-                                <p className="text-lg text-white/85 leading-relaxed" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+                                <p className="text-base sm:text-lg text-white/85 leading-relaxed" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
                                   {activity.description}
                                 </p>
                                 {activity.subgroup && (
@@ -367,7 +376,7 @@ export default function ItineraryPage() {
                                 )}
                               </div>
                               {activity.travelAfter && (
-                                <div className="flex items-center gap-2 mt-4 py-2 px-3 text-xs text-white/70 bg-white/5 rounded-md backdrop-blur-sm" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.6)' }}>
+                                <div className="flex items-center gap-2 mt-3 sm:mt-4 py-2 px-3 text-xs text-white/70 bg-white/5 rounded-md backdrop-blur-sm" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.6)' }}>
                                   <Car className="w-3.5 h-3.5 shrink-0" />
                                   <span>{activity.travelAfter.duration}</span>
                                   <span className="text-white/40">—</span>
@@ -385,18 +394,18 @@ export default function ItineraryPage() {
                 </div>
 
                 {/* Prev / Next Segment Navigation */}
-                <div className="flex items-center justify-between mt-20 pt-8 border-t border-white/20">
+                <div className="flex items-center justify-between mt-16 sm:mt-20 pt-6 sm:pt-8 border-t border-white/20">
                   {prevSection ? (
                     <button
                       onClick={() => goToSegment(prevSection.segmentId)}
-                      className="flex items-center gap-3 text-white/70 hover:text-white transition-colors group cursor-pointer"
+                      className="flex items-center gap-2 sm:gap-3 text-white/70 hover:text-white transition-colors group cursor-pointer"
                     >
                       <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                       <div className="text-left">
                         <p className="text-xs uppercase tracking-wider text-white/50">
                           Previous
                         </p>
-                        <p className="text-lg font-medium">
+                        <p className="text-base sm:text-lg font-medium">
                           {segments[prevSection.segmentId].navLabel}
                         </p>
                       </div>
@@ -407,13 +416,13 @@ export default function ItineraryPage() {
                   {nextSection ? (
                     <button
                       onClick={() => goToSegment(nextSection.segmentId)}
-                      className="flex items-center gap-3 text-white/70 hover:text-white transition-colors group cursor-pointer"
+                      className="flex items-center gap-2 sm:gap-3 text-white/70 hover:text-white transition-colors group cursor-pointer"
                     >
                       <div className="text-right">
                         <p className="text-xs uppercase tracking-wider text-white/50">
                           Next
                         </p>
-                        <p className="text-lg font-medium">
+                        <p className="text-base sm:text-lg font-medium">
                           {segments[nextSection.segmentId].navLabel}
                         </p>
                       </div>
@@ -429,7 +438,7 @@ export default function ItineraryPage() {
           </div>
         </div>
 
-        {/* Map */}
+        {/* Desktop Map */}
         <div
           className="w-1/2 hidden lg:block p-3 transition-colors duration-700 ease-in-out"
           style={{
@@ -450,6 +459,47 @@ export default function ItineraryPage() {
           </div>
         </div>
       </div>
+
+      {/* Mobile Map FAB */}
+      <button
+        onClick={() => setMobileMapOpen(true)}
+        className="lg:hidden fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white cursor-pointer transition-transform active:scale-95"
+        style={{ backgroundColor: seg.color }}
+        aria-label="Show map"
+      >
+        <Map className="w-6 h-6" />
+      </button>
+
+      {/* Mobile Map Overlay */}
+      {mobileMapOpen && (
+        <div className="lg:hidden fixed inset-0 z-[60] flex flex-col">
+          {/* Header bar */}
+          <div
+            className="flex items-center justify-between px-5 py-3 shadow-md"
+            style={{ backgroundColor: `color-mix(in oklab, ${seg.color} 50%, #1a1a1a)` }}
+          >
+            <span className="text-white font-medium text-sm">{seg.title} Map</span>
+            <button
+              onClick={() => setMobileMapOpen(false)}
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 text-white cursor-pointer"
+              aria-label="Close map"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          {/* Map */}
+          <div className="flex-1">
+            <JourneyMap
+              activeSegment={activeSection}
+              orderedLocationIds={orderedLocationIds}
+              hoveredLocationIds={hoveredLocationIds}
+              scrollFocusedLocationId={scrollFocusedLocationId}
+              onMarkerHover={setMapHoveredId}
+              onPinClick={scrollToLocation}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
