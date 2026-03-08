@@ -29,6 +29,13 @@ Dates: April 3-11, 2026 (9 days / 8 nights)
 - Outbound: UA 369, Fri Apr 3, 2026, DCA 7:30am EDT → SFO 10:42am PDT
 - Return: UA 2386, Sat Apr 11, 2026, SFO 2:00pm PDT → DCA 10:28pm EDT
 
+## **Rental Car**
+
+- Company: Hertz SFO
+- Confirmation: L5194393541
+- Luxury 7 Passenger SUV
+- Pickup 11:00am / Drop-off 12:00pm
+
 ## **Lodging**
 
 ### Apr 3–6 — The Estate Yountville
@@ -279,7 +286,7 @@ Head back north toward Carmel Highlands with an optional stop at Bixby Creek Bri
 
 Return to the hotel for pool time (if you want it), showers, and a short rest before dinner.
 
-**Evening — Dinner at the hotel: Pacific’s Edge (Hyatt Carmel Highlands)**  
+**6:15pm — Dinner at the hotel: Pacific’s Edge (Hyatt Carmel Highlands)**  
 
 Dinner at **Pacific's Edge**, the Hyatt's clifftop restaurant at roughly 400 feet elevation with unobstructed sightlines down the Big Sur coastline—the view is the dominant feature of any meal here. The kitchen focuses on seasonal California coastal cooking with an emphasis on local seafood; the wine program has been ranked among Wine Spectator's top 20 in the country. Start with a cocktail on the terrace if weather allows.
 
