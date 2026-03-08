@@ -2,6 +2,7 @@ export const lodgingData = {
   yountville: {
     id: 'estate-yountville',
     name: 'The Estate Yountville',
+    shortName: 'Napa',
     dates: 'April 3–6, 2026',
     nights: '3 nights',
     address: '6481 Washington St, Yountville, CA 94599',
@@ -38,6 +39,7 @@ export const lodgingData = {
   yosemite: {
     id: 'rush-creek-lodge',
     name: 'Rush Creek Lodge',
+    shortName: 'Yosemite',
     dates: 'April 6–8, 2026',
     nights: '2 nights',
     address: '34001 CA-120, Groveland, CA 95321',
@@ -74,6 +76,7 @@ export const lodgingData = {
   carmel: {
     id: 'hyatt-carmel',
     name: 'Hyatt Carmel Highlands',
+    shortName: 'Big Sur',
     dates: 'April 8–11, 2026',
     nights: '3 nights',
     address: '120 Highlands Dr, Carmel Highlands, CA 93923',

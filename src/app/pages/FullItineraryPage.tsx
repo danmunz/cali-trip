@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { Car, MapPin, Globe, Star, Plane, Building2, List, X } from 'lucide-react';
+import { Car, MapPin, Globe, Star, Plane, Building2, List, X, Link2, Check } from 'lucide-react';
 import { itinerary } from '../../data/itinerary.generated';
 import { tripMeta } from '../../data/trip-meta.generated';
 import { segments } from '../../data/segments';
@@ -467,14 +467,129 @@ function MobileToc() {
   );
 }
 
+// ── Copy-link button (mobile only) ──────────────────────────
+
+function CopyLinkButton({ hash }: { hash: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    const url = `${window.location.origin}${window.location.pathname}${hash}`;
+    try {
+      navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // Clipboard API unavailable
+    }
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="lg:hidden print:hidden inline-flex items-center justify-center w-7 h-7 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer"
+      aria-label="Copy link"
+    >
+      {copied ? <Check className="w-3.5 h-3.5" /> : <Link2 className="w-3.5 h-3.5" />}
+    </button>
+  );
+}
+
+// ── Sticky mobile header (scroll-tracking) ──────────────────
+
+function MobileStickyHeader() {
+  const [activeDay, setActiveDay] = useState<typeof itinerary[number] | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  // Sentinel observer: show header once "Day-by-Day" divider scrolls past the top
+  useEffect(() => {
+    const sentinel = document.getElementById('day-by-day-sentinel');
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry) setVisible(!entry.isIntersecting);
+      },
+      { rootMargin: '-64px 0px 0px 0px' },
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
+
+  // Track active day section by scroll position
+  useEffect(() => {
+    let rafId = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const sections = document.querySelectorAll<HTMLElement>('section[id^="day-"]');
+        let activeDayNum = -1;
+        for (const section of sections) {
+          if (!/^day-\d+$/.test(section.id)) continue;
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 140) activeDayNum = parseInt(section.id.replace('day-', ''), 10);
+        }
+        const day = activeDayNum > 0 ? itinerary.find(d => d.day === activeDayNum) ?? null : null;
+        setActiveDay(day);
+      });
+    };
+    onScroll(); // Initialize from current scroll position
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  // Update URL hash when scrolling through days
+  useEffect(() => {
+    if (!visible || !activeDay) return;
+    const timer = setTimeout(() => {
+      history.replaceState(null, '', '#day-' + activeDay.day);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [visible, activeDay]);
+
+  const seg = activeDay
+    ? (segments as Record<string, { navLabel: string; color: string }>)[activeDay.segmentId]
+    : null;
+
+  return (
+    <div
+      className={`lg:hidden print:hidden fixed top-16 left-0 right-0 z-40 bg-stone-50/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm transition-transform duration-200 ease-out ${
+        visible && activeDay ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
+      <div className="px-4 py-2 text-center">
+        <p className="text-xs font-bold uppercase tracking-wider" style={{ color: seg?.color }}>
+          {seg?.navLabel}
+        </p>
+        <p className="text-[11px] text-gray-500">
+          Day {activeDay?.day} · {activeDay ? formatDate(activeDay.date, activeDay.dayOfWeek) : ''}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // ── Page ─────────────────────────────────────────────────────
 
 export default function FullItineraryPage() {
+  // Handle initial hash navigation
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const raf = requestAnimationFrame(() => {
+      const el = document.getElementById(hash.replace('#', ''));
+      el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   return (
     <div className="pt-16 min-h-screen bg-transparent">
       <SegmentBackground />
       <TocSidebar />
       <MobileToc />
+      <MobileStickyHeader />
 
       {/* Header */}
       <div className="relative z-[2] border-b border-gray-200 py-14 sm:py-20 px-5 sm:px-6 text-center">
@@ -611,7 +726,7 @@ export default function FullItineraryPage() {
         </div>
 
         {/* Divider */}
-        <div className="flex items-center gap-4 mb-12 sm:mb-16">
+        <div id="day-by-day-sentinel" className="flex items-center gap-4 mb-12 sm:mb-16">
           <div className="flex-1 border-t border-gray-200" />
           <span className="text-xs uppercase tracking-[0.2em] text-gray-400 font-bold">
             Day-by-Day
@@ -621,21 +736,49 @@ export default function FullItineraryPage() {
 
         {/* Day-by-Day Itinerary */}
         <div className="space-y-14 sm:space-y-20">
-          {itinerary.map((day) => {
+          {itinerary.map((day, dayIdx) => {
             const color = segmentColor(day.segmentId);
+            const isNewSegment = dayIdx === 0 || day.segmentId !== itinerary[dayIdx - 1]!.segmentId;
+            const segInfo = (segments as Record<string, { navLabel: string }>)[day.segmentId];
 
             return (
-              <section key={day.day} id={`day-${day.day}`} data-segment={day.segmentId} className="scroll-mt-20">
+              <section key={day.day} id={`day-${day.day}`} data-segment={day.segmentId} className="scroll-mt-[7.5rem] lg:scroll-mt-20">
+                {/* Segment divider — before first day of each segment */}
+                {isNewSegment && (
+                  <div
+                    id={`segment-${day.segmentId}`}
+                    className="scroll-mt-[7.5rem] lg:scroll-mt-20 print:hidden flex items-center gap-3 mb-8 sm:mb-10"
+                  >
+                    <span
+                      className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: color }}
+                    />
+                    <span
+                      className="text-sm font-bold uppercase tracking-wider"
+                      style={{ color }}
+                    >
+                      {segInfo?.navLabel}
+                    </span>
+                    <CopyLinkButton hash={`#segment-${day.segmentId}`} />
+                    <div
+                      className="flex-1 border-t"
+                      style={{ borderColor: `${color}40` }}
+                    />
+                  </div>
+                )}
                 {/* Day Header */}
                 <div
                   className="border-l-4 pl-5 sm:pl-6 mb-8 sm:mb-10"
                   style={{ borderLeftColor: color }}
                 >
-                  <div
-                    className="inline-block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs tracking-widest uppercase mb-3 sm:mb-4 font-bold shadow-sm text-white"
-                    style={{ backgroundColor: color }}
-                  >
-                    Day {day.day} · {formatDate(day.date, day.dayOfWeek)}
+                  <div className="flex items-center gap-2 mb-3 sm:mb-4">
+                    <div
+                      className="inline-block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs tracking-widest uppercase font-bold shadow-sm text-white"
+                      style={{ backgroundColor: color }}
+                    >
+                      Day {day.day} · {formatDate(day.date, day.dayOfWeek)}
+                    </div>
+                    <CopyLinkButton hash={`#day-${day.day}`} />
                   </div>
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 font-medium mb-3">
                     {day.title}
@@ -648,7 +791,7 @@ export default function FullItineraryPage() {
                 {/* Activities */}
                 <div className="space-y-2">
                   {day.activities.map((activity, idx) => (
-                    <div key={idx} id={`day-${day.day}-stop-${idx}`} className="scroll-mt-20">
+                    <div key={idx} id={`day-${day.day}-stop-${idx}`} className="scroll-mt-[7.5rem] lg:scroll-mt-20">
                       {/* Activity card */}
                       <div className="py-4 sm:py-6 px-4 sm:px-5 rounded-lg hover:bg-white/60 transition-colors">
                         <span

@@ -14,6 +14,7 @@ const bgImages = {
 export const segments = {
   arrival: {
     navLabel: 'Arrival + Muir Woods',
+    mobileNavLabel: 'Arrival',
     title: 'Arrival + Muir Woods',
     subtitle: 'SFO & Coastal Redwoods',
     color: '#8b6e5a',
@@ -25,6 +26,7 @@ export const segments = {
   },
   napa: {
     navLabel: 'Napa + Sonoma',
+    mobileNavLabel: 'Napa',
     title: 'Napa + Sonoma',
     subtitle: "California's Food & Wine Bounty",
     color: '#b8956d',
@@ -36,6 +38,7 @@ export const segments = {
   },
   yosemite: {
     navLabel: 'Yosemite',
+    mobileNavLabel: 'Yosemite',
     title: 'Yosemite',
     subtitle: 'Sierra Nevada Mountains',
     color: '#5a8a6f',
@@ -47,6 +50,7 @@ export const segments = {
   },
   carmel: {
     navLabel: 'Carmel + Big Sur',
+    mobileNavLabel: 'Big Sur',
     title: 'Carmel + Big Sur',
     subtitle: 'Coastal Cliffs & Pacific Views',
     color: '#4a7c8e',

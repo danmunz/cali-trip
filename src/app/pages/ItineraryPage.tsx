@@ -38,6 +38,15 @@ function sectionDateRange(days: TripDay[]): string {
   return `${fMonth} ${first.getDate()} – ${lMonth} ${last.getDate()}`;
 }
 
+function sectionDateRangeShort(days: TripDay[]): string {
+  const first = new Date(days[0]!.date + 'T12:00:00');
+  const last = new Date(days[days.length - 1]!.date + 'T12:00:00');
+  if (first.getTime() === last.getTime()) {
+    return `${first.getMonth() + 1}/${first.getDate()}`;
+  }
+  return `${first.getMonth() + 1}/${first.getDate()}–${last.getDate()}`;
+}
+
 /** Parse the URL hash and return it if it's a known segment ID, else undefined. */
 function getSegmentFromHash(): SegmentId | undefined {
   const hash = window.location.hash.replace('#', '');
@@ -176,15 +185,16 @@ export default function ItineraryPage() {
       {/* Sub-Navigation */}
       <div className="z-40 bg-stone-50/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm shrink-0">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-2">
-          <div className="flex items-center justify-center gap-1.5 sm:gap-2 overflow-x-auto">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 sm:overflow-x-auto">
             {sections.map((s) => {
               const isActive = activeSection === s.segmentId;
               const color = segments[s.segmentId].color;
+              const seg = segments[s.segmentId];
               return (
               <button
                 key={s.segmentId}
                 onClick={() => goToSegment(s.segmentId)}
-                className={`cursor-pointer relative group flex-shrink-0 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm transition-all duration-200 font-bold flex flex-col items-center gap-0.5 ${
+                className={`cursor-pointer relative group flex-shrink-0 whitespace-nowrap px-3 sm:px-6 py-1.5 sm:py-2 rounded-full text-sm transition-all duration-200 font-bold flex flex-col items-center gap-0.5 ${
                   isActive
                     ? 'text-white shadow-md shadow-black/20'
                     : 'text-gray-700 hover:shadow-sm'
@@ -193,11 +203,13 @@ export default function ItineraryPage() {
                   backgroundColor: isActive ? color : undefined,
                 }}
               >
-                <span className="relative z-10">{segments[s.segmentId].navLabel}</span>
-                <span className={`relative z-10 text-[9px] sm:text-[10px] tracking-wide ${
+                <span className="relative z-10 sm:hidden">{seg.mobileNavLabel}</span>
+                <span className="relative z-10 hidden sm:inline">{seg.navLabel}</span>
+                <span className={`relative z-10 text-[10px] tracking-wide ${
                   isActive ? 'text-white/60' : 'text-gray-500'
                 }`}>
-                  {sectionDateRange(s.days)}
+                  <span className="sm:hidden">{sectionDateRangeShort(s.days)}</span>
+                  <span className="hidden sm:inline">{sectionDateRange(s.days)}</span>
                 </span>
                 {/* Hover pill tint */}
                 {!isActive && (
