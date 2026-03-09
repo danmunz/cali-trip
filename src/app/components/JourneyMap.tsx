@@ -238,6 +238,11 @@ export default function JourneyMap({
   const handleMapLoad = useCallback(() => {
     setIsMapLoaded(true);
     setIsStyleReady(true);
+    // Tame touch inertia so small swipes don't fling the map
+    const rawMap = mapRef.current?.getMap();
+    if (rawMap) {
+      rawMap.dragPan.enable({ deceleration: 3500, maxSpeed: 800 });
+    }
     // Immediately fit to the active segment (no animation on first load)
     setTimeout(() => fitToSegment(activeSegment, false), 50);
     // eslint-disable-next-line react-hooks/exhaustive-deps

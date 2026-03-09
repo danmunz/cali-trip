@@ -415,7 +415,7 @@ export default function ItineraryPage() {
         {/* Mobile: bottom-sheet itinerary over the map */}
         <div
           ref={sheetRef}
-          className="lg:hidden absolute inset-0 z-10 flex flex-col bg-black/50 backdrop-blur-md transition-transform duration-300 ease-out"
+          className="lg:hidden absolute inset-0 z-10 flex flex-col bg-black/50 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
           style={{ transform: sheetDown ? 'translateY(calc(100% - 56px))' : 'translateY(0)' }}
         >
           {/* Scrollable itinerary content */}
