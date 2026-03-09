@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Car, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Car, ChevronLeft, ChevronRight, MapIcon } from 'lucide-react';
 import { itinerary } from '../../data/itinerary.generated';
 import { segments, type SegmentId } from '../../data/segments';
 import type { TripDay } from '../../data/types';
@@ -75,9 +75,6 @@ export default function ItineraryPage() {
   const mobileScrollRef = useRef<HTMLDivElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Bottom-sheet touch tracking refs
-  const touchStartY = useRef(0);
-  const touchDelta = useRef(0);
   const sheetRef = useRef<HTMLDivElement>(null);
 
   /** Return the currently-visible scroll container (desktop or mobile). */
@@ -192,56 +189,6 @@ export default function ItineraryPage() {
     [activeSection],
   );
 
-  // ── Bottom-sheet touch handlers ─────────────────────────
-
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    touchStartY.current = e.touches[0]!.clientY;
-    touchDelta.current = 0;
-  }, []);
-
-  const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    touchDelta.current = e.touches[0]!.clientY - touchStartY.current;
-    // Live drag feedback on the sheet
-    const sheet = sheetRef.current;
-    if (!sheet) return;
-    if (sheetDown) {
-      // Sheet is down — allow dragging up (negative delta)
-      const clamped = Math.min(0, touchDelta.current);
-      sheet.style.transition = 'none';
-      sheet.style.transform = `translateY(calc(85% + ${clamped}px))`;
-    } else {
-      // Sheet is up — only allow dragging down (positive delta) when at scroll top
-      const container = mobileScrollRef.current ?? scrollContainerRef.current;
-      if (container && container.scrollTop > 0) return; // don't hijack content scroll
-      const clamped = Math.max(0, touchDelta.current);
-      sheet.style.transition = 'none';
-      sheet.style.transform = `translateY(${clamped}px)`;
-    }
-  }, [sheetDown]);
-
-  const handleTouchEnd = useCallback(() => {
-    const sheet = sheetRef.current;
-    if (!sheet) return;
-    const THRESHOLD = 80;
-    sheet.style.transition = '';
-    if (sheetDown) {
-      // Was down — swipe up to close
-      if (touchDelta.current < -THRESHOLD) {
-        setSheetDown(false);
-        sheet.style.transform = '';
-      } else {
-        sheet.style.transform = '';
-      }
-    } else {
-      // Was up — swipe down to reveal map
-      if (touchDelta.current > THRESHOLD) {
-        setSheetDown(true);
-      }
-      sheet.style.transform = '';
-    }
-    touchDelta.current = 0;
-  }, [sheetDown]);
-
   if (!activeData || !seg) return null;
 
   return (
@@ -315,9 +262,9 @@ export default function ItineraryPage() {
             style={{ opacity: isFading ? 0 : 1 }}
           >
             <section data-section={activeData.segmentId} className="relative">
-              {/* Compact hero image */}
+              {/* Hero image — covers header area down to the first day */}
               <div
-                className="sticky top-0 h-[25vh] -mb-[25vh] z-0 bg-cover bg-center"
+                className="relative bg-cover bg-center"
                 style={{ backgroundImage: `url(${seg.bgImage})` }}
               >
                 <div
@@ -326,33 +273,33 @@ export default function ItineraryPage() {
                     background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.7))',
                   }}
                 />
-              </div>
-
-              <div className="relative z-10">
-                <div className="h-[10vh]" />
-
-                <div className="px-5 sm:px-6 lg:px-8 pb-16">
-                  {/* Section Header */}
-                  <div className="mb-6 sm:mb-8">
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white mb-2 sm:mb-3 tracking-tight font-medium drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
-                      {seg.title}
-                    </h2>
-                    <p className="text-lg sm:text-xl text-white/90 mb-3 sm:mb-4 italic drop-shadow-md" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
-                      {seg.subtitle}
-                    </p>
-                    <div className="mb-4 sm:mb-5">
-                      <p className="text-xs text-white/60 uppercase tracking-widest mb-1 font-medium">When</p>
-                      <p className="text-base sm:text-lg text-white font-medium" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
-                        {sectionDateRange(activeData.days)}
+                <div className="relative z-10">
+                  <div className="h-[10vh]" />
+                  <div className="px-5 sm:px-6 lg:px-8">
+                    <div className="mb-6 sm:mb-8">
+                      <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white mb-2 sm:mb-3 tracking-tight font-medium drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
+                        {seg.title}
+                      </h2>
+                      <p className="text-lg sm:text-xl text-white/90 mb-3 sm:mb-4 italic drop-shadow-md" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
+                        {seg.subtitle}
+                      </p>
+                      <div className="mb-4 sm:mb-5">
+                        <p className="text-xs text-white/60 uppercase tracking-widest mb-1 font-medium">When</p>
+                        <p className="text-base sm:text-lg text-white font-medium" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
+                          {sectionDateRange(activeData.days)}
+                        </p>
+                      </div>
+                      <p className="text-base sm:text-lg text-white/95 leading-relaxed" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+                        {seg.description}
                       </p>
                     </div>
-                    <p className="text-base sm:text-lg text-white/95 leading-relaxed mb-4 sm:mb-6" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
-                      {seg.description}
-                    </p>
                   </div>
+                </div>
+              </div>
 
-                  {/* Days */}
-                  <div className="space-y-10 sm:space-y-12">
+              {/* Days */}
+              <div className="px-5 sm:px-6 lg:px-8 pb-16">
+                <div className="space-y-10 sm:space-y-12">
                     {activeData.days.map((day) => (
                       <div key={day.day} className="relative">
                         <div
@@ -461,7 +408,6 @@ export default function ItineraryPage() {
                     ) : <div />}
                   </div>
                 </div>
-              </div>
             </section>
           </div>
         </div>
@@ -470,34 +416,29 @@ export default function ItineraryPage() {
         <div
           ref={sheetRef}
           className="lg:hidden absolute inset-0 z-10 flex flex-col bg-black/50 backdrop-blur-md transition-transform duration-300 ease-out"
-          style={{ transform: sheetDown ? 'translateY(85%)' : 'translateY(0)' }}
+          style={{ transform: sheetDown ? 'translateY(calc(100% - 56px))' : 'translateY(0)' }}
         >
-          {/* Drag handle */}
-          <div
-            className="flex-shrink-0 flex items-center justify-center py-3 cursor-grab active:cursor-grabbing"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            <div className="w-10 h-1 bg-white/40 rounded-full" />
-          </div>
-
           {/* Scrollable itinerary content */}
           <div
             ref={mobileScrollRef}
-            className="flex-1 overflow-y-auto min-h-0"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
+            className="relative flex-1 overflow-y-auto min-h-0"
           >
+            {/* Map toggle button */}
+            <button
+              onClick={() => setSheetDown((d) => !d)}
+              className="sticky top-3 right-0 z-30 float-right mr-4 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 active:bg-white/30 transition-colors cursor-pointer"
+              aria-label={sheetDown ? 'Show itinerary' : 'Show map'}
+            >
+              <MapIcon className="w-5 h-5 text-white/80" />
+            </button>
             <div
               className="transition-opacity duration-200"
               style={{ opacity: isFading ? 0 : 1 }}
             >
               <section data-section={activeData.segmentId} className="relative">
-                {/* Compact hero image */}
+                {/* Hero image — covers header area down to the first day */}
                 <div
-                  className="sticky top-0 h-[30vh] -mb-[30vh] z-0 bg-cover bg-center"
+                  className="relative bg-cover bg-center"
                   style={{ backgroundImage: `url(${seg.bgImage})` }}
                 >
                   <div
@@ -506,33 +447,33 @@ export default function ItineraryPage() {
                       background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.7))',
                     }}
                   />
-                </div>
-
-                <div className="relative z-10">
-                  <div className="h-[15vh]" />
-
-                  <div className="px-5 sm:px-6 pb-16 sm:pb-20">
-                    {/* Section Header */}
-                    <div className="mb-8 sm:mb-10">
-                      <h2 className="text-4xl sm:text-5xl text-white mb-3 sm:mb-4 tracking-tight font-medium drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
-                        {seg.title}
-                      </h2>
-                      <p className="text-xl sm:text-2xl text-white/90 mb-4 sm:mb-5 italic drop-shadow-md" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
-                        {seg.subtitle}
-                      </p>
-                      <div className="mb-5 sm:mb-6">
-                        <p className="text-xs text-white/60 uppercase tracking-widest mb-1 font-medium">When</p>
-                        <p className="text-lg sm:text-xl text-white font-medium" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
-                          {sectionDateRange(activeData.days)}
+                  <div className="relative z-10">
+                    <div className="h-[15vh]" />
+                    <div className="px-5 sm:px-6">
+                      <div className="mb-8 sm:mb-10">
+                        <h2 className="text-4xl sm:text-5xl text-white mb-3 sm:mb-4 tracking-tight font-medium drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
+                          {seg.title}
+                        </h2>
+                        <p className="text-xl sm:text-2xl text-white/90 mb-4 sm:mb-5 italic drop-shadow-md" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
+                          {seg.subtitle}
+                        </p>
+                        <div className="mb-5 sm:mb-6">
+                          <p className="text-xs text-white/60 uppercase tracking-widest mb-1 font-medium">When</p>
+                          <p className="text-lg sm:text-xl text-white font-medium" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
+                            {sectionDateRange(activeData.days)}
+                          </p>
+                        </div>
+                        <p className="text-lg sm:text-xl text-white/95 leading-relaxed" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+                          {seg.description}
                         </p>
                       </div>
-                      <p className="text-lg sm:text-xl text-white/95 leading-relaxed mb-5 sm:mb-6" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
-                        {seg.description}
-                      </p>
                     </div>
+                  </div>
+                </div>
 
-                    {/* Days */}
-                    <div className="space-y-12 sm:space-y-14">
+                {/* Days */}
+                <div className="px-5 sm:px-6 pb-16 sm:pb-20">
+                  <div className="space-y-12 sm:space-y-14">
                       {activeData.days.map((day) => (
                         <div key={day.day} className="relative">
                           <div
@@ -641,7 +582,6 @@ export default function ItineraryPage() {
                       ) : <div />}
                     </div>
                   </div>
-                </div>
               </section>
             </div>
           </div>
