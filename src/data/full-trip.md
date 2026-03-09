@@ -56,9 +56,9 @@ Dates: April 3-11, 2026 (9 days / 8 nights)
 
 # **Day-by-day itinerary**
 
-## **Fri Apr 3 — Arrival + Redwoods + Yountville**
+## **Fri Apr 3 — Arrival + Muir Woods**
 
-Arrive in Northern California and ease into the trip with a redwood walk at Muir Woods, then settle into Yountville for the first taste of Napa's culinary heart. It's a gentle start that balances travel with a classic landscape and a relaxed evening to recharge.
+Arrive in Northern California and ease into the trip with a redwood walk at Muir Woods—one of the last old-growth coastal groves on earth. A gentle first afternoon under the canopy before heading to wine country.
 
 **10:45am–12:15pm — Land at SFO + rental car + lunch to-go**  
 
@@ -71,6 +71,10 @@ Land at SFO, pick up the rental car, and keep lunch simple (airport or a quick s
 Walk the mostly flat, shaded [Main Trail](https://www.nps.gov/goga/planyourvisit/muir-woods-main-trail.htm) for an easy introduction to California's coastal redwoods—a short out-and-back or a longer stroll depending on your legs after travel. The grove is one of the last surviving old-growth coastal redwood stands, protected as a national monument in 1908 after a campaign by William Kent, who donated the land specifically to block a dam project. Bring a light layer; it stays cool under the canopy even on warm days.
 
 *Travel (drive): ~1 hr — Muir Woods → The Estate Yountville*
+
+<!-- segment: napa | Evening in Yountville -->
+
+Settle into Yountville for your first taste of Napa's culinary heart—a relaxed evening to recharge after the travel day.
 
 **4:00pm — Arrive + check-in at The Estate Yountville**  
 

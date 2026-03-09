@@ -172,6 +172,11 @@ function LocationLinks({ locationIds }: { locationIds: string[] }) {
 
 // ── TOC data (shared between desktop sidebar and mobile sheet) ─
 
+/** Unique DOM-safe identifier for a TripDay (handles split days). */
+function dayId(day: { day: number; segmentId: string }): string {
+  return `${day.day}-${day.segmentId}`;
+}
+
 function useTocGroups() {
   return useMemo(() => {
     const groups: {
@@ -224,7 +229,6 @@ function TocSidebar() {
         const sections = document.querySelectorAll<HTMLElement>('section[id^="day-"]');
         let active = '';
         for (const section of sections) {
-          if (!/^day-\d+$/.test(section.id)) continue;
           const rect = section.getBoundingClientRect();
           if (rect.top <= 120) active = section.id;
         }
@@ -243,7 +247,8 @@ function TocSidebar() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const activeDayNum = parseInt(activeId.replace('day-', ''), 10) || -1;
+  // activeId is now e.g. "day-1-arrival" — extract the compound key after "day-"
+  const activeDayKey = activeId.replace(/^day-/, '');
 
   return (
     <nav
@@ -289,11 +294,11 @@ function TocSidebar() {
             {/* Days within segment */}
             <div className="space-y-0.5">
               {group.days.map((day) => {
-                const isActive = activeDayNum === day.day;
+                const isActive = activeDayKey === dayId(day);
                 return (
-                  <div key={day.day}>
+                  <div key={dayId(day)}>
                     <button
-                      onClick={() => scrollTo(`day-${day.day}`)}
+                      onClick={() => scrollTo(`day-${dayId(day)}`)}
                       className={`w-full text-left px-3 py-1.5 text-[13px] rounded-md transition-all duration-200 ${
                         isActive
                           ? 'text-gray-900 font-semibold bg-gray-100/80'
@@ -320,7 +325,7 @@ function TocSidebar() {
                         {day.activities.map((act, i) => (
                           <button
                             key={i}
-                            onClick={() => scrollTo(`day-${day.day}-stop-${i}`)}
+                            onClick={() => scrollTo(`day-${dayId(day)}-stop-${i}`)}
                             className="block w-full text-left text-[11px] text-gray-400 hover:text-gray-600 py-0.5 truncate transition-colors"
                             title={act.name}
                           >
@@ -343,12 +348,12 @@ function TocSidebar() {
         {tocGroups.map((group) =>
           group.days.map((day) => (
             <span
-              key={day.day}
+              key={dayId(day)}
               className={`w-1.5 rounded-full transition-all duration-300 ${
-                activeDayNum === day.day ? 'h-4' : 'h-1.5'
+                activeDayKey === dayId(day) ? 'h-4' : 'h-1.5'
               }`}
               style={{
-                backgroundColor: activeDayNum === day.day
+                backgroundColor: activeDayKey === dayId(day)
                   ? group.color
                   : `${group.color}66`,
               }}
@@ -443,8 +448,8 @@ function MobileToc() {
                   <div className="space-y-0.5">
                     {group.days.map((day) => (
                       <button
-                        key={day.day}
-                        onClick={() => scrollTo(`day-${day.day}`)}
+                        key={dayId(day)}
+                        onClick={() => scrollTo(`day-${dayId(day)}`)}
                         className="w-full text-left px-3 py-2.5 text-sm rounded-md text-gray-700 active:bg-gray-100 transition-colors"
                       >
                         <span
@@ -521,13 +526,12 @@ function MobileStickyHeader() {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
         const sections = document.querySelectorAll<HTMLElement>('section[id^="day-"]');
-        let activeDayNum = -1;
+        let activeKey = '';
         for (const section of sections) {
-          if (!/^day-\d+$/.test(section.id)) continue;
           const rect = section.getBoundingClientRect();
-          if (rect.top <= 140) activeDayNum = parseInt(section.id.replace('day-', ''), 10);
+          if (rect.top <= 140) activeKey = section.id.replace(/^day-/, '');
         }
-        const day = activeDayNum > 0 ? itinerary.find(d => d.day === activeDayNum) ?? null : null;
+        const day = activeKey ? itinerary.find(d => dayId(d) === activeKey) ?? null : null;
         setActiveDay(day);
       });
     };
@@ -543,7 +547,7 @@ function MobileStickyHeader() {
   useEffect(() => {
     if (!visible || !activeDay) return;
     const timer = setTimeout(() => {
-      history.replaceState(null, '', '#day-' + activeDay.day);
+      history.replaceState(null, '', '#day-' + dayId(activeDay));
     }, 300);
     return () => clearTimeout(timer);
   }, [visible, activeDay]);
@@ -742,7 +746,7 @@ export default function FullItineraryPage() {
             const segInfo = (segments as Record<string, { navLabel: string }>)[day.segmentId];
 
             return (
-              <section key={day.day} id={`day-${day.day}`} data-segment={day.segmentId} className="scroll-mt-[7.5rem] lg:scroll-mt-20">
+              <section key={dayId(day)} id={`day-${dayId(day)}`} data-segment={day.segmentId} className="scroll-mt-[7.5rem] lg:scroll-mt-20">
                 {/* Segment divider — before first day of each segment */}
                 {isNewSegment && (
                   <div
@@ -778,7 +782,7 @@ export default function FullItineraryPage() {
                     >
                       Day {day.day} · {formatDate(day.date, day.dayOfWeek)}
                     </div>
-                    <CopyLinkButton hash={`#day-${day.day}`} />
+                    <CopyLinkButton hash={`#day-${dayId(day)}`} />
                   </div>
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 font-medium mb-3">
                     {day.title}
@@ -791,7 +795,7 @@ export default function FullItineraryPage() {
                 {/* Activities */}
                 <div className="space-y-2">
                   {day.activities.map((activity, idx) => (
-                    <div key={idx} id={`day-${day.day}-stop-${idx}`} className="scroll-mt-[7.5rem] lg:scroll-mt-20">
+                    <div key={idx} id={`day-${dayId(day)}-stop-${idx}`} className="scroll-mt-[7.5rem] lg:scroll-mt-20">
                       {/* Activity card */}
                       <div className="py-4 sm:py-6 px-4 sm:px-5 rounded-lg hover:bg-white/60 transition-colors">
                         <span

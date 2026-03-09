@@ -85,6 +85,18 @@ function isTimeBlock(node: RootContent): boolean {
   return nodeText(node).includes(' — ');
 }
 
+/** Detect a segment-switch comment: `<!-- segment: napa -->` or `<!-- segment: napa | Title -->` */
+const SEGMENT_SWITCH_RE = /^<!--\s*segment:\s*(\w+)(?:\s*\|\s*(.+?))?\s*-->$/;
+function isSegmentSwitch(node: RootContent): boolean {
+  return node.type === 'html' && SEGMENT_SWITCH_RE.test((node as { value: string }).value.trim());
+}
+function parseSegmentSwitch(node: RootContent): { segmentId: string; title?: string } | null {
+  if (node.type !== 'html') return null;
+  const m = (node as { value: string }).value.trim().match(SEGMENT_SWITCH_RE);
+  if (!m) return null;
+  return { segmentId: m[1]!, title: m[2] ?? undefined };
+}
+
 /** Detect a travel line: `*Travel (drive): ~duration — from → to*` */
 const TRAVEL_RE = /^Travel \(drive\):\s*(.+?)\s*—\s*(.+?)\s*→\s*(.+)$/;
 function isTravelLine(node: RootContent): boolean {
@@ -537,8 +549,10 @@ for (let dayIdx = 0; dayIdx < dayH2s.length; dayIdx++) {
   const segmentId = daySegmentMap.get(dayNum) ?? 'napa';
 
   // First paragraph(s) before the first time block are the day summary
-  const activities: Activity[] = [];
-  const summaryParts: string[] = [];
+  let currentSegmentId = segmentId;
+  let currentTitle = dayTitle;
+  let activities: Activity[] = [];
+  let summaryParts: string[] = [];
   let currentActivity: {
     time: string;
     name: string;
@@ -577,6 +591,29 @@ for (let dayIdx = 0; dayIdx < dayH2s.length; dayIdx++) {
   }
 
   for (const node of sec.children) {
+    // Mid-day segment switch: flush activities into a TripDay, start fresh
+    if (isSegmentSwitch(node)) {
+      flushActivity();
+      if (activities.length > 0 || summaryParts.length > 0) {
+        tripDays.push({
+          day: dayNum,
+          date,
+          dayOfWeek,
+          title: currentTitle,
+          summary: summaryParts.join(' '),
+          segmentId: currentSegmentId,
+          activities,
+        });
+      }
+      const sw = parseSegmentSwitch(node)!;
+      currentSegmentId = sw.segmentId;
+      currentTitle = sw.title ?? dayTitle;
+      activities = [];
+      summaryParts = [];
+      currentActivity = null;
+      continue;
+    }
+
     if (isTimeBlock(node)) {
       flushActivity();
       const fullText = nodeText(node);
@@ -618,9 +655,9 @@ for (let dayIdx = 0; dayIdx < dayH2s.length; dayIdx++) {
     day: dayNum,
     date,
     dayOfWeek,
-    title: dayTitle,
+    title: currentTitle,
     summary: summaryParts.join(' '),
-    segmentId,
+    segmentId: currentSegmentId,
     activities,
   });
 }

@@ -8,8 +8,8 @@ export const itinerary: TripDay[] = [
     "day": 1,
     "date": "2026-04-03",
     "dayOfWeek": "Friday",
-    "title": "Arrival + Redwoods + Yountville",
-    "summary": "Arrive in Northern California and ease into the trip with a redwood walk at Muir Woods, then settle into Yountville for the first taste of Napa's culinary heart. It's a gentle start that balances travel with a classic landscape and a relaxed evening to recharge.",
+    "title": "Arrival + Muir Woods",
+    "summary": "Arrive in Northern California and ease into the trip with a redwood walk at Muir Woods—one of the last old-growth coastal groves on earth. A gentle first afternoon under the canopy before heading to wine country.",
     "segmentId": "arrival",
     "activities": [
       {
@@ -40,7 +40,17 @@ export const itinerary: TripDay[] = [
           "from": "Muir Woods",
           "to": "The Estate Yountville"
         }
-      },
+      }
+    ]
+  },
+  {
+    "day": 1,
+    "date": "2026-04-03",
+    "dayOfWeek": "Friday",
+    "title": "Evening in Yountville",
+    "summary": "Settle into Yountville for your first taste of Napa's culinary heart—a relaxed evening to recharge after the travel day.",
+    "segmentId": "napa",
+    "activities": [
       {
         "time": "4:00pm",
         "name": "Arrive + check-in at The Estate Yountville",
@@ -517,7 +527,7 @@ export const itinerary: TripDay[] = [
         "locationIds": []
       },
       {
-        "time": "Evening",
+        "time": "6:15pm",
         "name": "Dinner at the hotel: Pacific’s Edge (Hyatt Carmel Highlands)",
         "description": "Dinner at Pacific's Edge, the Hyatt's clifftop restaurant at roughly 400 feet elevation with unobstructed sightlines down the Big Sur coastline—the view is the dominant feature of any meal here. The kitchen focuses on seasonal California coastal cooking with an emphasis on local seafood; the wine program has been ranked among Wine Spectator's top 20 in the country. Start with a cocktail on the terrace if weather allows.",
         "locationIds": [

@@ -31,14 +31,10 @@ const PIN_FOCUS_PITCH = 45;
 
 /**
  * Pin a location to a specific segment map, overriding its trip_parts.
- * Useful when a day straddles two geographic regions (e.g. Day 1 starts
- * at SFO/Muir Woods but ends with dinner in Napa).
+ * SFO is referenced on Day 9 (carmel) for the departure drive, but should
+ * only appear as a pin on the arrival segment — not the Carmel/Big Sur map.
  */
 const MAP_SEGMENT_OVERRIDES: Record<string, SegmentId> = {
-  // Day 1 dinner + lodging are geographically in Napa, not SF/Marin
-  'the-estate-yountville': 'napa',
-  'bottega-napa-valley': 'napa',
-  // SFO only needs a pin on the arrival map, not the departure-day map
   'san-francisco-international-airport-sfo': 'arrival',
 };
 
