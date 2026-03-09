@@ -301,7 +301,11 @@ export default function JourneyMap({
   // Tracks last-consumed value to prevent re-processing.
 
   useEffect(() => {
-    if (!focusLocationId || focusLocationId === lastFocusRef.current) return;
+    if (!focusLocationId) {
+      lastFocusRef.current = null;
+      return;
+    }
+    if (focusLocationId === lastFocusRef.current) return;
     lastFocusRef.current = focusLocationId;
     const loc = zoneLocations.find((l) => l.id === focusLocationId);
     if (!loc) return;

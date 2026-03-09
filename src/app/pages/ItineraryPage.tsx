@@ -211,7 +211,7 @@ export default function ItineraryPage() {
       sheet.style.transform = `translateY(calc(85% + ${clamped}px))`;
     } else {
       // Sheet is up — only allow dragging down (positive delta) when at scroll top
-      const container = scrollContainerRef.current;
+      const container = mobileScrollRef.current ?? scrollContainerRef.current;
       if (container && container.scrollTop > 0) return; // don't hijack content scroll
       const clamped = Math.max(0, touchDelta.current);
       sheet.style.transition = 'none';
