@@ -53,7 +53,7 @@ export default function OverviewPage() {
             </h1>
             <div className="w-16 h-px bg-white/40 mx-auto mb-4 sm:mb-5" />
             <p className="text-xl sm:text-3xl text-white/80 italic drop-shadow font-light">
-              Nine days through California's landscapes &amp; vineyards
+              Nine days through California's landscapes & vineyards
             </p>
           </div>
         </div>
@@ -180,7 +180,7 @@ export default function OverviewPage() {
                     <div className="pl-4 space-y-2 text-sm sm:text-base text-gray-800">
                       <div>
                         <span className="font-semibold">{tripMeta.flights.outbound.number}</span>
-                        <span className="text-gray-500 mx-2">\u2022</span>
+                        <span className="text-gray-500 mx-2">•</span>
                         <span>{tripMeta.flights.outbound.date}</span>
                       </div>
                       <div className="text-xs sm:text-sm">
@@ -200,7 +200,7 @@ export default function OverviewPage() {
                     <div className="pl-4 space-y-2 text-sm sm:text-base text-gray-800">
                       <div>
                         <span className="font-semibold">{tripMeta.flights.return.number}</span>
-                        <span className="text-gray-500 mx-2">\u2022</span>
+                        <span className="text-gray-500 mx-2">•</span>
                         <span>{tripMeta.flights.return.date}</span>
                       </div>
                       <div className="text-xs sm:text-sm">
@@ -239,9 +239,9 @@ export default function OverviewPage() {
                       </div>
                     </div>
                     <div className="text-sm sm:text-base text-gray-800">
-                      <span className="font-bold">{day.high}\u00b0</span>
+                      <span className="font-bold">{day.high}°</span>
                       <span className="text-gray-500 mx-1">/</span>
-                      <span className="text-gray-600">{day.low}\u00b0</span>
+                      <span className="text-gray-600">{day.low}°</span>
                     </div>
                   </div>
                 ))}

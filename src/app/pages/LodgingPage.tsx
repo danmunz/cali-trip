@@ -82,7 +82,7 @@ export default function LodgingPage() {
               className="inline-block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs tracking-widest uppercase mb-3 sm:mb-4 font-bold shadow-lg text-white"
               style={{ backgroundColor: lodge.color }}
             >
-              {lodge.dates} \u2022 {lodge.nights}
+              {lodge.dates} • {lodge.nights}
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl text-white mb-3 sm:mb-4 tracking-tight drop-shadow-lg font-medium">
               {lodge.name}
