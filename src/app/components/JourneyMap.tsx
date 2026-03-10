@@ -238,10 +238,10 @@ export default function JourneyMap({
   const handleMapLoad = useCallback(() => {
     setIsMapLoaded(true);
     setIsStyleReady(true);
-    // Tame touch inertia so small swipes don't fling the map
+    // Ensure drag panning is enabled on load
     const rawMap = mapRef.current?.getMap();
     if (rawMap) {
-      rawMap.dragPan.enable({ deceleration: 3500, maxSpeed: 800 });
+      rawMap.dragPan.enable();
     }
     // Immediately fit to the active segment (no animation on first load)
     setTimeout(() => fitToSegment(activeSegment, false), 50);
