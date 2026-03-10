@@ -275,8 +275,8 @@ export default function ItineraryPage() {
                 />
                 <div className="relative z-10">
                   <div className="h-[10vh]" />
-                  <div className="px-5 sm:px-6 lg:px-8">
-                    <div className="mb-6 sm:mb-8">
+                  <div className="px-5 sm:px-6 lg:px-8 pb-6 sm:pb-8">
+                    <div>
                       <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white mb-2 sm:mb-3 tracking-tight font-medium drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
                         {seg.title}
                       </h2>
@@ -415,7 +415,7 @@ export default function ItineraryPage() {
         {/* Mobile: bottom-sheet itinerary over the map */}
         <div
           ref={sheetRef}
-          className="lg:hidden absolute inset-0 z-10 flex flex-col bg-black/50 backdrop-blur-md transition-transform duration-300 ease-out"
+          className="lg:hidden absolute inset-0 z-10 flex flex-col bg-black/50 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
           style={{ transform: sheetDown ? 'translateY(calc(100% - 56px))' : 'translateY(0)' }}
         >
           {/* Scrollable itinerary content */}
@@ -449,8 +449,8 @@ export default function ItineraryPage() {
                   />
                   <div className="relative z-10">
                     <div className="h-[15vh]" />
-                    <div className="px-5 sm:px-6">
-                      <div className="mb-8 sm:mb-10">
+                    <div className="px-5 sm:px-6 pb-8 sm:pb-10">
+                      <div>
                         <h2 className="text-4xl sm:text-5xl text-white mb-3 sm:mb-4 tracking-tight font-medium drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
                           {seg.title}
                         </h2>

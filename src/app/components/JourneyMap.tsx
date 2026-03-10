@@ -238,6 +238,11 @@ export default function JourneyMap({
   const handleMapLoad = useCallback(() => {
     setIsMapLoaded(true);
     setIsStyleReady(true);
+    // Ensure drag panning is enabled on load
+    const rawMap = mapRef.current?.getMap();
+    if (rawMap) {
+      rawMap.dragPan.enable();
+    }
     // Immediately fit to the active segment (no animation on first load)
     setTimeout(() => fitToSegment(activeSegment, false), 50);
     // eslint-disable-next-line react-hooks/exhaustive-deps
