@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "generate": "tsx scripts/generate-data.ts",
+    "weather": "tsx scripts/fetch-weather.ts",
     "validate": "tsx scripts/validate-data.ts",
+    "predev": "pnpm generate && pnpm weather",
     "dev": "vite",
-    "prebuild": "pnpm generate",
+    "prebuild": "pnpm generate && pnpm weather",
     "build": "vite build",
     "preview": "vite preview"
   },

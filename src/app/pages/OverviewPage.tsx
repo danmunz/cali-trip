@@ -1,23 +1,9 @@
-import { Calendar, Plane, Cloud, CloudRain, Sun } from 'lucide-react';
+import { Calendar, Plane, Sun } from 'lucide-react';
 import mapImage from '../../assets/1becf1fb274bdda2aefe747340a99d4afe32758c.png';
-import { weatherData } from '../../data/overview';
+import { weatherData } from '../../data/weather.generated';
 import { tripMeta } from '../../data/trip-meta.generated';
 import { segments } from '../../data/segments';
-
-function WeatherIcon({ condition }: { condition: string }) {
-  switch (condition) {
-    case 'sunny':
-      return <Sun className="w-5 h-5 text-amber-500" />;
-    case 'partly-cloudy':
-      return <Cloud className="w-5 h-5 text-slate-500" />;
-    case 'cloudy':
-      return <Cloud className="w-5 h-5 text-slate-600" />;
-    case 'light-rain':
-      return <CloudRain className="w-5 h-5 text-blue-600" />;
-    default:
-      return <Sun className="w-5 h-5 text-amber-500" />;
-  }
-}
+import { WeatherIcon } from '../components/WeatherIcon';
 
 function FlightLeg({ value }: { value: string }) {
   const [airport, ...rest] = value.split(' ');
@@ -222,7 +208,7 @@ export default function OverviewPage() {
                 <h2 className="text-3xl sm:text-4xl text-gray-900 font-medium">Weather</h2>
               </div>
               <div className="space-y-2 sm:space-y-3">
-                {weatherData.map((day, idx) => (
+                {weatherData.days.map((day, idx) => (
                   <div
                     key={idx}
                     className="flex items-center justify-between py-2 px-2 sm:px-3 hover:bg-gray-50 rounded transition-colors"
@@ -231,24 +217,37 @@ export default function OverviewPage() {
                       <WeatherIcon condition={day.condition} />
                       <div className="text-sm sm:text-base">
                         <div className="text-gray-900 font-semibold">
-                          {day.date}
+                          {day.displayDate}
                         </div>
                         <div className="text-xs sm:text-sm text-gray-600">
                           {day.location}
                         </div>
                       </div>
                     </div>
-                    <div className="text-sm sm:text-base text-gray-800">
-                      <span className="font-bold">{day.high}°</span>
-                      <span className="text-gray-500 mx-1">/</span>
-                      <span className="text-gray-600">{day.low}°</span>
+                    <div className="flex items-center gap-2 text-sm sm:text-base text-gray-800">
+                      <div>
+                        <span className="font-bold">{day.high}°</span>
+                        <span className="text-gray-500 mx-1">/</span>
+                        <span className="text-gray-600">{day.low}°</span>
+                      </div>
+                      {day.source === 'forecast' ? (
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0" title="Live forecast" />
+                      ) : (
+                        <span className="w-1.5 h-1.5 rounded-full bg-gray-300 flex-shrink-0" title="Monthly average" />
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-gray-500 mt-4 italic">
-                Forecast temperatures in Fahrenheit
-              </p>
+              <div className="flex items-center gap-4 mt-4 text-xs text-gray-500 italic">
+                <span>Temperatures in °F</span>
+                <span className="flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" /> forecast
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300 inline-block" /> avg
+                </span>
+              </div>
             </div>
           </section>
         </div>

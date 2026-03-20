@@ -2,9 +2,11 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import { Car, MapPin, Globe, Star, Plane, Building2, List, X, Link2, Check } from 'lucide-react';
 import { itinerary } from '../../data/itinerary.generated';
 import { tripMeta } from '../../data/trip-meta.generated';
+import { weatherData } from '../../data/weather.generated';
 import { segments } from '../../data/segments';
 import locationsData from '../../data/locations.json';
-import type { Location } from '../../data/types';
+import { WeatherIcon } from '../components/WeatherIcon';
+import type { Location, WeatherDay } from '../../data/types';
 
 // ── Helpers ──────────────────────────────────────────────────
 
@@ -22,6 +24,32 @@ function segmentColor(segmentId: string): string {
 function formatDate(iso: string, dayOfWeek: string): string {
   const d = new Date(iso + 'T12:00:00');
   return `${dayOfWeek}, ${d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}`;
+}
+
+// ── Weather lookup ───────────────────────────────────────────
+
+const weatherByDate = new Map<string, WeatherDay>(
+  weatherData.days.map((d) => [d.date, d]),
+);
+
+function WeatherBlurb({ date }: { date: string }) {
+  const weather = weatherByDate.get(date);
+  if (!weather) return null;
+
+  const label =
+    weather.source === 'forecast'
+      ? weather.shortForecast ?? `${weather.high}°/${weather.low}°`
+      : `Avg high ${weather.high}°, low ${weather.low}°`;
+
+  return (
+    <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
+      <WeatherIcon condition={weather.condition} size="sm" />
+      <span>{label}</span>
+      {weather.source === 'forecast' && (
+        <span className="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0" title="Live forecast" />
+      )}
+    </div>
+  );
 }
 
 // ── Segment background images (ordered, unique) ─────────────
@@ -790,6 +818,7 @@ export default function FullItineraryPage() {
                   <p className="text-xl sm:text-[28px] text-gray-600 leading-[1.6]">
                     {day.summary}
                   </p>
+                  <WeatherBlurb date={day.date} />
                 </div>
 
                 {/* Activities */}
