@@ -1,32 +1,9 @@
-import { Calendar, Plane, Cloud, CloudRain, Sun, CloudSnow, CloudLightning, CloudFog } from 'lucide-react';
+import { Calendar, Plane, Sun } from 'lucide-react';
 import mapImage from '../../assets/1becf1fb274bdda2aefe747340a99d4afe32758c.png';
 import { weatherData } from '../../data/weather.generated';
 import { tripMeta } from '../../data/trip-meta.generated';
 import { segments } from '../../data/segments';
-import type { WeatherCondition } from '../../data/types';
-
-function WeatherIcon({ condition }: { condition: WeatherCondition }) {
-  switch (condition) {
-    case 'sunny':
-      return <Sun className="w-5 h-5 text-amber-500" />;
-    case 'partly-cloudy':
-      return <Cloud className="w-5 h-5 text-slate-500" />;
-    case 'cloudy':
-      return <Cloud className="w-5 h-5 text-slate-600" />;
-    case 'light-rain':
-      return <CloudRain className="w-5 h-5 text-blue-400" />;
-    case 'rain':
-      return <CloudRain className="w-5 h-5 text-blue-600" />;
-    case 'thunderstorm':
-      return <CloudLightning className="w-5 h-5 text-purple-600" />;
-    case 'snow':
-      return <CloudSnow className="w-5 h-5 text-sky-400" />;
-    case 'fog':
-      return <CloudFog className="w-5 h-5 text-slate-400" />;
-    default:
-      return <Sun className="w-5 h-5 text-amber-500" />;
-  }
-}
+import { WeatherIcon } from '../components/WeatherIcon';
 
 function FlightLeg({ value }: { value: string }) {
   const [airport, ...rest] = value.split(' ');

@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { Car, MapPin, Globe, Star, Plane, Building2, List, X, Link2, Check, Cloud, CloudRain, Sun, CloudSnow, CloudLightning, CloudFog } from 'lucide-react';
+import { Car, MapPin, Globe, Star, Plane, Building2, List, X, Link2, Check } from 'lucide-react';
 import { itinerary } from '../../data/itinerary.generated';
 import { tripMeta } from '../../data/trip-meta.generated';
 import { weatherData } from '../../data/weather.generated';
 import { segments } from '../../data/segments';
 import locationsData from '../../data/locations.json';
-import type { Location, WeatherDay, WeatherCondition } from '../../data/types';
+import { WeatherIcon } from '../components/WeatherIcon';
+import type { Location, WeatherDay } from '../../data/types';
 
 // ── Helpers ──────────────────────────────────────────────────
 
@@ -31,29 +32,6 @@ const weatherByDate = new Map<string, WeatherDay>(
   weatherData.days.map((d) => [d.date, d]),
 );
 
-function WeatherIconSmall({ condition }: { condition: WeatherCondition }) {
-  switch (condition) {
-    case 'sunny':
-      return <Sun className="w-4 h-4 text-amber-500" />;
-    case 'partly-cloudy':
-      return <Cloud className="w-4 h-4 text-slate-500" />;
-    case 'cloudy':
-      return <Cloud className="w-4 h-4 text-slate-600" />;
-    case 'light-rain':
-      return <CloudRain className="w-4 h-4 text-blue-400" />;
-    case 'rain':
-      return <CloudRain className="w-4 h-4 text-blue-600" />;
-    case 'thunderstorm':
-      return <CloudLightning className="w-4 h-4 text-purple-600" />;
-    case 'snow':
-      return <CloudSnow className="w-4 h-4 text-sky-400" />;
-    case 'fog':
-      return <CloudFog className="w-4 h-4 text-slate-400" />;
-    default:
-      return <Sun className="w-4 h-4 text-amber-500" />;
-  }
-}
-
 function WeatherBlurb({ date }: { date: string }) {
   const weather = weatherByDate.get(date);
   if (!weather) return null;
@@ -65,7 +43,7 @@ function WeatherBlurb({ date }: { date: string }) {
 
   return (
     <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
-      <WeatherIconSmall condition={weather.condition} />
+      <WeatherIcon condition={weather.condition} size="sm" />
       <span>{label}</span>
       {weather.source === 'forecast' && (
         <span className="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0" title="Live forecast" />

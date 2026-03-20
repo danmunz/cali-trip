@@ -261,7 +261,9 @@ async function main() {
       forecastCount++;
       // Real forecast available
       const high = daytimePeriod.temperature;
-      const low = nightPeriod?.temperature ?? high - 15;
+      // Typical diurnal range when night forecast is unavailable
+      const TYPICAL_DIURNAL_RANGE = 15;
+      const low = nightPeriod?.temperature ?? high - TYPICAL_DIURNAL_RANGE;
       return {
         date: tripDay.date,
         displayDate: tripDay.displayDate,
