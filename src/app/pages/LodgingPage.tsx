@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { MapPin, ExternalLink, Star, Globe, Phone, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
 import { lodgingData, type LodgingKey } from '../../data/lodging';
 
@@ -22,6 +22,7 @@ export default function LodgingPage() {
 
   const images = lodge.roomImages;
   const totalImages = images.length;
+  const touchStartX = useRef<number | null>(null);
 
   return (
     <div className="pt-16 min-h-screen">
@@ -111,7 +112,26 @@ export default function LodgingPage() {
             <section>
 
               {/* Carousel container */}
-              <div className="relative rounded-xl overflow-hidden shadow-2xl group">
+              <div
+                className="relative rounded-xl overflow-hidden shadow-2xl group"
+                onTouchStart={(e) => {
+                  const touch = e.touches[0];
+                  if (touch) touchStartX.current = touch.clientX;
+                }}
+                onTouchEnd={(e) => {
+                  if (touchStartX.current === null) return;
+                  const touch = e.changedTouches[0];
+                  if (!touch) return;
+                  const delta = touch.clientX - touchStartX.current;
+                  touchStartX.current = null;
+                  if (Math.abs(delta) < 50) return;
+                  if (delta < 0) {
+                    setCarouselIdx((carouselIdx + 1) % totalImages);
+                  } else {
+                    setCarouselIdx((carouselIdx - 1 + totalImages) % totalImages);
+                  }
+                }}
+              >
                 {/* Current image */}
                 <div className="relative aspect-[16/10] bg-gray-100">
                   <img
