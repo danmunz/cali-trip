@@ -67,6 +67,36 @@ export interface TripMeta {
   lodgingConfirmations: LodgingConfirmation[];
 }
 
+// ── Weather ──────────────────────────────────────────────────
+
+export type WeatherCondition =
+  | 'sunny'
+  | 'partly-cloudy'
+  | 'cloudy'
+  | 'light-rain'
+  | 'rain'
+  | 'thunderstorm'
+  | 'snow'
+  | 'fog';
+
+export type WeatherSource = 'forecast' | 'average';
+
+export interface WeatherDay {
+  date: string;         // ISO "2026-04-03"
+  displayDate: string;  // "Apr 3"
+  location: string;     // "SF/Napa"
+  high: number;         // Fahrenheit
+  low: number;          // Fahrenheit
+  condition: WeatherCondition;
+  shortForecast?: string; // NWS short forecast text, e.g. "Mostly Sunny"
+  source: WeatherSource;  // "forecast" = real NWS data, "average" = hardcoded
+}
+
+export interface WeatherData {
+  days: WeatherDay[];
+  fetchedAt: string | null; // ISO timestamp of last NWS fetch, null if all averages
+}
+
 // ── Locations ────────────────────────────────────────────────
 
 export interface LocationTripPart {

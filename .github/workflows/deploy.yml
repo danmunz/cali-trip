@@ -42,12 +42,15 @@ jobs:
 
       - name: Run code generation
         run: pnpm generate
+
+      - name: Fetch weather data
+        run: pnpm weather
         
       - name: Verify generated files exist
         run: |
           echo "Checking for generated files..."
           ls -la src/data/*.generated.ts
-          echo "✓ Generated files verified"
+          echo "✓ Generated files verified (including weather)"
 
       - name: Validate generated data
         run: pnpm validate

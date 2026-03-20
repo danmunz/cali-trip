@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { Car, MapPin, Globe, Star, Plane, Building2, List, X, Link2, Check } from 'lucide-react';
+import { Car, MapPin, Globe, Star, Plane, Building2, List, X, Link2, Check, Cloud, CloudRain, Sun, CloudSnow, CloudLightning, CloudFog } from 'lucide-react';
 import { itinerary } from '../../data/itinerary.generated';
 import { tripMeta } from '../../data/trip-meta.generated';
+import { weatherData } from '../../data/weather.generated';
 import { segments } from '../../data/segments';
 import locationsData from '../../data/locations.json';
-import type { Location } from '../../data/types';
+import type { Location, WeatherDay, WeatherCondition } from '../../data/types';
 
 // ── Helpers ──────────────────────────────────────────────────
 
@@ -22,6 +23,55 @@ function segmentColor(segmentId: string): string {
 function formatDate(iso: string, dayOfWeek: string): string {
   const d = new Date(iso + 'T12:00:00');
   return `${dayOfWeek}, ${d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}`;
+}
+
+// ── Weather lookup ───────────────────────────────────────────
+
+const weatherByDate = new Map<string, WeatherDay>(
+  weatherData.days.map((d) => [d.date, d]),
+);
+
+function WeatherIconSmall({ condition }: { condition: WeatherCondition }) {
+  switch (condition) {
+    case 'sunny':
+      return <Sun className="w-4 h-4 text-amber-500" />;
+    case 'partly-cloudy':
+      return <Cloud className="w-4 h-4 text-slate-500" />;
+    case 'cloudy':
+      return <Cloud className="w-4 h-4 text-slate-600" />;
+    case 'light-rain':
+      return <CloudRain className="w-4 h-4 text-blue-400" />;
+    case 'rain':
+      return <CloudRain className="w-4 h-4 text-blue-600" />;
+    case 'thunderstorm':
+      return <CloudLightning className="w-4 h-4 text-purple-600" />;
+    case 'snow':
+      return <CloudSnow className="w-4 h-4 text-sky-400" />;
+    case 'fog':
+      return <CloudFog className="w-4 h-4 text-slate-400" />;
+    default:
+      return <Sun className="w-4 h-4 text-amber-500" />;
+  }
+}
+
+function WeatherBlurb({ date }: { date: string }) {
+  const weather = weatherByDate.get(date);
+  if (!weather) return null;
+
+  const label =
+    weather.source === 'forecast'
+      ? weather.shortForecast ?? `${weather.high}°/${weather.low}°`
+      : `Avg high ${weather.high}°, low ${weather.low}°`;
+
+  return (
+    <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
+      <WeatherIconSmall condition={weather.condition} />
+      <span>{label}</span>
+      {weather.source === 'forecast' && (
+        <span className="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0" title="Live forecast" />
+      )}
+    </div>
+  );
 }
 
 // ── Segment background images (ordered, unique) ─────────────
@@ -790,6 +840,7 @@ export default function FullItineraryPage() {
                   <p className="text-xl sm:text-[28px] text-gray-600 leading-[1.6]">
                     {day.summary}
                   </p>
+                  <WeatherBlurb date={day.date} />
                 </div>
 
                 {/* Activities */}
