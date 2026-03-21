@@ -22,7 +22,7 @@ export default function LodgingPage() {
 
   const images = lodge.roomImages;
   const totalImages = images.length;
-  const touchStartX = useRef<number | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   return (
     <div className="pt-16 min-h-screen">
@@ -116,16 +116,17 @@ export default function LodgingPage() {
                 className="relative rounded-xl overflow-hidden shadow-2xl group"
                 onTouchStart={(e) => {
                   const touch = e.touches[0];
-                  if (touch) touchStartX.current = touch.clientX;
+                  if (touch) touchStart.current = { x: touch.clientX, y: touch.clientY };
                 }}
                 onTouchEnd={(e) => {
-                  if (touchStartX.current === null) return;
+                  if (!touchStart.current) return;
                   const touch = e.changedTouches[0];
                   if (!touch) return;
-                  const delta = touch.clientX - touchStartX.current;
-                  touchStartX.current = null;
-                  if (Math.abs(delta) < 50) return;
-                  if (delta < 0) {
+                  const dx = touch.clientX - touchStart.current.x;
+                  const dy = touch.clientY - touchStart.current.y;
+                  touchStart.current = null;
+                  if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx)) return;
+                  if (dx < 0) {
                     setCarouselIdx((carouselIdx + 1) % totalImages);
                   } else {
                     setCarouselIdx((carouselIdx - 1 + totalImages) % totalImages);
