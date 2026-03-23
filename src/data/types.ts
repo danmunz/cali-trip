@@ -25,6 +25,7 @@ export interface TripDay {
   title: string; // "Arrival + Redwoods + Yountville"
   summary: string; // day intro paragraph, plain text
   segmentId: string; // "napa" | "yosemite" | "carmel"
+  attire?: string; // "what to wear today" hint, plain text
   activities: Activity[];
 }
 
@@ -112,6 +113,7 @@ export interface Location {
   geo: { lat: number; lng: number };
   type: string;
   notes: string;
+  dress_code?: string; // e.g. "Casual", "Smart Casual" — for restaurant locations
   images: string[];
   official_url: string[];
   google_maps_url: string[];

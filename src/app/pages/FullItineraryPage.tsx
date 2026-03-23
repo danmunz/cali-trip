@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { Car, MapPin, Globe, Star, Plane, Building2, List, X, Link2, Check } from 'lucide-react';
+import { Car, MapPin, Globe, Star, Plane, Building2, List, X, Link2, Check, Shirt, Tag } from 'lucide-react';
 import { itinerary } from '../../data/itinerary.generated';
 import { tripMeta } from '../../data/trip-meta.generated';
 import { weatherData } from '../../data/weather.generated';
@@ -153,6 +153,11 @@ function LocationLinks({ locationIds }: { locationIds: string[] }) {
             {/* Screen: pill buttons */}
             <div className="flex items-center flex-wrap gap-x-2 gap-y-2 text-sm print:hidden">
               <span className="text-gray-600 font-semibold mr-1">{loc.name}</span>
+              {loc.type === 'restaurant' && loc.dress_code && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-medium">
+                  <Tag className="w-3.5 h-3.5" /> {loc.dress_code}
+                </span>
+              )}
               {hasDir && (
                 <a
                   href={loc.google_maps_url[0]}
@@ -819,6 +824,12 @@ export default function FullItineraryPage() {
                     {day.summary}
                   </p>
                   <WeatherBlurb date={day.date} />
+                  {day.attire && (
+                    <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
+                      <Shirt className="w-4 h-4 flex-shrink-0 text-gray-400" />
+                      <span>{day.attire}</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Activities */}
