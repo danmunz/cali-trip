@@ -176,7 +176,8 @@
           "date": "2026-04-03",
           "segment_id": "napa"
         }
-      ]
+      ],
+      "dress_code": "Smart Casual"
     },
     {
       "id": "farmstead-at-long-meadow-ranch",
@@ -208,7 +209,8 @@
           "date": "2026-04-04",
           "segment_id": "napa"
         }
-      ]
+      ],
+      "dress_code": "Smart Casual"
     },
     {
       "id": "the-restaurant-at-rush-creek",
@@ -243,7 +245,8 @@
           "date": "2026-04-08",
           "segment_id": "carmel"
         }
-      ]
+      ],
+      "dress_code": "Casual"
     },
     {
       "id": "the-mountain-room",
@@ -275,7 +278,8 @@
           "date": "2026-04-07",
           "segment_id": "yosemite"
         }
-      ]
+      ],
+      "dress_code": "Smart Casual"
     },
     {
       "id": "il-tegamino",
@@ -307,7 +311,8 @@
           "date": "2026-04-08",
           "segment_id": "carmel"
         }
-      ]
+      ],
+      "dress_code": "Casual"
     },
     {
       "id": "the-sur-house",
@@ -339,7 +344,8 @@
           "date": "2026-04-09",
           "segment_id": "carmel"
         }
-      ]
+      ],
+      "dress_code": "Smart Casual"
     },
     {
       "id": "pacifics-edge",
@@ -371,7 +377,8 @@
           "date": "2026-04-09",
           "segment_id": "carmel"
         }
-      ]
+      ],
+      "dress_code": "Smart Casual"
     },
     {
       "id": "mission-ranch",
@@ -403,7 +410,8 @@
           "date": "2026-04-10",
           "segment_id": "carmel"
         }
-      ]
+      ],
+      "dress_code": "Smart Casual"
     },
     {
       "id": "muir-woods-national-monument",
@@ -1644,7 +1652,8 @@
           "date": "2026-04-05",
           "segment_id": "napa"
         }
-      ]
+      ],
+      "dress_code": "Smart Casual"
     },
     {
       "id": "half-dome",

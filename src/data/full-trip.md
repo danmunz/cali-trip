@@ -60,6 +60,8 @@ Dates: April 3-11, 2026 (9 days / 8 nights)
 
 Arrive in Northern California and ease into the trip with a redwood walk at Muir Woods—one of the last old-growth coastal groves on earth. A gentle first afternoon under the canopy before heading to wine country.
 
+<!-- attire: Comfortable layers for the redwood trail; smart casual for dinner. -->
+
 **10:45am–12:15pm — Land at SFO + rental car + lunch to-go**  
 
 Land at SFO, pick up the rental car, and keep lunch simple (airport or a quick stop in Mill Valley) so you're fueled before the redwoods. This block stays intentionally flexible for baggage, the rental car shuttle, and a quick pharmacy/snack run if you want it.  
@@ -87,6 +89,8 @@ Dinner at **Bottega**, Michael Chiarello's Italian-Californian kitchen—rustic 
 ## **Sat Apr 4 — Napa’s Natural Bounty**
 
 Today is Napa at its most farm-to-table—market browsing, an olive oil tasting, a gondola-view winery stop, and a relaxed dinner in St. Helena.
+
+<!-- attire: Comfortable walking shoes for the farmers market and winery; smart casual for dinner at Farmstead. -->
 
 **9:30am–10:45am — Napa Farmers Market (downtown Napa)**  
 
@@ -126,6 +130,8 @@ Return to The Estate for an easy wind-down and a good night's sleep.
 
 Lean into Napa's wine culture with the Oxbow market, the historic Schramsberg caves, and a flexible afternoon before a celebratory dinner. 
 
+<!-- attire: Casual layers for wine tastings; pack a sweater for the Schramsberg caves; smart casual for dinner at Ad Hoc. -->
+
 **9:00am–10:15am — Oxbow Public Market**  
 
 Make a casual stop at Oxbow for coffee and pastries, plus a few easy tastings. Opened in 2007 as a 40,000-square-foot food hall along the Napa River, it's credited with helping kick-start the revival of downtown Napa as a destination; anchor tenants include Hog Island Oyster Co. (the only Napa outpost of the famous Tomales Bay operation) and a good cheese-and-wine counter. Mostly indoors, easy to navigate, and good for a quick graze or a slower sit by the river.
@@ -162,6 +168,8 @@ Return to The Estate and pack for an early start and a longer drive day, keeping
 
 Leave wine country behind and head for the Sierra. Rush Creek Lodge is a comfortable base just outside Yosemite’s Big Oak Flat Entrance on CA-120—close enough for an early start tomorrow, but relaxing enough to feel like a destination on its own (pool/hot tubs, fire pits, easy on-property trails).
 
+<!-- attire: Comfortable travel clothes for the long drive; casual layers for the lodge and evening walk. -->
+
 **8:30am–1:00pm — Drive Yountville → Rush Creek Lodge (Yosemite area)**  
 
 Expect about a 4.5-hour drive that gradually trades vineyard rows for rolling foothills and then piney mountain terrain. A lunch stop in Oakdale or Groveland (both classic Sierra gateway towns) is an easy way to break up the day—and a nice introduction to the region’s Gold Rush and park-gateway history.  
@@ -191,6 +199,8 @@ Wrap up the day by walking the property, doing one of the craft activities offer
 ## **Tue Apr 7 — Yosemite Valley Highlights**
 
 A full Yosemite Valley day built around the classics: the iconic Tunnel View reveal, two short waterfall walks, a meadow loop with huge granite walls in every direction, and a ranger-led Valley Floor Tour for context. Expect roughly 2–3 miles of mostly flat walking spread across the day, with lots of natural stopping points for photos and rests.
+
+<!-- attire: Sturdy walking shoes and layers for a full day in the Valley; smart casual for dinner at The Mountain Room. -->
 
 **8:15am — Drive to Yosemite Valley**  
 
@@ -238,6 +248,8 @@ Drive back to the lodge and keep the evening low-key at the fire pits before tur
 
 A scenery shift day—from granite and pines to ocean cliffs and Pacific air. Arrive in Carmel with enough time to enjoy the coastal sunset and a fresh, local dinner.
 
+<!-- attire: Comfortable clothes for the drive; casual for dinner in Carmel. -->
+
 **8:00am — Drive from Rush Creek Lodge to Carmel (route-flex with stops)**  
 
 Check out and head for the coast, with a handful of optional stops on the way: a quick pause by the Merced River, lunch in Mariposa (a well-preserved Gold Rush–era town), or a walk through Mariposa Grove's giant sequoias. The drive itself gradually trades granite peaks for rolling oak savanna and then the coastal hills—worth treating as a journey, not just transit.
@@ -259,6 +271,8 @@ Keep the evening simple—balcony time, sunset, and an early night after a long 
 ## **Thu Apr 9 — Big Sur on Highway 1**
 
 Spend a full Big Sur day on Highway 1: an out-and-back with cliffside viewpoints, an easy bluff walk, a scenic lunch, and a redwood river stroll in the afternoon. The Big Sur section of Highway 1—completed in the 1930s—opened this coastline to road travelers, and it still feels like one of the world's great “scenic drive” experiences.
+
+<!-- attire: Active layers for bluff walks and redwood hikes; smart casual for Pacific's Edge dinner. -->
 
 **9:30am — Scenic Highway 1 drive (optional pull-offs)**  
 
@@ -297,6 +311,8 @@ Dinner at **Pacific's Edge**, the Hyatt's clifftop restaurant at roughly 400 fee
 ## **Fri Apr 10 — Point Lobos + Carmel + Farewell Dinner**
 
 A coastal favorites day with Point Lobos, Carmel-by-the-Sea, and the 17-Mile Drive, capped by a sunset dinner at Mission Ranch. It's a relaxed, celebratory wrap for the Monterey Peninsula with plenty of time to pause and enjoy the views.
+
+<!-- attire: Layers for Point Lobos and the food tour; smart casual for farewell dinner at Mission Ranch. -->
 
 **8:00am — Point Lobos State Reserve (South Shore Trail route)**  
 
@@ -337,6 +353,8 @@ Return to the hotel for a quiet evening and packing.
 ## **Sat Apr 11 — Travel Home**
 
 A simple travel-home day with a calm morning, a straight shot to SFO, and plenty of buffer at the airport. It's an easy finish that keeps the return smooth and stress-free.
+
+<!-- attire: Comfortable travel clothes for the drive home. -->
 
 **10:00am — Depart Carmel Highlands**  
 

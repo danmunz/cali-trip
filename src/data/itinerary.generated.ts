@@ -11,6 +11,7 @@ export const itinerary: TripDay[] = [
     "title": "Arrival + Muir Woods",
     "summary": "Arrive in Northern California and ease into the trip with a redwood walk at Muir Woods—one of the last old-growth coastal groves on earth. A gentle first afternoon under the canopy before heading to wine country.",
     "segmentId": "arrival",
+    "attire": "Comfortable layers for the redwood trail; smart casual for dinner.",
     "activities": [
       {
         "time": "10:45am–12:15pm",
@@ -76,6 +77,7 @@ export const itinerary: TripDay[] = [
     "title": "Napa’s Natural Bounty",
     "summary": "Today is Napa at its most farm-to-table—market browsing, an olive oil tasting, a gondola-view winery stop, and a relaxed dinner in St. Helena.",
     "segmentId": "napa",
+    "attire": "Comfortable walking shoes for the farmers market and winery; smart casual for dinner at Farmstead.",
     "activities": [
       {
         "time": "9:30am–10:45am",
@@ -160,6 +162,7 @@ export const itinerary: TripDay[] = [
     "title": "Napa’s Wine Culture",
     "summary": "Lean into Napa's wine culture with the Oxbow market, the historic Schramsberg caves, and a flexible afternoon before a celebratory dinner.",
     "segmentId": "napa",
+    "attire": "Casual layers for wine tastings; pack a sweater for the Schramsberg caves; smart casual for dinner at Ad Hoc.",
     "activities": [
       {
         "time": "9:00am–10:15am",
@@ -240,6 +243,7 @@ export const itinerary: TripDay[] = [
     "title": "To Yosemite + Lodge Settle-In",
     "summary": "Leave wine country behind and head for the Sierra. Rush Creek Lodge is a comfortable base just outside Yosemite’s Big Oak Flat Entrance on CA-120—close enough for an early start tomorrow, but relaxing enough to feel like a destination on its own (pool/hot tubs, fire pits, easy on-property trails).",
     "segmentId": "yosemite",
+    "attire": "Comfortable travel clothes for the long drive; casual layers for the lodge and evening walk.",
     "activities": [
       {
         "time": "8:30am–1:00pm",
@@ -304,6 +308,7 @@ export const itinerary: TripDay[] = [
     "title": "Yosemite Valley Highlights",
     "summary": "A full Yosemite Valley day built around the classics: the iconic Tunnel View reveal, two short waterfall walks, a meadow loop with huge granite walls in every direction, and a ranger-led Valley Floor Tour for context. Expect roughly 2–3 miles of mostly flat walking spread across the day, with lots of natural stopping points for photos and rests.",
     "segmentId": "yosemite",
+    "attire": "Sturdy walking shoes and layers for a full day in the Valley; smart casual for dinner at The Mountain Room.",
     "activities": [
       {
         "time": "8:15am",
@@ -405,6 +410,7 @@ export const itinerary: TripDay[] = [
     "title": "To Carmel + Ocean Reset",
     "summary": "A scenery shift day—from granite and pines to ocean cliffs and Pacific air. Arrive in Carmel with enough time to enjoy the coastal sunset and a fresh, local dinner.",
     "segmentId": "carmel",
+    "attire": "Comfortable clothes for the drive; casual for dinner in Carmel.",
     "activities": [
       {
         "time": "8:00am",
@@ -453,6 +459,7 @@ export const itinerary: TripDay[] = [
     "title": "Big Sur on Highway 1",
     "summary": "Spend a full Big Sur day on Highway 1: an out-and-back with cliffside viewpoints, an easy bluff walk, a scenic lunch, and a redwood river stroll in the afternoon. The Big Sur section of Highway 1—completed in the 1930s—opened this coastline to road travelers, and it still feels like one of the world's great “scenic drive” experiences.",
     "segmentId": "carmel",
+    "attire": "Active layers for bluff walks and redwood hikes; smart casual for Pacific's Edge dinner.",
     "activities": [
       {
         "time": "9:30am",
@@ -545,6 +552,7 @@ export const itinerary: TripDay[] = [
     "title": "Point Lobos + Carmel + Farewell Dinner",
     "summary": "A coastal favorites day with Point Lobos, Carmel-by-the-Sea, and the 17-Mile Drive, capped by a sunset dinner at Mission Ranch. It's a relaxed, celebratory wrap for the Monterey Peninsula with plenty of time to pause and enjoy the views.",
     "segmentId": "carmel",
+    "attire": "Layers for Point Lobos and the food tour; smart casual for farewell dinner at Mission Ranch.",
     "activities": [
       {
         "time": "8:00am",
@@ -645,6 +653,7 @@ export const itinerary: TripDay[] = [
     "title": "Travel Home",
     "summary": "A simple travel-home day with a calm morning, a straight shot to SFO, and plenty of buffer at the airport. It's an easy finish that keeps the return smooth and stress-free.",
     "segmentId": "carmel",
+    "attire": "Comfortable travel clothes for the drive home.",
     "activities": [
       {
         "time": "10:00am",

@@ -97,6 +97,17 @@ function parseSegmentSwitch(node: RootContent): { segmentId: string; title?: str
   return { segmentId: m[1]!, title: m[2] ?? undefined };
 }
 
+/** Detect an attire hint comment: `<!-- attire: what to wear today -->` */
+const ATTIRE_RE = /^<!--\s*attire:\s*(.+?)\s*-->$/;
+function isAttireComment(node: RootContent): boolean {
+  return node.type === 'html' && ATTIRE_RE.test((node as { value: string }).value.trim());
+}
+function parseAttireComment(node: RootContent): string | null {
+  if (node.type !== 'html') return null;
+  const m = (node as { value: string }).value.trim().match(ATTIRE_RE);
+  return m ? m[1]! : null;
+}
+
 /** Detect a travel line: `*Travel (drive): ~duration — from → to*` */
 const TRAVEL_RE = /^Travel \(drive\):\s*(.+?)\s*—\s*(.+?)\s*→\s*(.+)$/;
 function isTravelLine(node: RootContent): boolean {
@@ -553,6 +564,7 @@ for (let dayIdx = 0; dayIdx < dayH2s.length; dayIdx++) {
   let currentTitle = dayTitle;
   let activities: Activity[] = [];
   let summaryParts: string[] = [];
+  let currentAttire: string | undefined;
   let currentActivity: {
     time: string;
     name: string;
@@ -602,6 +614,7 @@ for (let dayIdx = 0; dayIdx < dayH2s.length; dayIdx++) {
           title: currentTitle,
           summary: summaryParts.join(' '),
           segmentId: currentSegmentId,
+          ...(currentAttire ? { attire: currentAttire } : {}),
           activities,
         });
       }
@@ -610,6 +623,7 @@ for (let dayIdx = 0; dayIdx < dayH2s.length; dayIdx++) {
       currentTitle = sw.title ?? dayTitle;
       activities = [];
       summaryParts = [];
+      currentAttire = undefined;
       currentActivity = null;
       continue;
     }
@@ -642,6 +656,9 @@ for (let dayIdx = 0; dayIdx < dayH2s.length; dayIdx++) {
       } else {
         // Travel line before any activity — ignore (shouldn't happen)
       }
+    } else if (isAttireComment(node)) {
+      // Attire hint for this day section (first one wins)
+      if (!currentAttire) currentAttire = parseAttireComment(node) ?? undefined;
     } else if (currentActivity) {
       currentActivity.descParagraphs.push(node);
     } else {
@@ -658,6 +675,7 @@ for (let dayIdx = 0; dayIdx < dayH2s.length; dayIdx++) {
     title: currentTitle,
     summary: summaryParts.join(' '),
     segmentId: currentSegmentId,
+    ...(currentAttire ? { attire: currentAttire } : {}),
     activities,
   });
 }
