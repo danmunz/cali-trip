@@ -9,7 +9,7 @@ export const weatherData: WeatherData = {
       "date": "2026-04-03",
       "displayDate": "Apr 3",
       "location": "SF/Napa",
-      "high": 73,
+      "high": 74,
       "low": 47,
       "condition": "sunny",
       "shortForecast": "Sunny",
@@ -19,7 +19,7 @@ export const weatherData: WeatherData = {
       "date": "2026-04-04",
       "displayDate": "Apr 4",
       "location": "Napa",
-      "high": 78,
+      "high": 79,
       "low": 49,
       "condition": "sunny",
       "shortForecast": "Sunny",
@@ -29,10 +29,10 @@ export const weatherData: WeatherData = {
       "date": "2026-04-05",
       "displayDate": "Apr 5",
       "location": "Napa",
-      "high": 79,
-      "low": 64,
+      "high": 80,
+      "low": 48,
       "condition": "sunny",
-      "shortForecast": "Mostly Sunny",
+      "shortForecast": "Sunny",
       "source": "forecast"
     },
     {
@@ -90,5 +90,5 @@ export const weatherData: WeatherData = {
       "source": "average"
     }
   ],
-  "fetchedAt": "2026-03-30T07:53:32.453Z"
+  "fetchedAt": "2026-03-30T19:09:40.270Z"
 };
