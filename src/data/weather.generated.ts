@@ -19,7 +19,7 @@ export const weatherData: WeatherData = {
       "date": "2026-04-04",
       "displayDate": "Apr 4",
       "location": "Napa",
-      "high": 79,
+      "high": 78,
       "low": 49,
       "condition": "sunny",
       "shortForecast": "Sunny",
@@ -29,20 +29,21 @@ export const weatherData: WeatherData = {
       "date": "2026-04-05",
       "displayDate": "Apr 5",
       "location": "Napa",
-      "high": 80,
+      "high": 79,
       "low": 48,
       "condition": "sunny",
-      "shortForecast": "Sunny",
+      "shortForecast": "Mostly Sunny",
       "source": "forecast"
     },
     {
       "date": "2026-04-06",
       "displayDate": "Apr 6",
       "location": "Yosemite",
-      "high": 62,
-      "low": 38,
-      "condition": "partly-cloudy",
-      "source": "average"
+      "high": 71,
+      "low": 56,
+      "condition": "sunny",
+      "shortForecast": "Sunny",
+      "source": "forecast"
     },
     {
       "date": "2026-04-07",
@@ -90,5 +91,5 @@ export const weatherData: WeatherData = {
       "source": "average"
     }
   ],
-  "fetchedAt": "2026-03-30T19:09:40.270Z"
+  "fetchedAt": "2026-03-31T07:26:47.500Z"
 };
