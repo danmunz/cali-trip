@@ -9,8 +9,8 @@ export const weatherData: WeatherData = {
       "date": "2026-04-03",
       "displayDate": "Apr 3",
       "location": "SF/Napa",
-      "high": 74,
-      "low": 46,
+      "high": 73,
+      "low": 47,
       "condition": "sunny",
       "shortForecast": "Sunny",
       "source": "forecast"
@@ -19,8 +19,8 @@ export const weatherData: WeatherData = {
       "date": "2026-04-04",
       "displayDate": "Apr 4",
       "location": "Napa",
-      "high": 79,
-      "low": 49,
+      "high": 78,
+      "low": 50,
       "condition": "sunny",
       "shortForecast": "Sunny",
       "source": "forecast"
@@ -32,7 +32,7 @@ export const weatherData: WeatherData = {
       "high": 80,
       "low": 48,
       "condition": "sunny",
-      "shortForecast": "Mostly Sunny",
+      "shortForecast": "Sunny",
       "source": "forecast"
     },
     {
@@ -40,7 +40,7 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 6",
       "location": "Yosemite",
       "high": 69,
-      "low": 42,
+      "low": 43,
       "condition": "sunny",
       "shortForecast": "Mostly Sunny",
       "source": "forecast"
@@ -49,10 +49,11 @@ export const weatherData: WeatherData = {
       "date": "2026-04-07",
       "displayDate": "Apr 7",
       "location": "Yosemite",
-      "high": 64,
-      "low": 40,
-      "condition": "sunny",
-      "source": "average"
+      "high": 69,
+      "low": 54,
+      "condition": "thunderstorm",
+      "shortForecast": "Sunny then Slight Chance Showers And Thunderstorms",
+      "source": "forecast"
     },
     {
       "date": "2026-04-08",
@@ -91,5 +92,5 @@ export const weatherData: WeatherData = {
       "source": "average"
     }
   ],
-  "fetchedAt": "2026-03-31T19:12:03.279Z"
+  "fetchedAt": "2026-04-01T07:44:10.880Z"
 };
