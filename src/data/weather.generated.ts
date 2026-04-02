@@ -10,7 +10,7 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 3",
       "location": "SF/Napa",
       "high": 74,
-      "low": 46,
+      "low": 47,
       "condition": "sunny",
       "shortForecast": "Sunny",
       "source": "forecast"
@@ -19,8 +19,8 @@ export const weatherData: WeatherData = {
       "date": "2026-04-04",
       "displayDate": "Apr 4",
       "location": "Napa",
-      "high": 80,
-      "low": 49,
+      "high": 79,
+      "low": 50,
       "condition": "sunny",
       "shortForecast": "Sunny",
       "source": "forecast"
@@ -29,8 +29,8 @@ export const weatherData: WeatherData = {
       "date": "2026-04-05",
       "displayDate": "Apr 5",
       "location": "Napa",
-      "high": 80,
-      "low": 48,
+      "high": 81,
+      "low": 49,
       "condition": "sunny",
       "shortForecast": "Sunny",
       "source": "forecast"
@@ -40,19 +40,19 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 6",
       "location": "Yosemite",
       "high": 71,
-      "low": 43,
+      "low": 44,
       "condition": "sunny",
-      "shortForecast": "Sunny",
+      "shortForecast": "Mostly Sunny",
       "source": "forecast"
     },
     {
       "date": "2026-04-07",
       "displayDate": "Apr 7",
       "location": "Yosemite",
-      "high": 69,
-      "low": 41,
-      "condition": "thunderstorm",
-      "shortForecast": "Sunny then Slight Chance Showers And Thunderstorms",
+      "high": 70,
+      "low": 42,
+      "condition": "sunny",
+      "shortForecast": "Sunny",
       "source": "forecast"
     },
     {
@@ -60,7 +60,7 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 8",
       "location": "Carmel",
       "high": 69,
-      "low": 54,
+      "low": 50,
       "condition": "light-rain",
       "shortForecast": "Chance Light Rain",
       "source": "forecast"
@@ -93,5 +93,5 @@ export const weatherData: WeatherData = {
       "source": "average"
     }
   ],
-  "fetchedAt": "2026-04-02T07:23:58.254Z"
+  "fetchedAt": "2026-04-02T19:05:50.028Z"
 };
