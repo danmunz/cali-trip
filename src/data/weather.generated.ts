@@ -9,7 +9,7 @@ export const weatherData: WeatherData = {
       "date": "2026-04-03",
       "displayDate": "Apr 3",
       "location": "SF/Napa",
-      "high": 73,
+      "high": 74,
       "low": 46,
       "condition": "sunny",
       "shortForecast": "Sunny",
@@ -19,7 +19,7 @@ export const weatherData: WeatherData = {
       "date": "2026-04-04",
       "displayDate": "Apr 4",
       "location": "Napa",
-      "high": 78,
+      "high": 80,
       "low": 49,
       "condition": "sunny",
       "shortForecast": "Sunny",
@@ -29,28 +29,28 @@ export const weatherData: WeatherData = {
       "date": "2026-04-05",
       "displayDate": "Apr 5",
       "location": "Napa",
-      "high": 78,
+      "high": 80,
       "low": 48,
       "condition": "sunny",
-      "shortForecast": "Mostly Sunny",
+      "shortForecast": "Sunny",
       "source": "forecast"
     },
     {
       "date": "2026-04-06",
       "displayDate": "Apr 6",
       "location": "Yosemite",
-      "high": 69,
+      "high": 71,
       "low": 43,
       "condition": "sunny",
-      "shortForecast": "Mostly Sunny",
+      "shortForecast": "Sunny",
       "source": "forecast"
     },
     {
       "date": "2026-04-07",
       "displayDate": "Apr 7",
       "location": "Yosemite",
-      "high": 66,
-      "low": 40,
+      "high": 69,
+      "low": 41,
       "condition": "thunderstorm",
       "shortForecast": "Sunny then Slight Chance Showers And Thunderstorms",
       "source": "forecast"
@@ -59,10 +59,11 @@ export const weatherData: WeatherData = {
       "date": "2026-04-08",
       "displayDate": "Apr 8",
       "location": "Carmel",
-      "high": 66,
-      "low": 50,
-      "condition": "partly-cloudy",
-      "source": "average"
+      "high": 69,
+      "low": 54,
+      "condition": "light-rain",
+      "shortForecast": "Chance Light Rain",
+      "source": "forecast"
     },
     {
       "date": "2026-04-09",
@@ -92,5 +93,5 @@ export const weatherData: WeatherData = {
       "source": "average"
     }
   ],
-  "fetchedAt": "2026-04-01T19:13:33.824Z"
+  "fetchedAt": "2026-04-02T07:23:58.254Z"
 };
