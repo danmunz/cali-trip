@@ -7,6 +7,7 @@ const navLinks = [
   { path: '/lodging', label: 'Lodging' },
   { path: '/itinerary', label: 'Experience' },
   { path: '/full-itinerary', label: 'Full Itinerary' },
+  { path: '/now', label: 'Now', live: true },
 ] as const;
 
 export default function Root() {
@@ -55,16 +56,22 @@ export default function Root() {
 
             {/* Desktop nav */}
             <div className="hidden sm:flex items-center gap-8">
-              {navLinks.map(({ path, label }) => (
+              {navLinks.map(({ path, label, ...rest }) => (
                 <Link
                   key={path}
                   to={path}
-                  className={`text-xs tracking-wider uppercase transition-colors font-medium ${
+                  className={`text-xs tracking-wider uppercase transition-colors font-medium inline-flex items-center gap-1.5 ${
                     isActive(path)
                       ? 'text-[#b8956d]'
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
+                  {'live' in rest && (
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b8956d] opacity-60" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#b8956d]" />
+                    </span>
+                  )}
                   {label}
                 </Link>
               ))}
@@ -91,16 +98,22 @@ export default function Root() {
           }`}
         >
           <div className="px-6 py-4 space-y-1">
-            {navLinks.map(({ path, label }) => (
+            {navLinks.map(({ path, label, ...rest }) => (
               <Link
                 key={path}
                 to={path}
-                className={`block py-3 text-sm tracking-wider uppercase font-medium transition-colors ${
+                className={`block py-3 text-sm tracking-wider uppercase font-medium transition-colors inline-flex items-center gap-2 ${
                   isActive(path)
                     ? 'text-[#b8956d]'
                     : 'text-gray-600 active:text-gray-900'
                 }`}
               >
+                {'live' in rest && (
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b8956d] opacity-60" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#b8956d]" />
+                  </span>
+                )}
                 {label}
               </Link>
             ))}
