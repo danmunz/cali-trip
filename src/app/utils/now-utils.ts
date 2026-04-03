@@ -13,6 +13,7 @@ export interface TimelineEntry {
   dayTitle: string;
   dayNumber: number;
   segmentId: string;
+  activityIndexInDay: number; // index within the TripDay's activities array
   startTime: Date | null;
   endTime: Date | null;
   geo: { lat: number; lng: number } | null;
@@ -157,7 +158,8 @@ export function buildTimeline(days: TripDay[]): TimelineEntry[] {
   let idx = 0;
 
   for (const day of days) {
-    for (const activity of day.activities) {
+    for (let ai = 0; ai < day.activities.length; ai++) {
+      const activity = day.activities[ai]!;
       const { start, end } = parseActivityTime(activity.time, day.date);
       const geo = resolveActivityGeo(activity);
 
@@ -169,6 +171,7 @@ export function buildTimeline(days: TripDay[]): TimelineEntry[] {
         dayTitle: day.title,
         dayNumber: day.day,
         segmentId: day.segmentId,
+        activityIndexInDay: ai,
         startTime: start,
         endTime: end,
         geo,

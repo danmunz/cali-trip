@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Link, useLocation } from 'react-router';
-import { MapPin, Clock, Navigation, ChevronUp, Menu, X } from 'lucide-react';
+import { MapPin, Clock, Navigation, ChevronUp, Menu, X, Globe, Star, ExternalLink } from 'lucide-react';
 import {
   useTimeline,
   useUserLocation,
@@ -10,6 +10,15 @@ import {
 } from '../utils/now-utils';
 import { segments, type SegmentId } from '../../data/segments';
 import { tripMeta } from '../../data/trip-meta.generated';
+import locationsData from '../../data/locations.json';
+import type { Location } from '../../data/types';
+
+// ── Location lookup ──────────────────────────────────────────
+
+const locationMap = new Map<string, Location>();
+for (const loc of (locationsData as { locations: Location[] }).locations) {
+  locationMap.set(loc.id, loc);
+}
 
 // ── Nav links (reused from Root) ─────────────────────────────
 
@@ -86,12 +95,33 @@ function ActivityCard({ entry, position, isCurrent, isLiveTarget, onClick }: Car
     'far-next': 'py-3 px-4',
   };
 
+  // Resolve locations for this activity
+  const activityLocations = useMemo(() => {
+    if (!isCurrent) return [];
+    const seen = new Set<string>();
+    const locs: Location[] = [];
+    for (const id of entry.activity.locationIds) {
+      const loc = locationMap.get(id);
+      if (loc && !seen.has(id)) {
+        seen.add(id);
+        locs.push(loc);
+      }
+    }
+    return locs;
+  }, [isCurrent, entry.activity.locationIds]);
+
+  // Build full-itinerary anchor
+  const itineraryAnchor = `day-${entry.dayNumber}-${entry.segmentId}-stop-${entry.activityIndexInDay}`;
+
   return (
-    <button
+    <div
+      role="button"
+      tabIndex={0}
       onClick={onClick}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick(); }}
       className={`
         w-full text-left rounded-2xl transition-all duration-500 ease-out
-        relative overflow-hidden
+        relative overflow-hidden cursor-pointer
         ${sizeClasses[position]}
         ${isCurrent
           ? 'bg-white shadow-xl ring-1 ring-black/[0.04]'
@@ -166,7 +196,66 @@ function ActivityCard({ entry, position, isCurrent, isLiveTarget, onClick }: Car
           </span>
         </div>
       )}
-    </button>
+
+      {/* Location links — current only */}
+      {isCurrent && activityLocations.length > 0 && (
+        <div className="mt-4 pt-4 border-t border-gray-100 space-y-2.5" onClick={(e) => e.stopPropagation()}>
+          {activityLocations.map((loc) => {
+            const hasDir = !!loc.google_maps_url?.[0];
+            const hasWeb = !!loc.official_url?.[0];
+            const hasReview = !!loc.review_url?.[0];
+            if (!hasDir && !hasWeb && !hasReview) return null;
+
+            return (
+              <div key={loc.id}>
+                <div className="flex items-center flex-wrap gap-x-1.5 gap-y-1.5 text-xs">
+                  <span className="text-gray-500 font-semibold mr-0.5">{loc.name}</span>
+                  {hasDir && (
+                    <a
+                      href={loc.google_maps_url[0]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition-colors font-medium"
+                    >
+                      <MapPin className="w-3 h-3" /> Directions
+                    </a>
+                  )}
+                  {hasWeb && (
+                    <a
+                      href={loc.official_url[0]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition-colors font-medium"
+                    >
+                      <Globe className="w-3 h-3" /> Website
+                    </a>
+                  )}
+                  {hasReview && (
+                    <a
+                      href={loc.review_url[0]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition-colors font-medium"
+                    >
+                      <Star className="w-3 h-3" /> Reviews
+                    </a>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Link to full itinerary entry */}
+          <Link
+            to={`/full-itinerary#${itineraryAnchor}`}
+            className="inline-flex items-center gap-1.5 mt-1 text-xs text-gray-400 hover:text-[#b8956d] transition-colors font-medium"
+          >
+            <ExternalLink className="w-3 h-3" />
+            View full details
+          </Link>
+        </div>
+      )}
+    </div>
   );
 }
 

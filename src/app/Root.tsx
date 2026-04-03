@@ -94,7 +94,7 @@ export default function Root() {
         {/* Mobile menu dropdown */}
         <div
           className={`sm:hidden overflow-hidden transition-all duration-200 ease-in-out bg-white/95 backdrop-blur-sm border-t border-gray-100 ${
-            menuOpen ? 'max-h-64' : 'max-h-0'
+            menuOpen ? 'max-h-80' : 'max-h-0'
           }`}
         >
           <div className="px-6 py-4 space-y-1">
@@ -102,7 +102,7 @@ export default function Root() {
               <Link
                 key={path}
                 to={path}
-                className={`block py-3 text-sm tracking-wider uppercase font-medium transition-colors inline-flex items-center gap-2 ${
+                className={`flex items-center gap-2 py-3 text-sm tracking-wider uppercase font-medium transition-colors ${
                   isActive(path)
                     ? 'text-[#b8956d]'
                     : 'text-gray-600 active:text-gray-900'
