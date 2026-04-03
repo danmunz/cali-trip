@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { Link, useLocation } from 'react-router';
-import { MapPin, Clock, Navigation, ChevronUp, Menu, X, Globe, Star, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { Link } from 'react-router';
+import { MapPin, Clock, Navigation, ChevronUp, Globe, Star, ExternalLink } from 'lucide-react';
 import {
   useTimeline,
   useUserLocation,
@@ -9,7 +9,6 @@ import {
   type GeoStatus,
 } from '../utils/now-utils';
 import { segments, type SegmentId } from '../../data/segments';
-import { tripMeta } from '../../data/trip-meta.generated';
 import locationsData from '../../data/locations.json';
 import type { Location } from '../../data/types';
 
@@ -19,16 +18,6 @@ const locationMap = new Map<string, Location>();
 for (const loc of (locationsData as { locations: Location[] }).locations) {
   locationMap.set(loc.id, loc);
 }
-
-// ── Nav links (reused from Root) ─────────────────────────────
-
-const navLinks = [
-  { path: '/', label: 'Overview' },
-  { path: '/lodging', label: 'Lodging' },
-  { path: '/itinerary', label: 'Experience' },
-  { path: '/full-itinerary', label: 'Full Itinerary' },
-  { path: '/now', label: 'Now' },
-] as const;
 
 // ── Format helpers ───────────────────────────────────────────
 
@@ -199,56 +188,65 @@ function ActivityCard({ entry, position, isCurrent, isLiveTarget, onClick }: Car
 
       {/* Location links — current only */}
       {isCurrent && activityLocations.length > 0 && (
-        <div className="mt-4 pt-4 border-t border-gray-100 space-y-2.5" onClick={(e) => e.stopPropagation()}>
+        <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-2 flex-wrap" onClick={(e) => e.stopPropagation()}>
           {activityLocations.map((loc) => {
-            const hasDir = !!loc.google_maps_url?.[0];
-            const hasWeb = !!loc.official_url?.[0];
-            const hasReview = !!loc.review_url?.[0];
-            if (!hasDir && !hasWeb && !hasReview) return null;
+            const dirUrl = loc.google_maps_url?.[0];
+            const webUrl = loc.official_url?.[0];
+            const reviewUrl = loc.review_url?.[0];
+            if (!dirUrl && !webUrl && !reviewUrl) return null;
 
             return (
-              <div key={loc.id}>
-                <div className="flex items-center flex-wrap gap-x-1.5 gap-y-1.5 text-xs">
-                  <span className="text-gray-500 font-semibold mr-0.5">{loc.name}</span>
-                  {hasDir && (
-                    <a
-                      href={loc.google_maps_url[0]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition-colors font-medium"
-                    >
-                      <MapPin className="w-3 h-3" /> Directions
-                    </a>
-                  )}
-                  {hasWeb && (
-                    <a
-                      href={loc.official_url[0]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition-colors font-medium"
-                    >
-                      <Globe className="w-3 h-3" /> Website
-                    </a>
-                  )}
-                  {hasReview && (
-                    <a
-                      href={loc.review_url[0]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition-colors font-medium"
-                    >
-                      <Star className="w-3 h-3" /> Reviews
-                    </a>
-                  )}
-                </div>
-              </div>
+              <React.Fragment key={loc.id}>
+                {dirUrl && (
+                  <a
+                    href={dirUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-[#b8956d] transition-colors"
+                  >
+                    <MapPin className="w-3 h-3" /> Directions
+                  </a>
+                )}
+                {webUrl && (
+                  <a
+                    href={webUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-[#b8956d] transition-colors"
+                  >
+                    <Globe className="w-3 h-3" /> Website
+                  </a>
+                )}
+                {reviewUrl && (
+                  <a
+                    href={reviewUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-[#b8956d] transition-colors"
+                  >
+                    <Star className="w-3 h-3" /> Reviews
+                  </a>
+                )}
+              </React.Fragment>
             );
           })}
-
-          {/* Link to full itinerary entry */}
+          <span className="text-gray-200">·</span>
           <Link
             to={`/full-itinerary#${itineraryAnchor}`}
-            className="inline-flex items-center gap-1.5 mt-1 text-xs text-gray-400 hover:text-[#b8956d] transition-colors font-medium"
+            className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-[#b8956d] transition-colors"
+          >
+            <ExternalLink className="w-3 h-3" />
+            Full details
+          </Link>
+        </div>
+      )}
+
+      {/* View full details — fallback when no location links */}
+      {isCurrent && activityLocations.length === 0 && (
+        <div className="mt-4 pt-3 border-t border-gray-100" onClick={(e) => e.stopPropagation()}>
+          <Link
+            to={`/full-itinerary#${itineraryAnchor}`}
+            className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-[#b8956d] transition-colors"
           >
             <ExternalLink className="w-3 h-3" />
             View full details
@@ -265,10 +263,8 @@ export default function NowPage() {
   const timeline = useTimeline();
   const { coords, status } = useUserLocation();
   const liveIndex = useCurrentIndex(timeline, coords);
-  const location = useLocation();
 
   const [activeIndex, setActiveIndex] = useState(liveIndex);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [hasScrolledAway, setHasScrolledAway] = useState(false);
   const [initialScrollDone, setInitialScrollDone] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -279,17 +275,6 @@ export default function NowPage() {
   useEffect(() => {
     setHasScrolledAway(activeIndex !== liveIndex);
   }, [activeIndex, liveIndex]);
-
-  // Close menu on route change
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
-
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
 
   // Initial scroll to live activity
   useEffect(() => {
@@ -381,13 +366,8 @@ export default function NowPage() {
     return { start: 0, end: timeline.length };
   }, [timeline.length]);
 
-  const isActive = (path: string) => {
-    if (path === '/') return location.pathname === '/';
-    return location.pathname.startsWith(path);
-  };
-
   return (
-    <div className="fixed inset-0 flex flex-col bg-[#faf8f5] overflow-hidden">
+    <div className="fixed inset-0 top-16 flex flex-col bg-[#faf8f5] overflow-hidden">
       {/* Background image — segment-aware */}
       <div
         className="absolute inset-0 z-0 transition-opacity duration-1000 ease-out"
@@ -399,79 +379,28 @@ export default function NowPage() {
         }}
       />
 
-      {/* Header bar */}
-      <header
-        className="relative z-30 flex-shrink-0 px-4 sm:px-6 pt-[env(safe-area-inset-top)] border-b border-black/[0.06]"
+      {/* Compact context bar */}
+      <div
+        className="relative z-30 flex-shrink-0 px-4 sm:px-6 border-b border-black/[0.06]"
         style={{ backgroundColor: `color-mix(in oklch, ${activeColor} 4%, #faf8f5)` }}
       >
-        <div className="flex items-center justify-between h-14 max-w-lg mx-auto">
-          {/* Left: segment + where/when */}
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <span
-                className="inline-block w-2 h-2 rounded-full flex-shrink-0"
-                style={{ backgroundColor: activeColor }}
-              />
-              <span className="text-[11px] uppercase tracking-widest font-medium text-gray-500 truncate">
-                {activeEntry ? getSegmentLabel(activeEntry.segmentId) : ''}
-              </span>
-            </div>
-            <p className="text-xs text-gray-400 truncate mt-0.5">
+        <div className="flex items-center justify-between h-10 max-w-lg mx-auto">
+          <div className="flex items-center gap-2 min-w-0">
+            <span
+              className="inline-block w-2 h-2 rounded-full flex-shrink-0"
+              style={{ backgroundColor: activeColor }}
+            />
+            <span className="text-[11px] uppercase tracking-widest font-medium text-gray-500 truncate">
+              {activeEntry ? getSegmentLabel(activeEntry.segmentId) : ''}
+            </span>
+            <span className="text-[11px] text-gray-300">·</span>
+            <span className="text-[11px] text-gray-400 truncate">
               {activeEntry ? `${formatDate(activeEntry.date, activeEntry.dayOfWeek)} · ${activeEntry.activity.time}` : ''}
-            </p>
+            </span>
           </div>
-
-          {/* Center: geo indicator */}
-          <div className="flex-shrink-0 mx-3">
-            <GeoIndicator status={status} />
-          </div>
-
-          {/* Right: hamburger */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/5 transition-colors"
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          <GeoIndicator status={status} />
         </div>
-      </header>
-
-      {/* Mobile nav overlay */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-white/98 backdrop-blur-md flex flex-col">
-          <div className="flex items-center justify-between h-14 px-4 sm:px-6 border-b border-gray-100">
-            <span className="text-sm font-semibold text-gray-900">{tripMeta.title}</span>
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/5"
-              aria-label="Close menu"
-            >
-              <X size={18} />
-            </button>
-          </div>
-          <nav className="flex-1 flex flex-col justify-center px-8 space-y-1">
-            {navLinks.map(({ path, label }) => (
-              <Link
-                key={path}
-                to={path}
-                onClick={() => setMenuOpen(false)}
-                className={`block py-4 text-2xl font-serif transition-colors ${
-                  isActive(path)
-                    ? 'text-[#b8956d]'
-                    : 'text-gray-400 hover:text-gray-900'
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
-          <div className="px-8 pb-8 text-xs text-gray-300">
-            {tripMeta.subtitle.replace(' | ', ' \u2022 ')}
-          </div>
-        </div>
-      )}
+      </div>
 
       {/* Scroll container */}
       <div
