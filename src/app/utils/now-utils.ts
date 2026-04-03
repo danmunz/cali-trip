@@ -199,15 +199,19 @@ export function buildTimeline(days: TripDay[]): TimelineEntry[] {
     }
   }
 
-  // Fill in null end times (next activity's start, or +1hr)
+  // Fill in null end times (next activity's start, or +1hr — capped at same day midnight)
   for (let i = 0; i < entries.length; i++) {
     const entry = entries[i]!;
     if (entry.startTime && !entry.endTime) {
       const next = entries[i + 1];
-      if (next?.startTime) {
+      // Only inherit from the next activity if it's on the same calendar day
+      if (next?.startTime && next.date === entry.date) {
         entry.endTime = next.startTime;
       } else {
-        entry.endTime = new Date(entry.startTime.getTime() + 60 * 60 * 1000);
+        // Cap at midnight of the same day (or +1hr if that's sooner)
+        const midnight = makePDTDate(entry.date, 23, 59);
+        const plusOneHr = new Date(entry.startTime.getTime() + 60 * 60 * 1000);
+        entry.endTime = plusOneHr < midnight ? plusOneHr : midnight;
       }
     }
   }
@@ -267,11 +271,14 @@ export function getCurrentActivityIndex(
 
     if (hasGeo && entry.geo) {
       const ls = locationScore(entry, userGeo!);
+      const ts = timeScore(entry, now);
 
-      // Strong proximity override: if very close, boost significantly
+      // Proximity override: only boost if the activity also has a
+      // reasonable time score (> 0.1), so repeated locations on other
+      // days (e.g. hotel appearing on day 1 and day 3) don't win.
       const dist = haversineKm(userGeo!, entry.geo);
-      if (dist <= CLOSE_PROXIMITY_KM) {
-        score += geoW * 1.0 + 0.5; // hard boost
+      if (dist <= CLOSE_PROXIMITY_KM && ts > 0.1) {
+        score += geoW * 1.0 + 0.3; // strong but gated boost
       } else if (dist > FAR_DISTANCE_KM) {
         // Far from all activities → lean heavier on time
         score += geoW * ls * 0.3;
