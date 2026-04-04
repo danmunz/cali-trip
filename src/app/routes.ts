@@ -16,11 +16,8 @@ export const router = createBrowserRouter(
         { path: "lodging", Component: LodgingPage },
         { path: "itinerary", Component: ItineraryPage },
         { path: "full-itinerary", Component: FullItineraryPage },
+        { path: "now", Component: NowPage },
       ],
-    },
-    {
-      path: "/now",
-      Component: NowPage,
     },
   ],
   {
