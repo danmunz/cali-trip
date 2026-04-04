@@ -18,64 +18,71 @@ export const weatherData: WeatherData = {
       "date": "2026-04-04",
       "displayDate": "Apr 4",
       "location": "Napa",
-      "high": 72,
-      "low": 54,
+      "high": 77,
+      "low": 50,
       "condition": "sunny",
-      "source": "average"
+      "shortForecast": "Mostly Sunny",
+      "source": "forecast"
     },
     {
       "date": "2026-04-05",
       "displayDate": "Apr 5",
       "location": "Napa",
-      "high": 70,
-      "low": 53,
-      "condition": "partly-cloudy",
-      "source": "average"
+      "high": 80,
+      "low": 46,
+      "condition": "sunny",
+      "shortForecast": "Sunny",
+      "source": "forecast"
     },
     {
       "date": "2026-04-06",
       "displayDate": "Apr 6",
       "location": "Yosemite",
-      "high": 62,
-      "low": 38,
-      "condition": "partly-cloudy",
-      "source": "average"
+      "high": 71,
+      "low": 44,
+      "condition": "sunny",
+      "shortForecast": "Sunny",
+      "source": "forecast"
     },
     {
       "date": "2026-04-07",
       "displayDate": "Apr 7",
       "location": "Yosemite",
-      "high": 64,
-      "low": 40,
+      "high": 71,
+      "low": 43,
       "condition": "sunny",
-      "source": "average"
+      "shortForecast": "Sunny",
+      "source": "forecast"
     },
     {
       "date": "2026-04-08",
       "displayDate": "Apr 8",
       "location": "Carmel",
-      "high": 66,
-      "low": 50,
-      "condition": "partly-cloudy",
-      "source": "average"
+      "high": 71,
+      "low": 52,
+      "condition": "fog",
+      "shortForecast": "Areas Of Fog",
+      "source": "forecast"
     },
     {
       "date": "2026-04-09",
       "displayDate": "Apr 9",
       "location": "Carmel",
-      "high": 64,
-      "low": 51,
-      "condition": "cloudy",
-      "source": "average"
+      "high": 68,
+      "low": 50,
+      "condition": "light-rain",
+      "shortForecast": "Chance Light Rain",
+      "source": "forecast"
     },
     {
       "date": "2026-04-10",
       "displayDate": "Apr 10",
       "location": "Carmel",
-      "high": 63,
-      "low": 52,
+      "high": 67,
+      "low": 50,
       "condition": "light-rain",
-      "source": "average"
+      "shortForecast": "Slight Chance Light Rain",
+      "source": "forecast"
     },
     {
       "date": "2026-04-11",
@@ -87,5 +94,5 @@ export const weatherData: WeatherData = {
       "source": "average"
     }
   ],
-  "fetchedAt": null
+  "fetchedAt": "2026-04-04T18:53:33.863Z"
 };
