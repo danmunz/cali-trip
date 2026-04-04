@@ -9,71 +9,64 @@ export const weatherData: WeatherData = {
       "date": "2026-04-03",
       "displayDate": "Apr 3",
       "location": "SF/Napa",
-      "high": 74,
-      "low": 46,
+      "high": 68,
+      "low": 52,
       "condition": "sunny",
-      "shortForecast": "Sunny",
-      "source": "forecast"
+      "source": "average"
     },
     {
       "date": "2026-04-04",
       "displayDate": "Apr 4",
       "location": "Napa",
-      "high": 79,
-      "low": 50,
+      "high": 72,
+      "low": 54,
       "condition": "sunny",
-      "shortForecast": "Mostly Sunny",
-      "source": "forecast"
+      "source": "average"
     },
     {
       "date": "2026-04-05",
       "displayDate": "Apr 5",
       "location": "Napa",
-      "high": 81,
-      "low": 46,
-      "condition": "sunny",
-      "shortForecast": "Sunny",
-      "source": "forecast"
+      "high": 70,
+      "low": 53,
+      "condition": "partly-cloudy",
+      "source": "average"
     },
     {
       "date": "2026-04-06",
       "displayDate": "Apr 6",
       "location": "Yosemite",
-      "high": 71,
-      "low": 44,
-      "condition": "sunny",
-      "shortForecast": "Sunny",
-      "source": "forecast"
+      "high": 62,
+      "low": 38,
+      "condition": "partly-cloudy",
+      "source": "average"
     },
     {
       "date": "2026-04-07",
       "displayDate": "Apr 7",
       "location": "Yosemite",
-      "high": 71,
-      "low": 43,
+      "high": 64,
+      "low": 40,
       "condition": "sunny",
-      "shortForecast": "Sunny",
-      "source": "forecast"
+      "source": "average"
     },
     {
       "date": "2026-04-08",
       "displayDate": "Apr 8",
       "location": "Carmel",
-      "high": 69,
-      "low": 51,
-      "condition": "light-rain",
-      "shortForecast": "Chance Light Rain",
-      "source": "forecast"
+      "high": 66,
+      "low": 50,
+      "condition": "partly-cloudy",
+      "source": "average"
     },
     {
       "date": "2026-04-09",
       "displayDate": "Apr 9",
       "location": "Carmel",
-      "high": 67,
-      "low": 49,
-      "condition": "light-rain",
-      "shortForecast": "Chance Light Rain",
-      "source": "forecast"
+      "high": 64,
+      "low": 51,
+      "condition": "cloudy",
+      "source": "average"
     },
     {
       "date": "2026-04-10",
@@ -94,5 +87,5 @@ export const weatherData: WeatherData = {
       "source": "average"
     }
   ],
-  "fetchedAt": "2026-04-03T18:57:23.391Z"
+  "fetchedAt": null
 };
