@@ -107,7 +107,13 @@ function ActivityCard({ entry, position, isCurrent, isLiveTarget, onClick }: Car
       role="button"
       tabIndex={0}
       onClick={onClick}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick(); }}
+      onKeyDown={(e) => {
+        if (e.currentTarget !== e.target) return;
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick();
+        }
+      }}
       className={`
         w-full text-left rounded-2xl transition-all duration-500 ease-out
         relative overflow-hidden cursor-pointer
@@ -195,38 +201,27 @@ function ActivityCard({ entry, position, isCurrent, isLiveTarget, onClick }: Car
             const reviewUrl = loc.review_url?.[0];
             if (!dirUrl && !webUrl && !reviewUrl) return null;
 
+            const links = [
+              dirUrl && { href: dirUrl, icon: <MapPin className="w-3 h-3" />, label: 'Directions' },
+              webUrl && { href: webUrl, icon: <Globe className="w-3 h-3" />, label: 'Website' },
+              reviewUrl && { href: reviewUrl, icon: <Star className="w-3 h-3" />, label: 'Reviews' },
+            ].filter(Boolean) as { href: string; icon: React.ReactNode; label: string }[];
+
             return (
               <React.Fragment key={loc.id}>
-                {dirUrl && (
-                  <a
-                    href={dirUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-[#b8956d] transition-colors"
-                  >
-                    <MapPin className="w-3 h-3" /> Directions
-                  </a>
-                )}
-                {webUrl && (
-                  <a
-                    href={webUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-[#b8956d] transition-colors"
-                  >
-                    <Globe className="w-3 h-3" /> Website
-                  </a>
-                )}
-                {reviewUrl && (
-                  <a
-                    href={reviewUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-[#b8956d] transition-colors"
-                  >
-                    <Star className="w-3 h-3" /> Reviews
-                  </a>
-                )}
+                {links.map((link, i) => (
+                  <React.Fragment key={link.label}>
+                    {i > 0 && <span className="text-gray-200">·</span>}
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-[#b8956d] transition-colors"
+                    >
+                      {link.icon} {link.label}
+                    </a>
+                  </React.Fragment>
+                ))}
               </React.Fragment>
             );
           })}
