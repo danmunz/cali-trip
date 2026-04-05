@@ -27,8 +27,8 @@ export const weatherData: WeatherData = {
       "date": "2026-04-05",
       "displayDate": "Apr 5",
       "location": "Napa",
-      "high": 82,
-      "low": 50,
+      "high": 81,
+      "low": 47,
       "condition": "sunny",
       "shortForecast": "Mostly Sunny",
       "source": "forecast"
@@ -38,7 +38,7 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 6",
       "location": "Yosemite",
       "high": 70,
-      "low": 44,
+      "low": 45,
       "condition": "sunny",
       "shortForecast": "Sunny",
       "source": "forecast"
@@ -47,7 +47,7 @@ export const weatherData: WeatherData = {
       "date": "2026-04-07",
       "displayDate": "Apr 7",
       "location": "Yosemite",
-      "high": 71,
+      "high": 70,
       "low": 44,
       "condition": "sunny",
       "shortForecast": "Sunny",
@@ -59,8 +59,8 @@ export const weatherData: WeatherData = {
       "location": "Carmel",
       "high": 71,
       "low": 53,
-      "condition": "fog",
-      "shortForecast": "Patchy Fog then Mostly Sunny",
+      "condition": "sunny",
+      "shortForecast": "Mostly Sunny",
       "source": "forecast"
     },
     {
@@ -68,9 +68,9 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 9",
       "location": "Carmel",
       "high": 70,
-      "low": 51,
-      "condition": "fog",
-      "shortForecast": "Areas Of Fog then Chance Light Rain",
+      "low": 52,
+      "condition": "thunderstorm",
+      "shortForecast": "Chance Light Rain then Slight Chance Showers And Thunderstorms",
       "source": "forecast"
     },
     {
@@ -80,7 +80,7 @@ export const weatherData: WeatherData = {
       "high": 69,
       "low": 51,
       "condition": "light-rain",
-      "shortForecast": "Chance Light Rain",
+      "shortForecast": "Light Rain Likely",
       "source": "forecast"
     },
     {
@@ -94,5 +94,5 @@ export const weatherData: WeatherData = {
       "source": "forecast"
     }
   ],
-  "fetchedAt": "2026-04-05T07:16:59.110Z"
+  "fetchedAt": "2026-04-05T18:55:13.581Z"
 };
