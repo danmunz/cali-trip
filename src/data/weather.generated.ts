@@ -18,27 +18,26 @@ export const weatherData: WeatherData = {
       "date": "2026-04-04",
       "displayDate": "Apr 4",
       "location": "Napa",
-      "high": 77,
+      "high": 72,
+      "low": 54,
+      "condition": "sunny",
+      "source": "average"
+    },
+    {
+      "date": "2026-04-05",
+      "displayDate": "Apr 5",
+      "location": "Napa",
+      "high": 82,
       "low": 50,
       "condition": "sunny",
       "shortForecast": "Mostly Sunny",
       "source": "forecast"
     },
     {
-      "date": "2026-04-05",
-      "displayDate": "Apr 5",
-      "location": "Napa",
-      "high": 80,
-      "low": 46,
-      "condition": "sunny",
-      "shortForecast": "Sunny",
-      "source": "forecast"
-    },
-    {
       "date": "2026-04-06",
       "displayDate": "Apr 6",
       "location": "Yosemite",
-      "high": 71,
+      "high": 70,
       "low": 44,
       "condition": "sunny",
       "shortForecast": "Sunny",
@@ -49,7 +48,7 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 7",
       "location": "Yosemite",
       "high": 71,
-      "low": 43,
+      "low": 44,
       "condition": "sunny",
       "shortForecast": "Sunny",
       "source": "forecast"
@@ -59,40 +58,41 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 8",
       "location": "Carmel",
       "high": 71,
-      "low": 52,
+      "low": 53,
       "condition": "fog",
-      "shortForecast": "Areas Of Fog",
+      "shortForecast": "Patchy Fog then Mostly Sunny",
       "source": "forecast"
     },
     {
       "date": "2026-04-09",
       "displayDate": "Apr 9",
       "location": "Carmel",
-      "high": 68,
-      "low": 50,
-      "condition": "light-rain",
-      "shortForecast": "Chance Light Rain",
+      "high": 70,
+      "low": 51,
+      "condition": "fog",
+      "shortForecast": "Areas Of Fog then Chance Light Rain",
       "source": "forecast"
     },
     {
       "date": "2026-04-10",
       "displayDate": "Apr 10",
       "location": "Carmel",
-      "high": 67,
-      "low": 50,
+      "high": 69,
+      "low": 51,
       "condition": "light-rain",
-      "shortForecast": "Slight Chance Light Rain",
+      "shortForecast": "Chance Light Rain",
       "source": "forecast"
     },
     {
       "date": "2026-04-11",
       "displayDate": "Apr 11",
       "location": "SF",
-      "high": 65,
-      "low": 54,
-      "condition": "partly-cloudy",
-      "source": "average"
+      "high": 67,
+      "low": 52,
+      "condition": "sunny",
+      "shortForecast": "Mostly Sunny",
+      "source": "forecast"
     }
   ],
-  "fetchedAt": "2026-04-04T18:53:33.863Z"
+  "fetchedAt": "2026-04-05T07:16:59.110Z"
 };
