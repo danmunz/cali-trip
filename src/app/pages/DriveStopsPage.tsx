@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useCallback } from 'react';
+import { useState, useMemo, useRef, useCallback, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router';
 import { MapPin, Globe, Star, Navigation, ChevronDown, ChevronUp, Coffee, UtensilsCrossed, ShoppingBag, Trees, Landmark, Wine, Fuel, Baby } from 'lucide-react';
 import { drives } from '../../data/drives';
@@ -221,6 +221,11 @@ export default function DriveStopsPage() {
   const { coords: userGeo } = useUserLocation();
   const [activeFilters, setActiveFilters] = useState<Set<string>>(new Set());
   const listRef = useRef<HTMLDivElement>(null);
+
+  // Reset filters when navigating between drives
+  useEffect(() => {
+    setActiveFilters(new Set());
+  }, [driveId]);
 
   // Derive all unique types and ordered segments from stops
   const { allTypes, segmentGroups } = useMemo(() => {
