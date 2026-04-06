@@ -98,6 +98,21 @@ export interface WeatherData {
   fetchedAt: string | null; // ISO timestamp of last NWS fetch, null if all averages
 }
 
+// ── Road-trip drive stops ────────────────────────────────────
+
+export interface RoadStop {
+  id: string;
+  name: string;
+  segment: string;
+  address: string;
+  geo: { lat: number; lng: number };
+  types: string[];
+  notes: string;
+  official_url: string[];
+  google_maps_url: string[];
+  review_url: string[];
+}
+
 // ── Locations ────────────────────────────────────────────────
 
 export interface LocationTripPart {

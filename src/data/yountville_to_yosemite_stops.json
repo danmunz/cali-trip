@@ -1,0 +1,416 @@
+[
+  {
+    "id": "addendum-ad-hoc-yountville",
+    "name": "Addendum at Ad Hoc",
+    "segment": "Yountville · departure",
+    "address": "6476 Washington St, Yountville, CA 94599",
+    "geo": {
+      "lat": 38.4024,
+      "lng": -122.3604
+    },
+    "types": ["Food", "Quick bites"],
+    "notes": "Thomas Keller's walk-up garden window behind Ad Hoc. Serves boxed lunches to go — famous buttermilk fried chicken, crispy chicken sandwiches, pulled pork — plus pastries and coffee. Ideal road-trip provisions before hitting CA-29 south. IMPORTANT: Addendum is currently open Fridays and Saturdays only, 11am–2pm. Ad Hoc restaurant itself is open Thu–Mon for dinner, and Sunday brunch. Confirm hours before visiting.",
+    "official_url": [
+      "https://thomaskeller.com/addendum/"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=38.4024,-122.3604"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/ad-hoc-and-addendum-yountville-2",
+      "https://www.tripadvisor.com/Restaurant_Review-g33300-d2264207-Reviews-Addendum_at_Ad_Hoc-Yountville_Napa_Valley_California.html"
+    ]
+  },
+  {
+    "id": "inspire-coffee-lodi",
+    "name": "Inspire Coffee",
+    "segment": "Lodi · ~45 min from Yountville",
+    "address": "8 W Pine St, Lodi, CA 95240",
+    "geo": {
+      "lat": 38.1302,
+      "lng": -121.2744
+    },
+    "types": ["Coffee"],
+    "notes": "Lodi's top-rated independent coffee shop — 4.8 stars, family-owned nonprofit. Specialty drinks include the Cinnabomb latte, lavender blended coffee, and Aztec mocha. All espresso ground and brewed to order. Fresh baked goods. Open Mon–Fri 6:30am–4pm, Sat 8am–4pm, closed Sun. Parking garage across the street has unlimited free all-day parking.",
+    "official_url": [
+      "https://www.inspirelodi.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=38.1302,-121.2744"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/inspire-coffee-lodi"
+    ]
+  },
+  {
+    "id": "brew-house-coffee-lodi",
+    "name": "Brew House Coffee",
+    "segment": "Lodi · ~45 min from Yountville",
+    "address": "115 S School St, Ste 5, Lodi, CA 95240",
+    "geo": {
+      "lat": 38.1293,
+      "lng": -121.2733
+    },
+    "types": ["Coffee", "Quick bites"],
+    "notes": "Local institution in downtown Lodi — coffee, tea, beer, wine, gelato, and pastries all under one roof. Cozy café vibes with a sidewalk patio. Also serves sourdough paninis and burritos for a quick savory bite. Open daily 7am–8pm, seven days a week. Good sit-down breather before the long Central Valley stretch.",
+    "official_url": [
+      "https://www.brewhousecoffeelodi.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=38.1293,-121.2733"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/brew-house-coffee-lodi"
+    ]
+  },
+  {
+    "id": "cafecito-lounge-lodi",
+    "name": "Cafecito Lounge",
+    "segment": "Lodi · ~45 min from Yountville",
+    "address": "1420 W Kettleman Ln, Ste G, Lodi, CA 95242",
+    "geo": {
+      "lat": 38.1218,
+      "lng": -121.2940
+    },
+    "types": ["Coffee", "Quick bites"],
+    "notes": "Mexican-inspired specialty coffee — horchata lattes, mazapán drinks, jamaica lemonade, café de olla. 4.7 stars. Indoor/outdoor seating with free WiFi. Great for a kid-friendly drink (agua fresca, chocolate milk) alongside your espresso. Located slightly south of the main CA-12 corridor on Kettleman Lane — quick detour worth it. Open Mon–Fri 7am–3pm, Sat–Sun 8–8:30am to 2–3pm.",
+    "official_url": [
+      "https://www.cafecitolounge.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=38.1218,-121.2940"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/cafecito-lounge-lodi"
+    ]
+  },
+  {
+    "id": "michael-david-winery-lodi",
+    "name": "Michael David Winery",
+    "segment": "Lodi · ~45 min from Yountville",
+    "address": "4580 W Hwy 12, Lodi, CA 95242",
+    "geo": {
+      "lat": 38.1160,
+      "lng": -121.3714
+    },
+    "types": ["Wine", "Food", "Kids"],
+    "notes": "Right on your CA-12 route. Sixth-generation family winery, home of 7 Deadly Zins — America's #1 bestselling Zinfandel. Sprawling grounds with bocce court, pond seating, outdoor bar, and full marketplace. On-site Farm Café open from 8am for breakfast and lunch. Kid-friendly with a playground on the property. Dog-friendly too. Walk-in tastings for groups of 6 or fewer; reserve for larger groups. Open daily 8am–5pm, last pour 4:30pm.",
+    "official_url": [
+      "https://michaeldavidwinery.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=38.1160,-121.3714"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/michael-david-winery-lodi-2",
+      "https://www.tripadvisor.com/Attraction_Review-g32640-d523008-Reviews-Michael_David_Winery-Lodi_California.html"
+    ]
+  },
+  {
+    "id": "moo-moos-burger-barn-lodi",
+    "name": "Moo Moo's Burger Barn",
+    "segment": "Lodi · ~45 min from Yountville",
+    "address": "113 N School St, Lodi, CA 95240",
+    "geo": {
+      "lat": 38.1311,
+      "lng": -121.2733
+    },
+    "types": ["Quick bites", "Kids"],
+    "notes": "Family-friendly, whimsical sit-down burger joint with 20+ gourmet burgers and a build-your-own option. Kid's menu available. Cooked-to-order, real milkshakes, beer-battered onion rings. Consistently well-reviewed, fast enough to not derail your schedule. Located in downtown Lodi next to the cineplex. Open Sun–Thu 11am–8pm, Fri–Sat 11am–9pm.",
+    "official_url": [
+      "https://moo-moos.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=38.1311,-121.2733"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/moo-moos-burger-barn-lodi",
+      "https://www.tripadvisor.com/Restaurant_Review-g32640-d2524603-Reviews-Moo_Moo_s_Burger_Barn-Lodi_California.html"
+    ]
+  },
+  {
+    "id": "lodi-lake-park",
+    "name": "Lodi Lake Park",
+    "segment": "Lodi · ~45 min from Yountville",
+    "address": "1101 W Turner Rd, Lodi, CA 95242",
+    "geo": {
+      "lat": 38.1458,
+      "lng": -121.2958
+    },
+    "types": ["Kids", "Scenic"],
+    "notes": "127-acre riverfront park on the Mokelumne River. Facilities include a large playground, nature trails, picnic shelters, bike trails, kayak/paddleboat rentals, seasonal swimming beach, off-leash dog park, and restrooms. Draws 200,000+ visitors annually. Open daily 5am–7pm. 10 minutes from downtown Lodi — excellent leg-stretch stop with enough space for a real run-around.",
+    "official_url": [
+      "https://www.lodi.gov/facilities/facility/details/Lodi-Lake-5"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=38.1458,-121.2958"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/lodi-lake-lodi-2"
+    ]
+  },
+  {
+    "id": "stockton-ca4-i5-services",
+    "name": "Stockton — CA-4 / I-5 gas & services",
+    "segment": "Stockton → Copperopolis · CA-4 east · ~60 mi",
+    "address": "Stockton, CA 95203",
+    "geo": {
+      "lat": 37.9577,
+      "lng": -121.2908
+    },
+    "types": ["Gas-Restrooms", "Quick bites"],
+    "notes": "Last major city on the route with full services — every gas chain, fast food, and grocery stores. Fill the tank here. Gas gets expensive and sparse past Copperopolis. Costco gas available if you have a membership. All major fast food chains clustered near the CA-4 / I-5 interchange.",
+    "official_url": [],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.9577,-121.2908"
+    ],
+    "review_url": []
+  },
+  {
+    "id": "knights-ferry-covered-bridge",
+    "name": "Knights Ferry Covered Bridge & Recreation Area",
+    "segment": "Stockton → Copperopolis · CA-4 east · ~60 mi",
+    "address": "17968 Covered Bridge Rd, Oakdale, CA 95361",
+    "geo": {
+      "lat": 37.8272,
+      "lng": -120.6658
+    },
+    "types": ["History", "Scenic", "Kids"],
+    "notes": "Longest covered bridge west of the Mississippi, built in the 1860s. The Army Corps of Engineers recreation area on the Stanislaus River includes Gold Rush ruins (old flour mill, power station), hiking trails, picnic tables with BBQ grills, and restrooms. River runs high and green in April from snowmelt — genuinely spectacular. Free entry. Short detour off CA-4 near Oakdale, adds ~15 minutes. The town of Knights Ferry also has an ice cream shop and a general store.",
+    "official_url": [
+      "https://knightsferry.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.8272,-120.6658"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/knights-ferry-recreation-area-oakdale",
+      "https://www.tripadvisor.com/Attraction_Review-g32567-d268914-Reviews-Stanislaus_River-Knights_Ferry_California.html"
+    ]
+  },
+  {
+    "id": "oakdale-cheese-and-specialties",
+    "name": "Oakdale Cheese & Specialties",
+    "segment": "Stockton → Copperopolis · CA-4 east · ~60 mi",
+    "address": "10040 State Highway 120, Oakdale, CA 95361",
+    "geo": {
+      "lat": 37.7854,
+      "lng": -120.8589
+    },
+    "types": ["Shopping", "Quick bites"],
+    "notes": "Family-run Dutch-heritage artisanal cheese producer. Tastings of house-made Gouda in multiple flavors (smoked, aged, flavored). Grilled cheese sandwiches made to order on-site. Gift shop, farm animals to feed, shaded picnic lawn. Great road-trip snack stop. GPS directions: use 10040 Valley Home Road, Oakdale, CA. Open daily 9am–6pm.",
+    "official_url": [
+      "https://www.oakdalecheese.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.7854,-120.8589"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/oakdale-cheese-and-specialties-oakdale",
+      "https://www.tripadvisor.com/Attraction_Review-g32702-d1190015-Reviews-Oakdale_Cheese_Specialties-Oakdale_California.html"
+    ]
+  },
+  {
+    "id": "copperopolis-town-square",
+    "name": "Copperopolis Town Square",
+    "segment": "Stockton → Copperopolis · CA-4 east · ~60 mi",
+    "address": "365 Main St, Copperopolis, CA 95228",
+    "geo": {
+      "lat": 37.9831,
+      "lng": -120.6414
+    },
+    "types": ["Gas-Restrooms", "Quick bites"],
+    "notes": "Planned town square with restaurants, a tavern, and clean restrooms. Saddle Creek Grill nearby is well-reviewed for lunch. Last reliable gas station before the mountain stretch on CA-120 — approximately 40 miles of winding foothill highway ahead. Do not skip this gas stop.",
+    "official_url": [
+      "https://www.copperopolistownsquare.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.9831,-120.6414"
+    ],
+    "review_url": [
+      "https://www.tripadvisor.com/Tourism-g32145-Copperopolis_California-Vacations.html"
+    ]
+  },
+  {
+    "id": "don-pedro-reservoir-viewpoint",
+    "name": "Don Pedro Reservoir Viewpoint Pullouts",
+    "segment": "CA-120 mountain corridor (Groveland · 43 mi · ~1 hr scenic)",
+    "address": "CA-120, La Grange, CA 95329",
+    "geo": {
+      "lat": 37.7197,
+      "lng": -120.4267
+    },
+    "types": ["Scenic"],
+    "notes": "CA-120 skirts the north rim of Don Pedro Reservoir with dramatic views of the blue-green lake against Sierra Nevada foothills. Multiple informal pullouts available — no facilities, but a 5-minute photo stop is well worth it. Marks the transition from Central Valley flatlands into true mountain scenery; the road becomes beautiful and winding from here onward.",
+    "official_url": [],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.7197,-120.4267"
+    ],
+    "review_url": []
+  },
+  {
+    "id": "mountain-sage-coffee-groveland",
+    "name": "Mountain Sage Coffee",
+    "segment": "CA-120 mountain corridor (Groveland · 43 mi · ~1 hr scenic)",
+    "address": "18653 Main St, Groveland, CA 95321",
+    "geo": {
+      "lat": 37.8464,
+      "lng": -120.2278
+    },
+    "types": ["Coffee", "Quick bites"],
+    "notes": "The definitive coffee stop for Yosemite-bound travelers, with 40+ consistent reviews. Fair-trade beans from Wild Goose Roasters, ground and brewed to order. Handcrafted espresso drinks using only house-made extracts, organic chocolate, and raw honey. Fresh-baked daily: blueberry coffee cake, lemon bars, triple-chocolate brownies, GF banana bread. Beautiful garden patio and cozy indoor lounge with photography gallery. Free WiFi. Open daily 7am–2pm (closed Wednesday).",
+    "official_url": [
+      "https://www.mtsage.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.8464,-120.2278"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/mountain-sage-coffee-groveland"
+    ]
+  },
+  {
+    "id": "firefall-coffee-roasting-groveland",
+    "name": "Firefall Coffee Roasting Co.",
+    "segment": "CA-120 mountain corridor (Groveland · 43 mi · ~1 hr scenic)",
+    "address": "18749 Main St, Groveland, CA 95321",
+    "geo": {
+      "lat": 37.8462,
+      "lng": -120.2264
+    },
+    "types": ["Coffee", "Quick bites"],
+    "notes": "Local roaster in downtown Groveland on Main St / Hwy 120. Locally roasted beans, strong reviews for freshness and quality. Walkable from Mountain Sage (two blocks east). Good alternative or second stop. Open daily 7am–3pm.",
+    "official_url": [],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.8462,-120.2264"
+    ],
+    "review_url": [
+      "https://www.yelp.com/search?find_desc=Firefall+Coffee&find_loc=Groveland%2C+CA"
+    ]
+  },
+  {
+    "id": "iron-door-saloon-groveland",
+    "name": "Iron Door Saloon",
+    "segment": "CA-120 mountain corridor (Groveland · 43 mi · ~1 hr scenic)",
+    "address": "18761 Main St, Groveland, CA 95321",
+    "geo": {
+      "lat": 37.8463,
+      "lng": -120.2261
+    },
+    "types": ["Food", "History"],
+    "notes": "California's longest continuously operating saloon, open since 1852 — predates Yosemite National Park by 32 years. Original bar still in place. Walls lined with Gold Rush–era photos and memorabilia including images of the Sierra Club founder and famous stagecoach robbers. American fare: chicken fried steak, Cobb salads, burgers. Open daily 7am–9pm. Genuinely atmospheric, not a tourist trap. You're 20–25 miles from Rush Creek at this point.",
+    "official_url": [
+      "https://www.irondoorsaloon.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.8463,-120.2261"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/the-iron-door-saloon-groveland",
+      "https://www.tripadvisor.com/Restaurant_Review-g32460-d494034-Reviews-Iron_Door_Saloon-Groveland_California.html"
+    ]
+  },
+  {
+    "id": "pizza-factory-groveland",
+    "name": "Pizza Factory",
+    "segment": "CA-120 mountain corridor (Groveland · 43 mi · ~1 hr scenic)",
+    "address": "18583 Main St, Groveland, CA 95321",
+    "geo": {
+      "lat": 37.8460,
+      "lng": -120.2293
+    },
+    "types": ["Quick bites", "Kids"],
+    "notes": "Reliable pizza option in downtown Groveland — good fallback if the Iron Door is busy or you need something fast and kid-friendly. Open daily from 10am–9pm. Alternative: Two Guys Pizza Pies at 18955 Ferretti Rd (open Mon–Sun 11am–10pm) is a local alternative just off Main St.",
+    "official_url": [
+      "https://pizzafactory.com/locations/groveland"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.8460,-120.2293"
+    ],
+    "review_url": [
+      "https://www.yelp.com/search?find_desc=Pizza+Factory&find_loc=Groveland%2C+CA"
+    ]
+  },
+  {
+    "id": "mary-laveroni-community-park-groveland",
+    "name": "Mary Laveroni Community Park",
+    "segment": "CA-120 mountain corridor (Groveland · 43 mi · ~1 hr scenic)",
+    "address": "18950 CA-120, Groveland, CA 95321",
+    "geo": {
+      "lat": 37.8459,
+      "lng": -120.2349
+    },
+    "types": ["Kids", "Scenic"],
+    "notes": "2.3-acre park fronting Hwy 120 in downtown Groveland. Playground, large open grassy field (former Hetch Hetchy railroad bed), skate park, basketball courts, and shaded picnic tables. Clean restrooms. Yosemite Gateway Museum and Groveland branch library immediately adjacent. Walkable from Main St restaurants. Free parking. Consistently reviewed as the ideal pre-Yosemite leg-stretch stop for kids — especially for those with skate park energy.",
+    "official_url": [
+      "https://www.gcsd.org/mary-laveroni-community-park"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.8459,-120.2349"
+    ],
+    "review_url": [
+      "https://www.tripadvisor.com/Attraction_Review-g32460-d480782-Reviews-Mary_Laveroni_Community_Park-Groveland_California.html",
+      "https://www.yelp.com/biz/mary-laveroni-community-park-groveland"
+    ]
+  },
+  {
+    "id": "grove-mercantile-groveland",
+    "name": "The Grove Mercantile",
+    "segment": "CA-120 mountain corridor (Groveland · 43 mi · ~1 hr scenic)",
+    "address": "18687 Main St, Ste D2, Groveland, CA 95321",
+    "geo": {
+      "lat": 37.8463,
+      "lng": -120.2276
+    },
+    "types": ["Shopping", "Quick bites"],
+    "notes": "Artisanal homemade ice cream shop and boutique gift store. Ice cream made in small batches from local and natural ingredients — 8 rotating flavors including seasonal specialties. Also carries outdoor lifestyle goods, Groveland souvenirs, local art/photography, and gifts for all ages. Dairy-free options available. Winter hours (Sept–June): Wed–Sat 11am–5pm, Sun 12–5pm, closed Mon–Tue. Summer hours: Mon and Wed–Sat 11am–6pm, Sun 12–5pm.",
+    "official_url": [
+      "https://www.thegrovemercantile.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.8463,-120.2276"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/the-grove-mercantile-groveland-3",
+      "https://www.tripadvisor.com/Attraction_Review-g32460-d25930193-Reviews-The_Grove_Mercantile-Groveland_California.html"
+    ]
+  },
+  {
+    "id": "yosemite-basecamp-groveland",
+    "name": "Yosemite Basecamp Outfitter & Visitor Center",
+    "segment": "CA-120 mountain corridor (Groveland · 43 mi · ~1 hr scenic)",
+    "address": "18687 Main St, Ste B-1, Groveland, CA 95321",
+    "geo": {
+      "lat": 37.8462,
+      "lng": -120.2282
+    },
+    "types": ["Shopping"],
+    "notes": "Locally owned outfitter and visitor center in the Mountain Leisure Center on Main St. Full-service fly shop plus new and used outdoor gear for adults, kids, and pets — Patagonia, Teva, and Fishpond dealers. Knowledgeable local staff can also help with Yosemite trip planning, permits, and current park conditions. A new dedicated visitor center opened at this location in March 2026. Open 363 days a year. Lodging facility is separately located at 11892 Ponderosa Lane. Significantly cheaper and better-stocked than anything inside the park.",
+    "official_url": [
+      "https://www.yosemitebasecamp.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.8462,-120.2282"
+    ],
+    "review_url": [
+      "https://www.tripadvisor.com/Hotel_Review-g32460-d25039242-Reviews-Echo_Adventure_s_Yosemite_Basecamp-Groveland_California.html"
+    ]
+  },
+  {
+    "id": "groveland-gas-final-stop",
+    "name": "Groveland Gas Stations (final fill-up)",
+    "segment": "CA-120 mountain corridor (Groveland · 43 mi · ~1 hr scenic)",
+    "address": "18767 Main St, Groveland, CA 95321",
+    "geo": {
+      "lat": 37.8465,
+      "lng": -120.2258
+    },
+    "types": ["Gas-Restrooms"],
+    "notes": "Groveland has the last affordable fuel before the park entrance. Buck Meadows (a few miles east on Hwy 120 at Big Oak Flat) has a second option — gas station and convenience store, open Mon–Thu 5am–8pm, Fri 5am–9pm, Sat–Sun 6am–8pm. No gas exists on the western CA-120 approach once inside Yosemite. EV Level 2 charging available in Groveland; Rush Creek Lodge also has Level 2 on-site. Fill up without exception.",
+    "official_url": [],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.8465,-120.2258"
+    ],
+    "review_url": []
+  }
+]
