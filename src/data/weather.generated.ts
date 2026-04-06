@@ -37,17 +37,17 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 6",
       "location": "Yosemite",
       "high": 71,
-      "low": 45,
+      "low": 44,
       "condition": "sunny",
-      "shortForecast": "Mostly Sunny",
+      "shortForecast": "Sunny",
       "source": "forecast"
     },
     {
       "date": "2026-04-07",
       "displayDate": "Apr 7",
       "location": "Yosemite",
-      "high": 70,
-      "low": 45,
+      "high": 71,
+      "low": 44,
       "condition": "sunny",
       "shortForecast": "Sunny",
       "source": "forecast"
@@ -66,20 +66,20 @@ export const weatherData: WeatherData = {
       "date": "2026-04-09",
       "displayDate": "Apr 9",
       "location": "Carmel",
-      "high": 70,
-      "low": 53,
-      "condition": "thunderstorm",
-      "shortForecast": "Chance Light Rain then Slight Chance Showers And Thunderstorms",
+      "high": 71,
+      "low": 52,
+      "condition": "light-rain",
+      "shortForecast": "Chance Light Rain",
       "source": "forecast"
     },
     {
       "date": "2026-04-10",
       "displayDate": "Apr 10",
       "location": "Carmel",
-      "high": 69,
-      "low": 50,
-      "condition": "thunderstorm",
-      "shortForecast": "Showers And Thunderstorms Likely",
+      "high": 70,
+      "low": 51,
+      "condition": "light-rain",
+      "shortForecast": "Light Rain Likely",
       "source": "forecast"
     },
     {
@@ -87,11 +87,11 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 11",
       "location": "SF",
       "high": 65,
-      "low": 51,
+      "low": 50,
       "condition": "light-rain",
-      "shortForecast": "Slight Chance Light Rain",
+      "shortForecast": "Chance Light Rain",
       "source": "forecast"
     }
   ],
-  "fetchedAt": "2026-04-06T07:54:47.585Z"
+  "fetchedAt": "2026-04-06T19:11:37.861Z"
 };
