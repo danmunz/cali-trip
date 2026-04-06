@@ -1,0 +1,292 @@
+[
+  {
+    "id": "coulter-cafe-coulterville",
+    "name": "Coulter Cafe & General Store",
+    "segment": "CA-120 W → CA-49 S · Coulterville · ~30 min from Rush Creek",
+    "address": "5015 Main St, Coulterville, CA 95311",
+    "geo": {
+      "lat": 37.7117,
+      "lng": -120.1965
+    },
+    "types": ["Food", "Coffee", "Quick bites"],
+    "notes": "The essential first stop of the day, right on Coulterville's Gold Rush Main Street. Organic, locally sourced menu — grass-fed burgers, fresh salads, Beyond burgers, draft beer, local wines, vegan and gluten-free options. Also doubles as the Northern Mariposa County Visitor Center with maps and local knowledge. The general store half stocks road-trip snacks. Open daily 9am–6pm (cafe until 3pm); Fri–Sat until 7pm with pizza and salads added to the menu. This is the one non-negotiable stop before the long flat stretch through the Central Valley.",
+    "official_url": [
+      "https://coultercafe.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.7117,-120.1965"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/the-coulter-cafe-and-general-store-coulterville",
+      "https://www.tripadvisor.com/Restaurant_Review-g32257-d1587524-Reviews-Coulter_Cafe-Coulterville_California.html"
+    ]
+  },
+  {
+    "id": "coulterville-historic-main-street",
+    "name": "Coulterville Historic Main Street District",
+    "segment": "CA-120 W → CA-49 S · Coulterville · ~30 min from Rush Creek",
+    "address": "Main St (Hwy 49 & Hwy 132), Coulterville, CA 95311",
+    "geo": {
+      "lat": 37.7119,
+      "lng": -120.1961
+    },
+    "types": ["History", "Scenic"],
+    "notes": "California Historical Landmark #332 and National Register Historic District. A single walkable block contains: Hotel Jeffery (1854, visited by John Muir and Teddy Roosevelt); the Magnolia Saloon (one of California's oldest watering holes); Sun Sun Wo Co. general store (1851 Chinese-owned adobe, original shelves intact); and the Northern Mariposa County History Center in the old Wells Fargo building (1856), open Wed–Sun 10am–4pm, free admission. Outside the museum stands 'Whistling Billy' — an 8-ton 1897 narrow-gauge Porter locomotive that once hauled gold ore. Population ~60. Zero tourist trap energy. A 20-minute walk covers everything.",
+    "official_url": [
+      "https://coultervillehistorycenter.org",
+      "https://www.northernmariposacohistory.org"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.7119,-120.1961"
+    ],
+    "review_url": [
+      "https://www.tripadvisor.com/Attraction_Review-g32257-d1127703-Reviews-Northern_Mariposa_County_History_Center-Coulterville_California.html"
+    ]
+  },
+  {
+    "id": "coulterville-gas-stop",
+    "name": "Coulterville gas station",
+    "segment": "CA-120 W → CA-49 S · Coulterville · ~30 min from Rush Creek",
+    "address": "Coulterville, CA 95311",
+    "geo": {
+      "lat": 37.7115,
+      "lng": -120.1975
+    },
+    "types": ["Gas-Restrooms"],
+    "notes": "Fill up here without exception. Services on the CA-132 west corridor are very sparse once you leave Coulterville. Next reliable gas is closer to Merced, approximately 50 miles away through mostly two-lane foothill highway. Do not leave Coulterville on empty.",
+    "official_url": [],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.7115,-120.1975"
+    ],
+    "review_url": []
+  },
+  {
+    "id": "pacheco-pass-summit-viewpoint",
+    "name": "Pacheco Pass summit viewpoint",
+    "segment": "CA-132 W → CA-152 W · Central Valley crossing · ~1 hr 20 min",
+    "address": "CA-152, Pacheco Pass, CA 95383",
+    "geo": {
+      "lat": 37.0856,
+      "lng": -121.2352
+    },
+    "types": ["Scenic"],
+    "notes": "The transition from the flat Central Valley to the rolling Diablo Range happens abruptly on CA-152. At the summit of Pacheco Pass you get sweeping views east back over the San Joaquin Valley and west toward the coast range. The drive itself — winding through golden oak-studded hills above San Luis Reservoir — is one of the more surprising scenic segments on any Central California route. In April this stretch is at peak green and often bright with wildflowers. Multiple informal pullouts near the summit. No facilities.",
+    "official_url": [],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.0856,-121.2352"
+    ],
+    "review_url": []
+  },
+  {
+    "id": "casa-de-fruta-hollister",
+    "name": "Casa de Fruta",
+    "segment": "CA-132 W → CA-152 W · Central Valley crossing · ~1 hr 20 min",
+    "address": "10021 Pacheco Pass Hwy, Hollister, CA 95023",
+    "geo": {
+      "lat": 36.9996,
+      "lng": -121.3878
+    },
+    "types": ["Food", "Quick bites", "Shopping", "Kids", "Gas-Restrooms"],
+    "notes": "An 80-acre roadside landmark on CA-152 that's been here since 1908 — started as a cherry stand, grew into a full complex. The grounds include a fruit market with gourmet dried fruits, nuts, and California-grown produce; wine shop (Zanger Vineyards estate Cabernet and fruit wines — pomegranate, blackberry); candy and bakery store (Casa de Sweets); a full-service cafe and restaurant open daily 6am–9pm; Chevron station with Tesla superchargers; and for kids: a vintage double-decker Venetian carousel and a miniature creekside train (Casa de Choo-Choo). Also has RV resort, hotel, and cabins. The California dates stuffed with walnuts and garlic-coated pistachios make excellent road-trip provisions. 2 miles east of the CA-152/CA-156 junction — easy exit and re-entry.",
+    "official_url": [
+      "https://www.casadefruta.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=36.9996,-121.3878"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/casa-de-fruta-hollister-4",
+      "https://www.tripadvisor.com/Attraction_Review-g32498-d9581524-Reviews-Casa_de_Fruta-Hollister_California.html"
+    ]
+  },
+  {
+    "id": "garlic-world-gilroy",
+    "name": "Garlic World",
+    "segment": "Gilroy · US-101 · ~20 min detour worth it",
+    "address": "4800 Monterey Hwy, Gilroy, CA 95020",
+    "geo": {
+      "lat": 36.9714,
+      "lng": -121.5537
+    },
+    "types": ["Shopping", "Quick bites"],
+    "notes": "You're driving through the Garlic Capital of the World — the moral obligation stop. Garlic World stocks garlic braids, garlic-stuffed olives, garlic pistachios, garlic chocolate chip cookies, garlic seasonings, and the famous garlic ice cream (vanilla with slow-roasted garlic — surprisingly mild, worth trying once). Home of the world's largest garlic braid. Right off US-101, easy in-and-out, large parking lot. Open daily 9am–7pm. An 11-year-old will tell this story forever.",
+    "official_url": [
+      "https://garlicworld.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=36.9714,-121.5537"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/garlic-world-gilroy",
+      "https://www.tripadvisor.com/Attraction_Review-g32428-d4176817-Reviews-Garlic_World-Gilroy_California.html"
+    ]
+  },
+  {
+    "id": "fifth-street-roasting-gilroy",
+    "name": "Fifth Street Roasting Co.",
+    "segment": "Gilroy · US-101 · ~20 min detour worth it",
+    "address": "7365 Monterey St, Gilroy, CA 95020",
+    "geo": {
+      "lat": 37.0059,
+      "lng": -121.5685
+    },
+    "types": ["Coffee", "Quick bites"],
+    "notes": "The local favorite for coffee in downtown Gilroy, known also as the spot that serves garlic ice cream alongside specialty coffee. Lavender latte and Mexican mocha are signature drinks. Downtown location in the historic district. Pairs well with a short walk through downtown Gilroy's Main Street if you want to stretch your legs beyond the Garlic World parking lot.",
+    "official_url": [],
+    "google_maps_url": [
+      "https://maps.google.com/?q=37.0059,-121.5685"
+    ],
+    "review_url": [
+      "https://www.yelp.com/search?find_desc=Fifth+Street+Roasting&find_loc=Gilroy%2C+CA"
+    ]
+  },
+  {
+    "id": "captain-stoker-monterey",
+    "name": "Captain + Stoker",
+    "segment": "CA-1 south · Monterey Peninsula · arriving from north",
+    "address": "398 E Franklin St, Monterey, CA 93940",
+    "geo": {
+      "lat": 36.6029,
+      "lng": -121.8891
+    },
+    "types": ["Coffee", "Quick bites"],
+    "notes": "The Monterey Peninsula's top-rated local coffee roaster, rated 4.7 stars across 900+ reviews. Roasts on-site every Tuesday, sources direct-trade worldwide. Located a few blocks from downtown Alvarado St. in a former auto paint shop with a cycling theme — look for the tandem bike mounted on the wall. Espresso drinks, pour-overs, local pastries, and vegan options. Kids' play area on-site. Open Mon–Fri 6:30am–4pm, Sat–Sun 7:30am–4pm. Skip Cannery Row tourist-trap coffee and find this instead.",
+    "official_url": [
+      "https://captainandstoker.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=36.6029,-121.8891"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/captain-stoker-monterey"
+    ]
+  },
+  {
+    "id": "cannery-row-monterey",
+    "name": "Cannery Row",
+    "segment": "CA-1 south · Monterey Peninsula · arriving from north",
+    "address": "Cannery Row, Monterey, CA 93940",
+    "geo": {
+      "lat": 36.6178,
+      "lng": -121.9018
+    },
+    "types": ["Food", "Quick bites", "Scenic"],
+    "notes": "Monterey's iconic waterfront immortalized in Steinbeck's 1945 novel. For lunch: Old Fisherman's Grotto (Monterey-style clam chowder in sourdough bowls, harbor views); Tidal Coffee (waterfront espresso and pastries from Monterey Plaza Hotel deck, direct bay views). The waterfront Coastal Recreation Trail is excellent for a 20-minute walk. The Cannery Row Antique Mall inside the former Carmel Canning Company building is worth browsing. Ed Ricketts' Pacific Biological Laboratories (800 Cannery Row) — the real-life 'Doc' from Steinbeck's novel — can be viewed from outside. Parking on Foam Street or the Wave Street garage.",
+    "official_url": [
+      "https://www.canneryrow.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=36.6178,-121.9018"
+    ],
+    "review_url": [
+      "https://www.tripadvisor.com/Attraction_Review-g32737-d108607-Reviews-Cannery_Row-Monterey_Monterey_County_California.html"
+    ]
+  },
+  {
+    "id": "dennis-the-menace-playground-monterey",
+    "name": "Dennis the Menace Playground",
+    "segment": "CA-1 south · Monterey Peninsula · arriving from north",
+    "address": "777 Pearl St, Monterey, CA 93940",
+    "geo": {
+      "lat": 36.5993,
+      "lng": -121.8799
+    },
+    "types": ["Kids", "Scenic"],
+    "notes": "One of the most beloved playgrounds in California, designed with input from Hank Ketcham — creator of the Dennis the Menace comic strip, who lived in nearby Carmel. Opened 1956, renovated multiple times. Features: epic roller slide, suspension bridge, rock climbing wall, zip line, hedge maze with play structure at center, and a 1924 Southern Pacific steam engine (now fenced but still impressive). Set within the 45-acre El Estero Park complex next to a lake with paddle boats. A snack bar with burgers, hot dogs, and snow cones is on-site. Monterey Skate Park is adjacent. Free entry. Open 10am–dusk daily; closed non-holiday Tuesdays from Labor Day through Memorial Day. Free parking on-site. Dogs not allowed in the playground area.",
+    "official_url": [
+      "https://monterey.gov/business_detail_T18_R187.php"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=36.5993,-121.8799"
+    ],
+    "review_url": [
+      "https://www.tripadvisor.com/Attraction_Review-g32737-d144842-Reviews-Dennis_the_Menace_Park-Monterey_Monterey_County_California.html"
+    ]
+  },
+  {
+    "id": "lovers-point-park-pacific-grove",
+    "name": "Lover's Point Park & Beach",
+    "segment": "CA-1 south · Monterey Peninsula · arriving from north",
+    "address": "Ocean View Blvd at 17th St, Pacific Grove, CA 93950",
+    "geo": {
+      "lat": 36.6276,
+      "lng": -121.9149
+    },
+    "types": ["Scenic", "Kids"],
+    "notes": "4.4-acre park and one of the few genuinely safe swimming beaches on the Monterey Peninsula — a protected cove with calm water. Amenities include a large grassy picnic lawn, beach volleyball court, children's swimming pool (summer only), kayak rentals, rocks for scrambling, and a small beach. Sea otters are frequently spotted floating in the kelp just offshore. Free parking in two small lots and on-street along Ocean View Blvd. The Beach House Restaurant is adjacent for a late lunch or dinner. One of the few West Coast spots where you can watch the sunrise over the water due to its east-facing orientation.",
+    "official_url": [
+      "https://www.cityofpacificgrove.gov/our_city/departments/recreation/parks_directory/lovers_point_park.php"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=36.6276,-121.9149"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/lovers-point-park-pacific-grove",
+      "https://www.tripadvisor.com/Attraction_Review-g32840-d103749-Reviews-Lovers_Point-Pacific_Grove_Monterey_County_California.html"
+    ]
+  },
+  {
+    "id": "point-lobos-state-reserve",
+    "name": "Point Lobos State Natural Reserve",
+    "segment": "CA-1 south · arriving at Carmel",
+    "address": "62 CA-1, Carmel, CA 93923",
+    "geo": {
+      "lat": 36.5151,
+      "lng": -121.9404
+    },
+    "types": ["Scenic", "History"],
+    "notes": "Widely called 'the crown jewel of the California State Park system' — Ansel Adams and Edward Weston both spent years photographing here. 3 miles south of Carmel on CA-1. One of only two remaining native Monterey Cypress groves in the world. Hiking trails range from 15-minute viewpoint walks to full 6.3-mile coastal loops. Wildlife: harbor seals, sea lions, sea otters in kelp beds, gray whale migration through May, humpback whales March–December. The Cypress Grove Trail (0.8 mi loop) is the essential short option. Whalers Cabin Museum (1850s Chinese fishing and Portuguese whaling history) is worth a visit. $10/vehicle entry. Open 8am–7pm (last entry 6:30pm). Parking fills by mid-morning on weekends — arrive before 9:30am or after 3pm for best odds. No dogs allowed (even in vehicles). You are essentially at the hotel from here.",
+    "official_url": [
+      "https://www.parks.ca.gov/pointlobos",
+      "https://www.pointlobos.org"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=36.5151,-121.9404"
+    ],
+    "review_url": [
+      "https://www.tripadvisor.com/Attraction_Review-g32172-d102545-Reviews-Point_Lobos-Carmel_Monterey_County_California.html"
+    ]
+  },
+  {
+    "id": "carmel-coffee-house-roasting",
+    "name": "The Carmel Coffee House & Roasting Company",
+    "segment": "CA-1 south · arriving at Carmel",
+    "address": "Ocean Ave (between San Carlos & Dolores), Carmel-by-the-Sea, CA 93923",
+    "geo": {
+      "lat": 36.5553,
+      "lng": -121.9234
+    },
+    "types": ["Coffee", "Food"],
+    "notes": "On Ocean Avenue through a white archway off the Las Tiendas building — hidden garden courtyard behind the street. Roasts small-batch organic beans on-premise since 1994. Pet-friendly courtyard patio. Counter service for espresso drinks, breakfast sandwiches, and pastries. Open daily 7am–5pm. Alternative: Carmel Valley Coffee Roasting Co. (also on Ocean Ave) roasts on a vintage 1940s Farina Italian roaster nicknamed 'Big Vinney' — upstairs loft with nautical décor and equally beloved by locals. Mad Dogs & Englishmen (Ocean Ave & Mission) is a bike shop with a premium coffee bar named Carmel's 2025 Business of the Year and ranked #45 on Yelp's Top 100 Coffee Shops in America.",
+    "official_url": [
+      "https://www.carmelcoffeehouse.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=36.5553,-121.9234"
+    ],
+    "review_url": [
+      "https://www.yelp.com/biz/the-carmel-coffee-house-and-roasting-company-carmel-by-the-sea-2"
+    ]
+  },
+  {
+    "id": "carmel-beach-ocean-avenue",
+    "name": "Carmel Beach & Ocean Avenue",
+    "segment": "CA-1 south · arriving at Carmel",
+    "address": "Ocean Ave, Carmel-by-the-Sea, CA 93921",
+    "geo": {
+      "lat": 36.5536,
+      "lng": -121.9261
+    },
+    "types": ["Scenic", "Shopping", "Kids"],
+    "notes": "One of the most beautiful white-sand beaches in California — a mile-long stretch at the foot of Ocean Avenue. Carmel has no street addresses (houses are named, not numbered), cottage-style architecture, art galleries, and boutique shops lining the pedestrian-friendly walk from town to beach. Dogs are welcome on the beach. The Scenic Road walkway hugs the bluff above the shoreline for about a mile with views north toward Pebble Beach. From Scratch Restaurant (From Scratch, on Dolores between 5th and 6th) is a highly recommended all-day breakfast spot if arriving hungry. You're essentially at the hotel at this point — this is arrival territory.",
+    "official_url": [
+      "https://www.carmelcalifornia.com"
+    ],
+    "google_maps_url": [
+      "https://maps.google.com/?q=36.5536,-121.9261"
+    ],
+    "review_url": [
+      "https://www.tripadvisor.com/Attraction_Review-g32172-d260793-Reviews-Carmel_Beach-Carmel_Monterey_County_California.html"
+    ]
+  }
+]

@@ -5,6 +5,7 @@ import LodgingPage from "./pages/LodgingPage";
 import ItineraryPage from "./pages/ItineraryPage";
 import FullItineraryPage from "./pages/FullItineraryPage";
 import NowPage from "./pages/NowPage";
+import DriveStopsPage from "./pages/DriveStopsPage";
 
 export const router = createBrowserRouter(
   [
@@ -17,6 +18,7 @@ export const router = createBrowserRouter(
         { path: "itinerary", Component: ItineraryPage },
         { path: "full-itinerary", Component: FullItineraryPage },
         { path: "now", Component: NowPage },
+        { path: "drives/:driveId", Component: DriveStopsPage },
       ],
     },
   ],
