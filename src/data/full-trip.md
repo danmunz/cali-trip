@@ -10,17 +10,17 @@ To celebrate Susan’s 70th, this nine-day California journey blends iconic land
 
 Dates: April 3-11, 2026 (9 days / 8 nights)
 
-| Date       | Base              | Logistics                                                       |
-| :--------- | :---------------- | :-------------------------------------------------------------- |
-| Fri Apr 3  | SFO + Muir Woods  | Fly DCA → SFO → Drive SFO → Muir Woods → Napa/Sonoma            |
-| Sat Apr 4  | Napa / Sonoma     | Stay Napa/Sonoma                                                |
-| Sun Apr 5  | Napa / Sonoma     | Stay Napa/Sonoma                                                |
-| Mon Apr 6  | Yosemite          | Checkout Napa → Drive Napa → Yosemite → Check-in Yosemite       |
-| Tue Apr 7  | Yosemite          | Yosemite full day                                               |
-| Wed Apr 8  | Carmel / Big Sur  | Checkout Yosemite → Drive Yosemite → Monterey/Carmel → Check-in |
-| Thu Apr 9  | Carmel / Big Sur  | Stay Carmel / Big Sur                                            |
-| Fri Apr 10 | Carmel / Big Sur  | Stay Carmel / Big Sur                                           |
-| Sat Apr 11 | Carmel / Big Sur  | Checkout Carmel / Big Sur → Drive to SFO → Fly home              |
+| Date       | Base             | Logistics                                                       |
+| :--------- | :--------------- | :-------------------------------------------------------------- |
+| Fri Apr 3  | SFO + Muir Woods | Fly DCA → SFO → Drive SFO → Muir Woods → Napa/Sonoma            |
+| Sat Apr 4  | Napa / Sonoma    | Stay Napa/Sonoma                                                |
+| Sun Apr 5  | Napa / Sonoma    | Stay Napa/Sonoma                                                |
+| Mon Apr 6  | Yosemite         | Checkout Napa → Drive Napa → Yosemite → Check-in Yosemite       |
+| Tue Apr 7  | Yosemite         | Yosemite full day                                               |
+| Wed Apr 8  | Carmel / Big Sur | Checkout Yosemite → Drive Yosemite → Monterey/Carmel → Check-in |
+| Thu Apr 9  | Carmel / Big Sur | Stay Carmel / Big Sur                                           |
+| Fri Apr 10 | Carmel / Big Sur | Stay Carmel / Big Sur                                           |
+| Sat Apr 11 | Carmel / Big Sur | Checkout Carmel / Big Sur → Drive to SFO → Fly home             |
 
 ## **Flights**
 
@@ -78,9 +78,9 @@ Walk the mostly flat, shaded [Main Trail](https://www.nps.gov/goga/planyourvisit
 
 Settle into Yountville for your first taste of Napa's culinary heart—a relaxed evening to recharge after the travel day.
 
-**4:00pm — Arrive + check-in at The Estate Yountville**  
+**4:00pm — Arrive + check-in at The Estate Yountville**
 
-Arrive at **The Estate Yountville** and settle into your King Guestroom on the Vintage Estate, with easy access to the property's gardens, spa/pool, and Yountville's walkable main strip. The Vintage Estate buildings and grounds have that classic Napa feel, and the room's balcony makes a great place to decompress after the travel day. Yountville is Napa's small-town culinary hub, known for its concentration of standout restaurants.  
+Arrive at **The Estate Yountville** and settle into your King Guestroom on the Vintage Estate, with easy access to the property's gardens, spa/pool, and Yountville's walkable main strip. The Vintage Estate buildings and grounds have that classic Napa feel, and the room's balcony makes a great place to decompress after the travel day. Yountville is Napa's small-town culinary hub, known for its concentration of standout restaurants.
 
 **6:00pm — Dinner at Bottega Napa Valley**
 
@@ -132,35 +132,29 @@ Lean into Napa's wine culture with the Oxbow market, the historic Schramsberg ca
 
 <!-- attire: Casual layers for wine tastings; pack a sweater for the Schramsberg caves; smart casual for dinner at Ad Hoc. -->
 
-**9:00am–10:15am — Oxbow Public Market**  
+**9:00am–10:15am — Oxbow Public Market**
 
 Make a casual stop at Oxbow for coffee and pastries, plus a few easy tastings. Opened in 2007 as a 40,000-square-foot food hall along the Napa River, it's credited with helping kick-start the revival of downtown Napa as a destination; anchor tenants include Hog Island Oyster Co. (the only Napa outpost of the famous Tomales Bay operation) and a good cheese-and-wine counter. Mostly indoors, easy to navigate, and good for a quick graze or a slower sit by the river.
 
 *Travel (drive): ~35 min — Oxbow Public Market (Napa) → Schramsberg (Calistoga)*
 
-**11:00am–12:30pm — Schramsberg Vineyards Cave Tour (Susan + Ted)**  
+**11:00am–12:30pm — Schramsberg Vineyards Cave Tour (Susan + Ted)**
 
 Take the classic Schramsberg cave tour—a guided walk through cool underground cellars built by Chinese laborers in the 1860s, with a structured tasting of Schramsberg sparkling and Davies wines plus a cheese and charcuterie accompaniment. Schramsberg was founded in 1862, making it one of Napa's oldest wineries; it earned lasting fame in 1972 when Nixon served its Blanc de Blancs at the historic "Toast to Peace" dinner in China. The caves run genuinely chilly year-round, so pack a sweater—and plan for Dan, Jen, and Ava to stay flexible in Yountville while you're on the tour.
 
 *Travel (drive): ~35 min — Schramsberg (Calistoga) → The Estate Yountville*
 
-**1:00pm–3:30pm — Couples massage / pool time / relaxed hotel wandering (Susan + Ted)**  
+**1:00pm–5:30pm — Downtime / pool time**
 
 Return to The Estate for a true downtime block—massage (if scheduled), pool time, a quiet walk around the property, or simply resting in your room. This is intentionally open so you can adjust based on how you're feeling.
 
-*Travel (drive): ~15 min — The Estate Yountville → V. Sattui (St. Helena)*
+*Travel (drive): ~5 min — The Estate Yountville → Ad Hoc*
 
-**4:00pm–5:00pm — V. Sattui tasting + lawn time**  
-
-Head to V. Sattui for a seated tasting for you and Ted—five Premier and Estate wines, with an option to add the single-vineyard Cabernet flight—while Dan, Jen, and Ava spread out on the open lawns. The winery sells exclusively through its own tasting room (no retail distribution), and is known for a deli and cheese counter that's made picnicking on the property something of an institution here.
-
-*Travel (drive): ~25 min — V. Sattui (St. Helena) → Ad Hoc*
-
-**5:45pm — Dinner at Ad Hoc**  
+**5:45pm — Dinner at Ad Hoc**
 
 Dinner at **Ad Hoc**, Thomas Keller's family-style restaurant on Washington Street in Yountville—a deliberately casual counterpart to The French Laundry, serving a single four-course prix fixe menu that changes nightly. The format is communal and generous: big platters of seasonal, comfort-driven cooking served family-style to the table. It's a quintessential Yountville experience and a great celebratory dinner for the whole group before packing up for Yosemite.
 
-**After dinner — Return to the hotel + pack for Yosemite**  
+**After dinner — Return to the hotel + pack for Yosemite**
 
 Return to The Estate and pack for an early start and a longer drive day, keeping the morning setup easy (layers, comfortable shoes, and snacks/water for the car).
 
@@ -178,15 +172,7 @@ Expect about a 4.5-hour drive that gradually trades vineyard rows for rolling fo
 
 **1:00pm — Arrive at Rush Creek Lodge + lunch**  
 
-Arrive at Rush Creek Lodge, check in, and enjoy lunch on-site. Think “mountain camp, upgraded”: a warm lodge atmosphere, outdoor gathering spots, and just enough nature right on the property to start feeling like you’ve arrived in Yosemite country.
-
-**2:30pm–4:00pm — Unpack + lodge decompression**  
-
-Settle in with a low-key block to unpack, rest, and reset after the drive. Use it for a short property walk, the pool/hot tub, or simply downtime in the room.
-
-**4:30pm–5:30pm — Easy nature walk (Nature Trail or Vista Trail)**  
-
-Take an easy on-property walk—either the [Nature Trail (0.5 mi) or the Vista Trail (1.6 mi)](https://www.rushcreeklodge.com/explore/activities/nature-trails/). Both are low-commitment, high-reward: classic Sierra forest, gentle grades, and enough quiet to shake off the travel day.
+Arrive at Rush Creek Lodge and check in. Think “mountain camp, upgraded”: a warm lodge atmosphere, outdoor gathering spots, and just enough nature right on the property to start feeling like you’ve arrived in Yosemite country.
 
 **5:30pm — Dinner at The Restaurant at Rush Creek**  
 
@@ -230,43 +216,11 @@ Take a midday reset with a simple picnic lunch and a wander through Yosemite Vil
 
 Walk from the Village to Sentinel Bridge — about 5 minutes on foot — for the classic Half Dome viewpoint with the Merced River often adding reflections. It's a longtime photographer favorite, and one of the best spots in the Valley to feel the scale of what's around you without any effort.
 
-**2:30pm–3:30pm — Cook's Meadow Loop (1mi)**
-
-Take a flat, easy loop through Cook's Meadow for wide-open Valley views — meadow, river, and granite walls all in one frame. Sentinel Bridge and Cook's Meadow are immediately adjacent, so this is one continuous walkable block from the Village parking area with no car needed. One of the best low-effort places to feel the full scale of the Valley, and a natural endpoint for the day's walking.
-
----
-
-### **Choose Your Evening**
-
-At the end of Cook's Meadow, you have a clean decision point. Both options work — it's a question of what the group has energy for and what kind of ending feels right.
-
----
-
-**Option A — Dinner at The Mountain Room, then back to Rush Creek**
-
-Stay in the Valley for dinner at The Mountain Room at Yosemite Valley Lodge. From Cook's Meadow, drive west on Northside Drive — the natural return leg — and the lodge is on the way out, roughly 15 minutes from the Village. The dining room's floor-to-ceiling windows face Yosemite Falls directly, and the walls display photographs curated in partnership with the Ansel Adams Gallery. The menu is American classics — steaks, sustainably sourced seafood, vegetarian options — which is exactly right after a full day in the Valley. Reserve ahead. You'll be back at Rush Creek by 8:00pm with time to pack before tomorrow's drive.
-
-*Travel (drive): ~15 min — Cook's Meadow → The Mountain Room*
-
-**5:30pm — Dinner at The Mountain Room**
-
-*Travel (drive): ~45 min — Yosemite Valley Lodge → Rush Creek Lodge*
-
-**7:30pm — Return to Rush Creek Lodge**
-
----
-
-**Option B — Back to Rush Creek for pool time, dinner, and the fire pits**
-
-Get in the car at 3:45pm and head back to Rush Creek with the full evening free. Leaving the Valley now puts you ahead of any late-afternoon traffic and back at the lodge by 4:30 — enough time for a real hour at the pool or hot tubs before dinner. This is the last night in the Sierra before Carmel, and Rush Creek's fire pits, s'mores, and open sky at elevation are worth experiencing as more than a late-night return. It's also the more rested start to a six-hour drive day tomorrow.
-
 *Travel (drive): ~45 min — Yosemite Village → Rush Creek Lodge*
 
 **4:30pm — Arrive at Rush Creek Lodge: pool / hot tubs / deck time**
 
 **6:00pm — Dinner at The Restaurant at Rush Creek**
-
-**Evening — S'mores + fire pits + stargazing**
 
 ## **Wed Apr 8 — To Carmel + Ocean Reset**
 
@@ -274,13 +228,13 @@ A scenery shift day—from granite and pines to ocean cliffs and Pacific air. Ar
 
 <!-- attire: Comfortable clothes for the drive; casual for dinner in Carmel. -->
 
-**8:00am — Drive from Rush Creek Lodge to Carmel (route-flex with stops)**  
+**8:00am — Drive from Rush Creek Lodge to Carmel (route-flex with stops)**
 
 Check out and head for the coast, with a handful of optional stops on the way: a quick pause by the Merced River, lunch in Mariposa (a well-preserved Gold Rush–era town), or a walk through Mariposa Grove's giant sequoias. The drive itself gradually trades granite peaks for rolling oak savanna and then the coastal hills—worth treating as a journey, not just transit.
 
 *Travel (drive): ~6 hr — Rush Creek Lodge → Hyatt Carmel Highlands (with stops)*
 
-**2:00pm–4:00pm — Arrive + check-in at Hyatt Carmel Highlands**  
+**2:00pm — Arrive + check-in at Hyatt Carmel Highlands**
 
 Arrive at Hyatt Carmel Highlands—a clifftop retreat operating in this spot since 1917—and settle into the view: Pacific horizon, rocky coastline, and the kind of "sit and stare" atmosphere that makes the coast feel immediately restorative after Yosemite.
 
@@ -288,7 +242,7 @@ Arrive at Hyatt Carmel Highlands—a clifftop retreat operating in this spot sin
 
 Drive into Carmel for dinner at Il Tegamino, a small Southern Italian trattoria tucked into the historic Court of the Golden Bough—a courtyard accessible via a passageway off Ocean Avenue—run by Neapolitan chef Giuseppe Panzuto. The menu is comfort-forward: slow-cooked ragus, house-made pastas, and a polpette (meatball) bar that includes a crab version. Cozy and family-run, with courtyard seating among lemon trees—a good, relaxed way to arrive on the coast.
 
-**Evening — Waves + sunset from the balcony**  
+**Evening — Waves + sunset from the balcony**
 
 Keep the evening simple—balcony time, sunset, and an early night after a long drive.
 
@@ -338,7 +292,7 @@ A coastal favorites day with Point Lobos, Carmel-by-the-Sea, and the 17-Mile Dri
 
 <!-- attire: Layers for Point Lobos and the food tour; smart casual for farewell dinner at Mission Ranch. -->
 
-**8:00am — Point Lobos State Reserve (South Shore Trail route)**  
+**8:00am — Point Lobos State Reserve (South Shore Trail route)**
 
 Visit Point Lobos—often called the crown jewel of California’s state parks—for a morning of coves, headlands, and constant ocean views. A great route is to park at Piney Woods and connect South Shore Trail → Sand Hill Trail → Sea Lion Point (with the option to add Cypress Grove). Plan on roughly 2–3 miles of easy-to-moderate walking with time built in for wildlife watching (sea lions, seabirds, and often sea otters offshore).
 
@@ -356,21 +310,21 @@ Go back to the hotel for a real rest block and light packing. It's also a perfec
 
 *Travel (drive): ~25 min — Carmel Highlands → Pebble Beach gate*
 
-**3:30pm — Pebble Beach 17-Mile Drive (golden light loop)**  
+**3:30pm — Pebble Beach 17-Mile Drive (golden light loop)**
 
 Drive the 17-Mile Drive loop in late-day light—a privately maintained road with a modest entry fee (usually waived with any restaurant stop)—pausing for pull-offs like Lone Cypress (one of the most photographed trees in North America) and the surf break at Spanish Bay. It's a curated coastline loop through forest, rocky shore, and famous golf links, and the late-afternoon light makes it considerably better than a midday drive.
 
 *Travel (drive): ~15 min — Pebble Beach → Mission Ranch (Carmel)*
 
-**5:30pm — Mission Ranch: join the text waitlist + wander**  
+**5:30pm — Mission Ranch: join the text waitlist + wander**
 
 Arrive at **Mission Ranch**, a 22-acre ranch and restaurant dating to the 1850s—Clint Eastwood bought it in 1986 specifically to prevent it from being converted into condominiums, and undertook a careful restoration while filming *Unforgiven*. Get on the dinner waitlist, then wander the property: sheep in the pasture, a lagoon walk, and live piano in the lounge.
 
-**6:00pm — Dinner at Mission Ranch**  
+**6:00pm — Dinner at Mission Ranch**
 
 The menu leans classic American—grilled meats, fresh seafood, comfort-style sides—served in a dining room that looks out over the sheep meadow toward the Pacific sand dunes and, on a clear evening, Point Lobos. As the celebratory dinner for the trip, the setting carries real weight.
 
-**7:00pm — Return to the hotel for a quiet night + packing**  
+**7:00pm — Return to the hotel for a quiet night + packing**
 
 Return to the hotel for a quiet evening and packing.
 
