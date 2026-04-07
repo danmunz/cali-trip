@@ -194,29 +194,14 @@ export const itinerary: TripDay[] = [
         }
       },
       {
-        "time": "1:00pm–3:30pm",
-        "name": "Couples massage / pool time / relaxed hotel wandering",
+        "time": "1:00pm–5:30pm",
+        "name": "Downtime / pool time",
         "description": "Return to The Estate for a true downtime block—massage (if scheduled), pool time, a quiet walk around the property, or simply resting in your room. This is intentionally open so you can adjust based on how you're feeling.",
         "locationIds": [],
-        "subgroup": "Susan + Ted",
         "travelAfter": {
           "mode": "drive",
-          "duration": "~15 min",
+          "duration": "~5 min",
           "from": "The Estate Yountville",
-          "to": "V. Sattui (St. Helena)"
-        }
-      },
-      {
-        "time": "4:00pm–5:00pm",
-        "name": "V. Sattui tasting + lawn time",
-        "description": "Head to V. Sattui for a seated tasting for you and Ted—five Premier and Estate wines, with an option to add the single-vineyard Cabernet flight—while Dan, Jen, and Ava spread out on the open lawns. The winery sells exclusively through its own tasting room (no retail distribution), and is known for a deli and cheese counter that's made picnicking on the property something of an institution here.",
-        "locationIds": [
-          "v-sattui-winery"
-        ],
-        "travelAfter": {
-          "mode": "drive",
-          "duration": "~25 min",
-          "from": "V. Sattui (St. Helena)",
           "to": "Ad Hoc"
         }
       },
@@ -263,25 +248,10 @@ export const itinerary: TripDay[] = [
       {
         "time": "1:00pm",
         "name": "Arrive at Rush Creek Lodge + lunch",
-        "description": "Arrive at Rush Creek Lodge, check in, and enjoy lunch on-site. Think “mountain camp, upgraded”: a warm lodge atmosphere, outdoor gathering spots, and just enough nature right on the property to start feeling like you’ve arrived in Yosemite country.",
+        "description": "Arrive at Rush Creek Lodge and check in. Think “mountain camp, upgraded”: a warm lodge atmosphere, outdoor gathering spots, and just enough nature right on the property to start feeling like you’ve arrived in Yosemite country.",
         "locationIds": [
           "the-restaurant-at-rush-creek",
           "rush-creek-lodge-and-spa-at-yosemite"
-        ]
-      },
-      {
-        "time": "2:30pm–4:00pm",
-        "name": "Unpack + lodge decompression",
-        "description": "Settle in with a low-key block to unpack, rest, and reset after the drive. Use it for a short property walk, the pool/hot tub, or simply downtime in the room.",
-        "locationIds": []
-      },
-      {
-        "time": "4:30pm–5:30pm",
-        "name": "Easy nature walk (Nature Trail or Vista Trail)",
-        "description": "Take an easy on-property walk—either the Nature Trail (0.5 mi) or the Vista Trail (1.6 mi). Both are low-commitment, high-reward: classic Sierra forest, gentle grades, and enough quiet to shake off the travel day.",
-        "locationIds": [
-          "rush-creek-nature-trail",
-          "rush-creek-vista-trail"
         ]
       },
       {
@@ -380,65 +350,6 @@ export const itinerary: TripDay[] = [
           "sentinel-bridge",
           "merced-river",
           "half-dome"
-        ]
-      },
-      {
-        "time": "2:30pm–3:30pm",
-        "name": "Cook's Meadow Loop (1mi)",
-        "description": "Take a flat, easy loop through Cook's Meadow for wide-open Valley views — meadow, river, and granite walls all in one frame. Sentinel Bridge and Cook's Meadow are immediately adjacent, so this is one continuous walkable block from the Village parking area with no car needed. One of the best low-effort places to feel the full scale of the Valley, and a natural endpoint for the day's walking.  Choose Your Evening At the end of Cook's Meadow, you have a clean decision point. Both options work — it's a question of what the group has energy for and what kind of ending feels right. ",
-        "locationIds": [
-          "cook-s-meadow-loop",
-          "sentinel-bridge"
-        ]
-      },
-      {
-        "time": "Option A",
-        "name": "Dinner at The Mountain Room, then back to Rush Creek",
-        "description": "Stay in the Valley for dinner at The Mountain Room at Yosemite Valley Lodge. From Cook's Meadow, drive west on Northside Drive — the natural return leg — and the lodge is on the way out, roughly 15 minutes from the Village. The dining room's floor-to-ceiling windows face Yosemite Falls directly, and the walls display photographs curated in partnership with the Ansel Adams Gallery. The menu is American classics — steaks, sustainably sourced seafood, vegetarian options — which is exactly right after a full day in the Valley. Reserve ahead. You'll be back at Rush Creek by 8:00pm with time to pack before tomorrow's drive.",
-        "locationIds": [
-          "the-mountain-room",
-          "yosemite-valley",
-          "the-restaurant-at-rush-creek",
-          "cook-s-meadow-loop",
-          "rush-creek-lodge-and-spa-at-yosemite"
-        ],
-        "travelAfter": {
-          "mode": "drive",
-          "duration": "~15 min",
-          "from": "Cook's Meadow",
-          "to": "The Mountain Room"
-        }
-      },
-      {
-        "time": "5:30pm",
-        "name": "Dinner at The Mountain Room",
-        "description": "",
-        "locationIds": [
-          "the-mountain-room"
-        ],
-        "travelAfter": {
-          "mode": "drive",
-          "duration": "~45 min",
-          "from": "Yosemite Valley Lodge",
-          "to": "Rush Creek Lodge"
-        }
-      },
-      {
-        "time": "7:30pm",
-        "name": "Return to Rush Creek Lodge",
-        "description": "",
-        "locationIds": [
-          "rush-creek-lodge-and-spa-at-yosemite",
-          "the-restaurant-at-rush-creek"
-        ]
-      },
-      {
-        "time": "Option B",
-        "name": "Back to Rush Creek for pool time, dinner, and the fire pits",
-        "description": "Get in the car at 3:45pm and head back to Rush Creek with the full evening free. Leaving the Valley now puts you ahead of any late-afternoon traffic and back at the lodge by 4:30 — enough time for a real hour at the pool or hot tubs before dinner. This is the last night in the Sierra before Carmel, and Rush Creek's fire pits, s'mores, and open sky at elevation are worth experiencing as more than a late-night return. It's also the more rested start to a six-hour drive day tomorrow.",
-        "locationIds": [
-          "rush-creek-lodge-and-spa-at-yosemite",
-          "the-restaurant-at-rush-creek"
         ],
         "travelAfter": {
           "mode": "drive",
@@ -464,12 +375,6 @@ export const itinerary: TripDay[] = [
           "the-restaurant-at-rush-creek",
           "rush-creek-lodge-and-spa-at-yosemite"
         ]
-      },
-      {
-        "time": "Evening",
-        "name": "S'mores + fire pits + stargazing",
-        "description": "",
-        "locationIds": []
       }
     ]
   },
@@ -499,7 +404,7 @@ export const itinerary: TripDay[] = [
         }
       },
       {
-        "time": "2:00pm–4:00pm",
+        "time": "2:00pm",
         "name": "Arrive + check-in at Hyatt Carmel Highlands",
         "description": "Arrive at Hyatt Carmel Highlands—a clifftop retreat operating in this spot since 1917—and settle into the view: Pacific horizon, rocky coastline, and the kind of \"sit and stare\" atmosphere that makes the coast feel immediately restorative after Yosemite.",
         "locationIds": [

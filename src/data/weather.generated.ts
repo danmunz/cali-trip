@@ -36,17 +36,16 @@ export const weatherData: WeatherData = {
       "date": "2026-04-06",
       "displayDate": "Apr 6",
       "location": "Yosemite",
-      "high": 71,
-      "low": 44,
-      "condition": "sunny",
-      "shortForecast": "Sunny",
-      "source": "forecast"
+      "high": 62,
+      "low": 38,
+      "condition": "partly-cloudy",
+      "source": "average"
     },
     {
       "date": "2026-04-07",
       "displayDate": "Apr 7",
       "location": "Yosemite",
-      "high": 70,
+      "high": 72,
       "low": 45,
       "condition": "sunny",
       "shortForecast": "Sunny",
@@ -57,9 +56,9 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 8",
       "location": "Carmel",
       "high": 71,
-      "low": 53,
+      "low": 52,
       "condition": "sunny",
-      "shortForecast": "Sunny",
+      "shortForecast": "Mostly Sunny",
       "source": "forecast"
     },
     {
@@ -68,16 +67,16 @@ export const weatherData: WeatherData = {
       "location": "Carmel",
       "high": 70,
       "low": 53,
-      "condition": "thunderstorm",
-      "shortForecast": "Chance Light Rain then Slight Chance Showers And Thunderstorms",
+      "condition": "sunny",
+      "shortForecast": "Partly Sunny",
       "source": "forecast"
     },
     {
       "date": "2026-04-10",
       "displayDate": "Apr 10",
       "location": "Carmel",
-      "high": 69,
-      "low": 50,
+      "high": 70,
+      "low": 51,
       "condition": "thunderstorm",
       "shortForecast": "Showers And Thunderstorms Likely",
       "source": "forecast"
@@ -86,12 +85,12 @@ export const weatherData: WeatherData = {
       "date": "2026-04-11",
       "displayDate": "Apr 11",
       "location": "SF",
-      "high": 65,
-      "low": 51,
+      "high": 64,
+      "low": 49,
       "condition": "light-rain",
-      "shortForecast": "Slight Chance Light Rain",
+      "shortForecast": "Chance Light Rain",
       "source": "forecast"
     }
   ],
-  "fetchedAt": "2026-04-06T15:30:20.292Z"
+  "fetchedAt": "2026-04-07T23:12:37.541Z"
 };
