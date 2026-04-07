@@ -241,6 +241,11 @@
           "segment_id": "yosemite"
         },
         {
+          "day": 5,
+          "date": "2026-04-07",
+          "segment_id": "yosemite"
+        },
+        {
           "day": 6,
           "date": "2026-04-08",
           "segment_id": "carmel"
@@ -863,13 +868,7 @@
       "review_url": [
         "https://www.tripadvisor.com/Attraction_Review-g61000-d2312295-Reviews-Yosemite_Valley_Floor_Tour-Yosemite_National_Park_California.html"
       ],
-      "trip_parts": [
-        {
-          "day": 5,
-          "date": "2026-04-07",
-          "segment_id": "yosemite"
-        }
-      ]
+      "trip_parts": []
     },
     {
       "id": "sentinel-bridge",
