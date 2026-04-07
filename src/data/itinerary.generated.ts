@@ -424,7 +424,7 @@ export const itinerary: TripDay[] = [
         }
       },
       {
-        "time": "~7:30pm",
+        "time": "7:30pm",
         "name": "Return to Rush Creek Lodge",
         "description": "",
         "locationIds": [
@@ -448,7 +448,7 @@ export const itinerary: TripDay[] = [
         }
       },
       {
-        "time": "~4:30pm",
+        "time": "4:30pm",
         "name": "Arrive at Rush Creek Lodge: pool / hot tubs / deck time",
         "description": "",
         "locationIds": [
@@ -457,7 +457,7 @@ export const itinerary: TripDay[] = [
         ]
       },
       {
-        "time": "5:30pm",
+        "time": "6:00pm",
         "name": "Dinner at The Restaurant at Rush Creek",
         "description": "",
         "locationIds": [

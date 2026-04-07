@@ -252,7 +252,7 @@ Stay in the Valley for dinner at The Mountain Room at Yosemite Valley Lodge. Fro
 
 *Travel (drive): ~45 min — Yosemite Valley Lodge → Rush Creek Lodge*
 
-**~7:30pm — Return to Rush Creek Lodge**
+**7:30pm — Return to Rush Creek Lodge**
 
 ---
 
@@ -262,9 +262,9 @@ Get in the car at 3:45pm and head back to Rush Creek with the full evening free.
 
 *Travel (drive): ~45 min — Yosemite Village → Rush Creek Lodge*
 
-**~4:30pm — Arrive at Rush Creek Lodge: pool / hot tubs / deck time**
+**4:30pm — Arrive at Rush Creek Lodge: pool / hot tubs / deck time**
 
-**5:30pm — Dinner at The Restaurant at Rush Creek**
+**6:00pm — Dinner at The Restaurant at Rush Creek**
 
 **Evening — S'mores + fire pits + stargazing**
 
