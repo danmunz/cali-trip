@@ -7,3 +7,4 @@ package-lock.json
 
 # Generated data files (build artifacts)
 src/data/*.generated.ts
+.playwright-mcp/*
