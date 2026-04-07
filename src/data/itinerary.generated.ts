@@ -306,9 +306,8 @@ export const itinerary: TripDay[] = [
     "date": "2026-04-07",
     "dayOfWeek": "Tuesday",
     "title": "Yosemite Valley Highlights",
-    "summary": "A full Yosemite Valley day built around the classics: the iconic Tunnel View reveal, two short waterfall walks, a meadow loop with huge granite walls in every direction, and a ranger-led Valley Floor Tour for context. Expect roughly 2–3 miles of mostly flat walking spread across the day, with lots of natural stopping points for photos and rests.",
+    "summary": "A Yosemite Valley day built around the classics, structured as one clean west-to-east loop with no backtracking. The Valley's roads are one-way and anticlockwise: you drive in on Southside Drive heading east, stop at Bridalveil and the Village, then return west on Northside Drive on the way out. Expect roughly 3 miles of easy, mostly flat walking spread across the day, with long natural breaks between stops.",
     "segmentId": "yosemite",
-    "attire": "Sturdy walking shoes and layers for a full day in the Valley; smart casual for dinner at The Mountain Room.",
     "activities": [
       {
         "time": "8:15am",
@@ -319,7 +318,7 @@ export const itinerary: TripDay[] = [
         ],
         "travelAfter": {
           "mode": "drive",
-          "duration": "~1 hr 15 min",
+          "duration": "~45 min",
           "from": "Rush Creek Lodge",
           "to": "Yosemite Valley"
         }
@@ -327,50 +326,56 @@ export const itinerary: TripDay[] = [
       {
         "time": "9:30am",
         "name": "Tunnel View",
-        "description": "Stop at Tunnel View for Yosemite’s most famous overlook—El Capitan, Bridalveil Fall, and Half Dome all in one sweep. The viewpoint became iconic after the Wawona Tunnel opened in the 1930s, and it’s still the classic “first big reveal” spot in the Valley.",
+        "description": "Stop at Tunnel View for Yosemite's most famous overlook — El Capitan, Bridalveil Fall, and Half Dome all in one sweep. The viewpoint became iconic after the Wawona Tunnel opened in the 1930s, and it's still the classic \"first big reveal\" spot in the Valley. Tunnel View has its own dedicated parking lot directly at the overlook.",
         "locationIds": [
           "half-dome",
           "bridalveil-fall-trail",
           "tunnel-view"
-        ]
+        ],
+        "travelAfter": {
+          "mode": "drive",
+          "duration": "~5 min",
+          "from": "Tunnel View",
+          "to": "Bridalveil Fall"
+        }
       },
       {
         "time": "10:00am–10:45am",
         "name": "Bridalveil Fall Trail (0.5mi)",
-        "description": "Walk the short, mostly paved trail to Bridalveil Fall—620 feet of free-falling water known to the valley's Ahwahneechee people as Pohono, \"puffing wind,\" for the way breezes deflect the lower cascade. In April, the flow is typically strong and the mist at the base can be intense; bring a light layer.",
+        "description": "Walk the short, mostly paved trail to Bridalveil Fall — 620 feet of free-falling water known to the Valley's Ahwahneechee people as Pohono, \"puffing wind,\" for the way breezes deflect the lower cascade. In April, the flow is typically strong and the mist at the base can be intense; bring a light layer. Bridalveil has its own parking lot right at the trailhead off Southside Drive, just a few minutes east of Tunnel View. If the lot is full, overflow parking is available a few hundred yards further east on Southside Drive.",
         "locationIds": [
-          "bridalveil-fall-trail"
-        ]
+          "bridalveil-fall-trail",
+          "tunnel-view"
+        ],
+        "travelAfter": {
+          "mode": "drive",
+          "duration": "~20 min",
+          "from": "Bridalveil Fall",
+          "to": "Yosemite Village"
+        }
       },
       {
         "time": "11:30am–12:30pm",
         "name": "Lower Yosemite Falls Loop (1mi)",
-        "description": "Do the 1-mile paved loop to Lower Yosemite Fall—easy walking with a huge payoff. Yosemite Falls is the tallest waterfall in North America at 2,425 feet total; the lower fall alone is 320 feet, and spring snowmelt makes it loud, fast, and genuinely misty at close range.",
+        "description": "Continue east on Southside Drive to Yosemite Village, where parking is centralized for the next several stops. Do the 1-mile paved loop to Lower Yosemite Fall — easy walking with a huge payoff. Yosemite Falls is the tallest waterfall in North America at 2,425 feet total; the lower fall alone is 320 feet, and spring snowmelt makes it loud, fast, and genuinely misty at close range. Park once at the Village and leave the car here through lunch and the meadow walk.",
         "locationIds": [
-          "lower-yosemite-falls-loop"
+          "lower-yosemite-falls-loop",
+          "yosemite-village"
         ]
       },
       {
         "time": "1:00pm",
         "name": "Lunch / picnic at Yosemite Village",
-        "description": "Take a midday reset with a simple picnic lunch and a wander through Yosemite Village. This is the Valley’s historic hub for small exhibits, browsing shops, and soaking in the human side of Yosemite’s story alongside the scenery.",
+        "description": "Take a midday reset with a simple picnic lunch and a wander through Yosemite Village. This is the Valley's historic hub for small exhibits, browsing shops, and soaking in the human side of Yosemite's story alongside the scenery. No driving required — the next two stops are both walkable from here.",
         "locationIds": [
           "yosemite-village",
           "rush-creek-lodge-and-spa-at-yosemite"
         ]
       },
       {
-        "time": "2:00pm–4:00pm",
-        "name": "Valley Floor Tram Tour",
-        "description": "Take the open-air, ranger-led Valley Floor Tour (about 2 hours) to cover more ground with minimal walking. It’s the best way to turn the scenery into a narrative—glacial geology, early conservation history, and the “how is that even possible?” scale of places like El Capitan.",
-        "locationIds": [
-          "yosemite-valley-floor-tour"
-        ]
-      },
-      {
-        "time": "4:15pm",
+        "time": "2:00pm–2:30pm",
         "name": "Sentinel Bridge",
-        "description": "Stop at Sentinel Bridge for a classic Half Dome viewpoint with the Merced River often adding reflections. It’s a longtime photographer favorite, especially later in the day when the light starts to soften.",
+        "description": "Walk from the Village to Sentinel Bridge — about 5 minutes on foot — for the classic Half Dome viewpoint with the Merced River often adding reflections. It's a longtime photographer favorite, and one of the best spots in the Valley to feel the scale of what's around you without any effort.",
         "locationIds": [
           "sentinel-bridge",
           "merced-river",
@@ -378,27 +383,92 @@ export const itinerary: TripDay[] = [
         ]
       },
       {
-        "time": "4:45pm–5:30pm",
-        "name": "Cook’s Meadow Loop",
-        "description": "Take a flat, easy loop through Cook's Meadow (about a mile) for wide-open Valley views—meadow, river, and granite walls all in one frame with minimal walking. One of the best low-effort places to feel the full scale of the Valley, and a good spot for a few final photos before dinner.",
+        "time": "2:30pm–3:30pm",
+        "name": "Cook's Meadow Loop (1mi)",
+        "description": "Take a flat, easy loop through Cook's Meadow for wide-open Valley views — meadow, river, and granite walls all in one frame. Sentinel Bridge and Cook's Meadow are immediately adjacent, so this is one continuous walkable block from the Village parking area with no car needed. One of the best low-effort places to feel the full scale of the Valley, and a natural endpoint for the day's walking.  Choose Your Evening At the end of Cook's Meadow, you have a clean decision point. Both options work — it's a question of what the group has energy for and what kind of ending feels right. ",
         "locationIds": [
-          "cook-s-meadow-loop"
+          "cook-s-meadow-loop",
+          "sentinel-bridge"
         ]
       },
       {
-        "time": "5:30pm",
-        "name": "Dinner at The Mountain Room (Yosemite)",
-        "description": "Have dinner at The Mountain Room at Yosemite Valley Lodge—the dining room's floor-to-ceiling windows face Yosemite Falls directly, and the walls display photographs curated in partnership with the Ansel Adams Gallery. The menu is American classics (steaks, sustainably sourced seafood, vegetarian options), which is exactly right after a full day in the Valley. Reserve ahead.",
+        "time": "Option A",
+        "name": "Dinner at The Mountain Room, then back to Rush Creek",
+        "description": "Stay in the Valley for dinner at The Mountain Room at Yosemite Valley Lodge. From Cook's Meadow, drive west on Northside Drive — the natural return leg — and the lodge is on the way out, roughly 15 minutes from the Village. The dining room's floor-to-ceiling windows face Yosemite Falls directly, and the walls display photographs curated in partnership with the Ansel Adams Gallery. The menu is American classics — steaks, sustainably sourced seafood, vegetarian options — which is exactly right after a full day in the Valley. Reserve ahead. You'll be back at Rush Creek by 8:00pm with time to pack before tomorrow's drive.",
         "locationIds": [
           "the-mountain-room",
           "yosemite-valley",
+          "the-restaurant-at-rush-creek",
+          "cook-s-meadow-loop",
+          "rush-creek-lodge-and-spa-at-yosemite"
+        ],
+        "travelAfter": {
+          "mode": "drive",
+          "duration": "~15 min",
+          "from": "Cook's Meadow",
+          "to": "The Mountain Room"
+        }
+      },
+      {
+        "time": "5:30pm",
+        "name": "Dinner at The Mountain Room",
+        "description": "",
+        "locationIds": [
+          "the-mountain-room"
+        ],
+        "travelAfter": {
+          "mode": "drive",
+          "duration": "~45 min",
+          "from": "Yosemite Valley Lodge",
+          "to": "Rush Creek Lodge"
+        }
+      },
+      {
+        "time": "7:30pm",
+        "name": "Return to Rush Creek Lodge",
+        "description": "",
+        "locationIds": [
+          "rush-creek-lodge-and-spa-at-yosemite",
+          "the-restaurant-at-rush-creek"
+        ]
+      },
+      {
+        "time": "Option B",
+        "name": "Back to Rush Creek for pool time, dinner, and the fire pits",
+        "description": "Get in the car at 3:45pm and head back to Rush Creek with the full evening free. Leaving the Valley now puts you ahead of any late-afternoon traffic and back at the lodge by 4:30 — enough time for a real hour at the pool or hot tubs before dinner. This is the last night in the Sierra before Carmel, and Rush Creek's fire pits, s'mores, and open sky at elevation are worth experiencing as more than a late-night return. It's also the more rested start to a six-hour drive day tomorrow.",
+        "locationIds": [
+          "rush-creek-lodge-and-spa-at-yosemite",
+          "the-restaurant-at-rush-creek"
+        ],
+        "travelAfter": {
+          "mode": "drive",
+          "duration": "~45 min",
+          "from": "Yosemite Village",
+          "to": "Rush Creek Lodge"
+        }
+      },
+      {
+        "time": "4:30pm",
+        "name": "Arrive at Rush Creek Lodge: pool / hot tubs / deck time",
+        "description": "",
+        "locationIds": [
+          "the-restaurant-at-rush-creek",
+          "rush-creek-lodge-and-spa-at-yosemite"
+        ]
+      },
+      {
+        "time": "6:00pm",
+        "name": "Dinner at The Restaurant at Rush Creek",
+        "description": "",
+        "locationIds": [
+          "the-restaurant-at-rush-creek",
           "rush-creek-lodge-and-spa-at-yosemite"
         ]
       },
       {
         "time": "Evening",
-        "name": "Return to the lodge",
-        "description": "Drive back to the lodge and keep the evening low-key at the fire pits before turning in.",
+        "name": "S'mores + fire pits + stargazing",
+        "description": "",
         "locationIds": []
       }
     ]
