@@ -45,8 +45,8 @@ export const weatherData: WeatherData = {
       "date": "2026-04-07",
       "displayDate": "Apr 7",
       "location": "Yosemite",
-      "high": 71,
-      "low": 44,
+      "high": 72,
+      "low": 45,
       "condition": "sunny",
       "shortForecast": "Sunny",
       "source": "forecast"
@@ -56,9 +56,9 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 8",
       "location": "Carmel",
       "high": 71,
-      "low": 53,
+      "low": 52,
       "condition": "sunny",
-      "shortForecast": "Sunny",
+      "shortForecast": "Mostly Sunny",
       "source": "forecast"
     },
     {
@@ -67,8 +67,8 @@ export const weatherData: WeatherData = {
       "location": "Carmel",
       "high": 70,
       "low": 53,
-      "condition": "light-rain",
-      "shortForecast": "Slight Chance Light Rain",
+      "condition": "sunny",
+      "shortForecast": "Partly Sunny",
       "source": "forecast"
     },
     {
@@ -85,12 +85,12 @@ export const weatherData: WeatherData = {
       "date": "2026-04-11",
       "displayDate": "Apr 11",
       "location": "SF",
-      "high": 65,
-      "low": 51,
+      "high": 64,
+      "low": 49,
       "condition": "light-rain",
       "shortForecast": "Chance Light Rain",
       "source": "forecast"
     }
   ],
-  "fetchedAt": "2026-04-07T07:41:56.814Z"
+  "fetchedAt": "2026-04-07T19:15:03.943Z"
 };
