@@ -65,8 +65,8 @@ export const weatherData: WeatherData = {
       "location": "Carmel",
       "high": 69,
       "low": 52,
-      "condition": "fog",
-      "shortForecast": "Patchy Fog then Partly Sunny",
+      "condition": "sunny",
+      "shortForecast": "Partly Sunny",
       "source": "forecast"
     },
     {
@@ -74,21 +74,21 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 10",
       "location": "Carmel",
       "high": 69,
-      "low": 51,
+      "low": 52,
       "condition": "thunderstorm",
-      "shortForecast": "Showers And Thunderstorms",
+      "shortForecast": "Showers And Thunderstorms then Chance Showers And Thunderstorms",
       "source": "forecast"
     },
     {
       "date": "2026-04-11",
       "displayDate": "Apr 11",
       "location": "SF",
-      "high": 62,
-      "low": 48,
-      "condition": "thunderstorm",
-      "shortForecast": "Rain then Showers And Thunderstorms",
+      "high": 64,
+      "low": 50,
+      "condition": "rain",
+      "shortForecast": "Rain Showers",
       "source": "forecast"
     }
   ],
-  "fetchedAt": "2026-04-09T07:48:02.855Z"
+  "fetchedAt": "2026-04-09T19:18:18.757Z"
 };
