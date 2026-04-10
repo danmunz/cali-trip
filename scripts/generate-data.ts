@@ -185,6 +185,33 @@ function buildAliases(name: string): string[] {
   const lower = normalize(name);
   const aliases = [lower];
 
+  const genericAliasWords = new Set([
+    'state',
+    'park',
+    'reserve',
+    'national',
+    'monument',
+    'trail',
+    'loop',
+    'walk',
+    'lodge',
+    'spa',
+    'hotel',
+    'restaurant',
+    'market',
+    'vineyards',
+    'winery',
+    'estate',
+  ]);
+
+  function isUsefulTailAlias(alias: string): boolean {
+    const words = alias.split(/\s+/).filter(Boolean);
+    const specificWords = words.filter(
+      (word) => !genericAliasWords.has(word),
+    );
+    return specificWords.some((word) => word.length >= 4);
+  }
+
   // Parenthetical abbreviation: "San Francisco International Airport (SFO)" → "sfo"
   const paren = name.match(/\(([^)]+)\)/);
   if (paren) aliases.push(normalize(paren[1]!));
@@ -214,9 +241,11 @@ function buildAliases(name: string): string[] {
   const words = noParen.split(/\s+/);
   if (words.length >= 4) {
     const tail2 = words.slice(-2).join(' ');
-    if (tail2.length >= 5) aliases.push(tail2);
+    if (tail2.length >= 5 && isUsefulTailAlias(tail2)) aliases.push(tail2);
     const tail3 = words.slice(-3).join(' ');
-    if (tail3.length >= 8 && tail3 !== noParen) aliases.push(tail3);
+    if (tail3.length >= 8 && tail3 !== noParen && isUsefulTailAlias(tail3)) {
+      aliases.push(tail3);
+    }
   }
 
   return [...new Set(aliases)];

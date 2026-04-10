@@ -380,29 +380,21 @@
       "dress_code": "Smart Casual"
     },
     {
-      "id": "mission-ranch",
-      "name": "Mission Ranch",
-      "address": "26270 Dolores St, Carmel-By-The-Sea, CA 93923",
+      "id": "mission-bistro",
+      "name": "Mission Bistro",
+      "address": "Mission St, 2 blocks southwest of Ocean Ave, Carmel-By-The-Sea, CA 93921",
       "geo": {
-        "lat": 36.542336,
-        "lng": -121.923012
+        "lat": 36.553908,
+        "lng": -121.921502
       },
       "type": "restaurant",
       "notes": "",
-      "images": [
-        "/cali-trip/images/mission-ranch/01.jpg",
-        "/cali-trip/images/mission-ranch/02.jpg",
-        "/cali-trip/images/mission-ranch/03.jpg"
-      ],
-      "official_url": [
-        "https://www.missionranchcarmel.com/restaurant.htm"
-      ],
+      "images": [],
+      "official_url": [],
       "google_maps_url": [
-        "https://www.google.com/maps/search/?api=1&query=36.5423363,-121.9230116"
+        "https://www.google.com/maps/search/?api=1&query=Mission+Bistro+Carmel"
       ],
-      "review_url": [
-        "https://www.yelp.com/biz/mission-ranch-carmel"
-      ],
+      "review_url": [],
       "trip_parts": [
         {
           "day": 8,
@@ -473,11 +465,6 @@
           "day": 7,
           "date": "2026-04-09",
           "segment_id": "carmel"
-        },
-        {
-          "day": 8,
-          "date": "2026-04-10",
-          "segment_id": "carmel"
         }
       ]
     },
@@ -509,11 +496,6 @@
         {
           "day": 7,
           "date": "2026-04-09",
-          "segment_id": "carmel"
-        },
-        {
-          "day": 8,
-          "date": "2026-04-10",
           "segment_id": "carmel"
         }
       ]
@@ -983,6 +965,32 @@
       "review_url": [
         "https://www.tripadvisor.com/Attraction_Review-g240329-d8286795-Reviews-Rocky_Creek_Bridge-Big_Sur_California.html"
       ],
+      "trip_parts": []
+    },
+    {
+      "id": "rocky-point",
+      "name": "Rocky Point",
+      "address": "36700 CA-1, Big Sur, CA 93920",
+      "geo": {
+        "lat": 36.3609,
+        "lng": -121.9026
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [
+        "/cali-trip/images/rocky-point/01.jpg",
+        "/cali-trip/images/rocky-point/02.jpg",
+        "/cali-trip/images/rocky-point/03.jpg"
+      ],
+      "official_url": [
+        "https://www.rockypointrestaurant.com/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=Rocky+Point+Big+Sur+CA"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g240329-d26637350-Reviews-Rocky_Point_Big_Sur-Big_Sur_California.html"
+      ],
       "trip_parts": [
         {
           "day": 7,
@@ -1076,6 +1084,38 @@
       ],
       "review_url": [
         "https://www.tripadvisor.com/Attraction_Review-g240329-d116836-Reviews-or10-Bixby_Bridge-Big_Sur_California.html"
+      ],
+      "trip_parts": [
+        {
+          "day": 7,
+          "date": "2026-04-09",
+          "segment_id": "carmel"
+        }
+      ]
+    },
+    {
+      "id": "point-sur-lighthouse",
+      "name": "Point Sur Lighthouse",
+      "address": "44350 CA-1, Monterey, CA 93940",
+      "geo": {
+        "lat": 36.3061,
+        "lng": -121.9004
+      },
+      "type": "attraction",
+      "notes": "",
+      "images": [
+        "/cali-trip/images/point-sur-lighthouse/01.jpg",
+        "/cali-trip/images/point-sur-lighthouse/02.jpg",
+        "/cali-trip/images/point-sur-lighthouse/03.jpg"
+      ],
+      "official_url": [
+        "https://pointsur.org/"
+      ],
+      "google_maps_url": [
+        "https://www.google.com/maps/search/?api=1&query=Point+Sur+Lighthouse+Big+Sur+CA"
+      ],
+      "review_url": [
+        "https://www.tripadvisor.com/Attraction_Review-g240329-d116837-Reviews-Point_Sur_State_Historic_Park-Big_Sur_California.html"
       ],
       "trip_parts": [
         {
@@ -1433,13 +1473,7 @@
         "https://www.google.com/maps/search/?api=1&query=36.2796459,-121.8309512"
       ],
       "review_url": [],
-      "trip_parts": [
-        {
-          "day": 7,
-          "date": "2026-04-09",
-          "segment_id": "carmel"
-        }
-      ]
+      "trip_parts": []
     },
     {
       "id": "pfeiffer-big-sur-redwood-river-walk",

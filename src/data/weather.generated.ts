@@ -90,5 +90,5 @@ export const weatherData: WeatherData = {
       "source": "forecast"
     }
   ],
-  "fetchedAt": "2026-04-09T19:18:18.757Z"
+  "fetchedAt": "2026-04-10T00:49:08.740Z"
 };

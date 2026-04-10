@@ -432,40 +432,40 @@ export const itinerary: TripDay[] = [
     "date": "2026-04-09",
     "dayOfWeek": "Thursday",
     "title": "Big Sur on Highway 1",
-    "summary": "Spend a full Big Sur day on Highway 1: an out-and-back with cliffside viewpoints, an easy bluff walk, a scenic lunch, and a redwood river stroll in the afternoon. The Big Sur section of Highway 1—completed in the 1930s—opened this coastline to road travelers, and it still feels like one of the world's great “scenic drive” experiences.",
+    "summary": "Spend a full Big Sur day on Highway 1: short coastal hikes at Garrapata, a landmark-rich scenic drive, a scenic lunch, and a redwood river stroll in the afternoon. The Big Sur section of Highway 1—completed in the 1930s—opened this coastline to road travelers, and it still feels like one of the world's great “scenic drive” experiences.",
     "segmentId": "carmel",
     "attire": "Active layers for bluff walks and redwood hikes; smart casual for Pacific's Edge dinner.",
     "activities": [
       {
-        "time": "9:30am",
-        "name": "Scenic Highway 1 drive (optional pull-offs)",
-        "description": "Drive south on Highway 1 and treat the first hour as a sampler of pull-offs. Quick favorites include Rocky Creek Bridge (granite headlands and big water) and Garrapata Bluff (short cliff-top walking with wide-open coastline).",
+        "time": "9:30am–11:15am",
+        "name": "Garrapata State Park: Soberanes Point + Calla Lily Valley",
+        "description": "Start the morning at Garrapata State Park with two short hikes that show off different sides of the coast: first, the Soberanes Point Trail out toward Painter's Point for easy bluff-top views around Garrapata Bluff; then the Garrapata Trail into Calla Lily Valley, where spring usually brings lush greenery and the kind of tucked-away coastal scenery that feels quietly cinematic. It's an active start, but still gentle enough to keep the day feeling relaxed.",
         "locationIds": [
-          "rocky-creek-bridge",
-          "garrapata-bluff-trail",
+          "garrapata-bluff-trail"
+        ],
+        "travelAfter": {
+          "mode": "drive",
+          "duration": "~20 min",
+          "from": "Garrapata State Park",
+          "to": "Hyatt Carmel Highlands"
+        }
+      },
+      {
+        "time": "12:00pm",
+        "name": "Brief refresh stop at the hotel + scenic drive south",
+        "description": "Return to the hotel for a quick reset, then head back down Highway 1 toward lunch with the route itself as part of the outing. On the drive, take in a string of classic landmarks—Rocky Point, Bixby Creek Bridge, Point Sur Lighthouse, and Andrew Molera State Park—which together capture the full Big Sur rhythm of cliffs, bridges, headlands, and open ocean.",
+        "locationIds": [
+          "andrew-molera-state-park",
+          "point-sur-lighthouse",
+          "bixby-creek-bridge",
+          "rocky-point",
           "highway-1-big-sur-coast"
         ],
         "travelAfter": {
           "mode": "drive",
-          "duration": "~1 hr",
-          "from": "Carmel Highlands",
-          "to": "Andrew Molera State Park (with optional pull-offs)"
-        }
-      },
-      {
-        "time": "10:30am–12:00pm",
-        "name": "Andrew Molera State Park: Bluff Trail (2-3mi)",
-        "description": "Walk the Bluff Trail at Andrew Molera—a mostly flat out-and-back through open grasslands and coastal scrub, roughly 2–3 miles depending on where you turn around. Big Sur at its most expansive: lots of sky, long sightlines to the water, and none of the forest enclosure you get deeper in the park.",
-        "locationIds": [
-          "andrew-molera-state-park",
-          "andrew-molera-bluff-trail",
-          "pfeiffer-big-sur-state-park"
-        ],
-        "travelAfter": {
-          "mode": "drive",
-          "duration": "~15 min",
-          "from": "Andrew Molera State Park",
-          "to": "Ventana Big Sur (Sur House)"
+          "duration": "~45 min",
+          "from": "Hyatt Carmel Highlands",
+          "to": "Ventana Big Sur (Sur House, with scenic landmarks)"
         }
       },
       {
@@ -484,28 +484,24 @@ export const itinerary: TripDay[] = [
         }
       },
       {
-        "time": "1:45pm–2:45pm",
+        "time": "2:00pm–2:30pm",
         "name": "Pfeiffer Big Sur State Park: Redwood River Walk",
-        "description": "Switch from cliff views to redwoods with an easy river walk in Pfeiffer Big Sur State Park. Plan on a gentle stroll beneath towering redwoods along the Big Sur River—cooler, quieter, and a perfect contrast to the open bluffs.",
+        "description": "Make a brief stop at Pfeiffer Big Sur State Park for the Redwood River Walk, an easy stretch beneath towering redwoods along the Big Sur River. It's cooler, quieter, and a perfect contrast to the open bluffs and ocean panoramas from earlier in the day.",
         "locationIds": [
           "pfeiffer-big-sur-state-park",
-          "pfeiffer-big-sur-redwood-river-walk",
-          "andrew-molera-state-park"
-        ]
+          "pfeiffer-big-sur-redwood-river-walk"
+        ],
+        "travelAfter": {
+          "mode": "drive",
+          "duration": "~45 min",
+          "from": "Pfeiffer Big Sur State Park",
+          "to": "Hyatt Carmel Highlands"
+        }
       },
       {
-        "time": "2:45pm–4:00pm",
-        "name": "Scenic drive back north",
-        "description": "Head back north toward Carmel Highlands with an optional stop at Bixby Creek Bridge—completed in 1932 and now one of the defining images of Highway 1. It’s a quick stop with a big payoff: rugged coastline, deep canyon, and the bridge’s graceful concrete arch all in one frame.",
-        "locationIds": [
-          "bixby-creek-bridge",
-          "highway-1-big-sur-coast"
-        ]
-      },
-      {
-        "time": "4:00pm",
-        "name": "Return to the hotel: pool time + sunset wine + showers",
-        "description": "Return to the hotel for pool time (if you want it), showers, and a short rest before dinner.",
+        "time": "2:30pm",
+        "name": "Drive back to the hotel: relax time until dinner",
+        "description": "Head back to Carmel Highlands and leave the rest of the afternoon open for true downtime—pool time if you want it, a glass of wine at sunset, showers, or simply sitting with the view before dinner.",
         "locationIds": []
       },
       {
@@ -525,9 +521,9 @@ export const itinerary: TripDay[] = [
     "date": "2026-04-10",
     "dayOfWeek": "Friday",
     "title": "Point Lobos + Carmel + Farewell Dinner",
-    "summary": "A coastal favorites day with Point Lobos, Carmel-by-the-Sea, and the 17-Mile Drive, capped by a sunset dinner at Mission Ranch. It's a relaxed, celebratory wrap for the Monterey Peninsula with plenty of time to pause and enjoy the views.",
+    "summary": "A coastal favorites day with Point Lobos, Carmel-by-the-Sea, and the 17-Mile Drive, capped by a farewell dinner in Carmel village. It's a relaxed, celebratory wrap for the Monterey Peninsula with plenty of time to pause and enjoy the views.",
     "segmentId": "carmel",
-    "attire": "Layers for Point Lobos and the food tour; smart casual for farewell dinner at Mission Ranch.",
+    "attire": "Layers for Point Lobos and the food tour; smart casual for dinner at Mission Bistro.",
     "activities": [
       {
         "time": "8:00am",
@@ -538,9 +534,7 @@ export const itinerary: TripDay[] = [
           "south-shore-trail-point-lobos",
           "sand-hill-trail-point-lobos",
           "sea-lion-point-point-lobos",
-          "cypress-grove-trail-point-lobos",
-          "andrew-molera-state-park",
-          "pfeiffer-big-sur-state-park"
+          "cypress-grove-trail-point-lobos"
         ],
         "travelAfter": {
           "mode": "drive",
@@ -589,32 +583,20 @@ export const itinerary: TripDay[] = [
           "mode": "drive",
           "duration": "~15 min",
           "from": "Pebble Beach",
-          "to": "Mission Ranch (Carmel)"
+          "to": "Mission Bistro (Carmel)"
         }
       },
       {
-        "time": "5:30pm",
-        "name": "Mission Ranch: join the text waitlist + wander",
-        "description": "Arrive at Mission Ranch, a 22-acre ranch and restaurant dating to the 1850s—Clint Eastwood bought it in 1986 specifically to prevent it from being converted into condominiums, and undertook a careful restoration while filming Unforgiven. Get on the dinner waitlist, then wander the property: sheep in the pasture, a lagoon walk, and live piano in the lounge.",
-        "locationIds": [
-          "mission-ranch"
-        ]
-      },
-      {
         "time": "6:00pm",
-        "name": "Dinner at Mission Ranch",
-        "description": "The menu leans classic American—grilled meats, fresh seafood, comfort-style sides—served in a dining room that looks out over the sheep meadow toward the Pacific sand dunes and, on a clear evening, Point Lobos. As the celebratory dinner for the trip, the setting carries real weight.",
+        "name": "Dinner at Mission Bistro",
+        "description": "Head straight from the 17-Mile Drive into Carmel village for dinner at Mission Bistro, a tucked-away dining room on Mission Street that feels very much in keeping with Carmel's understated character: intimate, proprietor-led, and rooted in the village rather than the tourist strip. The menu is a strong fit for the final night on the coast, with Pacific seafood at the center and produce sourced from Monterey and Santa Cruz County farms and ranches, so the meal feels specific to this stretch of California rather than generically celebratory. Reviewers regularly mention owner Shaheen Alnuaimi greeting tables and chef Matt Zimny walking the room, which gives the evening a warm, personal finish for Susan's birthday dinner.",
         "locationIds": [
-          "mission-ranch",
-          "point-lobos-state-reserve",
-          "south-shore-trail-point-lobos",
-          "sand-hill-trail-point-lobos",
-          "sea-lion-point-point-lobos",
-          "cypress-grove-trail-point-lobos"
+          "mission-bistro",
+          "17-mile-drive"
         ]
       },
       {
-        "time": "7:00pm",
+        "time": "After dinner",
         "name": "Return to the hotel for a quiet night + packing",
         "description": "Return to the hotel for a quiet evening and packing.",
         "locationIds": []
