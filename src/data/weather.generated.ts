@@ -63,11 +63,10 @@ export const weatherData: WeatherData = {
       "date": "2026-04-09",
       "displayDate": "Apr 9",
       "location": "Carmel",
-      "high": 69,
-      "low": 52,
-      "condition": "sunny",
-      "shortForecast": "Partly Sunny",
-      "source": "forecast"
+      "high": 64,
+      "low": 51,
+      "condition": "cloudy",
+      "source": "average"
     },
     {
       "date": "2026-04-10",
@@ -83,12 +82,12 @@ export const weatherData: WeatherData = {
       "date": "2026-04-11",
       "displayDate": "Apr 11",
       "location": "SF",
-      "high": 64,
+      "high": 63,
       "low": 50,
-      "condition": "rain",
-      "shortForecast": "Rain Showers",
+      "condition": "thunderstorm",
+      "shortForecast": "Light Rain then Showers And Thunderstorms",
       "source": "forecast"
     }
   ],
-  "fetchedAt": "2026-04-10T00:49:08.740Z"
+  "fetchedAt": "2026-04-10T07:51:57.970Z"
 };
