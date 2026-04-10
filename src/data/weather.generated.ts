@@ -73,9 +73,9 @@ export const weatherData: WeatherData = {
       "displayDate": "Apr 10",
       "location": "Carmel",
       "high": 69,
-      "low": 52,
+      "low": 51,
       "condition": "thunderstorm",
-      "shortForecast": "Showers And Thunderstorms then Chance Showers And Thunderstorms",
+      "shortForecast": "Chance Showers And Thunderstorms",
       "source": "forecast"
     },
     {
@@ -89,5 +89,5 @@ export const weatherData: WeatherData = {
       "source": "forecast"
     }
   ],
-  "fetchedAt": "2026-04-10T07:51:57.970Z"
+  "fetchedAt": "2026-04-10T19:03:50.176Z"
 };
