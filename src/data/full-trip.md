@@ -286,15 +286,11 @@ Dinner at **Pacific's Edge**, the Hyatt's clifftop restaurant at roughly 400 fee
 
 ## **Fri Apr 10 — Point Lobos + Carmel + Farewell Dinner**
 
-A coastal favorites day with Point Lobos, Carmel-by-the-Sea, and the 17-Mile Drive, capped by a farewell dinner in Carmel village. It's a relaxed, celebratory wrap for the Monterey Peninsula with plenty of time to pause and enjoy the views.
+A coastal favorites day with Carmel-by-the-Sea and the 17-Mile Drive, capped by a farewell dinner in Carmel village. It's a relaxed, celebratory wrap for the Monterey Peninsula with plenty of time to pause and enjoy the views.
 
-<!-- attire: Layers for Point Lobos and the food tour; smart casual for dinner at Mission Bistro. -->
+<!-- attire: Layers for the food tour; smart casual for dinner at Mission Bistro. -->
 
-**8:00am — Point Lobos State Reserve (South Shore Trail route)**
-
-Visit Point Lobos—often called the crown jewel of California’s state parks—for a morning of coves, headlands, and constant ocean views. A great route is to park at Piney Woods and connect South Shore Trail → Sand Hill Trail → Sea Lion Point (with the option to add Cypress Grove). Plan on roughly 2–3 miles of easy-to-moderate walking with time built in for wildlife watching (sea lions, seabirds, and often sea otters offshore).
-
-*Travel (drive): ~15 min — Point Lobos → Carmel-by-the-Sea*
+*Travel (drive): ~15 min — Carmel Highlands → Carmel-by-the-Sea*
 
 **11:00am–2:00pm — Carmel-by-the-Sea Classic Food Tour**
 
