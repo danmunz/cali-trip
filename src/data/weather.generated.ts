@@ -81,12 +81,11 @@ export const weatherData: WeatherData = {
       "date": "2026-04-11",
       "displayDate": "Apr 11",
       "location": "SF",
-      "high": 63,
-      "low": 50,
-      "condition": "thunderstorm",
-      "shortForecast": "Showers And Thunderstorms",
-      "source": "forecast"
+      "high": 65,
+      "low": 54,
+      "condition": "partly-cloudy",
+      "source": "average"
     }
   ],
-  "fetchedAt": "2026-04-11T18:56:25.876Z"
+  "fetchedAt": null
 };
