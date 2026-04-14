@@ -286,15 +286,15 @@ Dinner at **Pacific's Edge**, the Hyatt's clifftop restaurant at roughly 400 fee
 
 ## **Fri Apr 10 — Point Lobos + Carmel + Farewell Dinner**
 
-A coastal favorites day with Carmel-by-the-Sea and the 17-Mile Drive, capped by a farewell dinner in Carmel village. It's a relaxed, celebratory wrap for the Monterey Peninsula with plenty of time to pause and enjoy the views.
+A coastal favorites day with Carmel-by-the-Sea and the 17-Mile Drive, capped by a farewell dinner in Carmel. It's a relaxed, celebratory wrap for the Monterey Peninsula with plenty of time to pause and enjoy the views.
 
-<!-- attire: Layers for the food tour; smart casual for dinner at Mission Bistro. -->
+<!-- attire: Layers for the food tour; smart casual for dinner at SUR at The Barnyard. -->
 
 *Travel (drive): ~15 min — Carmel Highlands → Carmel-by-the-Sea*
 
 **11:00am–2:00pm — Carmel-by-the-Sea Classic Food Tour**
 
-Join a guided walking tour through Carmel's cottage-lined streets, with five or six tastings at local eateries and shops along the way. Stops vary but typically include a wine tasting, a chocolate shop, and a mix of Carmel's better-known and off-the-beaten-path spots—the kind of places you'd otherwise walk right past. The format is small-group and the guide weaves in Carmel's history and architecture as you go: the arts colony roots, the no-traffic-lights-or-streetlights quirks, the European village layout that makes it feel unlike anywhere else in California.
+Join a guided walking tour through Carmel's cottage-lined streets, with tastings at **Patisserie Boissiere**, **El Bistro By The Sea**, **The Nut Hut**, **Toro**, and **Lula's Chocolates** along the way. The progression gives you a nice cross-section of Carmel's food scene, from pastries and savory bites to sweets, while also pulling you through the village's tucked-away courtyards and charming commercial lanes. The format is small-group and the guide weaves in Carmel's history and architecture as you go: the arts colony roots, the no-traffic-lights-or-streetlights quirks, the European village layout that makes it feel unlike anywhere else in California.
 
 *Travel (drive): ~15 min — Carmel-by-the-Sea → Carmel Highlands*
 
@@ -308,11 +308,11 @@ Go back to the hotel for a real rest block and light packing. It's also a perfec
 
 Drive the 17-Mile Drive loop in late-day light—a privately maintained road with a modest entry fee (usually waived with any restaurant stop)—pausing for pull-offs like Lone Cypress (one of the most photographed trees in North America) and the surf break at Spanish Bay. It's a curated coastline loop through forest, rocky shore, and famous golf links, and the late-afternoon light makes it considerably better than a midday drive.
 
-*Travel (drive): ~15 min — Pebble Beach → Mission Bistro (Carmel)*
+*Travel (drive): ~15 min — Pebble Beach → SUR at The Barnyard (Carmel)*
 
-**6:00pm — Dinner at Mission Bistro**
+**6:00pm — Dinner at SUR at The Barnyard**
 
-Head straight from the 17-Mile Drive into Carmel village for dinner at **Mission Bistro**, a tucked-away dining room on Mission Street that feels very much in keeping with Carmel's understated character: intimate, proprietor-led, and rooted in the village rather than the tourist strip. The menu is a strong fit for the final night on the coast, with Pacific seafood at the center and produce sourced from Monterey and Santa Cruz County farms and ranches, so the meal feels specific to this stretch of California rather than generically celebratory. Reviewers regularly mention owner Shaheen Alnuaimi greeting tables and chef Matt Zimny walking the room, which gives the evening a warm, personal finish for Susan's birthday dinner.
+Head straight from the 17-Mile Drive to **SUR at The Barnyard** for dinner in Carmel. Set within the Barnyard shopping village just outside Carmel-by-the-Sea, SUR offers a polished but relaxed setting for the last dinner of the trip, with a menu centered on coastal California seafood, steaks, and comfort-forward classics. It's an easy, celebratory landing spot after the scenic drive and a fitting final-night meal before heading back to the hotel.
 
 **After dinner — Return to the hotel for a quiet night + packing**
 
